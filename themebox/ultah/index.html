@@ -56,12 +56,12 @@
       '<h3>' + t.name + '</h3>' +
       '<div class="td-card-actions">' +
       '<a class="td-btn td-btn-demo" href="../demo/' + t.file + '" target="_blank">Lihat Demo</a>' +
-      '<a class="td-btn td-btn-order" href="../order/?theme=' + t.file + '">Order ♥</a>' +
+      '<a class="td-btn td-btn-order" href="../order/?theme=' + t.file + '">Order 🎉</a>' +
       '</div></div></div>';
   }
   document.addEventListener("DOMContentLoaded", function () {
     var grid = document.getElementById("td-grid");
-    var list = THEMES.filter(function (t) { return t.cat === "Ulang Tahun"; });
+    var list = THEMES.filter(function (t) { return t.cat === "Ultah"; });
     grid.innerHTML = list.map(card).join("");
     var b = document.getElementById("td-burger"), l = document.getElementById("td-links");
     b.addEventListener("click", function () { l.classList.toggle("open"); });
