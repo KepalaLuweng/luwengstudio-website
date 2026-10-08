@@ -139,16 +139,37 @@ body.dev section.alt{
 .hero-dev{padding:4.5rem 0 4rem;background:
   radial-gradient(600px 300px at 50% -60px,rgba(0,255,136,.07),transparent),
   var(--bg);}
+body.dev .btn-hack-green,body.dev .btn-hack-cyan,body.dev .btn-hack-purple{
+  font-family:var(--mono);font-weight:700;
+  border-radius:8px;padding:.85rem 1.6rem;
+  transition:all .25s ease;position:relative;overflow:hidden;
+}
+body.dev .btn-hack-green{
+  background:rgba(0,255,136,.08);border:1px solid #00ff88;color:#00ff88;
+  box-shadow:inset 0 0 12px rgba(0,255,136,.06);
+}
+body.dev .btn-hack-green:hover{
+  background:rgba(0,255,136,.18);box-shadow:0 0 22px rgba(0,255,136,.35),inset 0 0 12px rgba(0,255,136,.1);
+  transform:translateY(-2px);color:#4dffab;
+}
+body.dev .btn-hack-cyan{
+  background:rgba(0,212,255,.07);border:1px solid #00d4ff;color:#00d4ff;
+  box-shadow:inset 0 0 12px rgba(0,212,255,.06);
+}
+body.dev .btn-hack-cyan:hover{
+  background:rgba(0,212,255,.16);box-shadow:0 0 22px rgba(0,212,255,.35),inset 0 0 12px rgba(0,212,255,.1);
+  transform:translateY(-2px);color:#5ee6ff;
+}
+body.dev .btn-hack-purple{
+  background:rgba(168,85,247,.07);border:1px solid #a855f7;color:#a855f7;
+  box-shadow:inset 0 0 12px rgba(168,85,247,.06);cursor:pointer;
+}
+body.dev .btn-hack-purple:hover{
+  background:rgba(168,85,247,.16);box-shadow:0 0 22px rgba(168,85,247,.35),inset 0 0 12px rgba(168,85,247,.1);
+  transform:translateY(-2px);color:#c084fc;
+}
 .hero-dev .hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:2rem}
 .hero-dev .hero-cta .btn{white-space:nowrap}
-.bio-link{
-  background:none;border:none;cursor:pointer;
-  font-family:var(--mono);font-size:.82rem;letter-spacing:1px;
-  color:var(--faint);padding:.4rem .8rem;
-  border-bottom:1px dashed var(--border-soft);
-  transition:color .2s,border-color .2s;
-}
-.bio-link:hover{color:var(--green);border-bottom-color:var(--green)}
 #term-sub-canvas{display:block;margin:1.6rem auto 0}
 .tagline-box{
   max-width:520px;margin:1.6rem auto 0;padding:.9rem 1.2rem;
