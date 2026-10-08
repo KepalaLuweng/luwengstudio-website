@@ -124,6 +124,10 @@ body.dev section.alt{
 .term-body.typing .t-line[data-type].typed{opacity:1;transition:opacity .3s ease}
 .term-body.typing .t-out{opacity:0;transform:translateY(4px)}
 .term-body.typing .t-out.shown{opacity:1;transform:translateY(0);transition:opacity .5s ease,transform .5s ease}
+.term-body.typing .t-out.t-boot{opacity:0}
+.term-body.typing .t-out.t-boot.shown{opacity:1;transform:none;transition:opacity .2s ease}
+.term-body.typing .t-out.t-greet{opacity:0}
+.term-body.typing .t-out.t-greet.shown{opacity:1;transform:none;transition:opacity .8s ease;color:var(--green);text-align:center;letter-spacing:1px}
 
 /* hero-dev */
 .hero-dev{padding:4.5rem 0 4rem;background:

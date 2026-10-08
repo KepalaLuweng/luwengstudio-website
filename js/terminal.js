@@ -37,7 +37,8 @@ function initTerminal() {
     } else {
       el.classList.add("shown");
       i++;
-      setTimeout(next, 450);
+      var delay = el.classList.contains("t-boot") ? 180 : 450;
+      setTimeout(next, delay);
     }
   }
   next();
