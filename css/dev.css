@@ -48,13 +48,13 @@ body.dev .burger{border-color:var(--border);color:var(--ink);background:transpar
 
 /* buttons */
 body.dev .btn-dark{
-  background:var(--green);
-  border-color:var(--green);
-  color:#04120a;
+  background:rgba(0,255,136,.08);
+  border:1px solid var(--green);
+  color:var(--green);
   font-family:var(--mono);
   font-weight:700;
 }
-body.dev .btn-dark:hover{background:#4dffab;color:#04120a;border-color:#4dffab}
+body.dev .btn-dark:hover{background:rgba(0,255,136,.16);color:#4dffab;border-color:#4dffab;box-shadow:0 0 18px rgba(0,255,136,.25)}
 body.dev .btn-outline{
   background:transparent;
   color:var(--ink);
@@ -133,9 +133,15 @@ body.dev section.alt{
 .hero-dev .hero-cta .btn{white-space:nowrap}
 .hero-dev .term-sub{
   text-align:center;color:var(--faint);font-family:var(--mono);font-size:.8rem;margin-top:1.6rem;
-  opacity:0;animation:termsubfade 1s ease .8s forwards;
+  opacity:0;animation:termsubfade 1.2s ease .8s forwards;
+  letter-spacing:.5px;
 }
-@keyframes termsubfade{to{opacity:1}}
+.hero-dev .term-sub::before{content:"— ";color:var(--green);opacity:.6}
+.hero-dev .term-sub::after{content:" —";color:var(--green);opacity:.6}
+@keyframes termsubfade{
+  from{opacity:0;transform:translateY(8px);filter:blur(2px)}
+  to{opacity:1;transform:translateY(0);filter:blur(0)}
+}
 .hero-dev .term-sub b{color:var(--green);font-weight:600}
 
 /* ---------- running projects ---------- */
