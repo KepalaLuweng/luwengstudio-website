@@ -130,9 +130,12 @@ body.dev section.alt{
   radial-gradient(600px 300px at 50% -60px,rgba(0,255,136,.07),transparent),
   var(--bg);}
 .hero-dev .hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:2rem}
+.hero-dev .hero-cta .btn{white-space:nowrap}
 .hero-dev .term-sub{
   text-align:center;color:var(--faint);font-family:var(--mono);font-size:.8rem;margin-top:1.6rem;
+  opacity:0;animation:termsubfade 1s ease .8s forwards;
 }
+@keyframes termsubfade{to{opacity:1}}
 .hero-dev .term-sub b{color:var(--green);font-weight:600}
 
 /* ---------- running projects ---------- */
