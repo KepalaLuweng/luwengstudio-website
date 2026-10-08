@@ -1,0 +1,134 @@
+/* tb-khitanan.css — tema pink romantis khusus halaman kategori Khitanan. */
+:root{
+  --td-blush:#f0f6f9;
+  --td-ivory:#fffdf9;
+  --td-ink:#3a3532;
+  --td-muted:#8a7a72;
+  --td-pink:#2b7a9b;
+  --td-rose:#2b7a9b;
+  --td-gold:#c9a227;
+  --td-line:#e8ddd0;
+  --td-card:#ffffff;
+  --td-shadow:0 4px 24px rgba(120,110,100,.08);
+}
+body.tb-khitanan{
+  background:var(--td-blush);color:var(--td-ink);
+  font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;margin:0;
+}
+body.tb-khitanan h1,body.tb-khitanan h2,body.tb-khitanan h3{
+  font-family:Georgia,"Playfair Display","Times New Roman",serif;
+  font-weight:600;color:var(--td-ink);font-style:normal;
+}
+/* nav */
+.td-nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(253,242,245,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--td-line);
+}
+.td-nav-inner{
+  max-width:1100px;margin:0 auto;padding:.9rem 1.2rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.td-logo{font-family:Georgia,serif;font-size:1.25rem;color:var(--td-ink);text-decoration:none}
+.td-logo b{color:var(--td-pink)}
+.td-nav .links{display:flex;gap:1.4rem}
+.td-nav .links a{color:var(--td-muted);text-decoration:none;font-size:.88rem}
+.td-nav .links a:hover{color:var(--td-pink)}
+.td-burger{display:none;background:none;border:1px solid var(--td-line);border-radius:8px;
+  font-size:1.2rem;padding:.3rem .7rem;color:var(--td-ink);cursor:pointer}
+/* hero */
+.td-hero{
+  text-align:center;padding:3.5rem 1.2rem 2.5rem;
+  background:linear-gradient(180deg,#f0f6f9 0%,#e0edf3 50%,#f0f6f9 100%);
+  position:relative;overflow:hidden;
+}
+.td-hero::before{
+  content:"♥ ♥ ♥";position:absolute;top:1rem;left:0;right:0;
+  color:var(--td-rose);opacity:.25;font-size:1rem;letter-spacing:12px;
+}
+.td-hero .kicker{
+  display:inline-block;font-size:.78rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--td-pink);margin-bottom:1rem;
+  animation:tdFadeUp .8s ease both;
+}
+.td-hero h1{
+  font-size:2.3rem;line-height:1.3;margin:0 0 1rem;max-width:640px;
+  margin-left:auto;margin-right:auto;
+  animation:tdFadeUp 1s ease .15s both;
+}
+.td-hero h1 em{color:var(--td-pink);font-style:normal}
+.td-hero .lead{
+  color:var(--td-muted);font-size:1.02rem;line-height:1.85;max-width:580px;margin:0 auto;
+  font-style:italic;
+  animation:tdFadeUp 1.2s ease .3s both;
+}
+.td-hero .lead::after{
+  content:"❦";display:block;color:var(--td-rose);font-size:1.1rem;
+  font-style:normal;margin-top:.8rem;opacity:.7;
+}
+@keyframes tdFadeUp{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:none}
+}
+/* theme grid */
+.td-section{max-width:1100px;margin:0 auto;padding:2rem 1.2rem 3rem}
+.td-section h2{text-align:center;font-size:1.6rem;margin:0 0 .4rem}
+.td-section .sub{text-align:center;color:var(--td-muted);margin:0 0 1.8rem;font-size:.92rem}
+.td-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.td-card{
+  background:var(--td-card);border:1px solid var(--td-line);border-radius:16px;
+  overflow:hidden;box-shadow:var(--td-shadow);
+  transition:transform .3s,box-shadow .3s;position:relative;
+}
+.td-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(120,110,100,.15)}
+.td-card .td-img{position:relative;overflow:hidden}
+.td-card img{width:100%;height:240px;object-fit:cover;display:block;transition:transform .4s}
+.td-card:hover img{transform:scale(1.05)}
+.td-card .td-price{
+  position:absolute;top:.8rem;right:.8rem;
+  background:rgba(120,110,100,.92);color:#fff;font-size:.78rem;font-weight:600;
+  padding:.35rem .9rem;border-radius:999px;backdrop-filter:blur(4px);
+}
+.td-card-body{padding:1.1rem 1.2rem 1.3rem;text-align:center}
+.td-card-body h3{font-size:1.05rem;margin:0 0 .8rem}
+.td-card-actions{display:flex;flex-direction:column;gap:.5rem}
+.td-btn{
+  text-align:center;padding:.55rem;border-radius:10px;font-size:.82rem;font-weight:600;
+  text-decoration:none;transition:all .25s;cursor:pointer;
+}
+.td-btn-demo{background:var(--td-ivory);border:1px solid var(--td-line);color:var(--td-ink)}
+.td-btn-demo:hover{border-color:var(--td-pink);color:var(--td-pink)}
+.td-btn-order{background:linear-gradient(135deg,var(--td-pink),#1a5a75);color:#fff;border:none;
+  box-shadow:0 4px 14px rgba(120,110,100,.3)}
+.td-btn-order:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(120,110,100,.4)}
+/* footer */
+.td-footer{
+  text-align:center;padding:1.5rem;color:var(--td-muted);font-size:.82rem;
+  border-top:1px solid var(--td-line);background:var(--td-ivory);
+}
+/* wa float */
+.td-wa{
+  position:fixed;bottom:1.2rem;right:1.2rem;z-index:60;
+  width:52px;height:52px;border-radius:50%;background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(37,211,102,.4);
+}
+.td-wa svg{width:28px;height:28px}
+/* responsive */
+@media(max-width:768px){
+  .td-nav .links{display:none;position:absolute;top:100%;left:0;right:0;
+    background:var(--td-ivory);flex-direction:column;padding:1rem 1.2rem;
+    border-bottom:1px solid var(--td-line);gap:.8rem}
+  .td-nav .links.open{display:flex}
+  .td-burger{display:block}
+  .td-hero h1{font-size:1.7rem}
+  .td-grid{grid-template-columns:repeat(2,1fr);gap:.9rem}
+}
+@media(max-width:480px){
+  .td-grid{grid-template-columns:repeat(2,1fr);gap:.7rem}
+  .td-card img{height:170px}
+  .td-card-body{padding:.8rem .7rem 1rem}
+  .td-card-body h3{font-size:.88rem}
+  .td-btn{font-size:.75rem;padding:.55rem .3rem}
+  .td-hero{padding:2.5rem 1rem 2rem}
+}
