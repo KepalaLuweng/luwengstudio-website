@@ -53,15 +53,21 @@ body.dev .btn-dark{
   color:var(--green);
   font-family:var(--mono);
   font-weight:700;
+  border-radius:8px;
+  padding:.85rem 1.8rem;
+  transition:all .25s ease;
 }
-body.dev .btn-dark:hover{background:rgba(0,255,136,.16);color:#4dffab;border-color:#4dffab;box-shadow:0 0 18px rgba(0,255,136,.25)}
+body.dev .btn-dark:hover{background:rgba(0,255,136,.16);color:#4dffab;border-color:#4dffab;box-shadow:0 0 18px rgba(0,255,136,.25);transform:translateY(-2px)}
 body.dev .btn-outline{
-  background:transparent;
-  color:var(--ink);
-  border-color:var(--border);
+  background:rgba(255,255,255,.02);
+  color:var(--muted);
+  border:1px solid var(--border-soft);
   font-family:var(--mono);
+  border-radius:8px;
+  padding:.85rem 1.8rem;
+  transition:all .25s ease;
 }
-body.dev .btn-outline:hover{border-color:var(--green);color:var(--green)}
+body.dev .btn-outline:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
 
 /* sections */
 body.dev section.alt{
@@ -135,6 +141,14 @@ body.dev section.alt{
   var(--bg);}
 .hero-dev .hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:2rem}
 .hero-dev .hero-cta .btn{white-space:nowrap}
+.bio-link{
+  background:none;border:none;cursor:pointer;
+  font-family:var(--mono);font-size:.82rem;letter-spacing:1px;
+  color:var(--faint);padding:.4rem .8rem;
+  border-bottom:1px dashed var(--border-soft);
+  transition:color .2s,border-color .2s;
+}
+.bio-link:hover{color:var(--green);border-bottom-color:var(--green)}
 #term-sub-canvas{display:block;margin:1.6rem auto 0}
 .tagline-box{
   max-width:520px;margin:1.6rem auto 0;padding:.9rem 1.2rem;
@@ -404,15 +418,15 @@ body.dev .fact span{color:var(--muted);font-size:.8rem;line-height:1.5}
 
 /* ---------- social icons row (logo kecil saja) ---------- */
 body.dev .social-row{
-  display:flex;gap:.9rem;margin-top:1.4rem;align-items:center;
+  display:flex;gap:.8rem;margin-top:1.2rem;align-items:center;
 }
 body.dev .soc{
-  width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;
-  border-radius:12px;border:none;
+  width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:10px;border:none;
   transition:transform .2s ease,box-shadow .2s ease;
-  box-shadow:0 2px 8px rgba(0,0,0,.3);
+  box-shadow:0 2px 6px rgba(0,0,0,.25);
 }
-body.dev .soc svg{width:20px;height:20px;display:block}
+body.dev .soc svg{width:17px;height:17px;display:block}
 body.dev .soc:hover{transform:translateY(-3px) scale(1.05)}
 body.dev .soc-wa{background:#25D366}
 body.dev .soc-wa:hover{box-shadow:0 8px 24px rgba(37,211,102,.5)}
