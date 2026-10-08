@@ -286,13 +286,13 @@ body.dev .about-photo{
   background:#010409;
   border:2px solid rgba(0,255,136,.55);
   box-shadow:0 0 22px rgba(0,255,136,.22),0 0 0 5px rgba(0,255,136,.06);
-  border-radius:50%;
+  border-radius:12px;
   overflow:hidden;
   padding:0;
 }
 body.dev .about-photo img{
   display:block;
-  border-radius:50%;
+  border-radius:10px;
   filter:grayscale(35%) contrast(1.06) brightness(.94);
 }
 body.dev .about-text p{color:var(--muted)}
