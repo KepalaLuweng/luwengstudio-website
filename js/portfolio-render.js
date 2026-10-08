@@ -1,13 +1,10 @@
 function cardHtml(p, idx) {
-  const chips = p.tech.map(t => `<span class="chip">${t}</span>`).join("");
   return `<article class="pf-card" data-idx="${idx}" data-cat="${p.cat}" tabindex="0" role="button" aria-label="Detail ${p.name}">
     <div class="pf-visual">${mockupHtml(p.mock)}</div>
     <div class="pf-body">
       <span class="chip gold">${labelCat(p.cat)}</span>
       <h3>${p.name}</h3>
       <p class="desc">${p.desc}</p>
-      <div class="meta">${chips}</div>
-      <span class="link-arrow">Lihat Detail →</span>
     </div>
   </article>`;
 }
