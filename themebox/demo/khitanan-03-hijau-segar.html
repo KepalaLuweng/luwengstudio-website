@@ -163,6 +163,14 @@ footer .tag{margin-top:1.4rem;font-size:.58rem;letter-spacing:1px;opacity:.55;pa
     <b id="d">0</b><small>Hari</small><b id="h">0</b><small>Jam</small><b id="m">0</b><small>Mnt</small><b id="s">0</b><small>Dtk</small>
   </div>
   <p class="p">Minggu, 27 Desember 2026 · 09.00 WIB</p>
+
+    <div style="text-align:center;margin-top:1.2rem">
+      <button onclick="saveToCal(this)" data-title="Yuto — Tasyakuran Khitanan" data-date="20261220" data-desc="Yuto — Tasyakuran Khitanan"
+        style="background:transparent;border:1px solid currentColor;color:inherit;
+        padding:.7rem 1.8rem;border-radius:999px;font-size:.85rem;cursor:pointer;opacity:.9">
+        📅 Simpan ke Kalender
+      </button>
+    </div>
 </section>
 
 <section class="reveal" style="padding-right:0">
@@ -281,5 +289,19 @@ renderWishes();
 </script>
 <script>
 function whSet(v){document.getElementById('wh').value=v;document.getElementById('whlabel').textContent=v;document.getElementById('whmodal').classList.remove('show');}
-</script></body>
+</script>
+<script>
+function saveToCal(btn){
+  var title = btn.dataset.title || "Acara";
+  var date = btn.dataset.date || "";
+  var desc = btn.dataset.desc || "";
+  var d = date.replace(/-/g, "");
+  var url = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    "&text=" + encodeURIComponent(title) +
+    "&dates=" + d + "/" + d +
+    "&details=" + encodeURIComponent(desc);
+  window.open(url, "_blank");
+}
+</script>
+</body>
 </html>

@@ -143,6 +143,15 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:.22em;opacity:.6;p
     <div class="cell"><b id="m">0</b><span>Menit</span></div><div class="sep">✦</div>
     <div class="cell"><b id="s">0</b><span>Detik</span></div>
   </div>
+
+    <div style="text-align:center;margin-top:1.5rem">
+      <button onclick="saveToCal(this)" data-title="Toma &amp; Nana — Undangan Pernikahan" data-date="20261220" data-desc="Acara Spesial - Toma &amp; Nana — Undangan Pernikahan"
+        style="background:transparent;border:1px solid currentColor;color:inherit;
+        padding:.7rem 1.8rem;border-radius:999px;font-size:.85rem;cursor:pointer;
+        opacity:.9;transition:all .25s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.9'">
+        📅 Simpan ke Kalender
+      </button>
+    </div>
 </section>
 <section class="reveal" style="background:var(--sand);max-width:none">
   <div class="wrap">
@@ -320,5 +329,20 @@ renderWishes();
 </script>
 <script>
 function whSet(v){document.getElementById('wh').value=v;document.getElementById('whlabel').textContent=v;document.getElementById('whmodal').classList.remove('show');}
-</script></body>
+</script>
+<script>
+function saveToCal(btn){
+  var title = btn.dataset.title || "Acara";
+  var date = btn.dataset.date || "";
+  var desc = btn.dataset.desc || "";
+  // Format: YYYYMMDD untuk Google Calendar
+  var d = date.replace(/-/g, "");
+  var url = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    "&text=" + encodeURIComponent(title) +
+    "&dates=" + d + "/" + d +
+    "&details=" + encodeURIComponent(desc);
+  window.open(url, "_blank");
+}
+</script>
+</body>
 </html>

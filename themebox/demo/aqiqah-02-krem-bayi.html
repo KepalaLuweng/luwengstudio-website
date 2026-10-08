@@ -129,6 +129,14 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;color:#bcae90;
 <div class="rule"></div>
 <div class="cdline"><b id="d">0</b> hari · <b id="h">0</b> jam · <b id="m">0</b> menit · <b id="s">0</b> detik</div>
 <p class="lead">Sabtu, 2 Januari 2027</p>
+
+    <div style="text-align:center;margin-top:1.2rem">
+      <button onclick="saveToCal(this)" data-title="Hana — Tasyakuran Aqiqah" data-date="20261220" data-desc="Hana — Tasyakuran Aqiqah"
+        style="background:transparent;border:1px solid currentColor;color:inherit;
+        padding:.7rem 1.8rem;border-radius:999px;font-size:.85rem;cursor:pointer;opacity:.9">
+        📅 Simpan ke Kalender
+      </button>
+    </div>
 </section>
 <section class="reveal" style="padding-top:1rem">
 <div class="eyebrow">Waktu &amp; Tempat</div>
@@ -241,5 +249,19 @@ renderWishes();
 </script>
 <script>
 function whSet(v){document.getElementById('wh').value=v;document.getElementById('whlabel').textContent=v;document.getElementById('whmodal').classList.remove('show');}
-</script></body>
+</script>
+<script>
+function saveToCal(btn){
+  var title = btn.dataset.title || "Acara";
+  var date = btn.dataset.date || "";
+  var desc = btn.dataset.desc || "";
+  var d = date.replace(/-/g, "");
+  var url = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    "&text=" + encodeURIComponent(title) +
+    "&dates=" + d + "/" + d +
+    "&details=" + encodeURIComponent(desc);
+  window.open(url, "_blank");
+}
+</script>
+</body>
 </html>
