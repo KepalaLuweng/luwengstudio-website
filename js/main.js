@@ -3,5 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initFilters();
   initProjectModal();
   renderPortfolio("semua");
+  initTerminal();
   document.getElementById("year").textContent = new Date().getFullYear();
 });

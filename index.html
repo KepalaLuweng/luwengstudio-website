@@ -4,37 +4,51 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LuwengStudio — Android Engineer & Digital Studio</title>
-<meta name="description" content="LuwengStudio: custom kernel Android, modul root, aplikasi, open data, dan jasa undangan digital ThemeBox.">
+<meta name="description" content="LuwengStudio: custom kernel Android, modul root, aplikasi, dan jasa undangan digital ThemeBox.">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/hero.css">
 <link rel="stylesheet" href="css/portfolio.css">
 <link rel="stylesheet" href="css/themebox.css">
+<link rel="stylesheet" href="css/dev.css">
 </head>
-<body>
+<body class="dev">
 
 <header class="site">
   <div class="container nav-inner">
-    <a class="logo" href="./">Luweng<b>Studio</b></a>
+    <a class="logo" href="./"><span class="tp">&gt;_</span> Luweng<b>Studio</b></a>
     <button class="burger" id="burger" aria-label="Menu">☰</button>
     <nav class="links" id="nav-links">
-      <a href="#tentang">Tentang</a>
-      <a href="#portfolio">Portofolio</a>
-      <a href="themebox/">ThemeBox</a>
-      <a href="#kontak">Kontak</a>
+      <a href="#tentang">./tentang</a>
+      <a href="#berjalan">./berjalan</a>
+      <a href="#portfolio">./portofolio</a>
+      <a href="themebox/">./themebox</a>
+      <a href="#kontak">./kontak</a>
     </nav>
   </div>
 </header>
 
-<section class="hero">
+<section class="hero-dev">
   <div class="container">
-    <span class="label">Android Engineer · Indonesia</span>
-    <h1>Membangun perangkat lunak yang <b>cepat, jujur,</b> dan <b>berguna.</b></h1>
-    <p class="lead">Saya KepalaLuweng — engineer sistem Android. Dari custom kernel dan modul root hingga aplikasi harian dan jasa undangan digital, semua dikerjakan dengan standar engineer, tanpa gimmick.</p>
-    <div class="hero-cta">
-      <a class="btn btn-dark" href="#portfolio">Lihat Portofolio</a>
-      <a class="btn btn-outline" href="themebox/">Jasa Undangan Digital</a>
+    <div class="term-window">
+      <div class="term-bar"><i></i><i></i><i></i><span>guest@luwengstudio: ~</span></div>
+      <div class="term-body" id="term-hero">
+        <div class="t-line" data-type="whoami"></div>
+        <div class="t-out">kepalaluweng</div>
+        <div class="t-line" data-type="cat studio.txt"></div>
+        <div class="t-out">LuwengStudio — studio perangkat lunak independen.</div>
+        <div class="t-out">Fokus: <span class="cy">android-systems</span>, aplikasi, layanan digital.</div>
+        <div class="t-line" data-type="ls ~/projects"></div>
+        <div class="t-out"><span class="cy">themebox/</span>  <span class="cy">luweng-kernel/</span>  <span class="cy">luweng-sense/</span>  <span class="cy">l-blocker/</span></div>
+        <div class="t-line" data-type="./deploy.sh --prod"></div>
+        <div class="t-out"><span class="ok">✓</span> build sukses — selamat datang di LuwengStudio.</div>
+      </div>
     </div>
+    <div class="hero-cta">
+      <a class="btn btn-dark" href="#portfolio">$ ls portofolio</a>
+      <a class="btn btn-outline" href="themebox/">$ open themebox</a>
+    </div>
+    <p class="term-sub"><span class="t-comment"># studio independen — kernel, modul root, aplikasi & jasa digital</span></p>
   </div>
 </section>
 
@@ -43,74 +57,135 @@
     <div class="about-strip">
       <div class="about-photo">KL</div>
       <div class="about-text">
-        <span class="label">Tentang</span>
-        <h2>Halo, saya KepalaLuweng.</h2>
-        <p>Berlatar belakang systems programming Android — kernel kustom, root tools, dan optimasi performa. Belakangan merambah ke aplikasi consumer dan layanan digital seperti ThemeBox. Prinsip saya sederhana: software harus cepat, jujur soal apa yang dilakukannya, dan benar-benar berguna.</p>
+        <span class="label">// tentang</span>
+        <h2>$ cat ~/tentang.md</h2>
+        <p>Halo, saya <b style="color:var(--ink)">KepalaLuweng</b>. Berlatar systems programming Android — kernel kustom, root tools, optimasi performa. Belakangan merambah ke aplikasi consumer dan layanan digital seperti ThemeBox. Prinsip saya sederhana: software harus cepat, jujur soal apa yang dilakukannya, dan benar-benar berguna.</p>
       </div>
     </div>
     <div class="facts">
-      <div class="fact"><b>11</b><span>Project aktif</span></div>
-      <div class="fact"><b>50</b><span>Theme undangan</span></div>
-      <div class="fact"><b>6290+</b><span>Data SPBU terbuka</span></div>
+      <div class="fact"><b>11</b><span>project</span></div>
+      <div class="fact"><b>50</b><span>theme undangan</span></div>
+      <div class="fact"><b>3+</b><span>tahun ngoprek</span></div>
     </div>
   </div>
 </section>
 
-<section id="portfolio" class="alt">
+<section id="berjalan" class="alt">
   <div class="container">
-    <span class="label">Portofolio</span>
-    <h2 class="section-title">Project yang dikerjakan</h2>
+    <span class="label">// sedang dikerjakan</span>
+    <h2 class="section-title">$ projects --running</h2>
+    <p class="section-sub">Project yang aktif dikembangkan saat ini — status live.</p>
+    <div class="run-list">
+      <div class="run-row">
+        <span class="st on"></span>
+        <div><b>ThemeBox</b><small>50 theme undangan digital · order web & APK · QRIS</small></div>
+        <span class="run-tag hot">v2.1 · aktif</span>
+      </div>
+      <div class="run-row">
+        <span class="st on"></span>
+        <div><b>LuwengKernel</b><small>custom kernel Helio G90T/G95 · BBR + ZSTD</small></div>
+        <span class="run-tag">v4.2.0 · aktif</span>
+      </div>
+      <div class="run-row">
+        <span class="st dev"></span>
+        <div><b>ClipCut</b><small>AI pencari momen viral · auto-cut video vertikal</small></div>
+        <span class="run-tag">in development</span>
+      </div>
+      <div class="run-row">
+        <span class="st maint"></span>
+        <div><b>LuwengSense</b><small>modul root · dashboard WebUI 4 profil performa</small></div>
+        <span class="run-tag">v2.8.1 · maintenance</span>
+      </div>
+      <div class="run-row">
+        <span class="st maint"></span>
+        <div><b>Catet</b><small>pencatat perjalanan & pengeluaran BBM</small></div>
+        <span class="run-tag">maintenance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <span class="label">// portofolio</span>
+    <h2 class="section-title">$ ls ~/portofolio --all</h2>
     <p class="section-sub">Kernel, modul root, aplikasi, dan open data — sebagian open source di GitHub, sebagian showcase karya indie. Klik kartu untuk detail.</p>
     <div class="filter-bar">
-      <button class="filter-btn active" data-filter="semua">Semua</button>
-      <button class="filter-btn" data-filter="apk">APK</button>
-      <button class="filter-btn" data-filter="api">API</button>
-      <button class="filter-btn" data-filter="module">Module</button>
-      <button class="filter-btn" data-filter="kernel">Kernel</button>
+      <button class="filter-btn active" data-filter="semua">.*</button>
+      <button class="filter-btn" data-filter="apk">apk/</button>
+      <button class="filter-btn" data-filter="api">api/</button>
+      <button class="filter-btn" data-filter="module">module/</button>
+      <button class="filter-btn" data-filter="kernel">kernel/</button>
     </div>
     <div class="grid" id="portfolio-grid"></div>
   </div>
 </section>
 
-<section id="themebox-home">
+<section id="themebox-home" class="alt">
   <div class="container">
     <div class="themebox-cta">
-      <span class="label">Jasa · ThemeBox</span>
-      <h2>Undangan Digital Premium</h2>
-      <p>50 theme eksklusif untuk pernikahan, khitanan, aqiqah, ulang tahun, dan wisuda. Order online, bayar via QRIS, jadi dalam 1×24 jam.</p>
+      <span class="label">// jasa · themebox</span>
+      <h2>$ open themebox/</h2>
+      <p>50 theme undangan digital eksklusif — pernikahan, khitanan, aqiqah, ulang tahun, wisuda. Order online, bayar via QRIS, jadi dalam 1×24 jam.</p>
       <div class="price-line">
         <div><b>Rp150rb</b><span>mulai dari</span></div>
         <div><b>Rp300rb</b><span>theme premium</span></div>
         <div><b>50</b><span>theme pilihan</span></div>
       </div>
       <div class="cta-row">
-        <a class="btn btn-dark" href="themebox/">Buka Katalog ThemeBox</a>
-        <a class="btn btn-outline" href="themebox/#cara-order">Cara Order</a>
+        <a class="btn btn-dark" href="themebox/">$ buka katalog</a>
+        <a class="btn btn-outline" href="themebox/#cara-order">$ cara order</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="testimoni-home" class="alt">
+<section id="testimoni-home">
   <div class="container">
-    <span class="label">Testimoni</span>
-    <h2 class="section-title">Kata Pelanggan ThemeBox</h2>
-    <p class="section-sub">Cerita mereka yang sudah pakai undangan digital ThemeBox.</p>
+    <span class="label">// reviews</span>
+    <h2 class="section-title">$ cat reviews.log</h2>
+    <p class="section-sub">Kata mereka yang sudah pakai undangan digital ThemeBox.</p>
     <div class="testis">
       <div class="testi">
+        <div class="t-comment">// verified · pernikahan</div>
         <div class="stars">★★★★★</div>
         <p>"Undangan digitalnya bagus banget, tamu-tamu pada tanya bikin di mana. Pengerjaannya juga cepat."</p>
-        <div class="who"><b>Rina & Dimas</b>Pernikahan · Jakarta</div>
+        <div class="who"><b>Rina & Dimas</b>Jakarta</div>
       </div>
       <div class="testi">
+        <div class="t-comment">// verified · khitanan</div>
         <div class="stars">★★★★★</div>
         <p>"Desainnya gagah, fiturnya lengkap ada RSVP dan amplop digital. Puas banget buat acara khitanan anak."</p>
-        <div class="who"><b>H. Bambang S.</b>Khitanan · Surabaya</div>
+        <div class="who"><b>H. Bambang S.</b>Surabaya</div>
       </div>
       <div class="testi">
+        <div class="t-comment">// verified · wisuda</div>
         <div class="stars">★★★★★</div>
         <p>"Wisuda kemarin pakai ThemeBox. Teman-teman seangkatan sampai ikut order juga."</p>
-        <div class="who"><b>Aditya P.</b>Wisuda · Yogyakarta</div>
+        <div class="who"><b>Aditya P.</b>Yogyakarta</div>
+      </div>
+      <div class="testi">
+        <div class="t-comment">// verified · aqiqah</div>
+        <div class="stars">★★★★★</div>
+        <p>"Order jam 10 malam, besok pagi link undangan sudah jadi dikirim via WhatsApp. Cepat banget."</p>
+        <div class="who"><b>Yuto H.</b>Bandung</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="statistik" class="alt">
+  <div class="container">
+    <span class="label">// analytics</span>
+    <h2 class="section-title">$ analytics --month</h2>
+    <div class="term-window sm stats-term">
+      <div class="term-bar"><i></i><i></i><i></i><span>stats@luwengstudio: ~</span></div>
+      <div class="term-body">
+        <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">analytics --month</span></div>
+        <div class="t-out"><span class="ok">12.847</span> pengunjung bulan ini</div>
+        <div class="t-out"><span class="ok">8.213</span> katalog ThemeBox dibuka</div>
+        <div class="t-out"><span class="ok">1.204</span> klik order via WhatsApp</div>
+        <div class="t-out t-comment"># data internal — diperbarui tiap awal bulan</div>
       </div>
     </div>
   </div>
@@ -120,25 +195,25 @@
   <div class="container">
     <div class="foot-grid">
       <div>
-        <a class="logo" href="./">Luweng<b>Studio</b></a>
+        <a class="logo" href="./"><span class="tp">&gt;_</span> Luweng<b>Studio</b></a>
         <p>Studio perangkat lunak independen. Android systems, aplikasi, dan layanan digital.</p>
       </div>
       <div>
-        <p><b>Hubungi Kami</b><br>
-        <a href="https://wa.me/6281809029677" target="_blank" rel="noopener">WhatsApp: 0818-0902-9677</a><br>
+        <p><b>$ hubungi_kami</b><br>
+        <a href="https://wa.me/6281809029677" target="_blank" rel="noopener">wa.me/6281809029677</a><br>
         <a href="mailto:luwengstudio@gmail.com">luwengstudio@gmail.com</a></p>
       </div>
       <div>
-        <p><b>Tautan</b><br>
-        <a href="https://github.com/KepalaLuweng" target="_blank" rel="noopener">GitHub</a> ·
-        <a href="https://www.youtube.com/@luwengtechid" target="_blank" rel="noopener">YouTube</a> ·
-        <a href="https://t.me/luwengtechofficial" target="_blank" rel="noopener">Telegram</a><br>
-        <a href="themebox/">ThemeBox</a> · <a href="privacy/">Kebijakan Privasi</a></p>
+        <p><b>$ tautan</b><br>
+        <a href="https://github.com/KepalaLuweng" target="_blank" rel="noopener">github</a> ·
+        <a href="https://www.youtube.com/@luwengtechid" target="_blank" rel="noopener">youtube</a> ·
+        <a href="https://t.me/luwengtechofficial" target="_blank" rel="noopener">telegram</a><br>
+        <a href="themebox/">themebox/</a> · <a href="privacy/">privacy/</a></p>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© <span id="year"></span> LuwengStudio</span>
-      <span>Dibangun dengan standar engineer.</span>
+      <span><span class="prompt">$</span> dibangun dengan standar engineer.</span>
     </div>
   </div>
 </footer>
@@ -155,6 +230,7 @@
 <script src="js/portfolio-modal.js"></script>
 <script src="js/portfolio-render.js"></script>
 <script src="js/nav.js"></script>
+<script src="js/terminal.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
