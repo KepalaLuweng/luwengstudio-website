@@ -21,7 +21,9 @@ body.tb-elegan{
   color:var(--tb-ink);
   font-family:var(--tb-sans);
   margin:0;
+  padding-bottom:70px;
 }
+section[id]{scroll-margin-top:64px}
 body.tb-elegan h1,
 body.tb-elegan h2,
 body.tb-elegan h3,
@@ -222,12 +224,15 @@ body.tb-elegan p{font-style:normal}
 
 /* ---------- WA float ---------- */
 .wa-float{
-  position:fixed;bottom:1.2rem;right:1.2rem;z-index:200;
-  width:52px;height:52px;border-radius:50%;background:#25d366;
+  position:fixed;bottom:1rem;right:1rem;z-index:200;
+  width:48px;height:48px;border-radius:50%;background:#25d366;
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 4px 16px rgba(37,211,102,.4);
 }
-.wa-float svg{width:28px;height:28px}
+.wa-float svg{width:26px;height:26px}
+/* jangan nutupin konten kartu */
+.theme-grid{padding-bottom:.5rem}
+.tb-footer{margin-bottom:0;padding-bottom:2rem}
 
 /* ---------- responsive: mobile + desktop ---------- */
 @media(max-width:1024px){
