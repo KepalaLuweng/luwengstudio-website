@@ -189,14 +189,29 @@ body.dev section.alt{
   width:120px;height:120px;object-fit:cover;
   border:2px solid var(--green);border-radius:8px;margin-bottom:.8rem;
 }
-.bio-card h3{margin:0 0 .8rem;color:var(--ink);font-family:var(--mono)}
+.bio-card h3{margin:0 0 .4rem;color:var(--ink);font-family:var(--mono)}
+.bio-pagehead{
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:.72rem;color:var(--green);
+  border-bottom:1px solid var(--border-soft);
+  padding-bottom:.5rem;margin-bottom:.8rem;letter-spacing:1px;
+}
 .bio-text{
-  text-align:left;font-family:var(--mono);font-size:.82rem;line-height:1.85;
-  color:var(--muted);white-space:pre-wrap;word-break:break-word;min-height:12em;
+  text-align:left;font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:.92rem;line-height:1.75;
+  color:#c9d4dc;min-height:9em;
 }
-.bio-text::after{
-  content:"▋";color:var(--green);animation:tblink 1s steps(1) infinite;
+.bio-hl{color:var(--green);font-weight:600}
+.bio-cursor{color:var(--green)}
+.bio-nav{display:flex;justify-content:center;gap:1rem;margin-top:1rem}
+.bio-arrow{
+  width:2.6rem;height:2.6rem;border-radius:50%;
+  border:1px solid var(--green);background:rgba(0,255,136,.06);
+  color:var(--green);font-size:.9rem;cursor:pointer;
+  transition:background .2s,transform .15s;
 }
+.bio-arrow:hover:not(:disabled){background:rgba(0,255,136,.16);transform:scale(1.08)}
+.bio-arrow:disabled{opacity:.25;cursor:default}
 .hero-dev .term-sub b{color:var(--green);font-weight:600}
 
 /* ---------- running projects ---------- */
