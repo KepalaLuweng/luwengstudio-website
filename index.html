@@ -32,7 +32,6 @@
     <a class="logo" href="./"><span class="tp">&gt;_</span> Luweng<b>Studio</b></a>
     <button class="burger" id="burger" aria-label="Menu">☰</button>
     <nav class="links" id="nav-links">
-      <a href="#tentang">Tentang</a>
       <a href="#berjalan">Proyek</a>
       <a href="portfolio/">Portofolio</a>
       <a href="themebox/">ThemeBox</a>
@@ -65,26 +64,8 @@
       <a class="btn btn-dark" href="portfolio/">Lihat Portofolio</a>
       <a class="btn btn-outline" href="themebox/">ThemeBox</a>
     </div>
+    <div style="text-align:center;margin-top:1rem"><button class="btn btn-outline" id="btn-bio">Kenalan Lebih Dekat</button></div>
     <div class="tagline-box" id="tagline-box"><span class="tagline-text" data-full="Studio independen \u2014 kernel, modul root, aplikasi & jasa digital"></span><span class="tagline-cursor"></span></div>
-  </div>
-</section>
-
-<section id="tentang">
-  <div class="container">
-    <div class="about-strip">
-      <div class="about-photo"><img loading="lazy" src="assets/img/avatar-anime.jpg" alt="KepalaLuweng" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
-      <div class="about-text">
-        <span class="label">Tentang</span>
-        <h2>Tentang Saya</h2>
-        <p>Nama saya <b style="color:var(--ink)">Darmawan Aditya</b>, dikenal sebagai <b style="color:var(--ink)">KepalaLuweng</b>. Saya seorang Android systems engineer — sehari-hari ngoprek kernel kustom (LuwengKernel), bikin root tools seperti LuwengSense dan L-Blocker yang jalan di Magisk, KernelSU, sampai APatch. Di luar itu, saya juga driver Grab aktif, jadi saya paham betul aplikasi yang enak dipakai di jalan.</p>
-        <p style="margin-top:1rem"><b style="color:var(--ink)">LuwengStudio</b> adalah studio independen saya: jasa undangan digital lewat ThemeBox, aplikasi Android, sampai open data. Semua dikerjakan dengan satu prinsip sederhana — software harus cepat, jujur soal apa yang dilakukannya, dan benar-benar berguna.</p>
-      </div>
-    </div>
-    <div class="facts">
-      <div class="fact"><b>11</b><span>project</span></div>
-      <div class="fact"><b>50</b><span>theme undangan</span></div>
-      <div class="fact"><b>3+</b><span>tahun ngoprek</span></div>
-    </div>
   </div>
 </section>
 
@@ -172,5 +153,21 @@
 <script src="js/tagline-typebox.js"></script>
 <script src="js/stats-anim.js"></script>
 <script src="js/main.js"></script>
+
+<div class="pf-backdrop" id="bio-backdrop" hidden>
+  <div class="pf-modal" role="dialog" aria-modal="true" aria-labelledby="bio-title">
+    <button class="pf-close" id="bio-close" aria-label="Tutup">×</button>
+    <div style="display:flex;gap:1.2rem;align-items:flex-start;flex-wrap:wrap">
+      <img src="assets/img/avatar-anime.jpg" alt="KepalaLuweng" style="width:110px;height:110px;border-radius:50%;object-fit:cover;flex:none">
+      <div style="flex:1;min-width:220px">
+        <h3 id="bio-title" style="margin:0 0 .6rem">Tentang Saya</h3>
+        <p style="color:var(--muted);line-height:1.8">Nama saya <b style="color:var(--ink)">Darmawan Aditya</b>, dikenal sebagai <b style="color:var(--ink)">KepalaLuweng</b>. Saya seorang Android systems engineer — sehari-hari ngoprek kernel kustom (LuwengKernel), bikin root tools seperti LuwengSense dan L-Blocker yang jalan di Magisk, KernelSU, sampai APatch. Di luar itu, saya juga driver Grab aktif, jadi saya paham betul aplikasi yang enak dipakai di jalan.</p>
+        <p style="color:var(--muted);line-height:1.8;margin-top:.8rem"><b style="color:var(--ink)">LuwengStudio</b> adalah studio independen saya: jasa undangan digital lewat ThemeBox, aplikasi Android, sampai open data. Semua dikerjakan dengan satu prinsip sederhana — software harus cepat, jujur soal apa yang dilakukannya, dan benar-benar berguna.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/bio-modal.js"></script>
 </body>
 </html>
