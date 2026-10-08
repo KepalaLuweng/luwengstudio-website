@@ -26,18 +26,18 @@ function initTerminal() {
       (function tick() {
         if (c <= txt.length) {
           cmd.textContent = txt.slice(0, c++);
-          setTimeout(tick, 36);
+          setTimeout(tick, 28 + Math.random() * 30);
         } else {
           var cur = el.querySelector(".t-cursor");
           if (cur) cur.remove();
           i++;
-          setTimeout(next, 240);
+          setTimeout(next, 350);
         }
       })();
     } else {
       el.classList.add("shown");
       i++;
-      setTimeout(next, 300);
+      setTimeout(next, 450);
     }
   }
   next();

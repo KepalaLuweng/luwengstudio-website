@@ -120,10 +120,10 @@ body.dev section.alt{
   animation:tblink 1s steps(1) infinite;
 }
 @keyframes tblink{50%{opacity:0}}
-.term-body.typing .t-line[data-type]{visibility:hidden}
-.term-body.typing .t-line[data-type].typed{visibility:visible}
-.term-body.typing .t-out{visibility:hidden}
-.term-body.typing .t-out.shown{visibility:visible}
+.term-body.typing .t-line[data-type]{opacity:0}
+.term-body.typing .t-line[data-type].typed{opacity:1;transition:opacity .3s ease}
+.term-body.typing .t-out{opacity:0;transform:translateY(4px)}
+.term-body.typing .t-out.shown{opacity:1;transform:translateY(0);transition:opacity .5s ease,transform .5s ease}
 
 /* hero-dev */
 .hero-dev{padding:4.5rem 0 4rem;background:
