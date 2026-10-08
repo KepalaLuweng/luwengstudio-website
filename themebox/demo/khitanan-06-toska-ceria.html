@@ -128,6 +128,9 @@ footer .tag{margin-top:1.2rem;font-size:.6rem;letter-spacing:1px;opacity:.6;padd
 #music.show{display:block}
 #music.off{opacity:.45}
 </style>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="../../js/firebase-config.js"></script>
 </head>
 <body>
 
@@ -331,14 +334,25 @@ var wn=document.createElement('div');wn.className='wn';wn.textContent=w.n;
 var wh=document.createElement('div');wh.className='wh';wh.textContent=w.h;
 var wu=document.createElement('div');wu.className='wu';wu.textContent=w.u;
 d.appendChild(wn);d.appendChild(wh);d.appendChild(wu);box.appendChild(d);});}
-function kirimUcapan(){var n=document.getElementById('wn').value.trim(),
-h=document.getElementById('wh').value,u=document.getElementById('wu').value.trim();
-if(!n||!u){showModal('Mohon isi nama dan ucapan terlebih dahulu ♥');return;}
-var w={n:n,h:h,u:u};wishes.push(w);
-try{var s=JSON.parse(localStorage.getItem('w_khit06')||'[]');s.push(w);localStorage.setItem('w_khit06',JSON.stringify(s));}catch(e){}
-document.getElementById('wn').value='';document.getElementById('wu').value='';
-renderWishes();showModal('Terima kasih atas doa dan ucapannya ♥');}
-renderWishes();
+function kirimUcapan(){
+  var n=document.getElementById('wn').value.trim(),
+  hh=document.getElementById('wh').value,
+  u=document.getElementById('wu').value.trim();
+  if(!n||!u){showModal('Mohon isi nama dan ucapan terlebih dahulu ♥');return;}
+  initFirebase();
+  kirimUcapanFB('khitanan-06-toska-ceria.html',n,u,hh).then(function(){
+    document.getElementById('wn').value='';document.getElementById('wu').value='';
+    showModal('Terima kasih atas doa dan ucapannya ♥');
+  }).catch(function(e){showModal('Gagal mengirim, coba lagi ♥');});
+}
+function renderWishesFB(list){
+  var el=document.getElementById('wlist');if(!el)return;
+  el.innerHTML=list.map(function(w){
+    return '<div class="witem"><b>'+escHtml(w.nama)+'</b>'+(w.kehadiran?' <span class="whad">'+escHtml(w.kehadiran)+'</span>':'')+'<p>'+escHtml(w.ucapan)+'</p></div>';
+  }).join('')||'<p style="text-align:center;opacity:.6">Jadilah yang pertama memberi ucapan ♥</p>';
+}
+function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+try{initFirebase();listenUcapan('khitanan-06-toska-ceria.html',renderWishesFB);}catch(e){}
 </script>
 <script>
 function whSet(v){document.getElementById('wh').value=v;document.getElementById('whlabel').textContent=v;document.getElementById('whmodal').classList.remove('show');}

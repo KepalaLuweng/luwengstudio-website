@@ -139,6 +139,9 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;opacity:.6;pad
 #cover .frame,#cover .panel,#cover .box,#cover .inner,#cover .cbox,#cover .cinner{box-shadow:0 24px 70px rgba(0,0,0,.4),0 0 34px rgba(255,215,130,.28);border-color:rgba(255,215,130,.65)!important}
 .btn{box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 22px rgba(255,215,130,.45)!important}
 </style>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="../../js/firebase-config.js"></script>
 </head>
 <body>
 <div class="lux" aria-hidden="true"><i style="left:6%;width:7px;height:7px;animation-duration:11s;animation-delay:0s"></i><i style="left:14%;width:5px;height:5px;animation-duration:14s;animation-delay:2s"></i><i style="left:23%;width:8px;height:8px;animation-duration:10s;animation-delay:4s"></i><i style="left:31%;width:4px;height:4px;animation-duration:16s;animation-delay:1s"></i><i style="left:40%;width:6px;height:6px;animation-duration:12s;animation-delay:3s"></i><i style="left:48%;width:5px;height:5px;animation-duration:15s;animation-delay:5s"></i><i style="left:57%;width:7px;height:7px;animation-duration:11s;animation-delay:2.5s"></i><i style="left:65%;width:4px;height:4px;animation-duration:17s;animation-delay:0.5s"></i><i style="left:74%;width:6px;height:6px;animation-duration:13s;animation-delay:4.5s"></i><i style="left:82%;width:5px;height:5px;animation-duration:14s;animation-delay:1.5s"></i><i style="left:90%;width:7px;height:7px;animation-duration:12s;animation-delay:3.5s"></i><i style="left:96%;width:4px;height:4px;animation-duration:16s;animation-delay:6s"></i></div><div id="cover"><span class="pt" style="left:10%;top:15%;--dx:-240px;--dy:-80px;color:inherit"></span><span class="pt" style="left:18%;top:28%;--dx:-120px;--dy:-117px;color:inherit"></span><span class="pt" style="left:26%;top:41%;--dx:0px;--dy:-154px;color:inherit"></span><span class="pt" style="left:34%;top:54%;--dx:120px;--dy:-191px;color:inherit"></span><span class="pt" style="left:42%;top:67%;--dx:240px;--dy:-228px;color:inherit"></span><span class="pt" style="left:50%;top:80%;--dx:-240px;--dy:-265px;color:inherit"></span><span class="pt" style="left:58%;top:23%;--dx:-120px;--dy:-102px;color:inherit"></span><span class="pt" style="left:66%;top:36%;--dx:0px;--dy:-139px;color:inherit"></span><span class="pt" style="left:74%;top:49%;--dx:120px;--dy:-176px;color:inherit"></span><span class="pt" style="left:82%;top:62%;--dx:240px;--dy:-213px;color:inherit"></span><span class="pt" style="left:90%;top:75%;--dx:-240px;--dy:-250px;color:inherit"></span><span class="pt" style="left:98%;top:18%;--dx:-120px;--dy:-87px;color:inherit"></span><div class="pal">
@@ -304,12 +307,25 @@ var a=document.createElement('div');a.className='wn';a.textContent=w.n;
 var c=document.createElement('div');c.className='wh';c.textContent=w.h;
 var e=document.createElement('div');e.className='wu';e.textContent=w.u;
 d.appendChild(a);d.appendChild(c);d.appendChild(e);b.appendChild(d);});}
-function kirimUcapan(){var n=document.getElementById('wn').value.trim(),h=document.getElementById('wh').value,u=document.getElementById('wu').value.trim();
-if(!n||!u){showModal('Mohon isi nama dan ucapan terlebih dahulu ♥');return;}
-var w={n:n,h:h,u:u};wishes.push(w);
-try{var s=JSON.parse(localStorage.getItem('w_aq08')||'[]');s.push(w);localStorage.setItem('w_aq08',JSON.stringify(s));}catch(e){}
-document.getElementById('wn').value='';document.getElementById('wu').value='';renderWishes();showModal('Terima kasih atas doa dan ucapannya ♥');}
-renderWishes();
+function kirimUcapan(){
+  var n=document.getElementById('wn').value.trim(),
+  hh=document.getElementById('wh').value,
+  u=document.getElementById('wu').value.trim();
+  if(!n||!u){showModal('Mohon isi nama dan ucapan terlebih dahulu ♥');return;}
+  initFirebase();
+  kirimUcapanFB('aqiqah-08-istana-bayi.html',n,u,hh).then(function(){
+    document.getElementById('wn').value='';document.getElementById('wu').value='';
+    showModal('Terima kasih atas doa dan ucapannya ♥');
+  }).catch(function(e){showModal('Gagal mengirim, coba lagi ♥');});
+}
+function renderWishesFB(list){
+  var el=document.getElementById('wlist');if(!el)return;
+  el.innerHTML=list.map(function(w){
+    return '<div class="witem"><b>'+escHtml(w.nama)+'</b>'+(w.kehadiran?' <span class="whad">'+escHtml(w.kehadiran)+'</span>':'')+'<p>'+escHtml(w.ucapan)+'</p></div>';
+  }).join('')||'<p style="text-align:center;opacity:.6">Jadilah yang pertama memberi ucapan ♥</p>';
+}
+function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+try{initFirebase();listenUcapan('aqiqah-08-istana-bayi.html',renderWishesFB);}catch(e){}
 </script>
 <script>
 function whSet(v){document.getElementById('wh').value=v;document.getElementById('whlabel').textContent=v;document.getElementById('whmodal').classList.remove('show');}
