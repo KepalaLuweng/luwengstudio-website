@@ -132,7 +132,7 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;opacity:.75;pa
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-<script src="../../js/firebase-config.js"></script>
+<script src="../js/firebase-config.js"></script>
 </head>
 <body>
 <div class="lux" aria-hidden="true"><i style="left:6%;width:7px;height:7px;animation-duration:11s;animation-delay:0s"></i><i style="left:14%;width:5px;height:5px;animation-duration:14s;animation-delay:2s"></i><i style="left:23%;width:8px;height:8px;animation-duration:10s;animation-delay:4s"></i><i style="left:31%;width:4px;height:4px;animation-duration:16s;animation-delay:1s"></i><i style="left:40%;width:6px;height:6px;animation-duration:12s;animation-delay:3s"></i><i style="left:48%;width:5px;height:5px;animation-duration:15s;animation-delay:5s"></i><i style="left:57%;width:7px;height:7px;animation-duration:11s;animation-delay:2.5s"></i><i style="left:65%;width:4px;height:4px;animation-duration:17s;animation-delay:0.5s"></i><i style="left:74%;width:6px;height:6px;animation-duration:13s;animation-delay:4.5s"></i><i style="left:82%;width:5px;height:5px;animation-duration:14s;animation-delay:1.5s"></i><i style="left:90%;width:7px;height:7px;animation-duration:12s;animation-delay:3.5s"></i><i style="left:96%;width:4px;height:4px;animation-duration:16s;animation-delay:6s"></i></div><div id="cover"><span class="pt" style="left:10%;top:15%;--dx:-240px;--dy:-80px;color:inherit"></span><span class="pt" style="left:18%;top:28%;--dx:-120px;--dy:-117px;color:inherit"></span><span class="pt" style="left:26%;top:41%;--dx:0px;--dy:-154px;color:inherit"></span><span class="pt" style="left:34%;top:54%;--dx:120px;--dy:-191px;color:inherit"></span><span class="pt" style="left:42%;top:67%;--dx:240px;--dy:-228px;color:inherit"></span><span class="pt" style="left:50%;top:80%;--dx:-240px;--dy:-265px;color:inherit"></span><span class="pt" style="left:58%;top:23%;--dx:-120px;--dy:-102px;color:inherit"></span><span class="pt" style="left:66%;top:36%;--dx:0px;--dy:-139px;color:inherit"></span><span class="pt" style="left:74%;top:49%;--dx:120px;--dy:-176px;color:inherit"></span><span class="pt" style="left:82%;top:62%;--dx:240px;--dy:-213px;color:inherit"></span><span class="pt" style="left:90%;top:75%;--dx:-240px;--dy:-250px;color:inherit"></span><span class="pt" style="left:98%;top:18%;--dx:-120px;--dy:-87px;color:inherit"></span>
@@ -345,7 +345,6 @@ function saveToCal(btn){
 // Lazy-load gallery backgrounds
 var bgio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;var bg=el.getAttribute('data-bg');if(bg){el.style.backgroundImage="url('"+bg+"')";}bgio.unobserve(el);}})},{rootMargin:'50px'});
 document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
-</script>
 </script>
 </body>
 </html>

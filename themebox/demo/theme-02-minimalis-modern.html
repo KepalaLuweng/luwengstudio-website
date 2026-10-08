@@ -129,7 +129,7 @@ footer .tag{margin-top:1.4rem;font-size:.58rem;letter-spacing:.25em;color:#c4c4c
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-<script src="../../js/firebase-config.js"></script>
+<script src="../js/firebase-config.js"></script>
 </head>
 <body>
 
@@ -418,7 +418,6 @@ function saveToCal(btn){
 // Lazy-load gallery backgrounds
 var bgio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;var bg=el.getAttribute('data-bg');if(bg){el.style.backgroundImage="url('"+bg+"')";}bgio.unobserve(el);}})},{rootMargin:'50px'});
 document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
-</script>
 </script>
 </body>
 </html>
