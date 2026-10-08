@@ -44,7 +44,7 @@ function initCatalogTabs() {
 function selectTheme(file) {
   const t = THEMES.find(x => x.file === file);
   if (!t) return;
-  const url = "order/?theme=" + encodeURIComponent(t.file);
+  const url = "/themebox/order/?theme=" + encodeURIComponent(t.file);
   window.location.href = url;
 }
 
