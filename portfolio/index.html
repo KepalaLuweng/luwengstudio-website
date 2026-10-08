@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofolio — Darmawan Aditya (KepalaLuweng) | LuwengStudio</title>
+<meta name="description" content="Portofolio Darmawan Aditya: custom kernel Android (LuwengKernel), root tools (LuwengSense, L-Blocker), aplikasi Android, dan open data.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://luwengstudio.my.id/portfolio/">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="../css/portfolio.css">
+<link rel="stylesheet" href="../css/dev.css">
+</head>
+<body class="dev">
+
+<header class="site">
+  <div class="container nav-inner">
+    <a class="logo" href="../"><span class="tp">&gt;_</span> Luweng<b>Studio</b></a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <nav class="links" id="nav-links">
+      <a href="../#tentang">Tentang</a>
+      <a href="../#berjalan">Proyek</a>
+      <a href="./">Portofolio</a>
+      <a href="../themebox/">ThemeBox</a>
+      <a href="../#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<section id="portfolio" style="padding-top:3rem">
+  <div class="container">
+    <span class="label">Karya</span>
+    <h2 class="section-title">Portofolio</h2>
+    <p class="section-sub">Kernel, modul root, aplikasi, dan open data — sebagian open source di GitHub, sebagian showcase karya indie. Klik kartu untuk detail.</p>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="semua">.*</button>
+      <button class="filter-btn" data-filter="apk">apk/</button>
+      <button class="filter-btn" data-filter="api">api/</button>
+      <button class="filter-btn" data-filter="module">module/</button>
+      <button class="filter-btn" data-filter="kernel">kernel/</button>
+    </div>
+    <div class="grid" id="portfolio-grid"></div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="container">
+    <p class="foot-single">Darmawan Aditya <i>|</i> LuwengStudio <i>|</i> KepalaLuweng</p>
+  </div>
+</footer>
+
+<div class="pf-backdrop" id="pf-backdrop" hidden>
+  <div class="pf-modal" role="dialog" aria-modal="true" aria-labelledby="pf-modal-title">
+    <button class="pf-close" id="pf-close" aria-label="Tutup detail">×</button>
+    <div id="pf-modal-content" style="display:contents"></div>
+  </div>
+</div>
+
+<script src="../js/portfolio-data.js"></script>
+<script src="../js/portfolio-mockup.js"></script>
+<script src="../js/portfolio-modal.js"></script>
+<script src="../js/portfolio-render.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/portfolio-page.js"></script>
+</body>
+</html>
