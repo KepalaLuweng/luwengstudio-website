@@ -34,16 +34,21 @@ function themeCard(t) {
 function renderCatalogSections() {
   const wrap = document.getElementById("catalog-sections");
   if (!wrap || typeof THEMES === "undefined") return;
-  const cats = ["Pernikahan", "Khitanan", "Aqiqah", "Ulang Tahun", "Wisuda"];
-  const emojis = {"Pernikahan": "💒", "Khitanan": "🕌", "Aqiqah": "👶", "Ulang Tahun": "🎂", "Wisuda": "🎓"};
-  wrap.innerHTML = cats.map(cat => {
-    const list = THEMES.filter(t => t.cat === cat);
-    const slug = cat.toLowerCase().replace(/ /g, "-");
+  const cats = [
+    {name: "Pernikahan", key: "Pernikahan", emoji: "💒"},
+    {name: "Khitanan", key: "Khitanan", emoji: "🕌"},
+    {name: "Aqiqah", key: "Aqiqah", emoji: "👶"},
+    {name: "Ulang Tahun", key: "Ultah", emoji: "🎂"},
+    {name: "Wisuda", key: "Wisuda", emoji: "🎓"}
+  ];
+  wrap.innerHTML = cats.map(c => {
+    const list = THEMES.filter(t => t.cat === c.key);
+    const slug = c.name.toLowerCase().replace(/ /g, "-");
     return `
     <div class="cat-section" id="cat-${slug}">
       <div class="cat-section-head">
-        <span class="cat-section-emoji">${emojis[cat]}</span>
-        <h3>${cat}</h3>
+        <span class="cat-section-emoji">${c.emoji}</span>
+        <h3>${c.name}</h3>
         <span class="cat-section-count">${list.length} theme</span>
       </div>
       <div class="theme-grid">${list.map(themeCard).join("")}</div>
