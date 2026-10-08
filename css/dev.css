@@ -301,25 +301,22 @@ body.dev .fact{background:var(--surface)}
 body.dev .fact b{color:var(--green);font-family:var(--mono);font-weight:700}
 body.dev .fact span{color:var(--muted)}
 
-/* ---------- contact + single-line footer ---------- */
-body.dev .contact-row{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.6rem;
+/* ---------- social icons row (logo kecil saja) ---------- */
+body.dev .social-row{
+  display:flex;gap:1.1rem;margin-top:1.6rem;align-items:center;
 }
-body.dev .contact-card{
-  display:flex;align-items:center;gap:.9rem;background:var(--surface);border:1px solid var(--border-soft);
-  border-radius:12px;padding:1rem 1.1rem;text-decoration:none;
-  transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+body.dev .soc{
+  width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:50%;background:var(--surface);border:1px solid var(--border-soft);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
 }
-body.dev .contact-card:hover{transform:translateY(-3px)}
-body.dev .contact-card.cc-wa:hover{border-color:rgba(37,211,102,.55);box-shadow:0 10px 26px rgba(37,211,102,.16)}
-body.dev .contact-card.cc-mail:hover{border-color:rgba(234,67,53,.55);box-shadow:0 10px 26px rgba(234,67,53,.16)}
-body.dev .contact-card.cc-gh:hover{border-color:rgba(240,246,252,.45);box-shadow:0 10px 26px rgba(240,246,252,.12)}
-body.dev .contact-card.cc-yt:hover{border-color:rgba(255,0,0,.55);box-shadow:0 10px 26px rgba(255,0,0,.18)}
-body.dev .cc-icon{width:44px;height:44px;flex-shrink:0}
-body.dev .cc-icon svg{width:100%;height:100%;display:block}
-body.dev .cc-text{min-width:0}
-body.dev .cc-text b{display:block;color:var(--ink);font-size:.9rem;margin-bottom:.25rem}
-body.dev .cc-text span{color:var(--muted);font-family:var(--mono);font-size:.76rem;word-break:break-all}
+body.dev .soc svg{width:24px;height:24px;display:block}
+body.dev .soc:hover{transform:scale(1.15)}
+body.dev .soc-wa:hover{border-color:#25D366;box-shadow:0 0 16px rgba(37,211,102,.45)}
+body.dev .soc-mail:hover{border-color:#EA4335;box-shadow:0 0 16px rgba(234,67,53,.45)}
+body.dev .soc-gh:hover{border-color:#f0f6fc;box-shadow:0 0 16px rgba(240,246,252,.35)}
+body.dev .soc-yt:hover{border-color:#FF0000;box-shadow:0 0 16px rgba(255,0,0,.45)}
+body.dev .soc-tg:hover{border-color:#229ED9;box-shadow:0 0 16px rgba(34,158,217,.45)}
 body.dev footer.site{
   background:#010409;border-top:1px solid var(--border-soft);padding:1.5rem 0;
 }

@@ -68,3 +68,17 @@
   .order-link{font-size:var(--fs-tiny)}
   .price-badge{font-size:.68rem;padding:.28rem .7rem}
 }
+
+/* ---------- social icons (logo kecil) ---------- */
+.social-row{display:flex;gap:.9rem;align-items:center;flex-wrap:wrap}
+.soc{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:#161b22;border:1px solid #2a3139;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;text-decoration:none}
+.soc svg{width:22px;height:22px;display:block}
+.soc:hover{transform:scale(1.15)}
+.soc-wa:hover{border-color:#25D366;box-shadow:0 0 14px rgba(37,211,102,.45)}
+.soc-mail:hover{border-color:#EA4335;box-shadow:0 0 14px rgba(234,67,53,.45)}
+.soc-gh:hover{border-color:#f0f6fc;box-shadow:0 0 14px rgba(240,246,252,.35)}
+.soc-yt:hover{border-color:#FF0000;box-shadow:0 0 14px rgba(255,0,0,.45)}
+.soc-tg:hover{border-color:#229ED9;box-shadow:0 0 14px rgba(34,158,217,.45)}
+.foot-single{text-align:center;color:#8b949e;font-family:ui-monospace,monospace;font-size:.82rem;letter-spacing:1.5px;margin:0}
+.foot-single i{color:#3a4149;font-style:normal;margin:0 .7rem}
+footer.site{padding:1.5rem 0}
