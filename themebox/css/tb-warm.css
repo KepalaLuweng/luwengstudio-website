@@ -180,7 +180,7 @@ body.tb-warm h1,body.tb-warm h2,body.tb-warm h3{
 .tb-wa:hover{transform:scale(1.1)}
 .tb-wa svg{width:28px;height:28px}
 /* kategori cards cantik */
-.tb-cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.tb-cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;max-width:760px;margin:0 auto}
 .tb-cat-card{
   position:relative;display:block;text-decoration:none;text-align:center;
   background:var(--tb-card);border:1px solid var(--tb-line);border-radius:18px;
