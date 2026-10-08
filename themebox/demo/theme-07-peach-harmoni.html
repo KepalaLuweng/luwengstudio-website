@@ -357,6 +357,7 @@ function renderWishesFB(list){
   }).join('')||'<p style="text-align:center;opacity:.6">Jadilah yang pertama memberi ucapan ♥</p>';
 }
 function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+try{renderWishes();}catch(e){}
 try{initFirebase();listenUcapan('theme-07-peach-harmoni.html',renderWishesFB);}catch(e){}
 </script>
 <script>
@@ -375,6 +376,7 @@ function saveToCal(btn){
     "&details=" + encodeURIComponent(desc);
   window.open(url, "_blank");
 }
+</script>
 <script>
 // Lazy-load gallery backgrounds
 var bgio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;var bg=el.getAttribute('data-bg');if(bg){el.style.backgroundImage="url('"+bg+"')";}bgio.unobserve(el);}})},{rootMargin:'50px'});
