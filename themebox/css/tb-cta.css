@@ -1,8 +1,0 @@
-/* tb-cta.css — ThemeBox elegant: CTA band */
-/* tb-cta.css — ThemeBox elegant */
-.cta-band{
-  background:linear-gradient(135deg,var(--tb-marun),var(--tb-marun-dark));
-  text-align:center;padding:3rem 1rem;
-}
-.cta-band h2{color:#fff;font-size:1.7rem;margin:0 0 .6rem}
-.cta-band p{color:rgba(255,255,255,.8);margin:0 0 1.6rem;font-size:.9rem}

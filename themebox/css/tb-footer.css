@@ -1,7 +1,0 @@
-/* tb-footer.css — ThemeBox elegant */
-.tb-footer{background:var(--tb-marun-dark);text-align:center;padding:1.4rem 1rem}
-.tb-footer p{
-  font-family:var(--tb-serif);font-size:.8rem;letter-spacing:1.5px;margin:0;
-  color:rgba(255,255,255,.7);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.tb-footer i{color:var(--tb-gold);font-style:normal;margin:0 .6rem}
