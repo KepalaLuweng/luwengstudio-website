@@ -1,0 +1,35 @@
+/* tb-base.css — ThemeBox elegant: base + buttons */
+/* tb-base.css — ThemeBox elegant */
+/* tb-elegan.css — ThemeBox landing, elegant wedding aesthetic (marun/emas/krem) */
+/* ATURAN KETAT: no italic, teks lurus & sejajar, compact, responsive mobile+desktop */
+
+
+body.tb-elegan{
+  background:var(--tb-cream);
+  color:var(--tb-ink);
+  font-family:var(--tb-sans);
+  margin:0;
+  padding-bottom:70px;
+}
+section[id]{scroll-margin-top:64px}
+body.tb-elegan h1,
+body.tb-elegan h2,
+body.tb-elegan h3,
+body.tb-elegan em{
+  font-family:var(--tb-serif);
+  color:var(--tb-marun);
+  font-weight:600;
+  font-style:normal;
+}
+body.tb-elegan p{font-style:normal}
+.btn{
+  display:inline-block;padding:.85rem 2rem;border-radius:999px;
+  font-size:.88rem;font-weight:600;text-decoration:none;cursor:pointer;
+  border:none;transition:transform .2s,background .2s;
+}
+.btn-marun{background:var(--tb-marun);color:#fff}
+.btn-marun:hover{background:var(--tb-marun-dark);transform:translateY(-2px)}
+.btn-gold-outline{background:transparent;color:var(--tb-gold-dark);border:2px solid var(--tb-gold)}
+.btn-gold-outline:hover{background:rgba(201,162,39,.1)}
+.btn-gold{background:var(--tb-gold);color:#fff}
+.btn-gold:hover{background:var(--tb-gold-dark);transform:translateY(-2px)}

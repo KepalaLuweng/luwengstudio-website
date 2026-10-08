@@ -1,0 +1,15 @@
+/* tb-variables.css — ThemeBox elegant */
+:root{
+  --tb-cream:#fdf8f0;
+  --tb-white:#ffffff;
+  --tb-marun:#7b2d3b;
+  --tb-marun-dark:#5e2130;
+  --tb-gold:#c9a227;
+  --tb-gold-dark:#9c7d1a;
+  --tb-ink:#3e2a2a;
+  --tb-muted:#8a7a70;
+  --tb-border:#e8dcc8;
+  --tb-shadow:0 6px 24px rgba(123,45,59,.07);
+  --tb-serif:Georgia,'Times New Roman',serif;
+  --tb-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+}

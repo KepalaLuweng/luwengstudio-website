@@ -1,0 +1,14 @@
+/* tb-kategori.css — ThemeBox elegant */
+.cat-row{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:.8rem;
+}
+.cat-chip{
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  background:var(--tb-white);border:1px solid var(--tb-border);
+  border-radius:14px;padding:1.1rem .5rem;text-decoration:none;
+  color:var(--tb-ink);transition:transform .2s,border-color .2s;
+}
+.cat-chip:hover{transform:translateY(-3px);border-color:var(--tb-gold)}
+.cat-chip .ci{font-size:1.8rem;line-height:1}
+.cat-chip b{font-family:var(--tb-serif);font-size:.85rem;color:var(--tb-marun);font-weight:600}
+.cat-chip span{font-size:.72rem;color:var(--tb-gold-dark);font-weight:600}

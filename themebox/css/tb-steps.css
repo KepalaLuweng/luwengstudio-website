@@ -1,0 +1,14 @@
+/* tb-steps.css — ThemeBox elegant */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.step-card{
+  background:var(--tb-white);border:1px solid var(--tb-border);
+  border-radius:14px;padding:1.6rem 1.2rem;text-align:center;
+}
+.step-num{
+  width:42px;height:42px;border-radius:50%;margin:0 auto .9rem;
+  background:var(--tb-gold);color:#fff;
+  font-family:var(--tb-serif);font-size:1.2rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.step-card h3{font-size:1rem;margin:0 0 .4rem}
+.step-card p{color:var(--tb-muted);font-size:.82rem;line-height:1.65;margin:0}

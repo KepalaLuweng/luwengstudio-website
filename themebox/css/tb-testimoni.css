@@ -1,0 +1,10 @@
+/* tb-testimoni.css — ThemeBox elegant */
+.testi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.testi-card{
+  background:var(--tb-white);border:1px solid var(--tb-border);
+  border-radius:14px;padding:1.4rem 1.2rem;display:flex;flex-direction:column;
+}
+.testi-card .stars{color:var(--tb-gold);letter-spacing:2px;margin-bottom:.7rem;font-size:.82rem}
+.testi-card p{font-size:.82rem;color:var(--tb-ink);line-height:1.7;margin:0 0 1rem;flex:1}
+.testi-card .who{font-size:.75rem;color:var(--tb-muted)}
+.testi-card .who b{color:var(--tb-marun);display:block;font-size:.82rem;margin-bottom:.1rem}

@@ -1,0 +1,10 @@
+/* tb-hero.css — ThemeBox elegant: hero section */
+/* tb-hero.css — ThemeBox elegant */
+.tb-hero{text-align:center;padding:2.8rem 1rem 2.2rem}
+.tb-hero .kicker{
+  display:inline-block;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--tb-gold-dark);margin-bottom:.8rem;font-weight:600;
+}
+.tb-hero h1{font-size:2rem;line-height:1.3;margin:0 auto 1rem;max-width:640px}
+.tb-hero .lead{color:var(--tb-muted);font-size:.95rem;line-height:1.7;max-width:560px;margin:0 auto 1.6rem}
+.hero-ctas{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
