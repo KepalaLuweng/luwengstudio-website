@@ -213,8 +213,12 @@ body.tb-warm h1,body.tb-warm h2,body.tb-warm h3{
 .tb-cat-card:hover .tb-cat-arrow{transform:translateX(4px)}
 @media(max-width:768px){.tb-cat-grid{grid-template-columns:repeat(2,1fr);gap:.9rem}}
 @media(max-width:480px){
-  .tb-cat-grid{grid-template-columns:1fr;max-width:320px;margin:0 auto}
-  .tb-cat-card p{min-height:0}
+  .tb-cat-grid{grid-template-columns:repeat(2,1fr);gap:.7rem}
+  .tb-cat-card{padding:1.2rem .7rem 1rem}
+  .tb-cat-icon{width:52px;height:52px;font-size:1.6rem}
+  .tb-cat-card h3{font-size:.95rem}
+  .tb-cat-card p{font-size:.75rem;min-height:0}
+  .tb-cat-count{font-size:.62rem;padding:.2rem .6rem}
 }
 /* responsive */
 @media(max-width:768px){
