@@ -1,15 +1,34 @@
-function renderCatalog(cat) {
-  const grid = document.getElementById("theme-grid");
-  const list = cat === "semua" ? THEMES : THEMES.filter(t => t.cat === cat);
-  grid.innerHTML = list.map(t => `
-    <div class="theme-card" data-file="${t.file}" onclick="selectTheme('${t.file}')">
-      <div class="theme-thumb">${t.name}</div>
-      <div class="theme-info">
+const TB_BASE = (() => {
+  try {
+    const s = (document.currentScript && document.currentScript.src) || "";
+    const i = s.indexOf("themebox/js/");
+    if (i >= 0) return s.slice(0, i + "themebox/".length);
+  } catch (e) {}
+  return "";
+})();
+
+function themeCard(t) {
+  return `
+    <div class="theme-card-pro" data-file="${t.file}" onclick="selectTheme('${t.file}')">
+      <div class="theme-preview">
+        <img src="${TB_BASE}${t.preview}" alt="Preview ${t.name}" loading="lazy">
+        <span class="price-badge">${formatRp(t.price)}</span>
+      </div>
+      <div class="theme-meta">
         <h3>${t.name}</h3>
         <div class="cat">${t.cat}</div>
-        <div class="price">${formatRp(t.price)}</div>
+        <span class="order-link">Pilih theme →</span>
       </div>
-    </div>`).join("");
+    </div>`;
+}
+
+function renderCatalog(cat) {
+  const grid = document.getElementById("theme-grid");
+  if (!grid) return;
+  const list = cat === "semua" ? THEMES : THEMES.filter(t => t.cat === cat);
+  grid.innerHTML = list.map(themeCard).join("");
+  const count = document.getElementById("theme-count");
+  if (count) count.textContent = list.length + " theme";
 }
 
 function initCatalogTabs() {
@@ -23,11 +42,16 @@ function initCatalogTabs() {
 }
 
 function selectTheme(file) {
-  document.querySelectorAll(".theme-card").forEach(c => c.classList.remove("selected"));
-  document.querySelector(`.theme-card[data-file="${file}"]`).classList.add("selected");
   const t = THEMES.find(x => x.file === file);
-  document.getElementById("order-theme").value = t.name;
-  document.getElementById("order-price").value = t.price;
-  updateSummary();
-  document.getElementById("form-order").scrollIntoView({ behavior: "smooth" });
+  if (!t) return;
+  const url = "order/?theme=" + encodeURIComponent(t.file);
+  window.location.href = url;
+}
+
+function initFaq() {
+  document.querySelectorAll(".faq-q").forEach(q => {
+    q.addEventListener("click", () => {
+      q.closest(".faq-item").classList.toggle("open");
+    });
+  });
 }

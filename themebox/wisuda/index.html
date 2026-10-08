@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Wisuda Digital | ThemeBox LuwengStudio</title>
+<meta name="description" content="10 theme wisuda yang formal dan membanggakan. Abadikan momen kelulusan dengan undangan digital yang berkelas.">
+<link rel="stylesheet" href="../../css/base.css">
+<link rel="stylesheet" href="../../css/layout.css">
+<link rel="stylesheet" href="../css/tb-pro.css">
+<link rel="stylesheet" href="../css/tb-category.css">
+</head>
+<body>
+<header class="site">
+  <div class="container nav-inner">
+    <a class="logo" href="../../">Luweng<span>Studio</span></a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <nav class="links" id="nav-links">
+      <a href="../../#portfolio">Portofolio</a>
+      <a href="../">ThemeBox</a>
+      <a href="../../#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  <div class="breadcrumb"><a href="../">ThemeBox</a> / Wisuda</div>
+  <div class="cat-hero">
+    <span class="emoji-big">🎓</span>
+    <h1>Rayakan <em>Pencapaianmu</em></h1>
+    <p>10 theme wisuda yang formal dan membanggakan. Abadikan momen kelulusan dengan undangan digital yang berkelas.</p>
+  </div>
+  <p style="text-align:center;color:var(--muted);font-size:.9rem"><span id="theme-count"></span> · Klik theme untuk order</p>
+  <div class="theme-grid-pro" id="theme-grid"></div>
+</div>
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="../../">Luweng<span>Studio</span></a>
+        <p>Studio perangkat lunak independen. Undangan digital premium via ThemeBox.</p>
+      </div>
+      <div>
+        <p><b>Hubungi Kami</b><br>
+        <a href="https://wa.me/6281809029677" target="_blank" rel="noopener">WhatsApp: 0818-0902-9677</a><br>
+        <a href="mailto:luwengstudio@gmail.com">luwengstudio@gmail.com</a></p>
+      </div>
+      <div>
+        <p><b>Tautan</b><br>
+        <a href="../">Katalog ThemeBox</a><br>
+        <a href="../../privacy/">Kebijakan Privasi</a></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span class="year"></span> LuwengStudio · ThemeBox</span>
+    </div>
+  </div>
+</footer>
+<script src="../js/catalog-data.js"></script>
+<script src="../js/catalog-render.js"></script>
+<script src="../../js/nav.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  initNav();
+  renderCatalog("Wisuda");
+  document.querySelectorAll(".year").forEach(e => e.textContent = new Date().getFullYear());
+});
+</script>
+</body>
+</html>

@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ThemeBox — Undangan Digital | LuwengStudio</title>
-<meta name="description" content="50 theme undangan digital premium. Order online, bayar QRIS, verifikasi WhatsApp.">
+<title>ThemeBox — Undangan Digital Premium | LuwengStudio</title>
+<meta name="description" content="50 theme undangan digital premium untuk pernikahan, khitanan, aqiqah, ulang tahun, dan wisuda. Order online, bayar QRIS, jadi dalam 1x24 jam.">
 <link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="../css/layout.css">
-<link rel="stylesheet" href="css/themebox-catalog.css">
-<link rel="stylesheet" href="css/themebox-form.css">
+<link rel="stylesheet" href="css/tb-pro.css">
 </head>
 <body>
 
@@ -24,97 +23,237 @@
   </div>
 </header>
 
-<div class="container">
-  <div class="tb-hero">
-    <span class="tag">ThemeBox</span>
-    <h1>Katalog Undangan Digital</h1>
-    <p>Pilih theme favoritmu, isi form order, bayar via QRIS — undangan digital siap dibuat.</p>
+<section class="tb-hero-pro">
+  <div class="container">
+    <span class="kicker">✦ ThemeBox by LuwengStudio</span>
+    <h1>Undangan Digital yang Bikin <em>Tamu Terkesan</em></h1>
+    <p class="lead">50 theme premium untuk pernikahan, khitanan, aqiqah, ulang tahun, dan wisuda. Pilih theme, isi form, bayar via QRIS — undangan siap dibagikan dalam 1×24 jam.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-gold btn-xl" href="#kategori">Lihat Katalog</a>
+      <a class="btn btn-ghost btn-xl" href="#cara-order">Cara Order</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card"><b>50+</b><span>Theme Premium</span></div>
+      <div class="stat-card"><b>5</b><span>Kategori Acara</span></div>
+      <div class="stat-card"><b>1×24</b><span>Jam Pengerjaan</span></div>
+      <div class="stat-card"><b>100%</b><span>Digital & Praktis</span></div>
+    </div>
   </div>
+</section>
 
-  <div class="cat-tabs">
-    <button class="filter-btn active" data-cat="semua">Semua</button>
-    <button class="filter-btn" data-cat="Pernikahan">Pernikahan</button>
-    <button class="filter-btn" data-cat="Khitanan">Khitanan</button>
-    <button class="filter-btn" data-cat="Aqiqah">Aqiqah</button>
-    <button class="filter-btn" data-cat="Ultah">Ultah</button>
-    <button class="filter-btn" data-cat="Wisuda">Wisuda</button>
+<section class="section" id="kategori">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">Kategori</span>
+      <h2>Pilih Kategori Acaramu</h2>
+      <p>Setiap kategori punya 10 theme eksklusif dengan desain dan fitur berbeda.</p>
+    </div>
+    <div class="cat-cards">
+      <a class="cat-card" href="pernikahan/">
+        <span class="emoji">💒</span><h3>Pernikahan</h3>
+        <p>Undangan sakral yang elegan dan berkesan</p>
+        <span class="count">10 theme</span>
+      </a>
+      <a class="cat-card" href="khitanan/">
+        <span class="emoji">🕌</span><h3>Khitanan</h3>
+        <p>Tasyakuran khitanan yang gagah dan penuh berkah</p>
+        <span class="count">10 theme</span>
+      </a>
+      <a class="cat-card" href="aqiqah/">
+        <span class="emoji">👶</span><h3>Aqiqah</h3>
+        <p>Sambut buah hati dengan penuh syukur</p>
+        <span class="count">10 theme</span>
+      </a>
+      <a class="cat-card" href="ultah/">
+        <span class="emoji">🎂</span><h3>Ulang Tahun</h3>
+        <p>Pesta meriah yang ceria dan tak terlupakan</p>
+        <span class="count">10 theme</span>
+      </a>
+      <a class="cat-card" href="wisuda/">
+        <span class="emoji">🎓</span><h3>Wisuda</h3>
+        <p>Rayakan pencapaian dengan penuh kebanggaan</p>
+        <span class="count">10 theme</span>
+      </a>
+    </div>
   </div>
-  <div class="theme-grid" id="theme-grid"></div>
+</section>
 
-  <div class="order-section" id="form-order">
-    <span class="tag">Form Order</span>
-    <h2>Order Undangan</h2>
-    <div class="field">
-      <label>Theme dipilih</label>
-      <input type="text" id="order-theme" readonly placeholder="Klik salah satu theme di atas">
-      <input type="hidden" id="order-price" value="0">
+<section class="section" id="cara-order" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">Mudah</span>
+      <h2>Cara Order dalam 3 Langkah</h2>
+      <p>Tanpa ribet, tanpa antre. Semua online.</p>
     </div>
-    <div class="field">
-      <label>Nama pemesan</label>
-      <input type="text" id="buyer-name" placeholder="Nama lengkap">
-    </div>
-    <div class="field">
-      <label>No. WhatsApp</label>
-      <input type="tel" id="buyer-wa" placeholder="08xxxxxxxxxx">
-    </div>
-    <div class="field">
-      <label>Tanggal acara</label>
-      <input type="date" id="event-date">
-    </div>
-    <div class="field">
-      <label>Alamat / catatan <span class="hint">(opsional)</span></label>
-      <textarea id="buyer-address" rows="2" placeholder="Alamat atau catatan tambahan"></textarea>
-    </div>
-    <div class="field">
-      <label>Metode pembayaran amplop</label>
-      <select id="pay-method">
-        <option value="transfer">Transfer bank / e-wallet</option>
-        <option value="qris">QRIS</option>
-      </select>
-    </div>
-    <div id="qris-section" class="hidden">
-      <div class="qris-box">
-        <img id="qris-img" alt="QRIS LuwengStudio">
-        <p class="hint">Scan QRIS di atas untuk membayar, lalu kirim bukti via WhatsApp.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Pilih Theme</h3>
+        <p>Jelajahi katalog per kategori, klik theme favoritmu untuk melihat preview dan detail harga.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Isi Form & Bayar</h3>
+        <p>Lengkapi data acara, upload foto, lalu bayar via QRIS. Kirim bukti pembayaran via WhatsApp.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Terima Link Undangan</h3>
+        <p>Dalam 1×24 jam, link undangan digital dikirim via WhatsApp. Siap dibagikan ke semua tamu.</p>
       </div>
     </div>
-    <div class="order-summary">
-      <div class="row"><span>Theme</span><span id="sum-theme">-</span></div>
-      <div class="row"><span>Harga</span><span id="sum-price">Rp0</span></div>
-      <div class="row total"><span>Total</span><span id="sum-total">Rp0</span></div>
-    </div>
-    <button class="btn btn-gold" onclick="submitOrder()" style="width:100%">Kirim via WhatsApp</button>
-    <p class="hint" style="margin-top:.8rem;text-align:center">Dengan menekan tombol, order tersimpan dan WhatsApp terbuka dengan pesan otomatis.</p>
   </div>
-</div>
+</section>
 
-<footer class="site">
+<section class="section" id="harga">
   <div class="container">
+    <div class="section-head">
+      <span class="tag">Harga</span>
+      <h2>Harga Transparan</h2>
+      <p>Tiga tier harga sesuai kemewahan theme. Tanpa biaya tersembunyi.</p>
+    </div>
+    <div class="pricing">
+      <div class="price-card">
+        <div class="tier">Esensial</div>
+        <div class="amount">Rp150rb</div>
+        <ul>
+          <li>Theme elegan pilihan</li>
+          <li>Foto & galeri (5 foto)</li>
+          <li>RSVP & amplop digital</li>
+          <li>Link undangan personal</li>
+        </ul>
+        <a class="btn btn-ghost" href="#kategori">Pilih Theme</a>
+      </div>
+      <div class="price-card featured">
+        <div class="tier">Premium</div>
+        <div class="amount">Rp225rb</div>
+        <ul>
+          <li>Semua fitur Esensial</li>
+          <li>Animasi lebih hidup</li>
+          <li>Desain lebih detail</li>
+          <li>Prioritas pengerjaan</li>
+        </ul>
+        <a class="btn btn-gold" href="#kategori">Pilih Theme</a>
+      </div>
+      <div class="price-card">
+        <div class="tier">Eksklusif</div>
+        <div class="amount">Rp300rb</div>
+        <ul>
+          <li>Semua fitur Premium</li>
+          <li>Partikel emas & efek mewah</li>
+          <li>Theme paling eksklusif</li>
+          <li>Revisi 2× gratis</li>
+        </ul>
+        <a class="btn btn-ghost" href="#kategori">Pilih Theme</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="testimoni" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag">Testimoni</span>
+      <h2>Kata Mereka</h2>
+      <p>Kepercayaan pelanggan adalah prioritas kami.</p>
+    </div>
+    <div class="testis">
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>"Undangan digitalnya bagus banget, tamu-tamu pada tanya bikin di mana. Pengerjaannya juga cepat, pagi order sorenya jadi."</p>
+        <div class="who"><b>Rina & Dimas</b>Pernikahan · Jakarta</div>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>"Buat acara khitanan anak saya. Desainnya gagah, fiturnya lengkap ada RSVP dan amplop digital. Puas banget."</p>
+        <div class="who"><b>H. Bambang S.</b>Khitanan · Surabaya</div>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>"Aqiqah anak pertama, maunya yang berkesan. Theme-nya lembut dan manis, sesuai banget. Recommended!"</p>
+        <div class="who"><b>Sarah M.</b>Aqiqah · Bandung</div>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p>"Wisuda kemarin pakai ThemeBox. Teman-teman seangkatan sampai ikut order juga. Keren dan profesional."</p>
+        <div class="who"><b>Aditya P.</b>Wisuda · Yogyakarta</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container" style="max-width:760px">
+    <div class="section-head">
+      <span class="tag">FAQ</span>
+      <h2>Pertanyaan Umum</h2>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Berapa lama pengerjaan undangan?</button>
+      <div class="faq-a"><p>Maksimal 1×24 jam setelah pembayaran terverifikasi. Theme tier Premium dan Eksklusif mendapat prioritas pengerjaan.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Bagaimana cara order?</button>
+      <div class="faq-a"><p>Pilih theme di katalog, klik untuk order, isi form data acara, bayar via QRIS, kirim bukti via WhatsApp. Link undangan dikirim maksimal 1×24 jam.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Apakah bisa revisi?</button>
+      <div class="faq-a"><p>Theme Eksklusif mendapat 2× revisi gratis. Revisi tambahan atau theme tier lain dikenakan biaya Rp25.000/revisi.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Bagaimana tamu membuka undangan?</button>
+      <div class="faq-a"><p>Tamu cukup klik link yang kamu bagikan via WhatsApp/media sosial. Undangan terbuka di browser HP tanpa perlu install aplikasi.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Metode pembayaran apa saja?</button>
+      <div class="faq-a"><p>Saat ini via QRIS (mendukung semua e-wallet dan m-banking). Setelah bayar, kirim bukti via WhatsApp ke 0818-0902-9677.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Apakah link undangan permanen?</button>
+      <div class="faq-a"><p>Ya, link undangan aktif permanen dan bisa dibagikan ke tamu tanpa batas jumlah.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:linear-gradient(135deg,rgba(212,175,55,.12),transparent);text-align:center">
+  <div class="container">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.2rem);margin-bottom:1rem">Siap Buat Undangan <em style="color:var(--gold);font-style:normal">Impianmu?</em></h2>
+    <p style="color:var(--muted);margin-bottom:2rem">50 theme premium menunggumu. Order sekarang, undangan jadi dalam 1×24 jam.</p>
+    <a class="btn btn-gold btn-xl" href="#kategori">Mulai Pilih Theme</a>
+  </div>
+</section>
+
+<footer class="site" id="kontak">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="../">Luweng<span>Studio</span></a>
+        <p>Studio perangkat lunak independen. Undangan digital premium via ThemeBox.</p>
+      </div>
+      <div>
+        <p><b>Hubungi Kami</b><br>
+        <a href="https://wa.me/6281809029677" target="_blank" rel="noopener">WhatsApp: 0818-0902-9677</a><br>
+        <a href="mailto:luwengstudio@gmail.com">luwengstudio@gmail.com</a></p>
+      </div>
+      <div>
+        <p><b>Tautan</b><br>
+        <a href="../">Beranda</a><br>
+        <a href="../privacy/">Kebijakan Privasi</a></p>
+      </div>
+    </div>
     <div class="foot-bottom">
-      <span>© <span id="year"></span> LuwengStudio · ThemeBox</span>
-      <span><a href="../privacy/">Kebijakan Privasi</a></span>
+      <span>© <span class="year"></span> LuwengStudio · ThemeBox</span>
     </div>
   </div>
 </footer>
 
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-<script src="js/catalog-data.js"></script>
-<script src="js/catalog-render.js"></script>
-<script src="js/order-form.js"></script>
-<script src="js/firebase-config.js"></script>
-<script src="js/order-submit.js"></script>
-<script src="js/qris.js"></script>
 <script src="../js/nav.js"></script>
+<script src="js/catalog-render.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
-  initCatalogTabs();
-  renderCatalog("semua");
-  initOrderForm();
-  initQris();
-  initFirebase();
-  document.getElementById("year").textContent = new Date().getFullYear();
+  initFaq();
+  document.querySelectorAll(".year").forEach(e => e.textContent = new Date().getFullYear());
 });
 </script>
 </body>

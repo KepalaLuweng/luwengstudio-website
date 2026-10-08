@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Undangan | ThemeBox LuwengStudio</title>
+<meta name="description" content="Form order undangan digital ThemeBox. Isi data, bayar via QRIS, terima link dalam 1x24 jam.">
+<link rel="stylesheet" href="../../css/base.css">
+<link rel="stylesheet" href="../../css/layout.css">
+<link rel="stylesheet" href="../css/tb-pro.css">
+<link rel="stylesheet" href="../css/themebox-form.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="container nav-inner">
+    <a class="logo" href="../../">Luweng<span>Studio</span></a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <nav class="links" id="nav-links">
+      <a href="../../#portfolio">Portofolio</a>
+      <a href="../">ThemeBox</a>
+      <a href="../../#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container" style="max-width:720px;padding:3rem 1.2rem">
+  <div class="breadcrumb"><a href="../">ThemeBox</a> / Order</div>
+
+  <div id="order-theme-card" style="margin:1.5rem 0"></div>
+
+  <span class="tag">Form Order</span>
+  <h1 style="font-family:var(--serif);font-size:1.8rem;margin-bottom:.5rem">Lengkapi Data Order</h1>
+  <p style="color:var(--muted);margin-bottom:2rem">Isi dengan teliti — data ini yang tampil di undangan digitalmu.</p>
+
+  <div id="form-order">
+    <div class="field">
+      <label>Theme dipilih</label>
+      <input type="text" id="order-theme" readonly placeholder="Memuat...">
+      <input type="hidden" id="order-price" value="0">
+    </div>
+
+    <h3 style="margin:1.8rem 0 1rem;font-size:1.05rem">Data Pemesan</h3>
+    <div class="field">
+      <label>Nama pemesan</label>
+      <input type="text" id="buyer-name" placeholder="Nama lengkap">
+      <small class="field-note">Link undangan: luwengstudio.my.id/nama-pemesan (pengantin tulis: nama &amp; pasangan)</small>
+    </div>
+    <div class="field">
+      <label>No. WhatsApp aktif</label>
+      <input type="tel" id="buyer-wa" placeholder="08xxxxxxxxxx">
+      <small class="field-note">Link undangan dikirim ke nomor ini</small>
+    </div>
+
+    <h3 style="margin:1.8rem 0 1rem;font-size:1.05rem">Detail Acara</h3>
+    <div class="field">
+      <label>Tanggal acara</label>
+      <input type="date" id="event-date">
+    </div>
+    <div class="field">
+      <label>Alamat / catatan <span class="hint">(opsional)</span></label>
+      <textarea id="buyer-address" rows="2" placeholder="Alamat venue atau catatan tambahan"></textarea>
+    </div>
+
+    <h3 style="margin:1.8rem 0 1rem;font-size:1.05rem">Pembayaran</h3>
+    <div class="field">
+      <label>Metode pembayaran amplop tamu</label>
+      <select id="pay-method">
+        <option value="transfer">Transfer bank / e-wallet</option>
+        <option value="qris">QRIS</option>
+      </select>
+      <small class="field-note">Ini metode amplop digital yang tampil di undangan untuk tamu</small>
+    </div>
+    <div id="qris-section" class="hidden">
+      <div class="qris-box">
+        <img id="qris-img" alt="QRIS LuwengStudio">
+        <p class="hint">Scan QRIS untuk membayar, lalu kirim bukti via WhatsApp.</p>
+      </div>
+    </div>
+
+    <div class="order-summary">
+      <div class="row"><span>Theme</span><span id="sum-theme">-</span></div>
+      <div class="row"><span>Harga</span><span id="sum-price">Rp0</span></div>
+      <div class="row total"><span>Total Bayar</span><span id="sum-total">Rp0</span></div>
+    </div>
+    <button class="btn btn-gold btn-xl" onclick="submitOrder()" style="width:100%;margin-top:1rem">Kirim Order via WhatsApp</button>
+    <p class="hint" style="margin-top:.8rem;text-align:center">Order tersimpan otomatis, lalu WhatsApp terbuka dengan pesan terisi.</p>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-bottom">
+      <span>© <span class="year"></span> LuwengStudio · ThemeBox</span>
+      <span><a href="../../privacy/">Kebijakan Privasi</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="../js/catalog-data.js"></script>
+<script src="../js/order-form.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script src="../js/order-submit.js"></script>
+<script src="../js/qris.js"></script>
+<script src="../../js/nav.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  initNav();
+  initOrderForm();
+  initQris();
+  initFirebase();
+  const params = new URLSearchParams(location.search);
+  const f = params.get("theme");
+  const t = THEMES.find(x => x.file === f);
+  const card = document.getElementById("order-theme-card");
+  let base = "";
+  try {
+    const scripts = document.scripts;
+    for (const sc of scripts) {
+      const i = sc.src.indexOf("themebox/js/");
+      if (i >= 0) { base = sc.src.slice(0, i + "themebox/".length); break; }
+    }
+  } catch (e) {}
+  if (t) {
+    document.getElementById("order-theme").value = t.name;
+    document.getElementById("order-price").value = t.price;
+    card.innerHTML = `
+      <div class="theme-card-pro" style="max-width:280px;cursor:default">
+        <div class="theme-preview"><img src="${base}${t.preview}" alt="${t.name}">
+        <span class="price-badge">${formatRp(t.price)}</span></div>
+        <div class="theme-meta"><h3>${t.name}</h3><div class="cat">${t.cat}</div></div>
+      </div>`;
+  } else {
+    card.innerHTML = `<p style="color:var(--muted)">Belum pilih theme. <a href="../" style="color:var(--gold)">Kembali ke katalog →</a></p>`;
+  }
+  updateSummary();
+  document.querySelectorAll(".year").forEach(e => e.textContent = new Date().getFullYear());
+});
+</script>
+</body>
+</html>
