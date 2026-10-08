@@ -254,7 +254,10 @@ body.dev .btn-hack-purple:hover{
 
 /* ---------- running projects ---------- */
 .run-list{
-  display:flex;flex-direction:column;gap:.7rem;max-width:680px;
+  display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;max-width:900px;
+}
+@media(max-width:700px){
+  .run-list{grid-template-columns:1fr;max-width:680px}
 }
 .run-row{
   display:flex;align-items:center;gap:1rem;
