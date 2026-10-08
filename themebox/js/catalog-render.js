@@ -7,19 +7,25 @@ const TB_BASE = (() => {
   return "";
 })();
 
+function formatRp(n) {
+  return "Rp" + n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".").replace(".000", "rb");
+}
+
 function themeCard(t) {
   return `
-    <div class="theme-card-pro" data-file="${t.file}">
-      <div class="theme-preview" onclick="selectTheme('${t.file}')">
-        <img src="${TB_BASE}${t.preview}" alt="Preview ${t.name}" loading="lazy">
+    <div class="theme-card" data-file="${t.file}">
+      <div class="phone-mock" onclick="selectTheme('${t.file}')">
+        <div class="phone-frame">
+          <img src="${TB_BASE}${t.preview}" alt="Preview ${t.name}" loading="lazy">
+        </div>
         <span class="price-badge">${formatRp(t.price)}</span>
       </div>
-      <div class="theme-meta">
+      <div class="theme-info">
         <h3>${t.name}</h3>
-        <div class="cat">${t.cat}</div>
+        <div class="theme-cat">${t.cat}</div>
         <div class="theme-actions">
-          <a class="demo-link" href="${TB_BASE}demo/${t.file}" target="_blank" onclick="event.stopPropagation()">Lihat Demo</a>
-          <span class="order-link" onclick="selectTheme('${t.file}')">Pilih theme →</span>
+          <a class="btn-demo" href="${TB_BASE}demo/${t.file}" target="_blank" onclick="event.stopPropagation()">Lihat Demo</a>
+          <button class="btn-order-sm" onclick="event.stopPropagation();selectTheme('${t.file}')">Pilih Theme →</button>
         </div>
       </div>
     </div>`;
