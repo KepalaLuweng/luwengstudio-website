@@ -154,17 +154,14 @@
 <script src="js/stats-anim.js"></script>
 <script src="js/main.js"></script>
 
-<div class="pf-backdrop" id="bio-backdrop" hidden>
-  <div class="pf-modal" role="dialog" aria-modal="true" aria-labelledby="bio-title">
-    <button class="pf-close" id="bio-close" aria-label="Tutup">×</button>
-    <div style="display:flex;gap:1.2rem;align-items:flex-start;flex-wrap:wrap">
-      <img src="assets/img/avatar-anime.jpg" alt="KepalaLuweng" style="width:140px;height:140px;object-fit:cover;flex:none;border:1px solid var(--border-soft);border-radius:8px">
-      <div style="flex:1;min-width:220px">
-        <h3 id="bio-title" style="margin:0 0 .6rem">Tentang Saya</h3>
-        <p style="color:var(--muted);line-height:1.8">Nama saya <b style="color:var(--ink)">Darmawan Aditya</b>, dikenal sebagai <b style="color:var(--ink)">KepalaLuweng</b>. Saya seorang Android systems engineer — sehari-hari ngoprek kernel kustom (LuwengKernel), bikin root tools seperti LuwengSense dan L-Blocker yang jalan di Magisk, KernelSU, sampai APatch. Di luar itu, saya juga driver Grab aktif, jadi saya paham betul aplikasi yang enak dipakai di jalan.</p>
-        <p style="color:var(--muted);line-height:1.8;margin-top:.8rem"><b style="color:var(--ink)">LuwengStudio</b> adalah studio independen saya: jasa undangan digital lewat ThemeBox, aplikasi Android, sampai open data. Semua dikerjakan dengan satu prinsip sederhana — software harus cepat, jujur soal apa yang dilakukannya, dan benar-benar berguna.</p>
-      </div>
-    </div>
+<div class="bio-backdrop" id="bio-backdrop" hidden>
+  <div class="bio-hang"><div class="bio-string"></div>
+  <div class="bio-card" role="dialog" aria-modal="true" aria-labelledby="bio-title">
+    <button class="bio-close" id="bio-close" aria-label="Tutup">&times;</button>
+    <img class="bio-photo" src="assets/img/avatar-anime.jpg" alt="KepalaLuweng">
+    <h3 id="bio-title">Tentang Saya</h3>
+    <p class="bio-text" id="bio-text" data-full="Halo, aku Darmawan Aditya\u2014di dunia maya lebih dikenal sebagai KepalaLuweng. Aku adalah seorang Android systems engineer yang punya cara kerja cukup unik. Saat sedang tidak ngoprek Custom ROM, meracik modules (Magisk, KernelSU, APatch), atau membangun LuwengKernel, kamu mungkin menemukanku sedang mengaspal sebagai driver ojol di sekitaran Medan dan Deli Serdang.\n\nPengalaman harian di jalanan inilah yang membentuk prinsip utamaku: software itu harus kencang, jujur, dan benar-benar bisa diandalkan. Untuk mewujudkan standar itu dan menjaga ritme kerjaku tetap cepat, aku mengintegrasikan AI secara penuh dalam setiap alur kerja. Mulai dari brainstorming kode, merancang root tools seperti LuwengSense, sampai mengeksekusi ide-ide baru, AI adalah asisten andalan yang membuat proses engineering-ku jauh lebih efisien.\n\nSemua karyaku bernaung di bawah satu ekosistem. Lewat LuwengStudio, aku membangun solusi digital seperti undangan online (ThemeBox) dan aplikasi Android. Di YouTube, aku berbagi insight teknologi dan konten kreatif lewat LuwengTechId\u2014yang dapur redaksinya (dari skrip hingga riset affiliate) juga didukung erat oleh kecerdasan buatan. Sementara untuk urusan perbaikan langsung, aku mengelola Luweng Home Services\u2014layanan servis teknis rumahan yang praktis, di mana semua pengerjaan dilakukan fleksibel tanpa mengharuskan klien repot menunggu di lokasi."></p>
+  </div>
   </div>
 </div>
 

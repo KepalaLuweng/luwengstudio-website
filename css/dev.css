@@ -152,6 +152,51 @@ body.dev section.alt{
   animation:tblink 1s steps(1) infinite;
 }
 .tagline-box.done .tagline-cursor{animation:none;opacity:0;transition:opacity .5s}
+
+/* bio modal gantung */
+.bio-backdrop{
+  position:fixed;inset:0;z-index:100;
+  background:rgba(2,6,10,.75);backdrop-filter:blur(3px);
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:4rem 1rem 1rem;overflow-y:auto;
+}
+.bio-backdrop[hidden]{display:none}
+.bio-hang{display:flex;flex-direction:column;align-items:center}
+.bio-string{width:2px;height:3.5rem;background:linear-gradient(var(--green),transparent);opacity:.7}
+.bio-card{
+  position:relative;max-width:560px;width:100%;
+  background:#0d1117;border:1px solid var(--green);border-radius:12px;
+  padding:1.6rem 1.4rem 1.4rem;text-align:center;
+  box-shadow:0 0 40px rgba(0,255,136,.12);
+  transform-origin:top center;
+}
+.bio-card.swing{animation:bioswing 2.4s ease-in-out}
+@keyframes bioswing{
+  0%{transform:rotate(4deg)}
+  20%{transform:rotate(-3deg)}
+  40%{transform:rotate(2deg)}
+  60%{transform:rotate(-1.2deg)}
+  80%{transform:rotate(.6deg)}
+  100%{transform:rotate(0)}
+}
+.bio-close{
+  position:absolute;top:.6rem;right:.8rem;
+  background:none;border:none;color:var(--faint);
+  font-size:1.4rem;cursor:pointer;line-height:1;
+}
+.bio-close:hover{color:var(--green)}
+.bio-photo{
+  width:120px;height:120px;object-fit:cover;
+  border:2px solid var(--green);border-radius:8px;margin-bottom:.8rem;
+}
+.bio-card h3{margin:0 0 .8rem;color:var(--ink);font-family:var(--mono)}
+.bio-text{
+  text-align:left;font-family:var(--mono);font-size:.82rem;line-height:1.85;
+  color:var(--muted);white-space:pre-wrap;word-break:break-word;min-height:12em;
+}
+.bio-text::after{
+  content:"▋";color:var(--green);animation:tblink 1s steps(1) infinite;
+}
 .hero-dev .term-sub b{color:var(--green);font-weight:600}
 
 /* ---------- running projects ---------- */
