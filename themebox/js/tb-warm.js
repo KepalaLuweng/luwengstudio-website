@@ -18,7 +18,20 @@
     var grid = document.getElementById("tb-grid");
     if (!grid || typeof THEMES === "undefined") return;
     var list = cat === "semua" ? THEMES : THEMES.filter(function (t) { return t.cat === cat; });
-    grid.innerHTML = list.map(card).join("");
+    var shown = list.slice(0, 6);
+    grid.innerHTML = shown.map(card).join("");
+    var more = document.getElementById("tb-more");
+    if (more) {
+      if (list.length > 6) {
+        more.style.display = "block";
+        var link = more.querySelector("a");
+        var slug = { "Pernikahan": "pernikahan", "Khitanan": "khitanan", "Aqiqah": "aqiqah", "Ulang Tahun": "ultah", "Wisuda": "wisuda" }[cat];
+        link.href = slug ? slug + "/" : "#katalog";
+        link.textContent = "Lihat Semua " + list.length + " Theme →";
+      } else {
+        more.style.display = "none";
+      }
+    }
   }
   function initChips() {
     var chips = document.querySelectorAll("#tb-chips .tb-chip");
