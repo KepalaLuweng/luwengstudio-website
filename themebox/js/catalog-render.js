@@ -31,23 +31,24 @@ function themeCard(t) {
     </div>`;
 }
 
-function renderCatalog(cat) {
-  const grid = document.getElementById("theme-grid");
-  if (!grid) return;
-  const list = cat === "semua" ? THEMES : THEMES.filter(t => t.cat === cat);
-  grid.innerHTML = list.map(themeCard).join("");
-  const count = document.getElementById("theme-count");
-  if (count) count.textContent = list.length + " theme";
-}
-
-function initCatalogTabs() {
-  document.querySelectorAll(".cat-tabs .filter-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".cat-tabs .filter-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      renderCatalog(btn.dataset.cat);
-    });
-  });
+function renderCatalogSections() {
+  const wrap = document.getElementById("catalog-sections");
+  if (!wrap || typeof THEMES === "undefined") return;
+  const cats = ["Pernikahan", "Khitanan", "Aqiqah", "Ulang Tahun", "Wisuda"];
+  const emojis = {"Pernikahan": "💒", "Khitanan": "🕌", "Aqiqah": "👶", "Ulang Tahun": "🎂", "Wisuda": "🎓"};
+  wrap.innerHTML = cats.map(cat => {
+    const list = THEMES.filter(t => t.cat === cat);
+    const slug = cat.toLowerCase().replace(/ /g, "-");
+    return `
+    <div class="cat-section" id="cat-${slug}">
+      <div class="cat-section-head">
+        <span class="cat-section-emoji">${emojis[cat]}</span>
+        <h3>${cat}</h3>
+        <span class="cat-section-count">${list.length} theme</span>
+      </div>
+      <div class="theme-grid">${list.map(themeCard).join("")}</div>
+    </div>`;
+  }).join("");
 }
 
 function selectTheme(file) {

@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="css/tb-hero.css?v=2">
 <link rel="stylesheet" href="css/tb-section.css?v=2">
 <link rel="stylesheet" href="css/tb-kategori.css?v=2">
+<link rel="stylesheet" href="css/tb-catsection.css?v=2">
 <link rel="stylesheet" href="css/tb-katalog.css?v=2">
 <link rel="stylesheet" href="css/tb-steps.css?v=2">
 <link rel="stylesheet" href="css/tb-pricing.css?v=2">
@@ -78,19 +79,19 @@
       <p>Setiap kategori punya 10 theme eksklusif dengan desain dan karakter berbeda.</p>
     </div>
     <div class="cat-row">
-      <a class="cat-chip" href="#katalog" data-goto-cat="Pernikahan">
+      <a class="cat-chip" href="#cat-pernikahan">
         <span class="ci">💒</span><b>Pernikahan</b><span>10 theme</span>
       </a>
-      <a class="cat-chip" href="#katalog" data-goto-cat="Khitanan">
+      <a class="cat-chip" href="#cat-khitanan">
         <span class="ci">🕌</span><b>Khitanan</b><span>10 theme</span>
       </a>
-      <a class="cat-chip" href="#katalog" data-goto-cat="Aqiqah">
+      <a class="cat-chip" href="#cat-aqiqah">
         <span class="ci">👶</span><b>Aqiqah</b><span>10 theme</span>
       </a>
-      <a class="cat-chip" href="#katalog" data-goto-cat="Ulang Tahun">
+      <a class="cat-chip" href="#cat-ulang-tahun">
         <span class="ci">🎂</span><b>Ultah</b><span>10 theme</span>
       </a>
-      <a class="cat-chip" href="#katalog" data-goto-cat="Wisuda">
+      <a class="cat-chip" href="#cat-wisuda">
         <span class="ci">🎓</span><b>Wisuda</b><span>10 theme</span>
       </a>
     </div>
@@ -104,16 +105,7 @@
       <h2>Katalog Theme</h2>
       <p>Klik <b>Lihat Demo</b> untuk membuka preview asli, atau <b>Pilih Theme</b> untuk langsung order.</p>
     </div>
-    <div class="cat-tabs">
-      <button class="filter-btn active" data-cat="semua">Semua</button>
-      <button class="filter-btn" data-cat="Pernikahan">Pernikahan</button>
-      <button class="filter-btn" data-cat="Khitanan">Khitanan</button>
-      <button class="filter-btn" data-cat="Aqiqah">Aqiqah</button>
-      <button class="filter-btn" data-cat="Ulang Tahun">Ulang Tahun</button>
-      <button class="filter-btn" data-cat="Wisuda">Wisuda</button>
-    </div>
-    <div class="theme-count"><span id="theme-count">50 theme</span></div>
-    <div class="theme-grid" id="theme-grid"></div>
+    <div id="catalog-sections"></div>
   </div>
 </section>
 
@@ -281,20 +273,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (burger && links) burger.addEventListener("click", () => links.classList.toggle("open"));
   links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => links.classList.remove("open")));
 
-  initCatalogTabs();
-  renderCatalog("semua");
+  renderCatalogSections();
   initFaq();
-
-  // Kategori card -> filter katalog
-  document.querySelectorAll("[data-goto-cat]").forEach(card => {
-    card.addEventListener("click", () => {
-      const cat = card.dataset.gotoCat;
-      document.querySelectorAll(".cat-tabs .filter-btn").forEach(b => {
-        b.classList.toggle("active", b.dataset.cat === cat);
-      });
-      renderCatalog(cat);
-    });
-  });
 });
 </script>
 </body>
