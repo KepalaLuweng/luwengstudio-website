@@ -1,0 +1,134 @@
+/* tb-wedding.css — tema pink romantis khusus halaman kategori Pernikahan. */
+:root{
+  --wd-blush:#fdf2f5;
+  --wd-ivory:#fff9fb;
+  --wd-ink:#4a3238;
+  --wd-muted:#9a7a84;
+  --wd-pink:#d4567e;
+  --wd-rose:#e8a0b4;
+  --wd-gold:#c9a227;
+  --wd-line:#f0dbe1;
+  --wd-card:#ffffff;
+  --wd-shadow:0 4px 24px rgba(212,86,126,.08);
+}
+body.tb-wedding{
+  background:var(--wd-blush);color:var(--wd-ink);
+  font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;margin:0;
+}
+body.tb-wedding h1,body.tb-wedding h2,body.tb-wedding h3{
+  font-family:Georgia,"Playfair Display","Times New Roman",serif;
+  font-weight:600;color:var(--wd-ink);font-style:normal;
+}
+/* nav */
+.wd-nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(253,242,245,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--wd-line);
+}
+.wd-nav-inner{
+  max-width:1100px;margin:0 auto;padding:.9rem 1.2rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.wd-logo{font-family:Georgia,serif;font-size:1.25rem;color:var(--wd-ink);text-decoration:none}
+.wd-logo b{color:var(--wd-pink)}
+.wd-nav .links{display:flex;gap:1.4rem}
+.wd-nav .links a{color:var(--wd-muted);text-decoration:none;font-size:.88rem}
+.wd-nav .links a:hover{color:var(--wd-pink)}
+.wd-burger{display:none;background:none;border:1px solid var(--wd-line);border-radius:8px;
+  font-size:1.2rem;padding:.3rem .7rem;color:var(--wd-ink);cursor:pointer}
+/* hero */
+.wd-hero{
+  text-align:center;padding:3.5rem 1.2rem 2.5rem;
+  background:linear-gradient(180deg,#fdf2f5 0%,#fbe8ee 50%,#fdf2f5 100%);
+  position:relative;overflow:hidden;
+}
+.wd-hero::before{
+  content:"♥ ♥ ♥";position:absolute;top:1rem;left:0;right:0;
+  color:var(--wd-rose);opacity:.25;font-size:1rem;letter-spacing:12px;
+}
+.wd-hero .kicker{
+  display:inline-block;font-size:.78rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--wd-pink);margin-bottom:1rem;
+  animation:wdFadeUp .8s ease both;
+}
+.wd-hero h1{
+  font-size:2.3rem;line-height:1.3;margin:0 0 1rem;max-width:640px;
+  margin-left:auto;margin-right:auto;
+  animation:wdFadeUp 1s ease .15s both;
+}
+.wd-hero h1 em{color:var(--wd-pink);font-style:normal}
+.wd-hero .lead{
+  color:var(--wd-muted);font-size:1.02rem;line-height:1.85;max-width:580px;margin:0 auto;
+  font-style:italic;
+  animation:wdFadeUp 1.2s ease .3s both;
+}
+.wd-hero .lead::after{
+  content:"❦";display:block;color:var(--wd-rose);font-size:1.1rem;
+  font-style:normal;margin-top:.8rem;opacity:.7;
+}
+@keyframes wdFadeUp{
+  from{opacity:0;transform:translateY(16px)}
+  to{opacity:1;transform:none}
+}
+/* theme grid */
+.wd-section{max-width:1100px;margin:0 auto;padding:2rem 1.2rem 3rem}
+.wd-section h2{text-align:center;font-size:1.6rem;margin:0 0 .4rem}
+.wd-section .sub{text-align:center;color:var(--wd-muted);margin:0 0 1.8rem;font-size:.92rem}
+.wd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.wd-card{
+  background:var(--wd-card);border:1px solid var(--wd-line);border-radius:16px;
+  overflow:hidden;box-shadow:var(--wd-shadow);
+  transition:transform .3s,box-shadow .3s;position:relative;
+}
+.wd-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(212,86,126,.15)}
+.wd-card .wd-img{position:relative;overflow:hidden}
+.wd-card img{width:100%;height:240px;object-fit:cover;display:block;transition:transform .4s}
+.wd-card:hover img{transform:scale(1.05)}
+.wd-card .wd-price{
+  position:absolute;top:.8rem;right:.8rem;
+  background:rgba(212,86,126,.92);color:#fff;font-size:.78rem;font-weight:600;
+  padding:.35rem .9rem;border-radius:999px;backdrop-filter:blur(4px);
+}
+.wd-card-body{padding:1.1rem 1.2rem 1.3rem;text-align:center}
+.wd-card-body h3{font-size:1.05rem;margin:0 0 .8rem}
+.wd-card-actions{display:flex;gap:.6rem}
+.wd-btn{
+  flex:1;text-align:center;padding:.65rem;border-radius:10px;font-size:.85rem;font-weight:600;
+  text-decoration:none;transition:all .25s;cursor:pointer;
+}
+.wd-btn-demo{background:var(--wd-ivory);border:1px solid var(--wd-line);color:var(--wd-ink)}
+.wd-btn-demo:hover{border-color:var(--wd-pink);color:var(--wd-pink)}
+.wd-btn-order{background:linear-gradient(135deg,var(--wd-pink),#b83a62);color:#fff;border:none;
+  box-shadow:0 4px 14px rgba(212,86,126,.3)}
+.wd-btn-order:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(212,86,126,.4)}
+/* footer */
+.wd-footer{
+  text-align:center;padding:1.5rem;color:var(--wd-muted);font-size:.82rem;
+  border-top:1px solid var(--wd-line);background:var(--wd-ivory);
+}
+/* wa float */
+.wd-wa{
+  position:fixed;bottom:1.2rem;right:1.2rem;z-index:60;
+  width:52px;height:52px;border-radius:50%;background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(37,211,102,.4);
+}
+.wd-wa svg{width:28px;height:28px}
+/* responsive */
+@media(max-width:768px){
+  .wd-nav .links{display:none;position:absolute;top:100%;left:0;right:0;
+    background:var(--wd-ivory);flex-direction:column;padding:1rem 1.2rem;
+    border-bottom:1px solid var(--wd-line);gap:.8rem}
+  .wd-nav .links.open{display:flex}
+  .wd-burger{display:block}
+  .wd-hero h1{font-size:1.7rem}
+  .wd-grid{grid-template-columns:repeat(2,1fr);gap:.9rem}
+}
+@media(max-width:480px){
+  .wd-grid{grid-template-columns:repeat(2,1fr);gap:.7rem}
+  .wd-card img{height:170px}
+  .wd-card-body{padding:.8rem .7rem 1rem}
+  .wd-card-body h3{font-size:.88rem}
+  .wd-btn{font-size:.75rem;padding:.55rem .3rem}
+  .wd-hero{padding:2.5rem 1rem 2rem}
+}
