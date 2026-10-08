@@ -49,6 +49,16 @@ const THEMES = [
   { preview: "preview/wisuda-08-rektorat-agung.jpg", file: "wisuda-08-rektorat-agung.html", name: "Rektorat Agung", cat: "Wisuda", price: 150000 },
   { preview: "preview/wisuda-09-laurel-emas.jpg", file: "wisuda-09-laurel-emas.html", name: "Laurel Emas", cat: "Wisuda", price: 150000 },
   { preview: "preview/wisuda-10-menara-ilmu.jpg", file: "wisuda-10-menara-ilmu.html", name: "Menara Ilmu", cat: "Wisuda", price: 150000 },
+  { preview: "preview/agama-01-hijau-damai.jpg", file: "agama-01-hijau-damai.html", name: "Hijau Damai", cat: "Keagamaan", price: 75000 },
+  { preview: "preview/agama-02-putih-suci.jpg", file: "agama-02-putih-suci.html", name: "Putih Suci", cat: "Keagamaan", price: 75000 },
+  { preview: "preview/agama-03-emas-berkah.jpg", file: "agama-03-emas-berkah.html", name: "Emas Berkah", cat: "Keagamaan", price: 100000 },
+  { preview: "preview/agama-04-biru-langit.jpg", file: "agama-04-biru-langit.html", name: "Biru Langit", cat: "Keagamaan", price: 75000 },
+  { preview: "preview/agama-05-krem-lembut.jpg", file: "agama-05-krem-lembut.html", name: "Krem Lembut", cat: "Keagamaan", price: 75000 },
+  { preview: "preview/agama-06-sage-tenang.jpg", file: "agama-06-sage-tenang.html", name: "Sage Tenang", cat: "Keagamaan", price: 75000 },
+  { preview: "preview/agama-07-toska-sejuk.jpg", file: "agama-07-toska-sejuk.html", name: "Toska Sejuk", cat: "Keagamaan", price: 100000 },
+  { preview: "preview/agama-08-lavender-khusyu.jpg", file: "agama-08-lavender-khusyu.html", name: "Lavender Khusyu", cat: "Keagamaan", price: 100000 },
+  { preview: "preview/agama-09-peach-hangat.jpg", file: "agama-09-peach-hangat.html", name: "Peach Hangat", cat: "Keagamaan", price: 75000 },
+  { preview: "preview/agama-10-abu-elegan.jpg", file: "agama-10-abu-elegan.html", name: "Abu Elegan", cat: "Keagamaan", price: 75000 },
 ];
 
 function formatRp(n) {

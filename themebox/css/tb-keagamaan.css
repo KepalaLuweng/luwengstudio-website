@@ -87,7 +87,7 @@ body.tb-keagamaan h1,body.tb-keagamaan h2,body.tb-keagamaan h3{
 .td-card .td-price{font-size:.85rem;font-weight:700;padding:.55rem .6rem;border-radius:10px;text-align:center;flex:1;min-width:80px}
 .td-card-body{padding:1.1rem 1.2rem 1.3rem;text-align:center}
 .td-card-body h3{font-size:1.05rem;margin:0 0 .8rem}
-.td-card-actions{display:flex;flex-direction:row;gap:.5rem;align-items:center;flex-wrap:wrap}
+.td-card-actions{display:flex;flex-direction:column;gap:.5rem}
 .td-btn{
   text-align:center;padding:.55rem;border-radius:10px;font-size:.82rem;font-weight:600;
   text-decoration:none;transition:all .25s;cursor:pointer;
