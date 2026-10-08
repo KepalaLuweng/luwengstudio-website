@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ThemeBox — Undangan Digital | LuwengStudio</title>
+<meta name="description" content="50 theme undangan digital premium. Order online, bayar QRIS, verifikasi WhatsApp.">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/layout.css">
+<link rel="stylesheet" href="css/themebox-catalog.css">
+<link rel="stylesheet" href="css/themebox-form.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="container nav-inner">
+    <a class="logo" href="../">Luweng<span>Studio</span></a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <nav class="links" id="nav-links">
+      <a href="../#portfolio">Portofolio</a>
+      <a href="./">ThemeBox</a>
+      <a href="../#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="tb-hero">
+    <span class="tag">ThemeBox</span>
+    <h1>Katalog Undangan Digital</h1>
+    <p>Pilih theme favoritmu, isi form order, bayar via QRIS — undangan digital siap dibuat.</p>
+  </div>
+
+  <div class="cat-tabs">
+    <button class="filter-btn active" data-cat="semua">Semua</button>
+    <button class="filter-btn" data-cat="Pernikahan">Pernikahan</button>
+    <button class="filter-btn" data-cat="Khitanan">Khitanan</button>
+    <button class="filter-btn" data-cat="Aqiqah">Aqiqah</button>
+    <button class="filter-btn" data-cat="Ultah">Ultah</button>
+    <button class="filter-btn" data-cat="Wisuda">Wisuda</button>
+  </div>
+  <div class="theme-grid" id="theme-grid"></div>
+
+  <div class="order-section" id="form-order">
+    <span class="tag">Form Order</span>
+    <h2>Order Undangan</h2>
+    <div class="field">
+      <label>Theme dipilih</label>
+      <input type="text" id="order-theme" readonly placeholder="Klik salah satu theme di atas">
+      <input type="hidden" id="order-price" value="0">
+    </div>
+    <div class="field">
+      <label>Nama pemesan</label>
+      <input type="text" id="buyer-name" placeholder="Nama lengkap">
+    </div>
+    <div class="field">
+      <label>No. WhatsApp</label>
+      <input type="tel" id="buyer-wa" placeholder="08xxxxxxxxxx">
+    </div>
+    <div class="field">
+      <label>Tanggal acara</label>
+      <input type="date" id="event-date">
+    </div>
+    <div class="field">
+      <label>Alamat / catatan <span class="hint">(opsional)</span></label>
+      <textarea id="buyer-address" rows="2" placeholder="Alamat atau catatan tambahan"></textarea>
+    </div>
+    <div class="field">
+      <label>Metode pembayaran amplop</label>
+      <select id="pay-method">
+        <option value="transfer">Transfer bank / e-wallet</option>
+        <option value="qris">QRIS</option>
+      </select>
+    </div>
+    <div id="qris-section" class="hidden">
+      <div class="qris-box">
+        <img id="qris-img" alt="QRIS LuwengStudio">
+        <p class="hint">Scan QRIS di atas untuk membayar, lalu kirim bukti via WhatsApp.</p>
+      </div>
+    </div>
+    <div class="order-summary">
+      <div class="row"><span>Theme</span><span id="sum-theme">-</span></div>
+      <div class="row"><span>Harga</span><span id="sum-price">Rp0</span></div>
+      <div class="row total"><span>Total</span><span id="sum-total">Rp0</span></div>
+    </div>
+    <button class="btn btn-gold" onclick="submitOrder()" style="width:100%">Kirim via WhatsApp</button>
+    <p class="hint" style="margin-top:.8rem;text-align:center">Dengan menekan tombol, order tersimpan dan WhatsApp terbuka dengan pesan otomatis.</p>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> LuwengStudio · ThemeBox</span>
+      <span><a href="../privacy/">Kebijakan Privasi</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="js/catalog-data.js"></script>
+<script src="js/catalog-render.js"></script>
+<script src="js/order-form.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/order-submit.js"></script>
+<script src="js/qris.js"></script>
+<script src="../js/nav.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  initNav();
+  initCatalogTabs();
+  renderCatalog("semua");
+  initOrderForm();
+  initQris();
+  initFirebase();
+  document.getElementById("year").textContent = new Date().getFullYear();
+});
+</script>
+</body>
+</html>

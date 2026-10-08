@@ -1,0 +1,28 @@
+.themebox-cta{
+  background:linear-gradient(135deg,#171c28,#1e2433);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:3rem 2.2rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.themebox-cta::before{
+  content:"";
+  position:absolute;
+  top:-60px;right:-60px;
+  width:220px;height:220px;
+  background:radial-gradient(circle,rgba(212,169,78,.18),transparent 70%);
+}
+.themebox-cta h2{font-size:1.8rem;margin-bottom:.6rem}
+.themebox-cta p{color:var(--muted);max-width:560px;margin:0 auto 1.8rem}
+.price-line{
+  display:flex;
+  justify-content:center;
+  gap:1.6rem;
+  flex-wrap:wrap;
+  margin-bottom:1.8rem;
+}
+.price-line div{text-align:center}
+.price-line b{display:block;font-size:1.25rem;color:var(--gold2)}
+.price-line span{font-size:.82rem;color:var(--muted)}

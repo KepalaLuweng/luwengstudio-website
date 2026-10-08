@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LuwengStudio — Android Engineer & Digital Studio</title>
+<meta name="description" content="LuwengStudio: custom kernel Android, modul root, aplikasi, open data, dan jasa undangan digital ThemeBox.">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/portfolio.css">
+<link rel="stylesheet" href="css/themebox.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="container nav-inner">
+    <a class="logo" href="./">Luweng<span>Studio</span></a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <nav class="links" id="nav-links">
+      <a href="#portfolio">Portofolio</a>
+      <a href="themebox/">ThemeBox</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="tag">Android Engineer · Indonesia</span>
+    <h1>Membangun perangkat lunak yang <em>cepat, jujur, dan berguna.</em></h1>
+    <p class="lead">Dari custom kernel dan modul root hingga aplikasi harian dan jasa undangan digital — semua dikerjakan dengan standar engineer, tanpa gimmick.</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#portfolio">Lihat Portofolio</a>
+      <a class="btn btn-ghost" href="themebox/">Jasa Undangan Digital</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>11</b><span>Project aktif</span></div>
+      <div class="stat"><b>50</b><span>Theme undangan</span></div>
+      <div class="stat"><b>6290+</b><span>Data SPBU terbuka</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <span class="tag">Portofolio</span>
+    <h2 class="section-title">Project yang dikerjakan</h2>
+    <p class="section-sub">Kernel, modul root, aplikasi, dan open data — sebagian open source di GitHub, sebagian showcase karya indie.</p>
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="semua">Semua</button>
+      <button class="filter-btn" data-filter="kernel">Kernel</button>
+      <button class="filter-btn" data-filter="modul">Modul Root</button>
+      <button class="filter-btn" data-filter="aplikasi">Aplikasi</button>
+      <button class="filter-btn" data-filter="data">Data & Util</button>
+    </div>
+    <div class="grid" id="portfolio-grid"></div>
+  </div>
+</section>
+
+<section id="themebox-home">
+  <div class="container">
+    <div class="themebox-cta">
+      <span class="tag">Jasa · ThemeBox</span>
+      <h2>Undangan Digital Premium</h2>
+      <p>50 theme eksklusif untuk pernikahan, khitanan, aqiqah, ulang tahun, dan wisuda. Order online, bayar via QRIS, verifikasi WhatsApp.</p>
+      <div class="price-line">
+        <div><b>Rp150rb</b><span>mulai dari</span></div>
+        <div><b>Rp300rb</b><span>theme premium</span></div>
+        <div><b>50</b><span>theme pilihan</span></div>
+      </div>
+      <a class="btn btn-gold" href="themebox/">Buka Katalog ThemeBox</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site" id="kontak">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="./">Luweng<span>Studio</span></a>
+        <p>Studio perangkat lunak independen. Android systems, aplikasi, dan layanan digital.</p>
+      </div>
+      <div>
+        <p><b>Tautan</b><br>
+        <a href="https://github.com/KepalaLuweng" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="https://www.youtube.com/@luwengtechid" target="_blank" rel="noopener">YouTube</a> ·
+        <a href="https://t.me/luwengtechofficial" target="_blank" rel="noopener">Telegram</a><br>
+        <a href="privacy/">Kebijakan Privasi</a></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> LuwengStudio</span>
+      <span>Dibangun dengan standar engineer.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/portfolio-data.js"></script>
+<script src="js/portfolio-render.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

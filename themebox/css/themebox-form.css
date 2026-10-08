@@ -1,0 +1,53 @@
+.order-section{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:2.2rem;
+  margin-bottom:3rem;
+}
+.order-section h2{margin-bottom:1.4rem}
+.field{margin-bottom:1.2rem}
+.field label{
+  display:block;font-size:.85rem;font-weight:600;
+  margin-bottom:.4rem;color:var(--text);
+}
+.field input,.field select,.field textarea{
+  width:100%;
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:10px;
+  color:var(--text);
+  padding:.75rem 1rem;
+  font-size:.95rem;
+  font-family:inherit;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--gold);
+}
+.field .hint{font-size:.8rem;color:var(--muted);margin-top:.3rem}
+.qris-box{
+  text-align:center;
+  background:var(--bg2);
+  border:1px dashed var(--border);
+  border-radius:12px;
+  padding:1.5rem;
+  margin:1rem 0;
+}
+.qris-box img{max-width:240px;margin:0 auto 1rem;border-radius:8px}
+.order-summary{
+  background:var(--bg2);
+  border-radius:12px;
+  padding:1.2rem;
+  margin:1.5rem 0;
+}
+.order-summary .row{
+  display:flex;justify-content:space-between;
+  padding:.3rem 0;font-size:.92rem;
+}
+.order-summary .row.total{
+  border-top:1px solid var(--border);
+  margin-top:.5rem;padding-top:.8rem;
+  font-weight:700;color:var(--gold2);font-size:1.05rem;
+}
+.hidden{display:none}
+@media(max-width:720px){.order-section{padding:1.5rem}}

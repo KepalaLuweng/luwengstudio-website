@@ -1,0 +1,35 @@
+.hero{
+  padding:5.5rem 0 4rem;
+  background:
+    radial-gradient(600px 300px at 80% 10%,rgba(212,169,78,.12),transparent),
+    radial-gradient(500px 260px at 10% 90%,rgba(212,169,78,.07),transparent);
+}
+.hero h1{
+  font-size:2.6rem;
+  margin-bottom:1rem;
+  max-width:640px;
+}
+.hero h1 em{font-style:normal;color:var(--gold2)}
+.hero p.lead{
+  color:var(--muted);
+  font-size:1.08rem;
+  max-width:600px;
+  margin-bottom:2rem;
+}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-stats{
+  display:flex;
+  gap:2.5rem;
+  margin-top:3rem;
+  flex-wrap:wrap;
+}
+.stat b{
+  display:block;
+  font-size:1.6rem;
+  color:var(--gold2);
+}
+.stat span{color:var(--muted);font-size:.88rem}
+@media(max-width:720px){
+  .hero h1{font-size:1.9rem}
+  .hero{padding:3.5rem 0 2.5rem}
+}
