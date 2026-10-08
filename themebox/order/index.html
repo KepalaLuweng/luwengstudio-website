@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Order Undangan | ThemeBox LuwengStudio</title>
-<meta name="description" content="Form order undangan digital ThemeBox. Isi data, bayar via QRIS, terima link dalam 1x24 jam.">
+<meta name="description" content="Form order undangan digital ThemeBox. Isi data acara, upload foto, bayar via QRIS — undangan jadi dalam 1x24 jam.">
 <link rel="stylesheet" href="../../css/base.css">
 <link rel="stylesheet" href="../../css/layout.css">
 <link rel="stylesheet" href="../css/tb-pro.css">
@@ -24,57 +24,165 @@
   </div>
 </header>
 
-<div class="container" style="max-width:720px;padding:3rem 1.2rem">
+<div class="order-wrap">
   <div class="breadcrumb"><a href="../">ThemeBox</a> / Order</div>
 
-  <div id="order-theme-card" style="margin:1.5rem 0"></div>
+  <div id="order-theme-card"></div>
 
   <span class="tag">Form Order</span>
-  <h1 style="font-family:var(--serif);font-size:1.8rem;margin-bottom:.5rem">Lengkapi Data Order</h1>
-  <p style="color:var(--muted);margin-bottom:2rem">Isi dengan teliti — data ini yang tampil di undangan digitalmu.</p>
+  <h1 style="font-size:var(--fs-h1);margin-bottom:.5rem">Lengkapi Data Order</h1>
+  <p style="color:var(--muted);margin-bottom:2rem;line-height:1.7">Isi dengan teliti — data ini yang tampil di undangan digitalmu.</p>
 
   <div id="form-order">
-    <div class="field">
-      <label>Theme dipilih</label>
-      <input type="text" id="order-theme" readonly placeholder="Memuat...">
-      <input type="hidden" id="order-price" value="0">
+    <div class="form-section">
+      <h2><span class="step-n">1</span> Data Pemesan</h2>
+      <p class="sec-desc">Link undangan dikirim ke WhatsApp ini setelah jadi.</p>
+      <div class="field" data-field="buyer-name">
+        <label>Nama pemesan <span class="req">*</span></label>
+        <input type="text" id="buyer-name" placeholder="Nama lengkap" autocomplete="name">
+        <small class="hint">Link undangan: luwengstudio.my.id/nama-pemesan</small>
+        <small class="err-msg">Nama pemesan wajib diisi</small>
+      </div>
+      <div class="field" data-field="buyer-wa">
+        <label>No. WhatsApp aktif <span class="req">*</span></label>
+        <input type="tel" id="buyer-wa" placeholder="08xxxxxxxxxx" autocomplete="tel" inputmode="tel">
+        <small class="err-msg">No. WhatsApp wajib diisi</small>
+      </div>
     </div>
 
-    <h3 style="margin:1.8rem 0 1rem;font-size:1.05rem">Data Pemesan</h3>
-    <div class="field">
-      <label>Nama pemesan</label>
-      <input type="text" id="buyer-name" placeholder="Nama lengkap">
-      <small class="field-note">Link undangan: luwengstudio.my.id/nama-pemesan (pengantin tulis: nama &amp; pasangan)</small>
-    </div>
-    <div class="field">
-      <label>No. WhatsApp aktif</label>
-      <input type="tel" id="buyer-wa" placeholder="08xxxxxxxxxx">
-      <small class="field-note">Link undangan dikirim ke nomor ini</small>
+    <div class="form-section">
+      <h2><span class="step-n">2</span> Detail Acara</h2>
+      <p class="sec-desc">Tanggal, waktu, dan lokasi yang tampil di undangan.</p>
+      <div class="field" data-field="event-name">
+        <label><span id="label-event-name">Nama acara</span> <span class="req">*</span></label>
+        <input type="text" id="event-name" placeholder="">
+        <small class="err-msg">Wajib diisi</small>
+      </div>
+      <div class="field-row">
+        <div class="field" data-field="event-date">
+          <label>Tanggal acara <span class="req">*</span></label>
+          <input type="date" id="event-date">
+          <small class="err-msg">Tanggal wajib diisi</small>
+        </div>
+        <div class="field" data-field="event-time">
+          <label>Waktu acara <span class="req">*</span></label>
+          <input type="time" id="event-time">
+          <small class="err-msg">Waktu wajib diisi</small>
+        </div>
+      </div>
+      <div class="field" data-field="event-venue">
+        <label>Tempat / gedung <span class="req">*</span></label>
+        <input type="text" id="event-venue" placeholder="cth: Gedung Serbaguna Harmoni">
+        <small class="err-msg">Tempat wajib diisi</small>
+      </div>
+      <div class="field" data-field="event-address">
+        <label>Alamat lengkap <span class="req">*</span></label>
+        <textarea id="event-address" rows="2" placeholder="Jl. Merdeka No. 10, Jakarta"></textarea>
+        <small class="err-msg">Alamat wajib diisi</small>
+      </div>
+      <div class="field">
+        <label>Link Google Maps <span style="color:var(--muted);font-weight:400">(opsional)</span></label>
+        <input type="url" id="event-maps" placeholder="https://maps.google.com/..." inputmode="url">
+        <small class="hint">Tamu bisa tap untuk navigasi langsung ke lokasi.</small>
+      </div>
     </div>
 
-    <h3 style="margin:1.8rem 0 1rem;font-size:1.05rem">Detail Acara</h3>
-    <div class="field">
-      <label>Tanggal acara</label>
-      <input type="date" id="event-date">
-    </div>
-    <div class="field">
-      <label>Alamat / catatan <span class="hint">(opsional)</span></label>
-      <textarea id="buyer-address" rows="2" placeholder="Alamat venue atau catatan tambahan"></textarea>
+    <div class="form-section">
+      <h2><span class="step-n">3</span> Amplop Digital</h2>
+      <p class="sec-desc">Rekening/e-wallet/QRIS milikmu yang tampil di undangan untuk tamu.</p>
+      <div class="field">
+        <label>Metode amplop <span class="req">*</span></label>
+        <select id="amplop-method">
+          <option value="bank">Rekening Bank</option>
+          <option value="ewallet">E-Wallet</option>
+          <option value="qris">QRIS</option>
+        </select>
+      </div>
+      <div class="field" data-field="amplop-info">
+        <label><span id="label-amplop-info">Nomor rekening</span> <span class="req">*</span></label>
+        <input type="text" id="amplop-info" placeholder="cth: BCA 8210xxxxxx a.n. Rina">
+        <small class="err-msg">Wajib diisi</small>
+      </div>
+      <div class="field hidden" id="wrap-foto-qris" data-field="foto-qris">
+        <label>Foto QRIS <span class="req">*</span></label>
+        <div class="photo-box" id="box-foto-qris">
+          <input type="file" id="foto-qris" accept="image/*">
+          <div class="ph-label">Pilih foto QRIS</div>
+          <div class="ph-hint">Tap untuk pilih dari galeri</div>
+        </div>
+        <small class="err-msg">Foto QRIS wajib dipilih</small>
+      </div>
     </div>
 
-    <h3 style="margin:1.8rem 0 1rem;font-size:1.05rem">Pembayaran</h3>
-    <div class="field">
-      <label>Metode pembayaran amplop tamu</label>
-      <select id="pay-method">
-        <option value="transfer">Transfer bank / e-wallet</option>
-        <option value="qris">QRIS</option>
-      </select>
-      <small class="field-note">Ini metode amplop digital yang tampil di undangan untuk tamu</small>
+    <div class="form-section">
+      <h2><span class="step-n">4</span> Foto Undangan</h2>
+      <p class="sec-desc">Foto tampil di undangan. Gunakan foto terbaik &amp; jelas.</p>
+      <div class="photo-grid" id="couple-photos" hidden>
+        <div class="field" data-field="foto-pria" style="margin:0">
+          <div class="photo-box" id="box-foto-pria">
+            <input type="file" id="foto-pria" accept="image/*">
+            <div class="ph-label">Foto Mempelai Pria <span class="req">*</span></div>
+            <div class="ph-hint">Tap untuk pilih</div>
+          </div>
+          <small class="err-msg">Foto mempelai pria wajib dipilih</small>
+        </div>
+        <div class="field" data-field="foto-wanita" style="margin:0">
+          <div class="photo-box" id="box-foto-wanita">
+            <input type="file" id="foto-wanita" accept="image/*">
+            <div class="ph-label">Foto Mempelai Wanita <span class="req">*</span></div>
+            <div class="ph-hint">Tap untuk pilih</div>
+          </div>
+          <small class="err-msg">Foto mempelai wanita wajib dipilih</small>
+        </div>
+      </div>
+      <div class="field" id="wrap-foto-utama" data-field="foto-utama" hidden>
+        <label><span id="label-foto-utama">Foto utama</span> <span class="req">*</span></label>
+        <div class="photo-box" id="box-foto-utama">
+          <input type="file" id="foto-utama" accept="image/*">
+          <div class="ph-label">Pilih foto</div>
+          <div class="ph-hint">Tap untuk pilih dari galeri</div>
+        </div>
+        <small class="err-msg">Foto utama wajib dipilih</small>
+      </div>
+      <div class="field" style="margin-top:1.15rem">
+        <label>Foto galeri <span style="color:var(--muted);font-weight:400">(maks. 5, opsional)</span></label>
+        <div class="photo-box" id="box-foto-gallery">
+          <input type="file" id="foto-gallery" accept="image/*" multiple>
+          <div class="ph-label">Tambah foto galeri</div>
+          <div class="ph-hint">Bisa pilih beberapa sekaligus</div>
+        </div>
+        <div class="photo-thumbs" id="gallery-thumbs"></div>
+      </div>
     </div>
-    <div id="qris-section" class="hidden">
-      <div class="qris-box">
-        <img id="qris-img" alt="QRIS LuwengStudio">
-        <p class="hint">Scan QRIS untuk membayar, lalu kirim bukti via WhatsApp.</p>
+
+    <div class="form-section">
+      <h2><span class="step-n">5</span> Tambahan</h2>
+      <p class="sec-desc">Opsional — lengkapi bila perlu.</p>
+      <div class="field">
+        <label>Alamat kirim kado fisik</label>
+        <textarea id="gift-address" rows="2" placeholder="Alamat lengkap untuk tamu yang ingin kirim kado"></textarea>
+      </div>
+      <div class="field hidden" id="wrap-dresscode">
+        <label>Dress code</label>
+        <input type="text" id="dress-code" placeholder="cth: Bebas rapi / nuansa pastel">
+      </div>
+      <div class="field">
+        <label>Link live streaming</label>
+        <input type="url" id="live-stream" placeholder="https://youtube.com/... / zoom ..." inputmode="url">
+        <small class="hint">Untuk tamu yang tidak bisa hadir langsung.</small>
+      </div>
+      <div class="field">
+        <label>Catatan untuk admin</label>
+        <textarea id="order-notes" rows="2" placeholder="Request khusus, revisi warna, dsb."></textarea>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2><span class="step-n">6</span> Pembayaran</h2>
+      <p class="sec-desc">Scan QRIS di bawah sejumlah total bayar, lalu kirim bukti via WhatsApp.</p>
+      <div class="qris-pay">
+        <img src="../../assets/img/qris.png" alt="QRIS LuwengStudio">
+        <p class="hint">QRIS LuwengStudio — bisa dari semua e-wallet &amp; m-banking.<br>Setelah bayar, tap tombol di bawah dan kirim bukti di chat WhatsApp.</p>
       </div>
     </div>
 
@@ -83,8 +191,8 @@
       <div class="row"><span>Harga</span><span id="sum-price">Rp0</span></div>
       <div class="row total"><span>Total Bayar</span><span id="sum-total">Rp0</span></div>
     </div>
-    <button class="btn btn-gold btn-xl" onclick="submitOrder()" style="width:100%;margin-top:1rem">Kirim Order via WhatsApp</button>
-    <p class="hint" style="margin-top:.8rem;text-align:center">Order tersimpan otomatis, lalu WhatsApp terbuka dengan pesan terisi.</p>
+    <button class="btn-submit" id="btn-submit" onclick="submitOrder()">Kirim Order via WhatsApp</button>
+    <p class="form-note" id="upload-note">Foto diupload otomatis saat order dikirim.<br>Order tersimpan, lalu WhatsApp terbuka dengan pesan terisi.</p>
   </div>
 </div>
 
@@ -99,43 +207,16 @@
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
 <script src="../js/catalog-data.js"></script>
 <script src="../js/order-form.js"></script>
 <script src="../js/firebase-config.js"></script>
 <script src="../js/order-submit.js"></script>
-<script src="../js/qris.js"></script>
 <script src="../../js/nav.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
-  initOrderForm();
-  initQris();
-  initFirebase();
-  const params = new URLSearchParams(location.search);
-  const f = params.get("theme");
-  const t = THEMES.find(x => x.file === f);
-  const card = document.getElementById("order-theme-card");
-  let base = "";
-  try {
-    const scripts = document.scripts;
-    for (const sc of scripts) {
-      const i = sc.src.indexOf("themebox/js/");
-      if (i >= 0) { base = sc.src.slice(0, i + "themebox/".length); break; }
-    }
-  } catch (e) {}
-  if (t) {
-    document.getElementById("order-theme").value = t.name;
-    document.getElementById("order-price").value = t.price;
-    card.innerHTML = `
-      <div class="theme-card-pro" style="max-width:280px;cursor:default">
-        <div class="theme-preview"><img src="${base}${t.preview}" alt="${t.name}">
-        <span class="price-badge">${formatRp(t.price)}</span></div>
-        <div class="theme-meta"><h3>${t.name}</h3><div class="cat">${t.cat}</div></div>
-      </div>`;
-  } else {
-    card.innerHTML = `<p style="color:var(--muted)">Belum pilih theme. <a href="../" style="color:var(--gold)">Kembali ke katalog →</a></p>`;
-  }
-  updateSummary();
+  initOrderPage();
   document.querySelectorAll(".year").forEach(e => e.textContent = new Date().getFullYear());
 });
 </script>

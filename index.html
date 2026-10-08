@@ -50,10 +50,10 @@
     <p class="section-sub">Kernel, modul root, aplikasi, dan open data — sebagian open source di GitHub, sebagian showcase karya indie.</p>
     <div class="filter-bar">
       <button class="filter-btn active" data-filter="semua">Semua</button>
+      <button class="filter-btn" data-filter="apk">APK</button>
+      <button class="filter-btn" data-filter="api">API</button>
+      <button class="filter-btn" data-filter="module">Module</button>
       <button class="filter-btn" data-filter="kernel">Kernel</button>
-      <button class="filter-btn" data-filter="modul">Modul Root</button>
-      <button class="filter-btn" data-filter="aplikasi">Aplikasi</button>
-      <button class="filter-btn" data-filter="data">Data & Util</button>
     </div>
     <div class="grid" id="portfolio-grid"></div>
   </div>
@@ -131,7 +131,16 @@
   </div>
 </footer>
 
+<div class="pf-backdrop" id="pf-backdrop" hidden>
+  <div class="pf-modal" role="dialog" aria-modal="true" aria-labelledby="pf-modal-title">
+    <button class="pf-close" id="pf-close" aria-label="Tutup detail">×</button>
+    <div id="pf-modal-content" style="display:contents"></div>
+  </div>
+</div>
+
 <script src="js/portfolio-data.js"></script>
+<script src="js/portfolio-mockup.js"></script>
+<script src="js/portfolio-modal.js"></script>
 <script src="js/portfolio-render.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/main.js"></script>

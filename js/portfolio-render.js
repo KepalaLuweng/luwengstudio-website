@@ -1,24 +1,29 @@
-function cardHtml(p) {
+function cardHtml(p, idx) {
   const chips = p.tech.map(t => `<span class="chip">${t}</span>`).join("");
-  const action = p.url
-    ? `<a class="link-arrow" href="${p.url}" ${p.url.startsWith("http") ? 'target="_blank" rel="noopener"' : ""}>Lihat →</a>`
-    : `<span class="badge-soon">Segera rilis</span>`;
-  return `<article class="card" data-cat="${p.cat}">
-    <h3>${p.name}</h3>
-    <p class="desc">${p.desc}</p>
-    <div class="meta"><span class="chip gold">${labelCat(p.cat)}</span>${chips}</div>
-    <div class="actions">${action}</div>
+  return `<article class="pf-card" data-idx="${idx}" data-cat="${p.cat}" tabindex="0" role="button" aria-label="Detail ${p.name}">
+    <div class="pf-visual">${mockupHtml(p.mock)}</div>
+    <div class="pf-body">
+      <span class="chip gold">${labelCat(p.cat)}</span>
+      <h3>${p.name}</h3>
+      <p class="desc">${p.desc}</p>
+      <div class="meta">${chips}</div>
+      <span class="link-arrow">Lihat Detail →</span>
+    </div>
   </article>`;
-}
-
-function labelCat(c) {
-  return { kernel: "Kernel", modul: "Modul Root", aplikasi: "Aplikasi", data: "Data & Util" }[c] || c;
 }
 
 function renderPortfolio(filter) {
   const grid = document.getElementById("portfolio-grid");
-  const list = filter === "semua" ? PORTFOLIO : PORTFOLIO.filter(p => p.cat === filter);
-  grid.innerHTML = list.map(cardHtml).join("");
+  const list = PORTFOLIO.map((p, i) => ({ p, i }))
+    .filter(({ p }) => filter === "semua" || p.cat === filter);
+  grid.innerHTML = list.map(({ p, i }) => cardHtml(p, i)).join("");
+  grid.querySelectorAll(".pf-card").forEach(card => {
+    const open = () => openProjectModal(PORTFOLIO[parseInt(card.dataset.idx, 10)]);
+    card.addEventListener("click", open);
+    card.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
+    });
+  });
 }
 
 function initFilters() {
