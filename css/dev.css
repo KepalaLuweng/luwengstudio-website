@@ -375,10 +375,32 @@ body.dev .about-photo img{
   filter:grayscale(35%) contrast(1.06) brightness(.94);
 }
 body.dev .about-text p{color:var(--muted)}
-body.dev .facts{background:var(--border-soft);border:1px solid var(--border-soft)}
-body.dev .fact{background:var(--surface)}
-body.dev .fact b{color:var(--green);font-family:var(--mono);font-weight:700}
-body.dev .fact span{color:var(--muted)}
+body.dev .facts{background:transparent;border:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+body.dev .fact{
+  background:linear-gradient(160deg,rgba(0,255,136,.06),rgba(13,17,23,.9));
+  border:1px solid var(--border-soft);border-radius:12px;
+  padding:1.4rem 1rem;text-align:center;position:relative;overflow:hidden;
+  transition:transform .25s,box-shadow .25s;
+}
+body.dev .fact::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);
+  opacity:.6;
+}
+body.dev .fact:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,255,136,.08)}
+body.dev .fact b{
+  color:var(--green);font-family:var(--mono);font-weight:700;
+  font-size:1.9rem;display:block;margin-bottom:.4rem;
+  text-shadow:0 0 20px rgba(0,255,136,.3);
+  transition:transform .3s;
+}
+body.dev .fact b.tick{animation:facttick .4s ease}
+@keyframes facttick{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
+body.dev .fact span{color:var(--muted);font-size:.8rem;line-height:1.5}
+@media(max-width:600px){
+  body.dev .facts{grid-template-columns:1fr;gap:.8rem}
+  body.dev .fact{padding:1.1rem}
+}
 
 /* ---------- social icons row (logo kecil saja) ---------- */
 body.dev .social-row{
@@ -401,9 +423,13 @@ body.dev footer.site{
 }
 body.dev .foot-single{
   text-align:center;color:var(--muted);font-family:var(--mono);
-  font-size:.82rem;letter-spacing:1.5px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  font-size:.82rem;letter-spacing:1.5px;margin:0;
 }
 body.dev .foot-single i{color:var(--faint);font-style:normal;margin:0 .7rem}
+@media(max-width:480px){
+  body.dev .foot-single{font-size:.72rem;letter-spacing:.8px}
+  body.dev .foot-single i{margin:0 .4rem}
+}
 @media(max-width:768px){
   body.dev .contact-row{grid-template-columns:repeat(2,1fr)}
 }

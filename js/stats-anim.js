@@ -9,9 +9,12 @@ function initStatsAnim() {
     const bump = () => {
       val += 1 + Math.floor(Math.random() * 3);
       el.textContent = fmt(val);
-      setTimeout(bump, 4000 + Math.random() * 6000);
+      el.classList.remove("tick");
+      void el.offsetWidth;
+      el.classList.add("tick");
+      setTimeout(bump, 2500 + Math.random() * 4000);
     };
-    setTimeout(bump, 3000 + Math.random() * 4000);
+    setTimeout(bump, 2000 + Math.random() * 3000);
   }
 
   function animate(el) {
