@@ -4,5 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initProjectModal();
   renderPortfolio("semua");
   initTerminal();
-  document.getElementById("year").textContent = new Date().getFullYear();
+  initStatsAnim();
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
 });

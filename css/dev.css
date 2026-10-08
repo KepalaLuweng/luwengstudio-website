@@ -24,7 +24,7 @@ body.dev ::selection{background:rgba(0,255,136,.25)}
 body.dev h1,body.dev h2,body.dev h3{color:var(--ink)}
 body.dev .label{
   font-family:var(--mono);
-  color:var(--green);
+  color:var(--faint);
   letter-spacing:1.5px;
   text-transform:none;
   font-size:.82rem;
@@ -187,8 +187,9 @@ body.dev .pf-card:focus-visible{outline:2px solid var(--green)}
 body.dev .pf-visual{background:#010409;border-bottom:1px solid var(--border-soft)}
 body.dev .pf-body .desc{color:var(--muted)}
 body.dev .chip{background:#0d1117;border-color:var(--border-soft);color:var(--muted);font-family:var(--mono);font-size:.68rem}
-body.dev .chip.gold{color:var(--green);border-color:rgba(0,255,136,.35);background:rgba(0,255,136,.06)}
-body.dev .link-arrow{color:var(--green);font-family:var(--mono);font-size:.8rem}
+body.dev .chip.gold{color:var(--muted);border-color:var(--border);background:transparent}
+body.dev .link-arrow{color:var(--muted);font-family:var(--mono);font-size:.8rem;transition:color .18s ease}
+body.dev .link-arrow:hover{color:var(--green)}
 body.dev .badge-soon{border-color:var(--border);color:var(--faint)}
 
 /* mockups -> dark terminal */
@@ -282,11 +283,58 @@ body.dev .foot-bottom .prompt{color:var(--green);font-family:var(--mono)}
 /* about strip (dark) */
 body.dev .about-strip{align-items:flex-start}
 body.dev .about-photo{
-  background:#010409;border:1px solid var(--border);color:var(--green);
-  font-family:var(--mono);border-radius:12px;
+  background:#010409;
+  border:2px solid rgba(0,255,136,.55);
+  box-shadow:0 0 22px rgba(0,255,136,.22),0 0 0 5px rgba(0,255,136,.06);
+  border-radius:50%;
+  overflow:hidden;
+  padding:0;
+}
+body.dev .about-photo img{
+  display:block;
+  border-radius:50%;
+  filter:grayscale(35%) contrast(1.06) brightness(.94);
 }
 body.dev .about-text p{color:var(--muted)}
 body.dev .facts{background:var(--border-soft);border:1px solid var(--border-soft)}
 body.dev .fact{background:var(--surface)}
 body.dev .fact b{color:var(--green);font-family:var(--mono);font-weight:700}
 body.dev .fact span{color:var(--muted)}
+
+/* ---------- contact + single-line footer ---------- */
+body.dev .contact-row{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.6rem;
+}
+body.dev .contact-card{
+  display:block;background:var(--surface);border:1px solid var(--border-soft);
+  border-radius:10px;padding:1.2rem 1.1rem;transition:border-color .2s ease,transform .2s ease;
+}
+body.dev .contact-card:hover{border-color:rgba(0,255,136,.45);transform:translateY(-2px)}
+body.dev .contact-card b{display:block;color:var(--ink);font-size:.9rem;margin-bottom:.3rem}
+body.dev .contact-card span{color:var(--muted);font-family:var(--mono);font-size:.76rem;word-break:break-all}
+body.dev footer.site{
+  background:#010409;border-top:1px solid var(--border-soft);padding:1.5rem 0;
+}
+body.dev .foot-single{
+  text-align:center;color:var(--muted);font-family:var(--mono);
+  font-size:.82rem;letter-spacing:1.5px;margin:0;
+}
+body.dev .foot-single i{color:var(--faint);font-style:normal;margin:0 .7rem}
+@media(max-width:768px){
+  body.dev .contact-row{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ---------- live stats indicator ---------- */
+body.dev .live-dot{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:2px;
+  color:var(--green);vertical-align:middle;margin-left:.7rem;font-weight:700;
+}
+body.dev .live-dot i{
+  width:8px;height:8px;border-radius:50%;background:var(--green);
+  animation:livepulse 1.6s ease-in-out infinite;
+}
+@keyframes livepulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,.5);opacity:1}
+  50%{box-shadow:0 0 0 7px rgba(0,255,136,0);opacity:.55}
+}
