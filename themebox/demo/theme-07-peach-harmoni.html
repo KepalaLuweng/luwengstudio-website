@@ -224,6 +224,23 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:.22em;opacity:.7;p
     </div>
   </div>
 </section>
+
+<section class="reveal">
+  <div class="eyebrow">Live Streaming</div>
+  <h2 class="title">Saksikan Secara Virtual</h2>
+  <p class="lead">Bagi yang berhalangan hadir, ikuti momen bahagia kami melalui siaran langsung.</p>
+  <div style="margin-top:1.5rem;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;background:#1a1a1a">
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.8rem;color:#fff">
+      <div style="font-size:3rem">📡</div>
+      <div style="font-size:.85rem;opacity:.8">Streaming akan dimulai pada hari H</div>
+      <div style="font-size:.75rem;opacity:.6">Link YouTube Live akan dibagikan di sini</div>
+    </div>
+  </div>
+  <div style="margin-top:1rem">
+    <a href="#" onclick="showModal('Link streaming akan dibagikan mendekati hari H ♥');return false" class="sbtn solid" style="display:inline-block;min-width:200px">🔔 Ingatkan Saya</a>
+  </div>
+</section>
+
 <section id="wishes" class="reveal" style="max-width:none">
   <div class="wrap">
     <div class="eyebrow">RSVP &amp; Ucapan</div>
@@ -358,6 +375,11 @@ function saveToCal(btn){
     "&details=" + encodeURIComponent(desc);
   window.open(url, "_blank");
 }
+<script>
+// Lazy-load gallery backgrounds
+var bgio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;var bg=el.getAttribute('data-bg');if(bg){el.style.backgroundImage="url('"+bg+"')";}bgio.unobserve(el);}})},{rootMargin:'50px'});
+document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
+</script>
 </script>
 </body>
 </html>
