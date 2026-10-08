@@ -39,7 +39,7 @@ h2.title{font-family:'Playfair Display',serif;font-size:2rem;color:#5a4632;font-
 #cover.hide{background:transparent;visibility:hidden;transition:visibility 0s 1.25s,background 0s}
 #cover.hide .cinner,#cover.hide .cbox,#cover.hide>div{opacity:0;transition:opacity .35s ease}
 .reveal.visible{transition-delay:calc(var(--rd,0)*.07s)}
-#cover .arch{width:100%;max-width:380px;background:#fffdf9;border:2px solid var(--peach);border-radius:190px 190px 24px 24px;padding:3.2rem 1.6rem 2.6rem;text-align:center;box-shadow:0 20px 50px rgba(201,143,99,.25);position:relative}
+#cover .arch{position:relative;z-index:10;width:100%;max-width:380px;background:#fffdf9;border:2px solid var(--peach);border-radius:190px 190px 24px 24px;padding:3.2rem 1.6rem 2.6rem;text-align:center;box-shadow:0 20px 50px rgba(201,143,99,.25);position:relative}
 #cover .arch::before{content:"";position:absolute;inset:10px;border:1px dashed var(--peach);border-radius:180px 180px 18px 18px;pointer-events:none}
 #cover .bicon{font-size:2rem;margin-bottom:1rem}
 #cover .to{font-size:.64rem;letter-spacing:3px;text-transform:uppercase;color:var(--mut);line-height:2}

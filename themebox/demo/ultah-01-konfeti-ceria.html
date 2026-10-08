@@ -45,7 +45,7 @@ h2.title{font-family:'Fredoka',sans-serif;font-size:2.1rem;color:var(--ink);font
 #cover.hide{background:transparent;visibility:hidden;transition:visibility 0s 1.25s,background 0s}
 #cover.hide .cinner,#cover.hide .cbox,#cover.hide>div{opacity:0;transition:opacity .35s ease}
 .reveal.visible{transition-delay:calc(var(--rd,0)*.07s)}
-#cover .card{background:#fff;border-radius:28px;padding:3rem 1.8rem;max-width:380px;width:100%;text-align:center;box-shadow:0 24px 60px rgba(255,107,107,.25);position:relative;overflow:hidden}
+#cover .card{position:relative;z-index:10;background:#fff;border-radius:28px;padding:3rem 1.8rem;max-width:380px;width:100%;text-align:center;box-shadow:0 24px 60px rgba(255,107,107,.25);position:relative;overflow:hidden}
 #cover .card::before{content:"";position:absolute;top:0;left:0;right:0;height:10px;background:linear-gradient(90deg,var(--coral),var(--sun),var(--teal),var(--grape),var(--coral))}
 #cover .agenum{font-family:'Fredoka',sans-serif;font-size:4.4rem;font-weight:700;line-height:1;background:linear-gradient(135deg,var(--coral),var(--grape));-webkit-background-clip:text;background-clip:text;color:transparent}
 #cover .ageth{font-family:'Fredoka',sans-serif;font-size:1rem;color:var(--mut);letter-spacing:6px;margin-bottom:1.2rem}

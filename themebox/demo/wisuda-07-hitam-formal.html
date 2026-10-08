@@ -33,7 +33,7 @@ h2.title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:500
 #cover.hide{background:transparent;visibility:hidden;transition:visibility 0s 1.25s,background 0s}
 #cover.hide .cinner,#cover.hide .cbox,#cover.hide>div{opacity:0;transition:opacity .35s ease}
 .reveal.visible{transition-delay:calc(var(--rd,0)*.07s)}
-#cover .frame{width:100%;max-width:380px;border:1px solid rgba(201,162,75,.5);padding:3rem 1.8rem;text-align:center;position:relative}
+#cover .frame{position:relative;z-index:10;width:100%;max-width:380px;border:1px solid rgba(201,162,75,.5);padding:3rem 1.8rem;text-align:center;position:relative}
 #cover .frame::before{content:"";position:absolute;inset:8px;border:1px solid rgba(201,162,75,.22);pointer-events:none}
 #cover .to{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:#8e8e96;line-height:2}
 #cover .guest{font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin:.4rem 0 1.8rem;color:#fff}
