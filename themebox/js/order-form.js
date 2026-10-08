@@ -124,7 +124,7 @@ function renderOrderThemeCard() {
         </div>
       </div>`;
   } else {
-    card.innerHTML = `<p style="color:var(--muted);margin:1.4rem 0">Belum pilih theme. <a href="../" style="color:var(--gold)">Kembali ke katalog →</a></p>`;
+    card.innerHTML = `<p style="color:var(--muted);margin:1.4rem 0">Belum pilih theme. <a href="../" style="color:var(--ink)">Kembali ke katalog →</a></p>`;
   }
 }
 

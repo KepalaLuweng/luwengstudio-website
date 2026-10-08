@@ -102,7 +102,7 @@ function showSuccess(order, photosSent) {
       <h2>Order Diterima!</h2>
       <div class="code">${order.code}</div>
       <p>Simpan kode order di atas.<br>${note}</p>
-      <a class="btn btn-gold" href="../">Kembali ke Katalog</a>
+      <a class="btn btn-dark" href="../">Kembali ke Katalog</a>
     </div>`;
   window.scrollTo({ top: 0, behavior: "smooth" });
 }

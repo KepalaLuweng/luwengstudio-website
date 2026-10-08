@@ -1,9 +1,9 @@
 function modalButtons(p) {
   const btns = [];
   if (p.internal) {
-    btns.push(`<a class="btn btn-gold" href="${p.url}">Buka Katalog</a>`);
+    btns.push(`<a class="btn btn-dark" href="${p.url}">Buka Katalog</a>`);
   } else {
-    if (p.dl) btns.push(`<a class="btn btn-gold" href="${p.dl}" target="_blank" rel="noopener">Download</a>`);
+    if (p.dl) btns.push(`<a class="btn btn-dark" href="${p.dl}" target="_blank" rel="noopener">Download</a>`);
   }
   if (p.url && !p.internal) {
     btns.push(`<a class="btn btn-ghost" href="${p.url}" target="_blank" rel="noopener">Source Code</a>`);
