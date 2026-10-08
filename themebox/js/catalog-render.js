@@ -9,15 +9,18 @@ const TB_BASE = (() => {
 
 function themeCard(t) {
   return `
-    <div class="theme-card-pro" data-file="${t.file}" onclick="selectTheme('${t.file}')">
-      <div class="theme-preview">
+    <div class="theme-card-pro" data-file="${t.file}">
+      <div class="theme-preview" onclick="selectTheme('${t.file}')">
         <img src="${TB_BASE}${t.preview}" alt="Preview ${t.name}" loading="lazy">
         <span class="price-badge">${formatRp(t.price)}</span>
       </div>
       <div class="theme-meta">
         <h3>${t.name}</h3>
         <div class="cat">${t.cat}</div>
-        <span class="order-link">Pilih theme →</span>
+        <div class="theme-actions">
+          <a class="demo-link" href="${TB_BASE}demo/${t.file}" target="_blank" onclick="event.stopPropagation()">Lihat Demo</a>
+          <span class="order-link" onclick="selectTheme('${t.file}')">Pilih theme →</span>
+        </div>
       </div>
     </div>`;
 }

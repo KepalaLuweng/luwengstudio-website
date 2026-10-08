@@ -34,7 +34,14 @@
 .theme-meta h3{font-size:1rem;margin-bottom:.25rem}
 .theme-meta .cat{font-size:.78rem;color:var(--muted)}
 .theme-meta .order-link{
-  display:inline-block;margin-top:.7rem;font-size:.85rem;font-weight:700;color:var(--gold);
+  display:inline-block;margin-top:.7rem;font-size:.85rem;font-weight:700;color:var(--gold);cursor:pointer;
 }
+.theme-actions{display:flex;gap:.6rem;align-items:center;margin-top:.7rem}
+.theme-actions .order-link{margin-top:0}
+.demo-link{
+  display:inline-block;padding:.45rem 1rem;border-radius:999px;font-size:.82rem;font-weight:700;
+  background:rgba(212,175,55,.15);border:1px solid var(--gold);color:var(--gold);text-decoration:none;
+}
+.demo-link:hover{background:var(--gold);color:#1a1405}
 .breadcrumb{font-size:.82rem;color:var(--muted);padding:1.2rem 0 0}
 .breadcrumb a{color:var(--gold)}

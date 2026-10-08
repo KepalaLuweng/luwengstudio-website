@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darmawan Aditya — Wisuda</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c9a24b;--gold-dk:#a8842f;--gold-lt:#f2e3b8;--bronze:#8a6d2f;--cream:#fdfaf1;--ink:#4a3d28;--mut:#97876c}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;font-size:15px}
+.wrap{max-width:560px;margin:0 auto}
+section{padding:4.5rem 1.5rem;text-align:center}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:none}
+.eyebrow{font-size:.62rem;letter-spacing:6px;text-transform:uppercase;color:var(--gold-dk);margin-bottom:.9rem;font-weight:600;text-indent:6px}
+h2.title{font-family:'Playfair Display',serif;font-size:2.1rem;color:var(--bronze);font-weight:700}
+.sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.06rem;color:var(--mut);margin:.6rem 0 1rem}
+.lead{line-height:2.05;font-size:.9rem;font-weight:300;color:#6a5c44;max-width:440px;margin:0 auto}
+.heart{color:#c05a5a}
+.laurel{display:flex;justify-content:center;align-items:center;gap:.9rem;margin:1.5rem auto;color:var(--gold-dk);font-size:1.15rem}
+.laurel::before,.laurel::after{content:"🌿";opacity:.75}
+/* ============ COVER ============ */
+#cover{position:fixed;inset:0;z-index:100;background:radial-gradient(ellipse at 50% 30%,#f7ecd2 0%,#e9d3a0 70%,#d9b96f 100%);display:flex;align-items:center;justify-content:center;padding:1.4rem;transition:opacity .9s,visibility .9s}
+/* Animasi buka: pola e */
+#cover .pt{position:absolute;width:10px;height:10px;border-radius:50%;background:currentColor;opacity:0;pointer-events:none;z-index:6}
+#cover.hide .pt{animation:ptburst 1.1s ease-out forwards}
+@keyframes ptburst{0%{opacity:.95;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.2)}}
+#cover.hide{opacity:0;transition:opacity .7s ease .35s;visibility:hidden;transition:visibility 0s 1.1s,opacity .7s ease .35s}
+.reveal.visible{transition-delay:calc(var(--rd,0)*.07s)}
+#cover .wreath{width:100%;max-width:390px;background:rgba(255,253,246,.92);border:1px solid var(--gold-dk);border-radius:50%/6%;padding:2.8rem 1.7rem 2.5rem;text-align:center;box-shadow:0 30px 70px rgba(138,109,47,.35);position:relative}
+#cover .wreath::before{content:"🌿 🌿 🌿";position:absolute;top:14px;left:0;right:0;font-size:1rem;opacity:.7;letter-spacing:8px}
+#cover .to{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--mut);line-height:2}
+#cover .guest{font-family:'Playfair Display',serif;font-size:1.2rem;margin:.4rem 0 1.3rem;color:var(--bronze)}
+#cover .lbl{font-size:.58rem;letter-spacing:6px;text-transform:uppercase;color:var(--gold-dk);font-weight:600;text-indent:6px}
+#cover h1{font-family:'Playfair Display',serif;font-size:2.35rem;font-weight:700;color:var(--bronze);line-height:1.28;margin:.6rem 0}
+#cover .deg{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--mut)}
+#cover .date{font-size:.7rem;letter-spacing:3px;color:var(--mut);margin:.7rem 0 1.4rem;text-indent:3px}
+#cover .wreath::after{content:"🌿 🌿 🌿";position:absolute;bottom:14px;left:0;right:0;font-size:1rem;opacity:.7;letter-spacing:8px}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold-dk));color:#fff;border:none;padding:1.05rem 2.7rem;font-size:.74rem;letter-spacing:3px;text-transform:uppercase;text-indent:3px;cursor:pointer;border-radius:40px;font-family:'Montserrat',sans-serif;font-weight:600;text-decoration:none;box-shadow:0 12px 28px rgba(168,132,47,.45)}
+.btn:active{transform:scale(.97)}
+/* ============ QUOTE ============ */
+.quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.18rem;line-height:2.05;color:#5c4e38;max-width:450px;margin:0 auto}
+.qsrc{margin-top:1rem;font-size:.66rem;letter-spacing:4px;color:var(--gold-dk);font-weight:600}
+/* ============ PROFILE — laurel medallion ============ */
+.lmed{margin-top:2.2rem;position:relative}
+.lmed .ring{width:190px;height:190px;margin:0 auto;border-radius:50%;background:conic-gradient(from 0deg,var(--gold-lt),var(--gold),var(--gold-lt),var(--gold-dk),var(--gold-lt));display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px rgba(168,132,47,.35)}
+.lmed .ring .in{width:162px;height:162px;border-radius:50%;background:linear-gradient(135deg,#e8cf8e,#b98f3e);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:2.6rem;color:#fff;font-weight:700;border:4px solid #fffdf4}
+.lmed .lrl,.lmed .lrr{position:absolute;top:70px;font-size:1.9rem;opacity:.8}
+.lmed .lrl{left:calc(50% - 128px)}.lmed .lrr{right:calc(50% - 128px)}
+.lmed h3{font-family:'Playfair Display',serif;font-size:1.95rem;font-weight:700;color:var(--bronze);margin-top:1.4rem;line-height:1.35}
+.lmed .deg2{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold-dk);margin:.45rem 0;font-weight:600}
+.lmed .uni{font-size:.84rem;color:var(--mut);line-height:1.9}
+.lmed .gpa{display:inline-block;margin-top:1rem;border:1.5px solid var(--gold);color:var(--gold-dk);font-size:.7rem;letter-spacing:3px;padding:.6rem 1.5rem;border-radius:24px;font-weight:600;text-indent:3px;background:#fffdf4}
+.lmed .par{margin-top:1rem;font-size:.8rem;color:var(--mut);line-height:1.9;font-weight:300}
+/* ============ COUNTDOWN — sunburst ============ */
+#count{background:radial-gradient(ellipse at 50% 40%,#f7ecd2 0%,#efdcab 60%,#e3c37e 100%)}
+#count h2.title{color:var(--bronze)}
+.sun{position:relative;display:inline-block;margin-top:2rem}
+.sun .rays{position:absolute;inset:-34px;background:repeating-conic-gradient(rgba(201,162,75,.22) 0 6deg,transparent 6deg 18deg);border-radius:50%;animation:spin 40s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cd{display:flex;gap:.65rem;justify-content:center;position:relative}
+.cd>div{width:78px;height:78px;border-radius:50%;background:#fffdf4;border:2px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 20px rgba(168,132,47,.25)}
+.cd b{font-family:'Playfair Display',serif;font-size:1.55rem;color:var(--bronze);font-weight:700;line-height:1}
+.cd span{font-size:.5rem;letter-spacing:1px;text-transform:uppercase;color:var(--mut);margin-top:.2rem}
+/* ============ EVENT — laurel corners ============ */
+.lev{margin-top:2.2rem;background:#fffdf4;border:1px solid var(--gold);padding:2.2rem 1.5rem;position:relative;box-shadow:0 16px 40px rgba(168,132,47,.16)}
+.lev .lc{position:absolute;font-size:1.4rem;opacity:.85}
+.lev .lc.tl{top:10px;left:12px}.lev .lc.tr{top:10px;right:12px;transform:scaleX(-1)}
+.lev .lc.bl{bottom:10px;left:12px;transform:scaleY(-1)}.lev .lc.br{bottom:10px;right:12px;transform:scale(-1)}
+.lev .t{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--bronze)}
+.lev .s{font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold-dk);margin:.4rem 0 1.2rem;font-weight:600;text-indent:4px}
+.lev .row{font-size:.87rem;color:#5c4e38;line-height:2}
+.lev .row b{color:var(--bronze)}
+.evbtns{display:flex;gap:.7rem;justify-content:center;margin-top:1.6rem;flex-wrap:wrap}
+.sbtn{flex:1;min-width:135px;text-align:center;text-decoration:none;font-size:.68rem;letter-spacing:2px;text-transform:uppercase;padding:.9rem .5rem;border-radius:40px;font-weight:600}
+.sbtn.solid{background:linear-gradient(135deg,var(--gold),var(--gold-dk));color:#fff;box-shadow:0 8px 20px rgba(168,132,47,.35)}
+.sbtn.line{border:1.5px solid var(--gold-dk);color:var(--bronze);background:transparent}
+/* ============ GALLERY ============ */
+#gallery{background:#f5ecd4}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:2rem}
+.gal .ph{aspect-ratio:1/1;border-radius:50%;border:3px solid var(--gold);background:linear-gradient(135deg,#e3c37e,#a8842f);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 24px rgba(168,132,47,.25)}
+.gal .ph span{font-family:'Playfair Display',serif;color:#fff;font-size:1.6rem;font-weight:700}
+/* ============ WISHES ============ */
+#wishes{background:linear-gradient(165deg,#3d2f18,#241b0c);color:#efe3c2}
+#wishes .eyebrow{color:var(--gold-lt)}
+#wishes h2.title{color:#fff}
+.wform{background:rgba(201,162,75,.07);border:1px solid rgba(201,162,75,.5);border-radius:18px;padding:1.8rem 1.4rem;margin-top:1.8rem;text-align:left}
+.wform label{display:block;font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold-lt);font-weight:600;margin:1rem 0 .45rem}
+.wform label:first-child{margin-top:0}
+.wform input,.wform textarea,.wform .whbtn{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(201,162,75,.4);border-radius:12px;color:#fff;padding:.9rem;font-family:'Montserrat',sans-serif;font-size:.87rem}
+.wform textarea{min-height:90px;resize:vertical}
+.wform input::placeholder,.wform textarea::placeholder{color:rgba(255,255,255,.35)}
+.wform select option{color:#222}
+.wlist{margin-top:1.7rem;display:flex;flex-direction:column;gap:1rem;max-height:400px;overflow-y:auto;text-align:left}
+.wish{background:rgba(201,162,75,.07);border:1px solid rgba(201,162,75,.35);border-radius:14px;padding:1.25rem 1.3rem;position:relative}
+.wish::before{content:"\2665";position:absolute;top:1rem;right:1.2rem;color:var(--gold);font-size:.9rem}
+.wish .wn{font-family:'Playfair Display',serif;color:var(--gold-lt);font-size:1.02rem;padding-right:1.6rem}
+.wish .wh{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:#c9a878;margin:.3rem 0 .55rem}
+.wish .wu{font-size:.85rem;line-height:1.85;font-weight:300;color:#efe0ba}
+/* ============ GIFT ============ */
+.gift{background:#fffdf4;border:1px solid var(--gold);border-radius:18px;padding:2.1rem 1.5rem;margin-top:1.3rem;box-shadow:0 12px 32px rgba(168,132,47,.16);position:relative}
+.gift::before{content:"🌿";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--cream);padding:0 .6rem;font-size:1.1rem}
+.gift .bank{font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:var(--mut);font-weight:600;text-indent:4px}
+.gift .rek{font-family:'Playfair Display',serif;font-size:1.7rem;letter-spacing:4px;color:var(--bronze);margin:.65rem 0 .25rem;font-weight:700}
+.gift .an{font-size:.8rem;color:var(--mut);font-weight:300}
+.copybtn{margin-top:1.1rem;background:linear-gradient(135deg,var(--gold),var(--gold-dk));border:none;color:#fff;padding:.85rem 2.1rem;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;text-indent:2px;cursor:pointer;border-radius:40px;font-family:'Montserrat',sans-serif;font-weight:600;box-shadow:0 8px 20px rgba(168,132,47,.35)}
+/* ============ FOOTER ============ */
+footer{background:linear-gradient(160deg,#3d2f18,#241b0c);color:#c9b586;text-align:center;padding:4.2rem 1.5rem 3rem}
+footer .serif{font-family:'Playfair Display',serif;font-size:1.7rem;color:#fff;margin-bottom:.7rem;font-weight:700}
+footer p{font-size:.78rem;line-height:2.05;font-weight:300}
+footer .fheart{color:var(--gold);font-size:1.2rem;margin:1.3rem 0 .4rem}
+footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;opacity:.65;padding-right:3.5rem}
+/* ============ MODAL ============ */
+#modal{position:fixed;inset:0;z-index:300;background:rgba(50,38,15,.6);display:none;align-items:center;justify-content:center;padding:1.8rem;backdrop-filter:blur(3px)}#whmodal{position:fixed;inset:0;z-index:300;background:rgba(50,38,15,.6);display:none;align-items:center;justify-content:center;padding:1.8rem;backdrop-filter:blur(3px)}#whmodal.show{display:flex}.whopt{display:block;width:100%;margin:.45rem 0}.whbtn{width:100%;text-align:left;cursor:pointer}.wharrow{float:right}
+#modal.show{display:flex}
+#modal .mbox{background:#fffdf4;border:2px solid var(--gold);border-radius:50%/8%;padding:2.8rem 1.8rem;max-width:340px;width:100%;text-align:center;box-shadow:0 28px 70px rgba(0,0,0,.4);animation:pop .35s ease}
+@keyframes pop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+#modal .mheart{font-size:2.3rem;margin-bottom:.9rem;animation:beat 1.2s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}25%{transform:scale(1.18)}}
+#modal .mmsg{font-family:'Cormorant Garamond',serif;font-size:1.18rem;line-height:1.8;color:#4a3d28;margin-bottom:1.6rem}
+/* music */
+#music{position:fixed;bottom:1.3rem;right:1.3rem;z-index:90;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dk));color:#fff;border:none;font-size:1.2rem;cursor:pointer;display:none;box-shadow:0 8px 22px rgba(168,132,47,.5)}
+#music.show{display:block}
+#music.off{opacity:.45}
+
+.lux{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.lux i{position:absolute;bottom:-12px;border-radius:50%;background:radial-gradient(circle,#ffe9a8 0%,rgba(255,233,168,0) 70%);opacity:0;animation:luxup linear infinite}
+@keyframes luxup{0%{transform:translateY(0);opacity:0}12%{opacity:.75}85%{opacity:.5}100%{transform:translateY(-108vh);opacity:0}}
+
+#cover .frame,#cover .panel,#cover .box,#cover .inner,#cover .cbox,#cover .cinner{box-shadow:0 24px 70px rgba(0,0,0,.4),0 0 34px rgba(255,215,130,.28);border-color:rgba(255,215,130,.65)!important}
+.btn{box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 22px rgba(255,215,130,.45)!important}
+</style>
+</head>
+<body>
+<div class="lux" aria-hidden="true"><i style="left:6%;width:7px;height:7px;animation-duration:11s;animation-delay:0s"></i><i style="left:14%;width:5px;height:5px;animation-duration:14s;animation-delay:2s"></i><i style="left:23%;width:8px;height:8px;animation-duration:10s;animation-delay:4s"></i><i style="left:31%;width:4px;height:4px;animation-duration:16s;animation-delay:1s"></i><i style="left:40%;width:6px;height:6px;animation-duration:12s;animation-delay:3s"></i><i style="left:48%;width:5px;height:5px;animation-duration:15s;animation-delay:5s"></i><i style="left:57%;width:7px;height:7px;animation-duration:11s;animation-delay:2.5s"></i><i style="left:65%;width:4px;height:4px;animation-duration:17s;animation-delay:0.5s"></i><i style="left:74%;width:6px;height:6px;animation-duration:13s;animation-delay:4.5s"></i><i style="left:82%;width:5px;height:5px;animation-duration:14s;animation-delay:1.5s"></i><i style="left:90%;width:7px;height:7px;animation-duration:12s;animation-delay:3.5s"></i><i style="left:96%;width:4px;height:4px;animation-duration:16s;animation-delay:6s"></i></div><div id="cover"><span class="pt" style="left:10%;top:15%;--dx:-240px;--dy:-80px;color:inherit"></span><span class="pt" style="left:18%;top:28%;--dx:-120px;--dy:-117px;color:inherit"></span><span class="pt" style="left:26%;top:41%;--dx:0px;--dy:-154px;color:inherit"></span><span class="pt" style="left:34%;top:54%;--dx:120px;--dy:-191px;color:inherit"></span><span class="pt" style="left:42%;top:67%;--dx:240px;--dy:-228px;color:inherit"></span><span class="pt" style="left:50%;top:80%;--dx:-240px;--dy:-265px;color:inherit"></span><span class="pt" style="left:58%;top:23%;--dx:-120px;--dy:-102px;color:inherit"></span><span class="pt" style="left:66%;top:36%;--dx:0px;--dy:-139px;color:inherit"></span><span class="pt" style="left:74%;top:49%;--dx:120px;--dy:-176px;color:inherit"></span><span class="pt" style="left:82%;top:62%;--dx:240px;--dy:-213px;color:inherit"></span><span class="pt" style="left:90%;top:75%;--dx:-240px;--dy:-250px;color:inherit"></span><span class="pt" style="left:98%;top:18%;--dx:-120px;--dy:-87px;color:inherit"></span><div class="wreath">
+<div class="to">Kepada Yth<br>Bapak/Ibu/Saudara/i</div>
+<div class="guest">Tamu Undangan</div>
+<div class="lbl">Undangan Wisuda</div>
+<img src="foto-wisuda.jpg" alt="Foto Wisudawan" style="width:170px;height:227px;object-fit:cover;border-radius:14px;display:block;margin:0 auto 1.1rem;box-shadow:0 10px 28px rgba(0,0,0,.28)">
+<h1>Darmawan Aditya</h1>
+<div class="deg">Sarjana Komputer (S.Ars.)</div>
+<div class="date">SABTU, 30 JANUARI 2027</div>
+<button class="btn" onclick="buka()">Buka Undangan</button>
+</div></div>
+<button id="music" onclick="toggleMusic()">♪</button>
+<div class="wrap">
+<section class="reveal">
+<div class="eyebrow">Bismillahirrahmanirrahim</div>
+<div class="laurel"></div>
+<p class="quote">Barangsiapa menempuh jalan untuk mencari ilmu, maka Allah akan mudahkan baginya jalan menuju surga.</p>
+<div class="qsrc">HR. MUSLIM</div>
+</section>
+<section class="reveal">
+<div class="eyebrow">Wisudawan</div>
+<h2 class="title">Sang Wisudawan</h2>
+<div class="laurel"></div>
+<div class="lmed">
+<div class="ring"><div class="in">AF</div></div>
+<span class="lrl">🌿</span><span class="lrr">🌿</span>
+<h3>Darmawan Aditya</h3>
+<div class="deg2">Sarjana Komputer (S.Ars.)</div>
+<div class="uni">Fakultas Ilmu Komputer<br>Universitas Indonesia</div>
+<div class="gpa">IPK 3.87 · Cumlaude</div>
+<div class="par">Putra dari Bapak Drs. H. Budi Santoso<br>&amp; Ibu Dra. Hj. Rina Marlina</div>
+</div>
+</section>
+<section id="count" class="reveal" style="max-width:none">
+<div class="wrap">
+<div class="eyebrow">Save The Date</div>
+<h2 class="title">Menghitung Hari Bahagia</h2>
+<div class="sub">Sabtu, 30 Januari 2027</div>
+<div class="sun"><div class="rays"></div>
+<div class="cd">
+<div><b id="d">0</b><span>Hari</span></div>
+<div><b id="h">0</b><span>Jam</span></div>
+<div><b id="m">0</b><span>Menit</span></div>
+<div><b id="s">0</b><span>Detik</span></div>
+</div>
+</div>
+</div>
+</section>
+<section class="reveal">
+<div class="eyebrow">Waktu &amp; Tempat</div>
+<h2 class="title">Prosesi Wisuda</h2>
+<div class="laurel"></div>
+<div class="lev">
+<span class="lc tl">🌿</span><span class="lc tr">🌿</span><span class="lc bl">🌿</span><span class="lc br">🌿</span>
+<div class="t">Sidang Senat Terbuka</div>
+<div class="s">Wisuda Program Sarjana</div>
+<div class="row" style="margin-top:1.2rem"><b>Sabtu, 30 Januari 2027</b><br>08.00 — 12.00 WIB</div>
+<div class="row" style="margin-top:.8rem">Balairung Universitas Indonesia, Depok<br><span style="font-size:.8rem;color:var(--mut)">Dilanjutkan syukuran keluarga</span></div>
+<div class="evbtns">
+<a class="sbtn solid" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wisuda+Ahmad+Fauzi+S.Ars.&dates=20270130T010000Z/20270130T050000Z&details=Wisuda+Ahmad+Fauzi+Sarjana+Komputer+UI&location=Balairung+UI+Depok" target="_blank">Simpan Tanggal</a>
+<a class="sbtn line" href="https://maps.google.com/?q=Balairung+UI+Depok" target="_blank">Lihat Lokasi</a>
+</div>
+</div>
+</section>
+<section id="gallery" class="reveal" style="max-width:none">
+<div class="wrap">
+<div class="eyebrow">Galeri</div>
+<h2 class="title">Perjalanan Studi</h2>
+<div class="sub">Ketuk foto untuk memperbesar</div>
+<div class="gal">
+<div class="ph" onclick="lb(this,1)" data-img="gal-wisuda-1.jpg" style="background-image:url('gal-wisuda-1.jpg');background-size:cover;background-position:center"></div>
+<div class="ph" onclick="lb(this,2)" data-img="gal-wisuda-2.jpg" style="background-image:url('gal-wisuda-2.jpg');background-size:cover;background-position:center"></div>
+<div class="ph" onclick="lb(this,3)" data-img="gal-wisuda-3.jpg" style="background-image:url('gal-wisuda-3.jpg');background-size:cover;background-position:center"></div>
+<div class="ph" onclick="lb(this,4)" data-img="gal-wisuda-4.jpg" style="background-image:url('gal-wisuda-4.jpg');background-size:cover;background-position:center"></div>
+      <div class="ph" onclick="lb(this,5)" data-img="gal-wisuda-5.jpg" style="background-image:url('gal-wisuda-5.jpg');background-size:cover;background-position:center"></div>
+</div>
+</div>
+</section>
+<section id="wishes" class="reveal" style="max-width:none">
+<div class="wrap">
+<div class="eyebrow">RSVP &amp; Ucapan</div>
+<h2 class="title">Doa <span class="heart">♥</span> Kehadiran</h2>
+<p class="lead" style="color:#c9b586">Mohon konfirmasi kehadiran dan tinggalkan ucapan selamat.</p>
+<div class="wform">
+<label>Nama</label><input id="wn" type="text" placeholder="Nama Anda">
+<label>Kehadiran</label><input type="hidden" id="wh" value="Hadir">
+<button type="button" class="whbtn" onclick="document.getElementById('whmodal').classList.add('show')"><span id="whlabel">Hadir</span><span class="wharrow">▾</span></button>
+<div id="whmodal" onclick="if(event.target===this)this.classList.remove('show')"><div class="mbox"><div class="mheart">♥</div><div class="mmsg">Konfirmasi Kehadiran</div><button class="btn whopt" onclick="whSet('Hadir')">Hadir</button><button class="btn whopt" onclick="whSet('Tidak Hadir')">Tidak Hadir</button><button class="btn whopt" onclick="whSet('Masih Ragu')">Masih Ragu</button></div></div>
+<label>Ucapan</label><textarea id="wu" placeholder="Tuliskan ucapan..."></textarea>
+<div style="margin-top:1.2rem;text-align:center"><button class="btn" onclick="kirimUcapan()">Kirim Ucapan</button></div>
+</div>
+<div class="wlist" id="wlist"></div>
+</div>
+</section>
+<section class="reveal">
+<div class="eyebrow">Amplop Digital</div>
+<h2 class="title">Tanda Kasih</h2>
+<div class="laurel"></div>
+<div class="gift"><div class="bank">Bank BCA</div><div class="rek" id="rek1">1234567890</div><div class="an">a.n. Darmawan Aditya</div><button class="copybtn" onclick="salin('rek1')">Salin Nomor</button></div>
+<div class="gift"><div class="bank">DANA</div><div class="rek" id="rek2">081234567890</div><div class="an">a.n. Darmawan Aditya</div><button class="copybtn" onclick="salin('rek2')">Salin Nomor</button></div>
+  <div class="gift">
+    <div class="bank">Kado Fisik 🎁</div>
+    <div class="rek" id="kadoaddr" style="font-size:.85rem;line-height:1.8">Jl. Kenanga No. 12, Surabaya</div>
+    <div class="an">Kirim kado ke alamat di atas</div>
+    <button class="copybtn" onclick="salin('kadoaddr')">Salin Alamat</button>
+  </div>
+</section>
+</div>
+<footer>
+<div class="serif">Darmawan Aditya, S.Ars.</div>
+<p>Merupakan suatu kehormatan bagi kami<br>apabila Bapak/Ibu/Saudara/i berkenan hadir.</p>
+<div class="fheart">♥</div>
+<div class="tag">TEMA: LAUREL EMAS — SAMPEL REVIEW</div>
+</footer>
+<div id="lightbox" onclick="this.classList.remove('show')" style="position:fixed;inset:0;z-index:200;background:rgba(50,38,15,.93);display:none;align-items:center;justify-content:center;padding:1.5rem">
+<div id="lbphoto" style="width:100%;max-width:380px;aspect-ratio:1/1;border-radius:50%;border:3px solid var(--gold);background:linear-gradient(135deg,#e3c37e,#a8842f);display:flex;align-items:center;justify-content:center"><span id="lbnum" style="font-family:'Playfair Display',serif;color:#fff;font-size:3rem;font-weight:700">1</span></div>
+</div>
+<div id="modal"><div class="mbox"><div class="mheart">🌿</div><div class="mmsg" id="mmsg"></div><button class="btn" onclick="tutupModal()">Baik</button></div></div>
+<script>
+function buka(){document.getElementById('cover').classList.add('hide');document.getElementById('music').classList.add('show');document.body.style.overflow='';document.body.classList.add('opened');var rs=document.querySelectorAll('.reveal');for(var i=0;i<rs.length;i++){rs[i].style.setProperty('--rd',Math.min(i,12));}}
+document.body.style.overflow='hidden';
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+var target=new Date('2027-01-30T08:00:00+07:00').getTime();
+function tick(){var d=Math.max(0,target-Date.now());
+document.getElementById('d').textContent=Math.floor(d/864e5);
+document.getElementById('h').textContent=Math.floor(d/36e5)%24;
+document.getElementById('m').textContent=Math.floor(d/6e4)%60;
+document.getElementById('s').textContent=Math.floor(d/1e3)%60;}
+setInterval(tick,1000);tick();
+function lb(el,n){document.getElementById('lbnum').textContent=n;var p=document.getElementById('lbphoto');if(p&&el&&el.dataset.img){p.style.backgroundImage="url('"+el.dataset.img+"')";p.style.backgroundSize='cover';p.style.backgroundPosition='center';document.getElementById('lbnum').style.display='none';}var l=document.getElementById('lightbox');l.classList.add('show');l.style.display='flex';}
+document.getElementById('lightbox').addEventListener('click',function(){this.classList.remove('show');this.style.display='none';});
+function showModal(m){document.getElementById('mmsg').textContent=m;document.getElementById('modal').classList.add('show');}
+function tutupModal(){document.getElementById('modal').classList.remove('show');}
+function salin(id){var t=document.getElementById(id).textContent;
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){showModal('Nomor berhasil disalin 🌿');}).catch(function(){showModal(t);});}else{showModal(t);}}
+var playing=false;
+function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
+var seed=[{n:'Keluarga Asano',h:'Hadir',u:'Selamat atas kelulusannya! Sukses selalu ke depannya.'},{n:'Dosen Pembimbing',h:'Hadir',u:'Bangga atas pencapaianmu. Terus berkarya!'}];
+var wishes=seed.slice();
+try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_ws09')||'[]'));}catch(e){}
+function renderWishes(){var b=document.getElementById('wlist');b.innerHTML='';
+wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';
+var a=document.createElement('div');a.className='wn';a.textContent=w.n;
+var c=document.createElement('div');c.className='wh';c.textContent=w.h;
+var e=document.createElement('div');e.className='wu';e.textContent=w.u;
+d.appendChild(a);d.appendChild(c);d.appendChild(e);b.appendChild(d);});}
+function kirimUcapan(){var n=document.getElementById('wn').value.trim(),h=document.getElementById('wh').value,u=document.getElementById('wu').value.trim();
+if(!n||!u){showModal('Mohon isi nama dan ucapan terlebih dahulu 🌿');return;}
+var w={n:n,h:h,u:u};wishes.push(w);
+try{var s=JSON.parse(localStorage.getItem('w_ws09')||'[]');s.push(w);localStorage.setItem('w_ws09',JSON.stringify(s));}catch(e){}
+document.getElementById('wn').value='';document.getElementById('wu').value='';renderWishes();showModal('Terima kasih atas ucapannya 🌿');}
+renderWishes();
+</script>
+<script>
+function whSet(v){document.getElementById('wh').value=v;document.getElementById('whlabel').textContent=v;document.getElementById('whmodal').classList.remove('show');}
+</script></body>
+</html>

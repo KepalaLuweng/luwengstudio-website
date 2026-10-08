@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Airi — Ulang Tahun ke-17</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root{--lav:#e6e0ff;--lav-dk:#8f7fd4;--peach:#ffe5d4;--mint:#d9f2e6;--baby:#dbeeff;--cream:#fdfbff;--ink:#55506a;--mut:#9a94b5}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;font-size:15px}
+.fun{font-family:'Fredoka',sans-serif}
+.wrap{max-width:560px;margin:0 auto}
+section{padding:3.8rem 1.5rem;text-align:center;position:relative}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.eyebrow{font-family:'Fredoka',sans-serif;font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--lav-dk);margin-bottom:.7rem;font-weight:600}
+h2.title{font-family:'Fredoka',sans-serif;font-size:1.95rem;font-weight:600}
+.lead{line-height:1.95;font-size:.88rem;font-weight:300;max-width:420px;margin:.8rem auto 0;color:#7a7494}
+.wave{display:block;width:100%;height:34px;margin:0}
+/* COVER */
+#cover{position:fixed;inset:0;z-index:100;background:linear-gradient(160deg,var(--lav) 0%,var(--peach) 55%,var(--mint) 100%);display:flex;align-items:center;justify-content:center;padding:1.5rem;transition:opacity .9s ease,visibility .9s}
+/* Animasi buka: pola c */
+#cover{clip-path:circle(142% at 50% 45%)}
+#cover.hide{clip-path:circle(0% at 50% 45%);transition:clip-path 1.15s cubic-bezier(.6,0,.3,1);visibility:hidden;transition:visibility 0s 1.2s,clip-path 1.15s cubic-bezier(.6,0,.3,1)}
+.reveal.visible{transition-delay:calc(var(--rd,0)*.07s)}
+#cover .blobbg{position:absolute;width:340px;height:340px;background:rgba(255,255,255,.5);border-radius:58% 42% 55% 45%/48% 55% 45% 52%;top:6%;left:50%;transform:translateX(-50%)}
+#cover .card{background:rgba(255,255,255,.88);backdrop-filter:blur(4px);border-radius:60px 24px 60px 24px;padding:2.8rem 1.8rem;max-width:360px;width:100%;text-align:center;box-shadow:0 20px 50px rgba(143,127,212,.25);position:relative;z-index:2}
+#cover .agenum{font-family:'Fredoka',sans-serif;font-size:4rem;font-weight:700;line-height:1;color:var(--lav-dk)}
+#cover .ageth{font-size:.68rem;letter-spacing:6px;color:var(--mut);margin-bottom:1.1rem}
+#cover .to{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--mut);line-height:2}
+#cover .guest{font-family:'Fredoka',sans-serif;font-size:1.2rem;margin:.3rem 0 1rem}
+#cover h1{font-family:'Fredoka',sans-serif;font-size:1.9rem;font-weight:600;margin-bottom:.3rem}
+#cover .date{font-size:.74rem;letter-spacing:2px;color:var(--mut);margin-bottom:1.6rem}
+.btn{display:inline-block;background:var(--lav-dk);color:#fff;border:none;padding:.95rem 2.4rem;font-size:.74rem;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-radius:40px 14px 40px 14px;font-family:'Montserrat',sans-serif;font-weight:600;text-decoration:none;box-shadow:0 8px 20px rgba(143,127,212,.4)}
+.btn:active{transform:scale(.97)}
+/* PROFILE */
+.pcard{background:#fff;border-radius:40px 18px 40px 18px;padding:2.4rem 1.5rem;margin-top:1.7rem;box-shadow:0 12px 30px rgba(143,127,212,.14)}
+.pcard .photo{width:124px;height:124px;margin:0 auto 1.1rem;background:linear-gradient(135deg,var(--lav),var(--lav-dk));border-radius:52% 48% 55% 45%/50% 52% 48% 50%;display:flex;align-items:center;justify-content:center;font-family:'Fredoka',sans-serif;font-size:2.4rem;color:#fff;font-weight:600}
+.pcard h3{font-family:'Fredoka',sans-serif;font-size:1.7rem;font-weight:600}
+.pcard .age{display:inline-block;margin-top:.7rem;background:var(--peach);color:#b06a2e;font-family:'Fredoka',sans-serif;font-size:.8rem;font-weight:600;padding:.45rem 1.2rem;border-radius:30px 10px 30px 10px}
+.pcard .par{margin-top:.9rem;font-size:.8rem;line-height:1.85;color:var(--mut);font-weight:300}
+/* GALLERY staggered */
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:1.7rem}
+.gal .ph{aspect-ratio:3/4;border-radius:30px 12px 30px 12px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:'Fredoka',sans-serif;color:#fff;font-size:1.4rem;font-weight:600}
+.gal .ph:nth-child(odd){margin-top:1.4rem}
+.gal .ph:nth-child(1){background:linear-gradient(135deg,#cfc2f5,#8f7fd4)}
+.gal .ph:nth-child(2){background:linear-gradient(135deg,#ffd9b8,#f0a35e)}
+.gal .ph:nth-child(3){background:linear-gradient(135deg,#bfe8d2,#5fb98f)}
+.gal .ph:nth-child(4){background:linear-gradient(135deg,#c3dcf7,#6fa8dc)}
+/* COUNTDOWN */
+#count{background:linear-gradient(150deg,var(--lav) 0%,#d4c8f7 100%)}
+#count h2.title{color:#4a4468}
+.cd{display:flex;gap:.6rem;justify-content:center;margin-top:1.6rem;flex-wrap:wrap}
+.cd>div{background:rgba(255,255,255,.75);border-radius:50%;width:76px;height:76px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.cd b{font-family:'Fredoka',sans-serif;font-size:1.45rem;color:var(--lav-dk);font-weight:700;line-height:1}
+.cd span{font-size:.5rem;letter-spacing:1px;text-transform:uppercase;color:var(--mut);margin-top:.2rem}
+/* EVENT */
+.evcard{background:#fff;border-radius:18px 44px 18px 44px;margin-top:1.7rem;padding:2.3rem 1.5rem;box-shadow:0 12px 30px rgba(143,127,212,.14)}
+.evcard .edate{font-family:'Fredoka',sans-serif;font-size:1.32rem;font-weight:600}
+.evcard .eday{font-size:.66rem;letter-spacing:3px;color:var(--lav-dk);margin:.35rem 0 .9rem;font-weight:600}
+.evcard .vn{font-size:.83rem;color:var(--mut);line-height:1.85;font-weight:300}
+.evbtns{display:flex;gap:.6rem;justify-content:center;margin-top:1.4rem;flex-wrap:wrap}
+.sbtn{flex:1;min-width:120px;text-align:center;text-decoration:none;font-family:'Fredoka',sans-serif;font-size:.74rem;padding:.85rem .5rem;border-radius:30px 10px 30px 10px;font-weight:500}
+.sbtn.solid{background:var(--lav-dk);color:#fff}
+.sbtn.line{border:2px solid var(--lav-dk);color:var(--lav-dk);background:#fff}
+/* WISHES */
+.wform{background:#fff;border-radius:26px 12px 26px 12px;padding:1.7rem 1.3rem;margin-top:1.6rem;text-align:left;box-shadow:0 10px 26px rgba(143,127,212,.12)}
+.wform label{display:block;font-family:'Fredoka',sans-serif;font-size:.66rem;letter-spacing:2px;color:var(--lav-dk);margin:.9rem 0 .4rem;font-weight:500}
+.wform label:first-child{margin-top:0}
+.wform input,.wform textarea,.wform .whbtn{width:100%;background:#faf9ff;border:1px solid #ddd3f5;border-radius:14px 6px 14px 6px;padding:.85rem;font-family:'Montserrat',sans-serif;font-size:.85rem;color:var(--ink)}
+.wform input:focus,.wform textarea:focus{outline:none;border-color:var(--lav-dk)}
+.wform textarea{min-height:84px;resize:vertical}
+.wlist{margin-top:1.4rem;display:flex;flex-direction:column;gap:.8rem;max-height:360px;overflow-y:auto;text-align:left}
+.wish{background:#fff;border-radius:20px 8px 20px 8px;padding:1.1rem 1.2rem;box-shadow:0 6px 16px rgba(143,127,212,.1)}
+.wish .wn{font-family:'Fredoka',sans-serif;font-size:.98rem}
+.wish .wh{display:inline-block;margin:.3rem 0 .45rem;font-size:.56rem;letter-spacing:2px;font-family:'Fredoka',sans-serif;color:#fff;background:#a8d5ba;padding:.3rem .7rem;border-radius:20px}
+.wish .wu{font-size:.83rem;line-height:1.8;color:#7a7494;font-weight:300}
+/* GIFT */
+.gift{background:#fff;border-radius:22px 10px 22px 10px;padding:1.9rem 1.4rem;margin-top:1.1rem;box-shadow:0 10px 26px rgba(143,127,212,.12)}
+.gift .bank{font-family:'Fredoka',sans-serif;font-size:.64rem;letter-spacing:3px;color:var(--mut);font-weight:500}
+.gift .rek{font-family:'Fredoka',sans-serif;font-size:1.5rem;letter-spacing:2px;margin:.55rem 0 .2rem;font-weight:600}
+.gift .an{font-size:.78rem;color:var(--mut);font-weight:300}
+.copybtn{margin-top:1rem;background:var(--mint);border:none;color:#2e7d57;padding:.8rem 1.8rem;font-size:.7rem;letter-spacing:2px;cursor:pointer;border-radius:30px 10px 30px 10px;font-family:'Fredoka',sans-serif;font-weight:600}
+/* FOOTER */
+footer{background:linear-gradient(160deg,#b9a8ec,#8f7fd4);color:#fff;text-align:center;padding:3.5rem 1.5rem 2.8rem}
+footer .fun{font-family:'Fredoka',sans-serif;font-size:1.5rem;font-weight:600;margin-bottom:.6rem}
+footer p{font-size:.76rem;line-height:1.95;font-weight:300}
+footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;opacity:.85;padding-right:3.5rem}
+/* MODAL */
+#modal{position:fixed;inset:0;z-index:300;background:rgba(85,80,106,.5);display:none;align-items:center;justify-content:center;padding:1.8rem}#whmodal{position:fixed;inset:0;z-index:300;background:rgba(85,80,106,.5);display:none;align-items:center;justify-content:center;padding:1.8rem}#whmodal.show{display:flex}.whopt{display:block;width:100%;margin:.45rem 0}.whbtn{width:100%;text-align:left;cursor:pointer}.wharrow{float:right}
+#modal.show{display:flex}
+#modal .mbox{background:#fff;border-radius:34px 14px 34px 14px;padding:2.4rem 1.7rem;max-width:320px;width:100%;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.2);animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
+#modal .mheart{font-size:2.4rem;margin-bottom:.8rem}
+#modal .mmsg{font-family:'Fredoka',sans-serif;font-size:1.05rem;line-height:1.7;color:#5f5878;margin-bottom:1.5rem}
+#modal .mok{background:var(--lav-dk);color:#fff;border:none;padding:.85rem 2.4rem;font-size:.72rem;letter-spacing:3px;border-radius:30px 10px 30px 10px;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:600}
+/* music */
+#music{position:fixed;bottom:1.3rem;right:1.3rem;z-index:90;width:50px;height:50px;border-radius:52% 48% 55% 45%;background:var(--lav-dk);color:#fff;border:none;font-size:1.2rem;cursor:pointer;display:none;box-shadow:0 6px 16px rgba(143,127,212,.45)}
+#music.show{display:block}
+#music.off{opacity:.45}
+
+</style>
+</head>
+<body>
+<div id="cover">
+  <div class="blobbg"></div>
+  <div class="card">
+    <div class="agenum">17</div>
+    <div class="ageth">TAHUN</div>
+    <div class="to">Kepada Yth<br>Bapak/Ibu/Saudara/i</div>
+    <div class="guest">Tamu Undangan</div>
+    <h1>Airi Mizutani</h1>
+    <div class="date">SABTU, 16 JANUARI 2027</div>
+    <button class="btn" onclick="buka()">Buka Undangan 🌸</button>
+  </div>
+</div>
+<button id="music" onclick="toggleMusic()" title="Musik">♪</button>
+<div class="wrap">
+<section class="reveal">
+  <div class="eyebrow">Birthday Girl</div>
+  <h2 class="title">Yang Berulang Tahun</h2>
+  <div class="pcard">
+    <div class="photo">A</div>
+    <h3>Airi Mizutani</h3>
+    <div class="age">🌸 17 Tahun</div>
+    <div class="par">Putri dari<br>Bapak Tetsuya Mizutani &amp; Ibu Yuki Mizutani</div>
+  </div>
+</section>
+<section class="reveal" style="background:var(--baby);max-width:none">
+  <div class="wrap">
+    <div class="eyebrow">Galeri</div>
+    <h2 class="title">Momen Manis</h2>
+    <div class="gal">
+      <div class="ph" onclick="lb(this,1)" data-img="gal-ultah-1.jpg" style="background-image:url('gal-ultah-1.jpg');background-size:cover;background-position:center"></div>
+      <div class="ph" onclick="lb(this,2)" data-img="gal-ultah-2.jpg" style="background-image:url('gal-ultah-2.jpg');background-size:cover;background-position:center"></div>
+      <div class="ph" onclick="lb(this,3)" data-img="gal-ultah-3.jpg" style="background-image:url('gal-ultah-3.jpg');background-size:cover;background-position:center"></div>
+      <div class="ph" onclick="lb(this,4)" data-img="gal-ultah-4.jpg" style="background-image:url('gal-ultah-4.jpg');background-size:cover;background-position:center"></div>
+      <div class="ph" onclick="lb(this,5)" data-img="gal-ultah-5.jpg" style="background-image:url('gal-ultah-5.jpg');background-size:cover;background-position:center"></div>
+    </div>
+    <p class="lead" style="font-size:.75rem">Ketuk foto untuk memperbesar</p>
+  </div>
+</section>
+<section id="count" class="reveal" style="max-width:none">
+  <div class="wrap">
+    <div class="eyebrow">Save The Date</div>
+    <h2 class="title">Hitung Mundur</h2>
+    <div class="cd">
+      <div><b id="d">0</b><span>Hari</span></div>
+      <div><b id="h">0</b><span>Jam</span></div>
+      <div><b id="m">0</b><span>Menit</span></div>
+      <div><b id="s">0</b><span>Detik</span></div>
+    </div>
+  </div>
+</section>
+<section class="reveal">
+  <div class="eyebrow">Party Time</div>
+  <h2 class="title">Detail Acara</h2>
+  <div class="evcard">
+    <div class="edate">Sabtu, 16 Januari 2027</div>
+    <div class="eday">16.00 — 20.00 WIB</div>
+    <div class="vn">🎪 Aula Serbaguna Ceria<br>Jl. Pelangi No. 7, Jakarta Selatan<br><br><b>Dresscode:</b> colorful &amp; fun!</div>
+    <div class="evbtns">
+      <a class="sbtn solid" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ulang+Tahun+Airi+ke-17&dates=20270116T090000Z/20270116T130000Z&details=Pesta+ulang+tahun+Airi+Mizutani+ke-17&location=Jl.+Pelangi+No.+7+Jakarta+Selatan" target="_blank">Simpan Tanggal</a>
+      <a class="sbtn line" href="https://maps.google.com/?q=Jakarta+Selatan" target="_blank">Lihat Lokasi</a>
+    </div>
+  </div>
+</section>
+<section class="reveal" style="background:var(--peach);max-width:none">
+  <div class="wrap">
+    <div class="eyebrow">RSVP</div>
+    <h2 class="title">Kamu Datang? 🌸</h2>
+    <p class="lead">Konfirmasi kehadiranmu dan tinggalkan ucapan!</p>
+    <div class="wform">
+      <label>Nama</label>
+      <input id="wn" type="text" placeholder="Nama kamu">
+      <label>Kehadiran</label>
+      <input type="hidden" id="wh" value="Hadir">
+<button type="button" class="whbtn" onclick="document.getElementById('whmodal').classList.add('show')"><span id="whlabel">Hadir</span><span class="wharrow">▾</span></button>
+<div id="whmodal" onclick="if(event.target===this)this.classList.remove('show')"><div class="mbox"><div class="mheart">♥</div><div class="mmsg">Konfirmasi Kehadiran</div><button class="btn whopt" onclick="whSet('Hadir')">Hadir</button><button class="btn whopt" onclick="whSet('Tidak Hadir')">Tidak Hadir</button><button class="btn whopt" onclick="whSet('Masih Ragu')">Masih Ragu</button></div></div>
+      <label>Ucapan</label>
+      <textarea id="wu" placeholder="Tulis ucapan..."></textarea>
+      <div style="margin-top:1.1rem;text-align:center"><button class="btn" onclick="kirimUcapan()">Kirim 🌸</button></div>
+    </div>
+    <div class="wlist" id="wlist"></div>
+  </div>
+</section>
+<section class="reveal">
+  <div class="eyebrow">Kado</div>
+  <h2 class="title">Tanda Kasih</h2>
+  <div class="gift">
+    <div class="bank">DANA</div>
+    <div class="rek" id="rek1">081234567890</div>
+    <div class="an">a.n. Airi Mizutani</div>
+    <button class="copybtn" onclick="salin('rek1')">Salin Nomor</button>
+  </div>
+  <div class="gift">
+    <div class="bank">Bank BCA</div>
+    <div class="rek" id="rek2">1234567890</div>
+    <div class="an">a.n. Tetsuya Mizutani</div>
+    <button class="copybtn" onclick="salin('rek2')">Salin Nomor</button>
+  </div>
+  <div class="gift">
+    <div class="bank">Kado Fisik 🎁</div>
+    <div class="rek" id="kadoaddr" style="font-size:.85rem;line-height:1.8">Jl. Kenanga No. 12, Surabaya</div>
+    <div class="an">Kirim kado ke alamat di atas</div>
+    <button class="copybtn" onclick="salin('kadoaddr')">Salin Alamat</button>
+  </div>
+</section>
+</div>
+<footer>
+  <div class="fun">Airi's Sweet 17!</div>
+  <p>Sampai jumpa di hari bahagia 🌸</p>
+  <div class="tag">TEMA: PASTEL PARTY — SAMPEL REVIEW</div>
+</footer>
+<div id="lightbox" onclick="this.classList.remove('show')" style="position:fixed;inset:0;z-index:200;background:rgba(85,80,106,.9);display:none;align-items:center;justify-content:center;padding:1.5rem">
+  <div id="lbphoto" style="width:100%;max-width:400px;aspect-ratio:3/4;border-radius:40px 16px 40px 16px;background:linear-gradient(135deg,#cfc2f5,#8f7fd4);display:flex;align-items:center;justify-content:center"><span id="lbnum" style="font-family:'Fredoka',sans-serif;color:#fff;font-size:3rem;font-weight:600">1</span></div>
+</div>
+<div id="modal">
+  <div class="mbox">
+    <div class="mheart">🌸</div>
+    <div class="mmsg" id="mmsg"></div>
+    <button class="mok" onclick="tutupModal()">Oke!</button>
+  </div>
+</div>
+<script>
+function buka(){document.getElementById('cover').classList.add('hide');document.getElementById('music').classList.add('show');document.body.style.overflow='';document.body.classList.add('opened');var rs=document.querySelectorAll('.reveal');for(var i=0;i<rs.length;i++){rs[i].style.setProperty('--rd',Math.min(i,12));}}
+document.body.style.overflow='hidden';
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+var target=new Date('2027-01-16T16:00:00+07:00').getTime();
+function tick(){var diff=Math.max(0,target-Date.now());
+document.getElementById('d').textContent=Math.floor(diff/864e5);
+document.getElementById('h').textContent=Math.floor(diff/36e5)%24;
+document.getElementById('m').textContent=Math.floor(diff/6e4)%60;
+document.getElementById('s').textContent=Math.floor(diff/1e3)%60;}
+setInterval(tick,1000);tick();
+function lb(el,n){document.getElementById('lbnum').textContent=n;var p=document.getElementById('lbphoto');if(p&&el&&el.dataset.img){p.style.backgroundImage="url('"+el.dataset.img+"')";p.style.backgroundSize='cover';p.style.backgroundPosition='center';document.getElementById('lbnum').style.display='none';}var l=document.getElementById('lightbox');l.classList.add('show');l.style.display='flex';}
+document.getElementById('lightbox').addEventListener('click',function(){this.classList.remove('show');this.style.display='none';});
+function showModal(msg){document.getElementById('mmsg').textContent=msg;document.getElementById('modal').classList.add('show');}
+function tutupModal(){document.getElementById('modal').classList.remove('show');}
+function salin(id){var t=document.getElementById(id).textContent;
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){showModal('Nomor berhasil disalin! 🌸');}).catch(function(){showModal(t);});}
+else{showModal(t);}}
+var playing=false;
+function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
+var seed=[
+{n:'Kurumi',h:'Hadir',u:'Happy sweet 17 Airi! Makin cantik, makin sukses ya! 🌸'},
+{n:'Daichi',h:'Hadir',u:'Wih 17 tahun! Traktirannya jangan lupa ya 🌸'}];
+var wishes=seed.slice();
+try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_ul06')||'[]'));}catch(e){}
+function renderWishes(){var box=document.getElementById('wlist');box.innerHTML='';
+wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';
+var wn=document.createElement('div');wn.className='wn';wn.textContent=w.n;
+var wh=document.createElement('div');wh.className='wh';wh.textContent=w.h;
+var wu=document.createElement('div');wu.className='wu';wu.textContent=w.u;
+d.appendChild(wn);d.appendChild(wh);d.appendChild(wu);box.appendChild(d);});}
+function kirimUcapan(){var n=document.getElementById('wn').value.trim(),
+h=document.getElementById('wh').value,u=document.getElementById('wu').value.trim();
+if(!n||!u){showModal('Isi nama dan ucapan dulu ya! 🌸');return;}
+var w={n:n,h:h,u:u};wishes.push(w);
+try{var s=JSON.parse(localStorage.getItem('w_ul06')||'[]');s.push(w);localStorage.setItem('w_ul06',JSON.stringify(s));}catch(e){}
+document.getElementById('wn').value='';document.getElementById('wu').value='';
+renderWishes();showModal('Makasih ucapannya! Sampai jumpa di pesta! 🌸');}
+renderWishes();
+</script>
+<script>
+function whSet(v){document.getElementById('wh').value=v;document.getElementById('whlabel').textContent=v;document.getElementById('whmodal').classList.remove('show');}
+</script></body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toma &amp; Nana — Undangan Pernikahan</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--toska:#1f8a8a;--toska-dk:#0f5f5f;--toska-lt:#ddf0ee;--sand:#f4efe4;--ink:#22302e;--mut:#7d8a86;--coral:#ff7f6b}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:#fff;color:var(--ink);font-size:15px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:600px;margin:0 auto}
+section{padding:4.2rem 1.6rem;text-align:center}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.eyebrow{font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;color:var(--toska);margin-bottom:.9rem;font-weight:600;text-indent:.34em}
+h2.title{font-family:'Fraunces',serif;font-size:2.05rem;font-weight:500;color:var(--ink);line-height:1.28}
+.sub{font-family:'Fraunces',serif;font-style:italic;font-size:1.02rem;color:var(--mut);margin:.6rem 0 1rem}
+.lead{color:var(--mut);line-height:2;font-size:.88rem;font-weight:300;max-width:430px;margin:.8rem auto 0}
+.heart{color:var(--coral)}
+.dia{color:var(--toska);letter-spacing:.5em;text-indent:.5em;margin:1.3rem 0;font-size:.95rem}
+/* cover — geometric */
+#cover{position:fixed;inset:0;z-index:100;background:linear-gradient(150deg,#0f5f5f 0%,#1f8a8a 60%,#37a8a0 100%);display:flex;align-items:center;justify-content:center;padding:1.8rem;transition:opacity .9s ease,visibility .9s;overflow:hidden}
+/* Animasi buka: pola b */
+#cover.hide{transform:translateY(-101%);transition:transform 1s cubic-bezier(.76,0,.24,1);visibility:hidden;transition:visibility 0s 1.05s,transform 1s cubic-bezier(.76,0,.24,1)}
+.reveal.visible{transition-delay:calc(var(--rd,0)*.07s)}
+#cover .panel{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.35);padding:3rem 1.8rem;max-width:380px;width:100%;text-align:center;backdrop-filter:blur(4px);clip-path:polygon(18px 0,calc(100% - 18px) 0,100% 18px,100% calc(100% - 18px),calc(100% - 18px) 100%,18px 100%,0 calc(100% - 18px),0 18px)}
+#cover .lbl{font-size:.6rem;letter-spacing:.36em;text-transform:uppercase;color:#bfe3df;text-indent:.36em;font-weight:600}
+#cover h1{font-family:'Fraunces',serif;font-weight:400;font-size:2.6rem;line-height:1.2;margin:.8rem 0;color:#fff}
+#cover h1 em{font-style:italic;color:#ffe9a8}
+#cover .date{font-size:.72rem;letter-spacing:.3em;color:#bfe3df;margin:.8rem 0 1.7rem;text-indent:.3em}
+#cover .to{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:#bfe3df;margin-bottom:.4rem;text-indent:.3em}
+#cover .guest{font-family:'Fraunces',serif;font-size:1.28rem;color:#fff;margin-bottom:2rem}
+.btn{display:inline-block;background:#fff;color:var(--toska-dk);border:none;padding:1.05rem 2.7rem;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;text-indent:.28em;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:600;text-decoration:none;clip-path:polygon(14px 0,calc(100% - 14px) 0,100% 14px,100% calc(100% - 14px),calc(100% - 14px) 100%,14px 100%,0 calc(100% - 14px),0 14px)}
+.btn:active{transform:scale(.97)}
+.btn.tk{background:var(--toska);color:#fff}
+.btn.ol{background:transparent;border:1px solid var(--toska);color:var(--toska-dk);clip-path:none;border-radius:4px}
+/* countdown — diamond separators */
+.cd{display:flex;justify-content:center;align-items:center;gap:.9rem;margin-top:1.9rem;flex-wrap:wrap}
+.cd .cell{text-align:center}
+.cd .cell b{font-family:'Fraunces',serif;font-weight:500;font-size:2.2rem;color:var(--toska-dk);display:block;line-height:1}
+.cd .cell span{font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)}
+.cd .sep{color:var(--toska);font-size:1rem;opacity:.6}
+/* couple — diamond frames */
+.dp{display:flex;gap:1.4rem;justify-content:center;margin-top:2rem}
+.dcard{flex:1;max-width:240px}
+.dcard .dframe{width:120px;height:120px;margin:0 auto 1.1rem;transform:rotate(45deg);border:2px solid var(--toska);background:var(--toska-lt);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(31,138,138,.18)}
+.dcard .dframe span{transform:rotate(-45deg);font-family:'Fraunces',serif;font-size:2rem;color:var(--toska-dk);font-weight:500}
+.dcard h3{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:500}
+.dcard .role{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--toska);margin:.4rem 0 .6rem;font-weight:600}
+.dcard .par{font-size:.74rem;color:var(--mut);line-height:1.8;font-weight:300}
+.damp{font-size:1.4rem;color:var(--coral);margin:1.1rem 0 .1rem}
+/* verse */
+.verse{font-family:'Fraunces',serif;font-style:italic;font-weight:300;font-size:1.12rem;line-height:2;color:#4c5a57;max-width:440px;margin:0 auto}
+.vsrc{margin-top:1rem;font-size:.62rem;letter-spacing:.3em;color:var(--toska);font-weight:600}
+/* event — horizontal cards */
+.ev{background:var(--sand);padding:1.7rem 1.4rem;margin-top:1.2rem;text-align:left;position:relative;overflow:hidden}
+.ev::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(var(--toska),var(--coral))}
+.ev h3{font-family:'Fraunces',serif;font-size:1.35rem;font-weight:500;margin-bottom:.25rem}
+.ev .d{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--toska);font-weight:600;margin-bottom:.6rem}
+.ev .m{font-size:.83rem;color:var(--mut);line-height:1.9;font-weight:300}
+.ev .row{display:flex;gap:.6rem;margin-top:1.1rem;flex-wrap:wrap}
+/* story — zigzag */
+.zz{margin-top:1.8rem;display:flex;flex-direction:column;gap:1.2rem}
+.zb{background:#fff;border:1px solid var(--toska-lt);padding:1.4rem 1.3rem;text-align:left;max-width:85%;position:relative}
+.zb:nth-child(odd){align-self:flex-start;border-left:4px solid var(--toska)}
+.zb:nth-child(even){align-self:flex-end;border-right:4px solid var(--coral);text-align:right}
+.zb .y{font-size:.6rem;letter-spacing:.26em;color:var(--toska);font-weight:600;margin-bottom:.3rem}
+.zb h4{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:500;margin-bottom:.35rem}
+.zb p{font-size:.82rem;line-height:1.85;color:#4c5a57;font-weight:300}
+/* gallery — staggered */
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:1.8rem}
+.gal .col{display:flex;flex-direction:column;gap:.7rem}
+.gal .col:last-child{margin-top:1.6rem}
+.gal .ph{aspect-ratio:3/4;background:linear-gradient(150deg,#9fd4d0,#1f8a8a);display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:'Fraunces',serif;font-size:1.5rem;color:#fff;clip-path:polygon(0 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%)}
+/* wishes */
+#wishes{background:var(--toska-dk);color:#eaf4f3}
+#wishes .eyebrow{color:#9fd4d0}
+#wishes h2.title{color:#fff}
+.wform{background:rgba(255,255,255,.07);border:1px solid rgba(159,212,208,.4);padding:1.8rem 1.4rem;margin-top:1.8rem;text-align:left;clip-path:polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px)}
+.wform label{display:block;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#9fd4d0;margin:1rem 0 .45rem;font-weight:600}
+.wform label:first-child{margin-top:0}
+.wform input,.wform textarea,.wform .whbtn{width:100%;background:rgba(255,255,255,.1);border:1px solid rgba(159,212,208,.4);color:#fff;padding:.9rem;font-family:'Montserrat',sans-serif;font-size:.87rem}
+.wform textarea{min-height:88px;resize:vertical}
+.wform input::placeholder,.wform textarea::placeholder{color:rgba(255,255,255,.35)}
+.wform select option{color:#222}
+.wlist{margin-top:1.6rem;display:flex;flex-direction:column;gap:1rem;max-height:400px;overflow-y:auto;text-align:left}
+.wish{background:rgba(255,255,255,.07);border:1px solid rgba(159,212,208,.3);padding:1.2rem 1.25rem;position:relative}
+.wish::before{content:"\2665";position:absolute;top:.9rem;right:1.1rem;color:var(--coral);font-size:.9rem}
+.wish .wn{font-family:'Fraunces',serif;color:#fff;font-size:1.02rem;padding-right:1.5rem}
+.wish .wh{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:#9fd4d0;margin:.3rem 0 .5rem}
+.wish .wu{font-size:.85rem;line-height:1.85;font-weight:300;color:#d9e8e6}
+/* gift */
+.gf{background:var(--sand);padding:2rem 1.4rem;margin-top:1.2rem;position:relative}
+.gf::before{content:"✦";position:absolute;top:.8rem;right:1.1rem;color:var(--toska);opacity:.5}
+.gf .bank{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.gf .rek{font-family:'Fraunces',serif;font-size:1.65rem;letter-spacing:.08em;color:var(--toska-dk);margin:.6rem 0 .25rem;font-weight:500}
+.gf .an{font-size:.8rem;color:var(--mut);font-weight:300}
+.copybtn{margin-top:1.1rem;background:var(--toska);border:none;color:#fff;padding:.85rem 2rem;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:600;clip-path:polygon(12px 0,calc(100% - 12px) 0,100% 12px,100% calc(100% - 12px),calc(100% - 12px) 100%,12px 100%,0 calc(100% - 12px),0 12px)}
+/* footer */
+footer{background:#0f3f3f;color:#bfe3df;text-align:center;padding:4rem 1.6rem 3rem}
+footer .ff{font-family:'Fraunces',serif;font-size:1.6rem;color:#fff;margin-bottom:.7rem}
+footer p{font-size:.78rem;line-height:2;font-weight:300}
+footer .fh{color:var(--coral);font-size:1.15rem;margin:1.2rem 0 .4rem}
+footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:.22em;opacity:.6;padding-right:3.5rem}
+/* modal */
+#modal{position:fixed;inset:0;z-index:300;background:rgba(15,63,63,.6);display:none;align-items:center;justify-content:center;padding:1.8rem}#whmodal{position:fixed;inset:0;z-index:300;background:rgba(15,63,63,.6);display:none;align-items:center;justify-content:center;padding:1.8rem}#whmodal.show{display:flex}.whopt{display:block;width:100%;margin:.45rem 0}.whbtn{width:100%;text-align:left;cursor:pointer}.wharrow{float:right}
+#modal.show{display:flex}
+#modal .mbox{background:#fff;padding:2.6rem 1.9rem;max-width:330px;width:100%;text-align:center;box-shadow:0 26px 60px rgba(0,0,0,.3);animation:pop .35s ease;clip-path:polygon(24px 0,calc(100% - 24px) 0,100% 24px,100% calc(100% - 24px),calc(100% - 24px) 100%,24px 100%,0 calc(100% - 24px),0 24px)}
+@keyframes pop{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
+#modal .mheart{font-size:2.1rem;color:var(--coral);margin-bottom:.9rem;animation:beat 1.2s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}25%{transform:scale(1.18)}}
+#modal .mmsg{font-family:'Fraunces',serif;font-size:1.1rem;line-height:1.8;color:var(--ink);margin-bottom:1.6rem}
+/* music */
+#music{position:fixed;bottom:1.3rem;right:1.3rem;z-index:90;width:48px;height:48px;background:var(--toska);color:#fff;border:none;font-size:1.15rem;cursor:pointer;display:none;transform:rotate(45deg)}
+#music.show{display:flex;align-items:center;justify-content:center}
+#music span{transform:rotate(-45deg)}
+#music.off{opacity:.45}
+</style>
+</head>
+<body>
+<div id="cover">
+  <div class="panel">
+    <div class="lbl">Undangan Pernikahan</div>
+    <h1>Toma <em>&amp;</em> Nana</h1>
+    <div class="date">SABTU · 20 DESEMBER 2026</div>
+    <div class="to">Kepada Yth.</div>
+    <div class="guest">Tamu Undangan</div>
+    <button class="btn" onclick="buka()">Buka Undangan</button>
+  </div>
+</div>
+<button id="music" onclick="toggleMusic()"><span>♪</span></button>
+<div class="wrap">
+<section class="reveal">
+  <div class="eyebrow">Save The Date</div>
+  <h2 class="title">20 Desember 2026</h2>
+  <div class="dia">✦ ✦ ✦</div>
+  <div class="cd">
+    <div class="cell"><b id="d">0</b><span>Hari</span></div><div class="sep">✦</div>
+    <div class="cell"><b id="h">0</b><span>Jam</span></div><div class="sep">✦</div>
+    <div class="cell"><b id="m">0</b><span>Menit</span></div><div class="sep">✦</div>
+    <div class="cell"><b id="s">0</b><span>Detik</span></div>
+  </div>
+</section>
+<section class="reveal" style="background:var(--sand);max-width:none">
+  <div class="wrap">
+    <div class="eyebrow">Assalamu'alaikum Wr. Wb.</div>
+    <h2 class="title">Mempelai Berbahagia</h2>
+    <div class="dp">
+      <div class="dcard">
+        <div class="dframe"><span>A</span></div>
+        <h3>Toma Nishimura</h3>
+        <div class="role">Mempelai Pria</div>
+        <div class="par">Putra pertama dari<br>Bapak Ken Nishimura<br>&amp; Ibu Yoko Nishimura</div>
+      </div>
+      <div class="dcard">
+        <div class="dframe"><span>S</span></div>
+        <h3>Nana Oshiro</h3>
+        <div class="role">Mempelai Wanita</div>
+        <div class="par">Putri kedua dari<br>Bapak Daichi Oshiro<br>&amp; Ibu Emi Oshiro</div>
+      </div>
+    </div>
+    <div class="damp">♥</div>
+  </div>
+</section>
+<section class="reveal">
+  <p class="verse">"Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu merasa tenteram kepadanya."</p>
+  <div class="vsrc">QS. AR-RŪM : 21</div>
+</section>
+<section class="reveal" style="background:var(--sand);max-width:none">
+  <div class="wrap">
+    <div class="eyebrow">Waktu &amp; Tempat</div>
+    <h2 class="title">Rangkaian Acara</h2>
+    <div class="dia">✦ ✦ ✦</div>
+    <div class="ev">
+      <h3>Akad Nikah</h3>
+      <div class="d">Sabtu, 20 Desember 2026 · 08.00 — 10.00 WIB</div>
+      <div class="m">Gedung Serbaguna Jakarta<br>Jl. Merdeka No. 123, Jakarta Pusat</div>
+      <div class="row">
+        <a class="btn ol" style="padding:.8rem 1.3rem" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Akad+Nikah+Toma+%26+Nana&dates=20261220T010000Z/20261220T030000Z&details=Akad+nikah+Toma+Nishimura+%26+Nana+Oshiro&location=Gedung+Serbaguna+Jakarta" target="_blank">Simpan Tanggal</a>
+        <a class="btn ol" style="padding:.8rem 1.3rem" href="https://maps.google.com/?q=Gedung+Serbaguna+Jakarta" target="_blank">Lihat Lokasi</a>
+      </div>
+    </div>
+    <div class="ev">
+      <h3>Resepsi</h3>
+      <div class="d">Sabtu, 20 Desember 2026 · 11.00 — 13.00 WIB</div>
+      <div class="m">Gedung Serbaguna Jakarta<br>Jl. Merdeka No. 123, Jakarta Pusat</div>
+      <div class="row">
+        <a class="btn ol" style="padding:.8rem 1.3rem" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Resepsi+Toma+%26+Nana&dates=20261220T040000Z/20261220T060000Z&details=Resepsi+pernikahan+Toma+Nishimura+%26+Nana+Oshiro&location=Gedung+Serbaguna+Jakarta" target="_blank">Simpan Tanggal</a>
+        <a class="btn ol" style="padding:.8rem 1.3rem" href="https://maps.google.com/?q=Gedung+Serbaguna+Jakarta" target="_blank">Lihat Lokasi</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="reveal">
+  <div class="eyebrow">Love Story</div>
+  <h2 class="title">Perjalanan Kami</h2>
+  <div class="zz">
+    <div class="zb"><div class="y">2019</div><h4>Pertemuan Pertama</h4><p>Berawal dari perkenalan sederhana di sebuah acara kampus, tak disangka menjadi awal dari segalanya.</p></div>
+    <div class="zb"><div class="y">2021</div><h4>Menjalin Kasih</h4><p>Dua tahun bersahabat, kami menyadari ada rasa yang tumbuh dan memutuskan melangkah lebih jauh.</p></div>
+    <div class="zb"><div class="y">2024</div><h4>Lamaran</h4><p>Dengan restu kedua keluarga, Toma meminang Nana di hadapan keluarga besar.</p></div>
+    <div class="zb"><div class="y">2026</div><h4>Menuju Halal</h4><p>Kini kami siap mengikat janji suci dan menua bersama. Jadilah saksi bahagia kami.</p></div>
+  </div>
+</section>
+<section class="reveal" style="background:var(--sand);max-width:none">
+  <div class="wrap">
+    <div class="eyebrow">Galeri</div>
+    <h2 class="title">Momen Bahagia</h2>
+    <div class="sub">Ketuk foto untuk memperbesar</div>
+    <div class="gal">
+      <div class="col">
+        <div class="ph" onclick="lb(this,1)" data-img="gal-wed-1.jpg" style="background-image:url('gal-wed-1.jpg');background-size:cover;background-position:center"></div>
+        <div class="ph" onclick="lb(this,2)" data-img="gal-wed-2.jpg" style="background-image:url('gal-wed-2.jpg');background-size:cover;background-position:center"></div>
+      </div>
+      <div class="col">
+        <div class="ph" onclick="lb(this,3)" data-img="gal-wed-3.jpg" style="background-image:url('gal-wed-3.jpg');background-size:cover;background-position:center"></div>
+        <div class="ph" onclick="lb(this,4)" data-img="gal-wed-4.jpg" style="background-image:url('gal-wed-4.jpg');background-size:cover;background-position:center"></div>
+      <div class="ph" onclick="lb(this,5)" data-img="gal-wed-5.jpg" style="background-image:url('gal-wed-5.jpg');background-size:cover;background-position:center"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="wishes" class="reveal" style="max-width:none">
+  <div class="wrap">
+    <div class="eyebrow">RSVP &amp; Ucapan</div>
+    <h2 class="title">Doa <span class="heart">♥</span> Kehadiran</h2>
+    <p class="lead" style="color:#bfe3df">Kehadiran Anda sangat berarti. Mohon konfirmasi dan tinggalkan doa terbaik.</p>
+    <div class="wform">
+      <label>Nama</label>
+      <input id="wn" type="text" placeholder="Nama Anda">
+      <label>Konfirmasi Kehadiran</label>
+      <input type="hidden" id="wh" value="Hadir">
+<button type="button" class="whbtn" onclick="document.getElementById('whmodal').classList.add('show')"><span id="whlabel">Hadir</span><span class="wharrow">▾</span></button>
+<div id="whmodal" onclick="if(event.target===this)this.classList.remove('show')"><div class="mbox"><div class="mheart">♥</div><div class="mmsg">Konfirmasi Kehadiran</div><button class="btn whopt" onclick="whSet('Hadir')">Hadir</button><button class="btn whopt" onclick="whSet('Tidak Hadir')">Tidak Hadir</button><button class="btn whopt" onclick="whSet('Masih Ragu')">Masih Ragu</button></div></div>
+      <label>Ucapan / Doa</label>
+      <textarea id="wu" placeholder="Tuliskan doa terbaik Anda..."></textarea>
+      <div style="margin-top:1.2rem;text-align:center"><button class="btn tk" onclick="kirimUcapan()">Kirim Ucapan</button></div>
+    </div>
+    <div class="wlist" id="wlist"></div>
+  </div>
+</section>
+<section class="reveal">
+  <div class="eyebrow">Amplop Digital</div>
+  <h2 class="title">Tanda Kasih</h2>
+  <div class="dia">✦ ✦ ✦</div>
+  <p class="lead">Doa restu Anda adalah hadiah terindah. Namun jika berkenan memberi tanda kasih:</p>
+  <div class="gf">
+    <div class="bank">Bank BCA</div>
+    <div class="rek" id="rek1">1234567890</div>
+    <div class="an">a.n. Toma Nishimura</div>
+    <button class="copybtn" onclick="salin('rek1')">Salin Nomor</button>
+  </div>
+  <div class="gf">
+    <div class="bank">Bank Mandiri</div>
+    <div class="rek" id="rek2">0987654321</div>
+    <div class="an">a.n. Nana Oshiro</div>
+    <button class="copybtn" onclick="salin('rek2')">Salin Nomor</button>
+  </div>
+  <div class="gf">
+    <div class="bank">Kado Fisik 🎁</div>
+    <div class="rek" id="kadoaddr" style="font-size:.85rem;line-height:1.8">Jl. Kenanga No. 12, Surabaya</div>
+    <div class="an">Kirim kado ke alamat di atas</div>
+    <button class="copybtn" onclick="salin('kadoaddr')">Salin Alamat</button>
+  </div>
+</section>
+</div>
+<footer>
+  <div class="ff">Toma &amp; Nana</div>
+  <p>Terima kasih atas doa dan kehadirannya.</p>
+  <div class="fh">♥</div>
+  <div class="tag">TEMA: TOSKA BAHAGIA — SAMPEL REVIEW</div>
+</footer>
+<div id="lightbox" onclick="this.classList.remove('show')" style="position:fixed;inset:0;z-index:200;background:rgba(15,63,63,.94);display:none;align-items:center;justify-content:center;padding:1.5rem">
+  <div id="lbphoto" style="width:100%;max-width:420px;aspect-ratio:3/4;background:linear-gradient(150deg,#9fd4d0,#1f8a8a);display:flex;align-items:center;justify-content:center;clip-path:polygon(0 0,100% 0,100% calc(100% - 22px),calc(100% - 22px) 100%,0 100%)"><span id="lbnum" style="font-family:'Fraunces',serif;color:#fff;font-size:3rem">1</span></div>
+</div>
+<div id="modal"><div class="mbox"><div class="mheart">♥</div><div class="mmsg" id="mmsg"></div><button class="btn tk" onclick="tutupModal()">Baik</button></div></div>
+<script>
+function buka(){document.getElementById('cover').classList.add('hide');document.getElementById('music').classList.add('show');document.body.style.overflow='';document.body.classList.add('opened');var rs=document.querySelectorAll('.reveal');for(var i=0;i<rs.length;i++){rs[i].style.setProperty('--rd',Math.min(i,12));}}
+document.body.style.overflow='hidden';
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+var target=new Date('2026-12-20T08:00:00+07:00').getTime();
+function tick(){var diff=Math.max(0,target-Date.now());
+document.getElementById('d').textContent=Math.floor(diff/864e5);
+document.getElementById('h').textContent=Math.floor(diff/36e5)%24;
+document.getElementById('m').textContent=Math.floor(diff/6e4)%60;
+document.getElementById('s').textContent=Math.floor(diff/1e3)%60;}
+setInterval(tick,1000);tick();
+function lb(el,n){document.getElementById('lbnum').textContent=n;var p=document.getElementById('lbphoto');if(p&&el&&el.dataset.img){p.style.backgroundImage="url('"+el.dataset.img+"')";p.style.backgroundSize='cover';p.style.backgroundPosition='center';document.getElementById('lbnum').style.display='none';}var l=document.getElementById('lightbox');l.classList.add('show');l.style.display='flex';}
+document.getElementById('lightbox').addEventListener('click',function(){this.classList.remove('show');this.style.display='none';});
+function showModal(msg){document.getElementById('mmsg').textContent=msg;document.getElementById('modal').classList.add('show');}
+function tutupModal(){document.getElementById('modal').classList.remove('show');}
+function salin(id){var t=document.getElementById(id).textContent;
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){showModal('Nomor berhasil disalin ♥');}).catch(function(){showModal(t);});}
+else{showModal(t);}}
+var playing=false;
+function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
+var seed=[
+{n:'Keluarga Tanaka',h:'Hadir',u:'Barakallahu laka wa baraka alaika wa jamaa bainakuma fii khair. Selamat menempuh hidup baru!'},
+{n:'Oshiro Lestari',h:'Hadir',u:'Akhirnya! Ikut bahagia banget. Samawa ya kalian berdua.'},
+{n:'Rudi Saputra',h:'Masih Ragu',u:'Selamat Toma & Nana! Semoga acaranya lancar, doa terbaik dari jauh.'}];
+var wishes=seed.slice();
+try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_nikah08')||'[]'));}catch(e){}
+function renderWishes(){var box=document.getElementById('wlist');box.innerHTML='';
+wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';
+var wn=document.createElement('div');wn.className='wn';wn.textContent=w.n;
+var wh=document.createElement('div');wh.className='wh';wh.textContent=w.h;
+var wu=document.createElement('div');wu.className='wu';wu.textContent=w.u;
+d.appendChild(wn);d.appendChild(wh);d.appendChild(wu);box.appendChild(d);});}
+function kirimUcapan(){var n=document.getElementById('wn').value.trim(),
+h=document.getElementById('wh').value,u=document.getElementById('wu').value.trim();
+if(!n||!u){showModal('Mohon isi nama dan ucapan terlebih dahulu ♥');return;}
+var w={n:n,h:h,u:u};wishes.push(w);
+try{var s=JSON.parse(localStorage.getItem('w_nikah08')||'[]');s.push(w);localStorage.setItem('w_nikah08',JSON.stringify(s));}catch(e){}
+document.getElementById('wn').value='';document.getElementById('wu').value='';
+renderWishes();showModal('Terima kasih atas doa dan ucapannya ♥');}
+renderWishes();
+</script>
+<script>
+function whSet(v){document.getElementById('wh').value=v;document.getElementById('whlabel').textContent=v;document.getElementById('whmodal').classList.remove('show');}
+</script></body>
+</html>

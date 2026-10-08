@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuto — Tasyakuran Khitanan</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--tan:#b99b6b;--tan-dk:#8f7247;--tan-lt:#efe3cd;--cream:#f5efe3;--cream2:#fbf7ee;--ink:#4a3f2f;--mut:#97856c}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Josefin Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;font-size:15px}
+.wrap{max-width:520px;margin:0 auto}
+section{padding:3rem 1.5rem;text-align:center}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.eyebrow{font-size:.64rem;letter-spacing:4px;text-transform:uppercase;color:var(--tan-dk);font-weight:600;margin-bottom:.7rem}
+h2.t{font-family:'EB Garamond',serif;font-size:2rem;color:var(--tan-dk);font-weight:600;line-height:1.35}
+.lead{line-height:2;font-size:.9rem;color:#6b5d49;font-weight:300;max-width:430px;margin:.8rem auto 0}
+.dots{display:flex;gap:.5rem;justify-content:center;margin:1.4rem auto 0}
+.dots i{width:6px;height:6px;border-radius:50%;background:var(--tan);font-style:normal;opacity:.7}
+.dots i:nth-child(2){opacity:.45}
+/* COVER */
+#cover{position:fixed;inset:0;z-index:100;background:var(--cream);display:flex;align-items:center;justify-content:center;padding:1.5rem;transition:opacity .8s ease,visibility .8s}
+/* Animasi buka: pola d */
+#cover.hide{transform:scale(1.7);opacity:0;transition:transform .95s ease,opacity .95s ease;visibility:hidden;transition:visibility 0s 1s,transform .95s ease,opacity .95s ease}
+.reveal.visible{transition-delay:calc(var(--rd,0)*.07s)}
+#cover .box{max-width:370px;width:100%;text-align:center;background:var(--cream2);border:1px solid var(--tan-lt);border-radius:26px;padding:3rem 1.8rem;box-shadow:0 10px 30px rgba(143,114,71,.12)}
+#cover .to{font-size:.66rem;letter-spacing:2px;text-transform:uppercase;color:var(--mut);line-height:2}
+#cover .guest{font-family:'EB Garamond',serif;font-size:1.25rem;color:var(--ink);margin:.5rem 0 1.4rem}
+#cover .lbl{font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--tan-dk);font-weight:600}
+#cover h1{font-family:'EB Garamond',serif;font-size:2.3rem;line-height:1.3;color:var(--tan-dk);margin:.8rem 0;font-weight:600}
+#cover .date{font-size:.72rem;letter-spacing:3px;color:var(--mut);margin:.6rem 0 2rem}
+.btn{display:inline-block;background:var(--tan);color:#fff;border:none;padding:1rem 2.4rem;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:40px;font-family:'Josefin Sans',sans-serif;font-weight:600;text-decoration:none;box-shadow:0 6px 16px rgba(185,155,107,.35)}
+.btn:active{transform:scale(.97)}
+/* PROFILE card */
+.pcard{background:var(--cream2);border:1px solid var(--tan-lt);border-radius:24px;padding:2.4rem 1.6rem;margin-top:1.8rem;box-shadow:0 8px 24px rgba(143,114,71,.08)}
+.pcard .photo{width:132px;height:132px;border-radius:50%;margin:0 auto 1.2rem;background:linear-gradient(135deg,#d9c49a,#8f7247);display:flex;align-items:center;justify-content:center;font-family:'EB Garamond',serif;font-size:2.5rem;color:#fff;box-shadow:0 6px 16px rgba(143,114,71,.25)}
+.pcard h3{font-family:'EB Garamond',serif;font-size:1.8rem;color:var(--tan-dk);line-height:1.4;font-weight:600}
+.pcard .par{margin-top:.9rem;font-size:.86rem;line-height:2;color:#6b5d49}
+/* GALLERY */
+.gal2{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:1.8rem}
+.gal2 .ph{aspect-ratio:1/1.1;border-radius:18px;background:linear-gradient(135deg,#dcc9a0,#a98d5d);display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:'EB Garamond',serif;color:rgba(255,255,255,.95);font-size:1.4rem;box-shadow:0 4px 12px rgba(143,114,71,.15)}
+/* COUNTDOWN */
+.cdcard{background:var(--cream2);border:1px solid var(--tan-lt);border-radius:24px;padding:2rem 1.4rem;margin-top:1.8rem;box-shadow:0 8px 24px rgba(143,114,71,.08)}
+.cd{display:flex;gap:.6rem;justify-content:center;margin-top:1.4rem;flex-wrap:wrap}
+.cd>div{background:var(--tan);border-radius:16px;padding:.9rem .4rem;min-width:68px}
+.cd b{font-family:'EB Garamond',serif;font-size:1.7rem;display:block;color:#fff}
+.cd span{font-size:.56rem;letter-spacing:2px;text-transform:uppercase;color:#f5eedd}
+/* EVENT card */
+.evcard{background:var(--cream2);border:1px solid var(--tan-lt);border-radius:24px;padding:2.2rem 1.6rem;margin-top:1.8rem;box-shadow:0 8px 24px rgba(143,114,71,.08)}
+.evcard .dday{font-family:'EB Garamond',serif;font-size:2.6rem;color:var(--tan-dk);font-weight:600;line-height:1}
+.evcard .ddate{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--tan-dk);margin:.5rem 0}
+.evcard .etime{font-family:'EB Garamond',serif;font-style:italic;color:#6b5d49;margin-bottom:1rem}
+.evcard .vn{font-size:.88rem;color:var(--mut);line-height:1.9}
+.evbtns{display:flex;gap:.6rem;justify-content:center;margin-top:1.4rem;flex-wrap:wrap}
+.sbtn{flex:1;min-width:130px;text-align:center;text-decoration:none;font-size:.64rem;letter-spacing:2px;text-transform:uppercase;padding:.85rem .5rem;border-radius:40px;font-weight:600}
+.sbtn.solid{background:var(--tan);color:#fff}
+.sbtn.line{border:1px solid var(--tan);color:var(--tan-dk)}
+/* WISHES */
+.wform{background:var(--cream2);border:1px solid var(--tan-lt);border-radius:24px;padding:1.8rem 1.4rem;margin-top:1.8rem;text-align:left;box-shadow:0 8px 24px rgba(143,114,71,.08)}
+.wform label{display:block;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--tan-dk);margin:1rem 0 .4rem;font-weight:600}
+.wform label:first-child{margin-top:0}
+.wform input,.wform textarea,.wform .whbtn{width:100%;background:#fffdf8;border:1px solid var(--tan-lt);border-radius:14px;color:var(--ink);padding:.85rem;font-family:'Josefin Sans',sans-serif;font-size:.87rem}
+.wform input:focus,.wform textarea:focus{outline:none;border-color:var(--tan)}
+.wform textarea{min-height:90px;resize:vertical}
+.wlist{margin-top:1.4rem;display:flex;flex-direction:column;gap:.9rem;max-height:400px;overflow-y:auto;text-align:left}
+.wish{background:var(--cream2);border:1px solid var(--tan-lt);border-radius:18px;padding:1.15rem 1.25rem}
+.wish .wn{font-family:'EB Garamond',serif;color:var(--tan-dk);font-size:1.05rem;font-weight:600}
+.wish .wh{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--mut);margin:.25rem 0 .5rem}
+.wish .wu{font-size:.85rem;line-height:1.85;color:#6b5d49}
+/* GIFT */
+.gift{background:var(--cream2);border:1px solid var(--tan-lt);border-radius:22px;padding:1.9rem 1.4rem;margin-top:1.2rem;box-shadow:0 6px 18px rgba(143,114,71,.08)}
+.gift .bank{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--mut);font-weight:600}
+.gift .rek{font-family:'EB Garamond',serif;font-size:1.7rem;letter-spacing:3px;color:var(--tan-dk);margin:.6rem 0 .2rem;font-weight:600}
+.gift .an{font-size:.8rem;color:var(--mut)}
+.copybtn{margin-top:1rem;background:transparent;border:1px solid var(--tan);color:var(--tan-dk);padding:.75rem 1.8rem;font-size:.64rem;letter-spacing:2px;text-transform:uppercase;border-radius:40px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-weight:600}
+/* FOOTER */
+footer{background:#6f5a3c;color:#efe3cd;text-align:center;padding:3.5rem 1.5rem 2.8rem}
+footer .serif{font-family:'EB Garamond',serif;font-size:1.7rem;color:#fff;margin-bottom:.7rem}
+footer p{font-size:.78rem;line-height:2.05;font-weight:300}
+footer .dots i{background:#d9c49a}
+footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;opacity:.55;padding-right:3.5rem}
+/* MODAL */
+#modal{position:fixed;inset:0;z-index:300;background:rgba(74,63,47,.55);display:none;align-items:center;justify-content:center;padding:1.8rem}#whmodal{position:fixed;inset:0;z-index:300;background:rgba(74,63,47,.55);display:none;align-items:center;justify-content:center;padding:1.8rem}#whmodal.show{display:flex}.whopt{display:block;width:100%;margin:.45rem 0}.whbtn{width:100%;text-align:left;cursor:pointer}.wharrow{float:right}
+#modal.show{display:flex}
+#modal .mbox{background:var(--cream2);border:1px solid var(--tan-lt);border-radius:22px;padding:2.2rem 1.8rem;max-width:330px;width:100%;text-align:center;animation:pop .3s ease;box-shadow:0 12px 32px rgba(74,63,47,.25)}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+#modal .mheart{font-size:2rem;color:var(--tan-dk);margin-bottom:.8rem;animation:beat 1.2s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}25%{transform:scale(1.18)}}
+#modal .mmsg{font-family:'EB Garamond',serif;font-size:1.05rem;line-height:1.8;color:var(--ink);margin-bottom:1.4rem}
+#modal .mok{background:var(--tan);color:#fff;border:none;padding:.8rem 2.4rem;font-size:.68rem;letter-spacing:2px;text-transform:uppercase;border-radius:40px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-weight:600}
+/* MUSIC */
+#music{position:fixed;bottom:1.3rem;right:1.3rem;z-index:90;width:48px;height:48px;border-radius:50%;background:var(--cream2);color:var(--tan-dk);border:1px solid var(--tan);font-size:1.15rem;cursor:pointer;display:none;box-shadow:0 4px 14px rgba(143,114,71,.25)}
+#music.show{display:block}
+#music.off{opacity:.4}
+/* LIGHTBOX */
+#lightbox{position:fixed;inset:0;z-index:200;background:rgba(74,63,47,.93);display:none;align-items:center;justify-content:center;padding:1.5rem}
+#lightbox.show{display:flex}
+#lightbox .frame{width:100%;max-width:400px;aspect-ratio:1/1.1;border-radius:18px;background:linear-gradient(135deg,#dcc9a0,#a98d5d);display:flex;align-items:center;justify-content:center}
+#lightbox .frame span{font-family:'EB Garamond',serif;color:rgba(255,255,255,.95);font-size:3rem}
+</style>
+</head>
+<body>
+
+<div id="cover">
+  <div class="box">
+    <div class="to">Kepada Yth<br>Bapak/Ibu/Saudara/i</div>
+    <div class="guest">Tamu Undangan</div>
+    <div class="lbl">Tasyakuran Khitanan</div>
+    <h1>Yuto<br>Hoshizora</h1>
+    <div class="date">MINGGU, 27 DESEMBER 2026</div>
+    <button class="btn" onclick="buka()">Buka Undangan</button>
+  </div>
+</div>
+
+<button id="music" onclick="toggleMusic()" title="Musik">♪</button>
+
+<div class="wrap">
+
+<section class="reveal">
+  <div class="eyebrow">Bismillahirrahmanirrahim</div>
+  <p class="lead" style="font-family:'EB Garamond',serif;font-style:italic;font-size:1.05rem">Fitrah itu ada lima: khitan, mencukur bulu kemaluan, memotong kumis, memotong kuku, dan mencabut bulu ketiak.</p>
+  <div class="dots" style="margin-bottom:1rem"><i></i><i></i><i></i></div>
+  <div class="eyebrow" style="margin-bottom:0">HR. Bukhari &amp; Muslim</div>
+</section>
+
+<section class="reveal" style="padding-top:2rem">
+  <div class="eyebrow">Ananda Yang Dikhitan</div>
+  <h2 class="t">Putra Kebanggaan Kami</h2>
+  <div class="pcard">
+    <div class="photo">Y</div>
+    <h3>Yuto Hoshizora</h3>
+    <div class="par">Putra pertama dari<br>Bapak Kenta Hoshizora &amp; Ibu Mai Hoshizora</div>
+  </div>
+  <p class="lead" style="margin-top:1.6rem">Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud menyelenggarakan tasyakuran khitanan putra kami tercinta.</p>
+  <div class="dots"><i></i><i></i><i></i></div>
+</section>
+
+<section class="reveal" style="padding-top:2rem">
+  <div class="eyebrow">Galeri</div>
+  <h2 class="t">Momen Ceria Yuto</h2>
+  <p class="lead">Ketuk foto untuk memperbesar</p>
+  <div class="gal2">
+    <div class="ph" onclick="lb(this,1)" data-img="gal-khit-1.jpg" style="background-image:url('gal-khit-1.jpg');background-size:cover;background-position:center"></div>
+    <div class="ph" onclick="lb(this,2)" data-img="gal-khit-2.jpg" style="background-image:url('gal-khit-2.jpg');background-size:cover;background-position:center"></div>
+    <div class="ph" onclick="lb(this,3)" data-img="gal-khit-3.jpg" style="background-image:url('gal-khit-3.jpg');background-size:cover;background-position:center"></div>
+    <div class="ph" onclick="lb(this,4)" data-img="gal-khit-4.jpg" style="background-image:url('gal-khit-4.jpg');background-size:cover;background-position:center"></div>
+      <div class="ph" onclick="lb(this,5)" data-img="gal-khit-5.jpg" style="background-image:url('gal-khit-5.jpg');background-size:cover;background-position:center"></div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i></div>
+</section>
+
+<section class="reveal" style="padding-top:2rem">
+  <div class="eyebrow">Menuju Hari Bahagia</div>
+  <h2 class="t">Menghitung Hari</h2>
+  <div class="cdcard">
+    <div class="eyebrow" style="margin-bottom:0">Minggu, 27 Desember 2026</div>
+    <div class="cd">
+      <div><b id="d">0</b><span>Hari</span></div>
+      <div><b id="h">0</b><span>Jam</span></div>
+      <div><b id="m">0</b><span>Menit</span></div>
+      <div><b id="s">0</b><span>Detik</span></div>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i></div>
+</section>
+
+<section class="reveal" style="padding-top:2rem">
+  <div class="eyebrow">Waktu &amp; Tempat</div>
+  <h2 class="t">Acara Tasyakuran</h2>
+  <div class="evcard">
+    <div class="dday">27</div>
+    <div class="ddate">Desember 2026 · Minggu</div>
+    <div class="etime">Pukul 09.00 — 12.00 WIB</div>
+    <div class="vn">Kediaman Bapak Kenta Hoshizora<br>Jl. Kenanga No. 45, Bandung</div>
+    <div class="evbtns">
+      <a class="sbtn solid" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Khitanan+Yuto+Hoshizora&dates=20261227T020000Z/20261227T050000Z&details=Tasyakuran+khitanan+Yuto+Hoshizora&location=Jl.+Kenanga+No.+45+Bandung" target="_blank">Simpan Tanggal</a>
+      <a class="sbtn line" href="https://maps.google.com/?q=Bandung" target="_blank">Lihat Lokasi</a>
+    </div>
+  </div>
+  <div class="dots"><i></i><i></i><i></i></div>
+</section>
+
+<section class="reveal" style="padding-top:2rem">
+  <div class="eyebrow">RSVP &amp; Ucapan</div>
+  <h2 class="t">Doa &amp; Kehadiran</h2>
+  <p class="lead">Kehadiran Anda sangat berarti. Mohon konfirmasi dan tinggalkan doa terbaik untuk Yuto.</p>
+  <div class="wform">
+    <label>Nama</label>
+    <input id="wn" type="text" placeholder="Nama Anda">
+    <label>Konfirmasi Kehadiran</label>
+    <input type="hidden" id="wh" value="Hadir">
+<button type="button" class="whbtn" onclick="document.getElementById('whmodal').classList.add('show')"><span id="whlabel">Hadir</span><span class="wharrow">▾</span></button>
+<div id="whmodal" onclick="if(event.target===this)this.classList.remove('show')"><div class="mbox"><div class="mheart">♥</div><div class="mmsg">Konfirmasi Kehadiran</div><button class="btn whopt" onclick="whSet('Hadir')">Hadir</button><button class="btn whopt" onclick="whSet('Tidak Hadir')">Tidak Hadir</button><button class="btn whopt" onclick="whSet('Masih Ragu')">Masih Ragu</button></div></div>
+    <label>Ucapan / Doa</label>
+    <textarea id="wu" placeholder="Tuliskan doa terbaik Anda..."></textarea>
+    <div style="margin-top:1.2rem;text-align:center"><button class="btn" onclick="kirimUcapan()">Kirim Ucapan</button></div>
+  </div>
+  <div class="wlist" id="wlist"></div>
+  <div class="dots"><i></i><i></i><i></i></div>
+</section>
+
+<section class="reveal" style="padding-top:2rem">
+  <div class="eyebrow">Amplop Digital</div>
+  <h2 class="t">Tanda Kasih</h2>
+  <p class="lead">Doa restu Anda adalah hadiah terindah. Namun jika berkenan memberi tanda kasih:</p>
+  <div class="gift">
+    <div class="bank">Bank BCA</div>
+    <div class="rek" id="rek1">1234567890</div>
+    <div class="an">a.n. Kenta Hoshizora</div>
+    <button class="copybtn" onclick="salin('rek1')">Salin Nomor</button>
+  </div>
+  <div class="gift">
+    <div class="bank">DANA</div>
+    <div class="rek" id="rek2">081234567890</div>
+    <div class="an">a.n. Kenta Hoshizora</div>
+    <button class="copybtn" onclick="salin('rek2')">Salin Nomor</button>
+  </div>
+  <div class="gift">
+    <div class="bank">Kado Fisik 🎁</div>
+    <div class="rek" id="kadoaddr" style="font-size:.85rem;line-height:1.8">Jl. Kenanga No. 12, Surabaya</div>
+    <div class="an">Kirim kado ke alamat di atas</div>
+    <button class="copybtn" onclick="salin('kadoaddr')">Salin Alamat</button>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="serif">Yuto</div>
+  <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami<br>apabila Bapak/Ibu/Saudara/i berkenan hadir<br>untuk memberikan doa restu kepada ananda.</p>
+  <div class="dots"><i></i><i></i><i></i></div>
+  <div class="tag" style="margin-top:1.2rem;font-size:.58rem;letter-spacing:2px;opacity:.55">TEMA: KREM LEMBUT — SAMPEL REVIEW</div>
+</footer>
+
+<div id="lightbox" onclick="tutupLb()">
+  <div id="lbphoto" class="frame"><span id="lbnum">1</span></div>
+</div>
+
+<div id="modal">
+  <div class="mbox">
+    <div class="mheart">♥</div>
+    <div class="mmsg" id="mmsg"></div>
+    <button class="mok" onclick="tutupModal()">Baik</button>
+  </div>
+</div>
+
+<script>
+function buka(){document.getElementById('cover').classList.add('hide');document.getElementById('music').classList.add('show');document.body.style.overflow='';document.body.classList.add('opened');var rs=document.querySelectorAll('.reveal');for(var i=0;i<rs.length;i++){rs[i].style.setProperty('--rd',Math.min(i,12));}}
+document.body.style.overflow='hidden';
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+var target=new Date('2026-12-27T09:00:00+07:00').getTime();
+function tick(){var diff=Math.max(0,target-Date.now());
+document.getElementById('d').textContent=Math.floor(diff/864e5);
+document.getElementById('h').textContent=Math.floor(diff/36e5)%24;
+document.getElementById('m').textContent=Math.floor(diff/6e4)%60;
+document.getElementById('s').textContent=Math.floor(diff/1e3)%60;}
+setInterval(tick,1000);tick();
+function lb(el,n){document.getElementById('lbnum').textContent=n;var p=document.getElementById('lbphoto');if(p&&el&&el.dataset.img){p.style.backgroundImage="url('"+el.dataset.img+"')";p.style.backgroundSize='cover';p.style.backgroundPosition='center';document.getElementById('lbnum').style.display='none';}var l=document.getElementById('lightbox');l.classList.add('show');l.style.display='flex';}
+function tutupLb(){document.getElementById('lightbox').classList.remove('show');}
+function showModal(msg){document.getElementById('mmsg').textContent=msg;document.getElementById('modal').classList.add('show');}
+function tutupModal(){document.getElementById('modal').classList.remove('show');}
+function salin(id){var t=document.getElementById(id).textContent.trim();
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){showModal('Nomor berhasil disalin ♥');}).catch(function(){showModal('Nomor: '+t+' ♥');});}
+else{showModal('Nomor: '+t+' ♥');}}
+var playing=false;
+function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
+var seed=[
+{n:'Yuka Shimizu',h:'Hadir',u:'Selamat untuk Yuto! Semoga menjadi anak yang sholeh, cerdas, dan selalu dalam lindungan Allah.'},
+{n:'Keluarga Kudo',h:'Masih Ragu',u:'MasyaAllah, Yuto sudah besar. Semoga acara tasyakurannya berjalan lancar dan penuh berkah.'}];
+var wishes=seed.slice();
+try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_khit04')||'[]'));}catch(e){}
+function renderWishes(){var box=document.getElementById('wlist');box.innerHTML='';
+wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';
+var wn=document.createElement('div');wn.className='wn';wn.textContent=w.n;
+var wh=document.createElement('div');wh.className='wh';wh.textContent=w.h;
+var wu=document.createElement('div');wu.className='wu';wu.textContent=w.u;
+d.appendChild(wn);d.appendChild(wh);d.appendChild(wu);box.appendChild(d);});}
+function kirimUcapan(){var n=document.getElementById('wn').value.trim(),
+h=document.getElementById('wh').value,u=document.getElementById('wu').value.trim();
+if(!n||!u){showModal('Mohon isi nama dan ucapan terlebih dahulu ♥');return;}
+var w={n:n,h:h,u:u};wishes.push(w);
+try{var s=JSON.parse(localStorage.getItem('w_khit04')||'[]');s.push(w);localStorage.setItem('w_khit04',JSON.stringify(s));}catch(e){}
+document.getElementById('wn').value='';document.getElementById('wu').value='';
+renderWishes();showModal('Terima kasih atas doa dan ucapannya ♥');}
+renderWishes();
+</script>
+<script>
+function whSet(v){document.getElementById('wh').value=v;document.getElementById('whlabel').textContent=v;document.getElementById('whmodal').classList.remove('show');}
+</script></body>
+</html>

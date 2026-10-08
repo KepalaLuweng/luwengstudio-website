@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuto — Tasyakuran Khitanan</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--grn:#3d9e6e;--grn-dk:#257a51;--grn-lt:#eaf5ef;--ink:#22352c;--mut:#6f7f74;--line:#cfe4d7;--bg:#f7fbf8}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;font-size:15px}
+.wrap{max-width:520px;margin:0 auto}
+section{padding:3rem 1.6rem}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.kick{display:inline-block;font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:var(--grn-dk);font-weight:700;border-left:3px solid var(--grn);padding-left:.8rem;margin-bottom:.8rem}
+h2.h{font-family:'Lora',serif;font-size:1.85rem;color:var(--grn-dk);font-weight:700;line-height:1.35}
+.p{line-height:1.95;font-size:.9rem;color:#45564b;font-weight:300;margin-top:.8rem;max-width:440px}
+/* COVER */
+#cover{position:fixed;inset:0;z-index:100;background:linear-gradient(160deg,#2f7d57,#1f5739);color:#f4faf6;display:flex;align-items:center;justify-content:center;padding:1.5rem;transition:opacity .8s ease,visibility .8s}
+/* Animasi buka: pola d */
+#cover.hide{transform:scale(1.7);opacity:0;transition:transform .95s ease,opacity .95s ease;visibility:hidden;transition:visibility 0s 1s,transform .95s ease,opacity .95s ease}
+.reveal.visible{transition-delay:calc(var(--rd,0)*.07s)}
+#cover .in{max-width:380px;width:100%}
+#cover .to{font-size:.66rem;letter-spacing:3px;text-transform:uppercase;opacity:.85;line-height:2}
+#cover .guest{font-family:'Lora',serif;font-size:1.3rem;margin:.5rem 0 2rem}
+#cover .lbl{font-size:.6rem;letter-spacing:5px;text-transform:uppercase;color:#cde8d6;font-weight:600}
+#cover h1{font-family:'Lora',serif;font-size:2.5rem;line-height:1.25;margin:.8rem 0;font-weight:600}
+#cover .leaf{display:block;width:44px;height:2px;background:#9fd3b2;margin:1rem 0}
+#cover .date{font-size:.74rem;letter-spacing:3px;opacity:.85;margin-bottom:2rem}
+.btn{display:inline-block;background:#fff;color:var(--grn-dk);border:none;padding:1rem 2.4rem;font-size:.74rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:4px;font-family:'Inter',sans-serif;font-weight:700;text-decoration:none}
+.btn:active{transform:scale(.97)}
+/* PROFILE strip */
+.strip{display:flex;gap:1.2rem;align-items:center;margin-top:1.6rem;background:#fff;border:1px solid var(--line);border-radius:10px;padding:1.2rem}
+.strip .photo{flex:0 0 96px;width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#7cc79e,#257a51);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-size:2rem;color:#fff}
+.strip .who .lbl{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--grn-dk);font-weight:700}
+.strip .who h3{font-family:'Lora',serif;font-size:1.35rem;color:var(--ink);margin:.4rem 0;line-height:1.35}
+.strip .who .par{font-size:.82rem;color:var(--mut);line-height:1.7}
+/* QUOTE */
+.quotebox{margin-top:1.4rem;border-left:3px solid var(--grn);padding-left:1.2rem}
+.quotebox p{font-family:'Lora',serif;font-style:italic;font-size:1.02rem;line-height:2;color:#3c4d42}
+.quotebox .src{margin-top:.8rem;font-size:.66rem;letter-spacing:3px;color:var(--grn-dk);font-weight:700}
+/* EVENT bordered list */
+.evlist{margin-top:1.6rem;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.evlist .row{display:flex;gap:1rem;padding:1rem 1.2rem;border-bottom:1px solid var(--line);align-items:flex-start}
+.evlist .row:last-child{border-bottom:none}
+.evlist .rl{flex:0 0 92px;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--grn-dk);font-weight:700;padding-top:.15rem}
+.evlist .rv{font-size:.9rem;line-height:1.7;color:var(--ink)}
+.evbtns{display:flex;gap:.6rem;margin-top:1.2rem;flex-wrap:wrap}
+.sbtn{flex:1;min-width:130px;text-align:center;text-decoration:none;font-size:.66rem;letter-spacing:2px;text-transform:uppercase;padding:.85rem .5rem;border-radius:4px;font-weight:700}
+.sbtn.solid{background:var(--grn);color:#fff}
+.sbtn.line{border:1px solid var(--grn);color:var(--grn-dk)}
+/* COUNTDOWN inline */
+.cdline{margin-top:1.2rem;font-family:'Lora',serif;font-size:1.5rem;color:var(--grn-dk)}
+.cdline b{font-size:2.4rem;font-weight:700}
+.cdline small{font-family:'Inter',sans-serif;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--mut);font-weight:600;margin:0 .5rem 0 .25rem}
+/* GALLERY horizontal strip */
+.gstrip{display:flex;gap:.7rem;overflow-x:auto;margin-top:1.6rem;padding-bottom:.4rem;-webkit-overflow-scrolling:touch}
+.gstrip .ph{flex:0 0 150px;width:150px;aspect-ratio:3/4;border-radius:10px;background:linear-gradient(135deg,#8fcaab,#2f7d57);display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:'Lora',serif;color:rgba(255,255,255,.95);font-size:1.5rem}
+/* WISHES */
+.wform{background:#fff;border:1px solid var(--line);border-radius:10px;padding:1.5rem 1.3rem;margin-top:1.6rem}
+.wform label{display:block;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--grn-dk);margin:1rem 0 .4rem;font-weight:700}
+.wform label:first-child{margin-top:0}
+.wform input,.wform textarea,.wform .whbtn{width:100%;background:#fafdfb;border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:.85rem;font-family:'Inter',sans-serif;font-size:.87rem}
+.wform input:focus,.wform textarea:focus{outline:none;border-color:var(--grn)}
+.wform textarea{min-height:90px;resize:vertical}
+.wlist{margin-top:1.4rem;display:flex;flex-direction:column;gap:.9rem;max-height:400px;overflow-y:auto}
+.wish{background:#fff;border:1px solid var(--line);border-radius:8px;padding:1.1rem 1.2rem}
+.wish .wn{font-family:'Lora',serif;color:var(--grn-dk);font-size:1rem;font-weight:600}
+.wish .wh{display:inline-block;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;background:var(--grn-lt);color:var(--grn-dk);font-weight:700;padding:.2rem .6rem;border-radius:20px;margin:.4rem 0 .5rem}
+.wish .wu{font-size:.85rem;line-height:1.8;color:#45564b}
+/* GIFT */
+.gift{margin-top:1.2rem;background:#fff;border:1px solid var(--line);border-radius:10px;padding:1.3rem 1.3rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.gift .bank{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--mut);font-weight:700}
+.gift .rek{font-family:'Lora',serif;font-size:1.35rem;letter-spacing:2px;color:var(--grn-dk);margin:.35rem 0 .15rem;font-weight:700}
+.gift .an{font-size:.76rem;color:var(--mut)}
+.copybtn{flex:0 0 auto;background:transparent;border:1px solid var(--grn);color:var(--grn-dk);padding:.7rem 1.1rem;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;border-radius:4px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:700}
+/* FOOTER */
+footer{background:#1f5739;color:#dcefe3;text-align:left;padding:3.2rem 1.6rem 2.6rem}
+footer .serif{font-family:'Lora',serif;font-size:1.6rem;color:#fff;margin-bottom:.7rem}
+footer p{font-size:.78rem;line-height:2;font-weight:300}
+footer .tag{margin-top:1.4rem;font-size:.58rem;letter-spacing:1px;opacity:.55;padding-right:3.5rem}
+/* MODAL */
+#modal{position:fixed;inset:0;z-index:300;background:rgba(31,87,57,.55);display:none;align-items:center;justify-content:center;padding:1.8rem}#whmodal{position:fixed;inset:0;z-index:300;background:rgba(31,87,57,.55);display:none;align-items:center;justify-content:center;padding:1.8rem}#whmodal.show{display:flex}.whopt{display:block;width:100%;margin:.45rem 0}.whbtn{width:100%;text-align:left;cursor:pointer}.wharrow{float:right}
+#modal.show{display:flex}
+#modal .mbox{background:#fff;border-radius:10px;border-bottom:4px solid var(--grn);padding:2.2rem 1.8rem;max-width:330px;width:100%;text-align:center;animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+#modal .mheart{font-size:2rem;color:var(--grn);margin-bottom:.8rem;animation:beat 1.2s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}25%{transform:scale(1.18)}}
+#modal .mmsg{font-size:.95rem;line-height:1.8;color:var(--ink);margin-bottom:1.4rem}
+#modal .mok{background:var(--grn);color:#fff;border:none;padding:.8rem 2.4rem;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;border-radius:4px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:700}
+/* MUSIC */
+#music{position:fixed;bottom:1.3rem;right:1.3rem;z-index:90;width:48px;height:48px;border-radius:50%;background:#fff;color:var(--grn-dk);border:1px solid var(--grn);font-size:1.15rem;cursor:pointer;display:none;box-shadow:0 4px 14px rgba(61,158,110,.25)}
+#music.show{display:block}
+#music.off{opacity:.4}
+/* LIGHTBOX */
+#lightbox{position:fixed;inset:0;z-index:200;background:rgba(31,87,57,.94);display:none;align-items:center;justify-content:center;padding:1.5rem}
+#lightbox.show{display:flex}
+#lightbox .frame{width:100%;max-width:400px;aspect-ratio:3/4;border-radius:10px;background:linear-gradient(135deg,#8fcaab,#2f7d57);display:flex;align-items:center;justify-content:center}
+#lightbox .frame span{font-family:'Lora',serif;color:rgba(255,255,255,.95);font-size:3rem}
+</style>
+</head>
+<body>
+
+<div id="cover">
+  <div class="in">
+    <div class="to">Kepada Yth<br>Bapak/Ibu/Saudara/i</div>
+    <div class="guest">Tamu Undangan</div>
+    <div class="lbl">Tasyakuran Khitanan</div>
+    <h1>Yuto<br>Hoshizora</h1>
+    <span class="leaf"></span>
+    <div class="date">MINGGU, 27 DESEMBER 2026</div>
+    <button class="btn" onclick="buka()">Buka Undangan</button>
+  </div>
+</div>
+
+<button id="music" onclick="toggleMusic()" title="Musik">♪</button>
+
+<div class="wrap">
+
+<section class="reveal">
+  <div class="kick">Ananda Yang Dikhitan</div>
+  <h2 class="h">Yuto Hoshizora</h2>
+  <div class="strip">
+    <div class="photo">Y</div>
+    <div class="who">
+      <div class="lbl">Putra Pertama Dari</div>
+      <h3>Bapak Kenta Hoshizora &amp; Ibu Mai Hoshizora</h3>
+      <div class="par">Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud menyelenggarakan tasyakuran khitanan putra kami tercinta.</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="kick">Bismillahirrahmanirrahim</div>
+  <div class="quotebox">
+    <p>Fitrah itu ada lima: khitan, mencukur bulu kemaluan, memotong kumis, memotong kuku, dan mencabut bulu ketiak.</p>
+    <div class="src">HR. BUKHARI &amp; MUSLIM</div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="kick">Waktu &amp; Tempat</div>
+  <h2 class="h">Acara Tasyakuran</h2>
+  <div class="evlist">
+    <div class="row"><div class="rl">Hari</div><div class="rv">Minggu, 27 Desember 2026</div></div>
+    <div class="row"><div class="rl">Waktu</div><div class="rv">Pukul 09.00 — 12.00 WIB</div></div>
+    <div class="row"><div class="rl">Tempat</div><div class="rv">Kediaman Bapak Kenta Hoshizora</div></div>
+    <div class="row"><div class="rl">Alamat</div><div class="rv">Jl. Kenanga No. 45, Bandung</div></div>
+  </div>
+  <div class="evbtns">
+    <a class="sbtn solid" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Khitanan+Yuto+Hoshizora&dates=20261227T020000Z/20261227T050000Z&details=Tasyakuran+khitanan+Yuto+Hoshizora&location=Jl.+Kenanga+No.+45+Bandung" target="_blank">Simpan Tanggal</a>
+    <a class="sbtn line" href="https://maps.google.com/?q=Bandung" target="_blank">Lihat Lokasi</a>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="kick">Menuju Hari Bahagia</div>
+  <h2 class="h">Menghitung Hari</h2>
+  <div class="cdline">
+    <b id="d">0</b><small>Hari</small><b id="h">0</b><small>Jam</small><b id="m">0</b><small>Mnt</small><b id="s">0</b><small>Dtk</small>
+  </div>
+  <p class="p">Minggu, 27 Desember 2026 · 09.00 WIB</p>
+</section>
+
+<section class="reveal" style="padding-right:0">
+  <div style="padding-right:1.6rem">
+    <div class="kick">Galeri</div>
+    <h2 class="h">Momen Ceria Yuto</h2>
+    <p class="p">Geser untuk melihat · ketuk untuk memperbesar</p>
+  </div>
+  <div class="gstrip">
+    <div class="ph" onclick="lb(this,1)" data-img="gal-khit-1.jpg" style="background-image:url('gal-khit-1.jpg');background-size:cover;background-position:center"></div>
+    <div class="ph" onclick="lb(this,2)" data-img="gal-khit-2.jpg" style="background-image:url('gal-khit-2.jpg');background-size:cover;background-position:center"></div>
+    <div class="ph" onclick="lb(this,3)" data-img="gal-khit-3.jpg" style="background-image:url('gal-khit-3.jpg');background-size:cover;background-position:center"></div>
+    <div class="ph" onclick="lb(this,4)" data-img="gal-khit-4.jpg" style="background-image:url('gal-khit-4.jpg');background-size:cover;background-position:center"></div>
+      <div class="ph" onclick="lb(this,5)" data-img="gal-khit-5.jpg" style="background-image:url('gal-khit-5.jpg');background-size:cover;background-position:center"></div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="kick">Amplop Digital</div>
+  <h2 class="h">Tanda Kasih</h2>
+  <p class="p">Doa restu Anda adalah hadiah terindah. Namun jika berkenan memberi tanda kasih:</p>
+  <div class="gift">
+    <div><div class="bank">Bank BCA · a.n. Kenta Hoshizora</div><div class="rek" id="rek1">1234567890</div></div>
+    <button class="copybtn" onclick="salin('rek1')">Salin</button>
+  </div>
+  <div class="gift">
+    <div><div class="bank">DANA · a.n. Kenta Hoshizora</div><div class="rek" id="rek2">081234567890</div></div>
+    <button class="copybtn" onclick="salin('rek2')">Salin</button>
+  </div>
+  <div class="gift">
+    <div class="bank">Kado Fisik 🎁</div>
+    <div class="rek" id="kadoaddr" style="font-size:.85rem;line-height:1.8">Jl. Kenanga No. 12, Surabaya</div>
+    <div class="an">Kirim kado ke alamat di atas</div>
+    <button class="copybtn" onclick="salin('kadoaddr')">Salin Alamat</button>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="kick">RSVP &amp; Ucapan</div>
+  <h2 class="h">Doa &amp; Kehadiran</h2>
+  <p class="p">Kehadiran Anda sangat berarti. Mohon konfirmasi dan tinggalkan doa terbaik untuk Yuto.</p>
+  <div class="wform">
+    <label>Nama</label>
+    <input id="wn" type="text" placeholder="Nama Anda">
+    <label>Konfirmasi Kehadiran</label>
+    <input type="hidden" id="wh" value="Hadir">
+<button type="button" class="whbtn" onclick="document.getElementById('whmodal').classList.add('show')"><span id="whlabel">Hadir</span><span class="wharrow">▾</span></button>
+<div id="whmodal" onclick="if(event.target===this)this.classList.remove('show')"><div class="mbox"><div class="mheart">♥</div><div class="mmsg">Konfirmasi Kehadiran</div><button class="btn whopt" onclick="whSet('Hadir')">Hadir</button><button class="btn whopt" onclick="whSet('Tidak Hadir')">Tidak Hadir</button><button class="btn whopt" onclick="whSet('Masih Ragu')">Masih Ragu</button></div></div>
+    <label>Ucapan / Doa</label>
+    <textarea id="wu" placeholder="Tuliskan doa terbaik Anda..."></textarea>
+    <div style="margin-top:1.2rem"><button class="btn" onclick="kirimUcapan()" style="background:var(--grn);color:#fff">Kirim Ucapan</button></div>
+  </div>
+  <div class="wlist" id="wlist"></div>
+</section>
+
+</div>
+
+<footer>
+  <div class="serif">Yuto</div>
+  <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada ananda.</p>
+  <div class="tag">TEMA: HIJAU SEGAR — SAMPEL REVIEW</div>
+</footer>
+
+<div id="lightbox" onclick="tutupLb()">
+  <div id="lbphoto" class="frame"><span id="lbnum">1</span></div>
+</div>
+
+<div id="modal">
+  <div class="mbox">
+    <div class="mheart">♥</div>
+    <div class="mmsg" id="mmsg"></div>
+    <button class="mok" onclick="tutupModal()">Baik</button>
+  </div>
+</div>
+
+<script>
+function buka(){document.getElementById('cover').classList.add('hide');document.getElementById('music').classList.add('show');document.body.style.overflow='';document.body.classList.add('opened');var rs=document.querySelectorAll('.reveal');for(var i=0;i<rs.length;i++){rs[i].style.setProperty('--rd',Math.min(i,12));}}
+document.body.style.overflow='hidden';
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+var target=new Date('2026-12-27T09:00:00+07:00').getTime();
+function tick(){var diff=Math.max(0,target-Date.now());
+document.getElementById('d').textContent=Math.floor(diff/864e5);
+document.getElementById('h').textContent=Math.floor(diff/36e5)%24;
+document.getElementById('m').textContent=Math.floor(diff/6e4)%60;
+document.getElementById('s').textContent=Math.floor(diff/1e3)%60;}
+setInterval(tick,1000);tick();
+function lb(el,n){document.getElementById('lbnum').textContent=n;var p=document.getElementById('lbphoto');if(p&&el&&el.dataset.img){p.style.backgroundImage="url('"+el.dataset.img+"')";p.style.backgroundSize='cover';p.style.backgroundPosition='center';document.getElementById('lbnum').style.display='none';}var l=document.getElementById('lightbox');l.classList.add('show');l.style.display='flex';}
+function tutupLb(){document.getElementById('lightbox').classList.remove('show');}
+function showModal(msg){document.getElementById('mmsg').textContent=msg;document.getElementById('modal').classList.add('show');}
+function tutupModal(){document.getElementById('modal').classList.remove('show');}
+function salin(id){var t=document.getElementById(id).textContent.trim();
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){showModal('Nomor berhasil disalin ♥');}).catch(function(){showModal('Nomor: '+t+' ♥');});}
+else{showModal('Nomor: '+t+' ♥');}}
+var playing=false;
+function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
+var seed=[
+{n:'Ryo Tanaka',h:'Hadir',u:'Selamat Yuto sudah berani dikhitan! Semoga cepat sembuh dan tambah sholeh.'},
+{n:'Emi Sato',h:'Hadir',u:'Barakallah ananda Yuto. Doa terbaik untuk keluarga, semoga acaranya berkah dan lancar.'}];
+var wishes=seed.slice();
+try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_khit03')||'[]'));}catch(e){}
+function renderWishes(){var box=document.getElementById('wlist');box.innerHTML='';
+wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';
+var wn=document.createElement('div');wn.className='wn';wn.textContent=w.n;
+var wh=document.createElement('div');wh.className='wh';wh.textContent=w.h;
+var wu=document.createElement('div');wu.className='wu';wu.textContent=w.u;
+d.appendChild(wn);d.appendChild(wh);d.appendChild(wu);box.appendChild(d);});}
+function kirimUcapan(){var n=document.getElementById('wn').value.trim(),
+h=document.getElementById('wh').value,u=document.getElementById('wu').value.trim();
+if(!n||!u){showModal('Mohon isi nama dan ucapan terlebih dahulu ♥');return;}
+var w={n:n,h:h,u:u};wishes.push(w);
+try{var s=JSON.parse(localStorage.getItem('w_khit03')||'[]');s.push(w);localStorage.setItem('w_khit03',JSON.stringify(s));}catch(e){}
+document.getElementById('wn').value='';document.getElementById('wu').value='';
+renderWishes();showModal('Terima kasih atas doa dan ucapannya ♥');}
+renderWishes();
+</script>
+<script>
+function whSet(v){document.getElementById('wh').value=v;document.getElementById('whlabel').textContent=v;document.getElementById('whmodal').classList.remove('show');}
+</script></body>
+</html>
