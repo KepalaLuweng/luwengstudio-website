@@ -199,7 +199,13 @@ body.tb-warm h1,body.tb-warm h2,body.tb-warm h3{
   transition:transform .3s;
 }
 .tb-cat-card:hover .tb-cat-icon{transform:scale(1.12) rotate(-6deg)}
-.tb-cat-card h3{font-size:1.15rem;margin:0 0 .4rem}
+.tb-cat-card h3{
+  font-size:1.25rem;margin:0 0 .9rem;
+  background:linear-gradient(135deg,var(--cat-accent),var(--tb-ink));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  letter-spacing:.5px;
+}
 .tb-cat-card p{color:var(--tb-muted);font-size:.87rem;line-height:1.6;margin:0 0 .9rem;min-height:2.8em}
 .tb-cat-count{
   display:inline-block;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;
