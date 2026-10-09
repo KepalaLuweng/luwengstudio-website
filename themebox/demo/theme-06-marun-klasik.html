@@ -350,9 +350,9 @@ var seed=[
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_nikah06')||'[]'));}catch(e){}
 var wishesDefault=[
-  {nama:"Ahmad Hidayat",kehadiran:"Hadir",ucapan:"Barakallahu laka wa baraka alaika wa jamaa bainakuma fii khair. Selamat menempuh hidup baru Daiki & Akari!"},
-  {nama:"Siti Rahayu",kehadiran:"Hadir",ucapan:"Selamat untuk kedua mempelai! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah."},
-  {nama:"Budi Santoso",kehadiran:"Insya Allah Hadir",ucapan:"Wah akhirnya! Selamat ya, semoga lancar sampai hari H!"},
+  {nama:"Rizky",kehadiran:"Hadir",ucapan:"Akhirnya nikah juga! Selamat ya Daiki & Akari, semoga samawa till jannah!"},
+  {nama:"Maya",kehadiran:"Hadir",ucapan:"Ikut seneng banget! Lancar-lancar sampai hari H ya!"},
+  {nama:"Doni",kehadiran:"Insya Allah Hadir",ucapan:"Gokil, undangannya keren! Insya Allah dateng, selamat buat kalian berdua!"},
 ];
 function renderWishes(){var box=document.getElementById('wlist');if(wishes.length===0){wishes=wishesDefault.slice();}box.innerHTML='';
 wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';

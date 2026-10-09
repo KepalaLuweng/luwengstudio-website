@@ -276,9 +276,9 @@ var seed=[
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_ul07')||'[]'));}catch(e){}
 var wishesDefault=[
-  {nama:"Rina",kehadiran:"Hadir",ucapan:"Happy birthday! Semoga panjang umur, sehat selalu, dan semua impian tercapai!"},
-  {nama:"Dimas",kehadiran:"Hadir",ucapan:"Selamat ulang tahun! Traktirannya jangan lupa ya!"},
-  {nama:"Sinta",kehadiran:"Insya Allah Hadir",ucapan:"HBD! Wish you all the best!"},
+  {nama:"Bestie",kehadiran:"Hadir",ucapan:"HBD! Makin tua makin kece! Traktiran mana nih?"},
+  {nama:"Kakak",kehadiran:"Hadir",ucapan:"Selamat ulang tahun adek! Semoga apa yang disemogakan tersemogakan!"},
+  {nama:"Temen Kampus",kehadiran:"Insya Allah Hadir",ucapan:"HBD bro! Sukses terus, jangan lupa bahagia!"},
 ];
 function renderWishes(){var box=document.getElementById('wlist');if(wishes.length===0){wishes=wishesDefault.slice();}box.innerHTML='';
 wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';

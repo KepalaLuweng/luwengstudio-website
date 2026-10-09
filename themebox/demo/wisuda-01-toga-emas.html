@@ -336,9 +336,9 @@ var seed=[
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_wisuda')||'[]'));}catch(e){}
 var wishesDefault=[
-  {nama:"Ayah",kehadiran:"Hadir",ucapan:"Selamat atas kelulusannya! Ayah dan Ibu bangga sekali. Semoga ilmunya bermanfaat."},
-  {nama:"Kak Sarah",kehadiran:"Hadir",ucapan:"Congrats! Akhirnya toga juga! Sukses terus ke depannya!"},
-  {nama:"Dosen Pembimbing",kehadiran:"Insya Allah Hadir",ucapan:"Selamat! Pertahankan prestasinya di dunia kerja."},
+  {nama:"Mama",kehadiran:"Hadir",ucapan:"Bangga banget sama kamu nak! Akhirnya lulus juga. Love you!"},
+  {nama:"Sahabat",kehadiran:"Hadir",ucapan:"Congrats! Perjuangan 4 tahun terbayar lunas! Sukses di dunia kerja!"},
+  {nama:"Adik",kehadiran:"Insya Allah Hadir",ucapan:"Keren kak! Jadi motivasi buat aku. Selamat ya!"},
 ];
 function renderWishes(){var box=document.getElementById('wlist');if(wishes.length===0){wishes=wishesDefault.slice();}box.innerHTML='';
 wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';

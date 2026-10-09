@@ -116,5 +116,39 @@ function toggleMusic(){}
 var bgio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;var bg=el.getAttribute('data-bg');if(bg){el.style.backgroundImage="url('"+bg+"')";}bgio.unobserve(el);}})},{rootMargin:'50px'});
 document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
+
+<section id="wishes" class="reveal">
+  <div class="wrap">
+    <div class="eyebrow">RSVP & Ucapan</div>
+    <h2 class="title">Konfirmasi Kehadiran</h2>
+    <div class="wform">
+      <label>Nama</label>
+      <input id="wn" type="text" placeholder="Nama Anda">
+      <label>Konfirmasi Kehadiran</label>
+      <input type="hidden" id="wh" value="Hadir">
+      <button type="button" class="whbtn" onclick="document.getElementById('wh').value='Hadir';this.classList.add('on');">Hadir</button>
+      <button type="button" class="whbtn" onclick="document.getElementById('wh').value='Insya Allah Hadir';">Insya Allah Hadir</button>
+      <label>Ucapan / Doa</label>
+      <textarea id="wu" placeholder="Tulis ucapan atau doa..."></textarea>
+      <button class="btn" onclick="kirimUcapan()">Kirim Ucapan</button>
+    </div>
+    <div class="wlist" id="wlist"></div>
+  </div>
+</section>
+<script>
+var wishesDefault=[
+  {nama:"Pak RT",kehadiran:"Hadir",ucapan:"Insya Allah hadir. Semoga acaranya berkah dan lancar."},
+  {nama:"Bu Haji",kehadiran:"Hadir",ucapan:"Alhamdulillah, semoga jadi ilmu yang bermanfaat buat kita semua."},
+  {nama:"Tetangga",kehadiran:"Insya Allah Hadir",ucapan:"Mau ikut, semoga bisa hadir tepat waktu."},
+];
+var wishes=[];
+function renderWishes(){if(wishes.length===0){wishes=wishesDefault.slice();}var box=document.getElementById('wlist');box.innerHTML='';wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';d.innerHTML='<b>'+w.nama+'</b> <span class="wh">'+w.kehadiran+'</span><p>'+w.ucapan+'</p>';box.appendChild(d);});}
+function kirimUcapan(){var n=document.getElementById('wn').value;var h=document.getElementById('wh').value;var u=document.getElementById('wu').value;if(!n||!u){alert('Isi nama dan ucapan dulu ya');return;}wishes.unshift({nama:n,kehadiran:h,ucapan:u});renderWishes();document.getElementById('wn').value='';document.getElementById('wu').value='';}
+document.addEventListener('DOMContentLoaded',renderWishes);
+</script>
+<style>
+.wform{max-width:400px;margin:0 auto;text-align:left}.wform label{display:block;margin:.8rem 0 .3rem;font-weight:600;font-size:.85rem}.wform input,.wform textarea{width:100%;padding:.7rem;border:1px solid #ddd;border-radius:8px;font-size:.9rem}.wform textarea{min-height:80px}.whbtn{padding:.5rem 1rem;margin:.2rem;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer}.whbtn.on{background:#2d5a3d;color:#fff}.wlist{max-width:500px;margin:2rem auto 0}.wish{background:#f9f9f9;border-radius:12px;padding:1rem;margin-bottom:.8rem;text-align:left}.wish b{font-size:.95rem}.wish .wh{font-size:.75rem;color:#666;margin-left:.5rem}.wish p{margin:.5rem 0 0;font-size:.9rem;color:#444}
+</style>
+
 </body>
 </html>

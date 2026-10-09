@@ -318,9 +318,9 @@ var seed=[
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_aqiqah')||'[]'));}catch(e){}
 var wishesDefault=[
-  {nama:"Tante Mia",kehadiran:"Hadir",ucapan:"Masya Allah, selamat atas kelahiran buah hatinya! Semoga menjadi anak yang sholehah."},
-  {nama:"Om Rudi",kehadiran:"Hadir",ucapan:"Barakallah! Semoga si kecil tumbuh sehat dan menjadi kebanggaan orang tua."},
-  {nama:"Nenek Ani",kehadiran:"Hadir",ucapan:"Alhamdulillah, cucu nenek sudah lahir! Semoga panjang umur dan banyak rezeki."},
+  {nama:"Tante Dewi",kehadiran:"Hadir",ucapan:"Masya Allah lucu banget bayinya! Sehat-sehat ya nak, jadi anak sholehah!"},
+  {nama:"Om Andi",kehadiran:"Hadir",ucapan:"Selamat! Akhirnya jadi ayah juga. Semoga si kecil tumbuh sehat dan cerdas!"},
+  {nama:"Nenek",kehadiran:"Hadir",ucapan:"Alhamdulillah cucu nenek lahir dengan selamat. Panjang umur ya sayang!"},
 ];
 function renderWishes(){var box=document.getElementById('wlist');if(wishes.length===0){wishes=wishesDefault.slice();}box.innerHTML='';
 wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';

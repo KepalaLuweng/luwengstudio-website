@@ -254,12 +254,14 @@ var seed=[
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_aq04')||'[]'));}catch(e){}
 var wishesDefault=[
-  {nama:"Tante Mia",kehadiran:"Hadir",ucapan:"Masya Allah, selamat atas kelahiran buah hatinya! Semoga menjadi anak yang sholehah."},
-  {nama:"Om Rudi",kehadiran:"Hadir",ucapan:"Barakallah! Semoga si kecil tumbuh sehat dan menjadi kebanggaan orang tua."},
+  {nama:"Tante Dewi",kehadiran:"Hadir",ucapan:"Masya Allah lucu banget bayinya! Sehat-sehat ya nak, jadi anak sholehah!"},
+  {nama:"Om Andi",kehadiran:"Hadir",ucapan:"Selamat! Akhirnya jadi ayah juga. Semoga si kecil tumbuh sehat dan cerdas!"},
+  {nama:"Nenek",kehadiran:"Hadir",ucapan:"Alhamdulillah cucu nenek lahir dengan selamat. Panjang umur ya sayang!"},
 ];
 var wishesDefault=[
-  {nama:"Tante Mia",kehadiran:"Hadir",ucapan:"Masya Allah, selamat atas kelahiran buah hatinya! Semoga menjadi anak yang sholehah."},
-  {nama:"Om Rudi",kehadiran:"Hadir",ucapan:"Barakallah! Semoga si kecil tumbuh sehat dan menjadi kebanggaan orang tua."},
+  {nama:"Tante Dewi",kehadiran:"Hadir",ucapan:"Masya Allah lucu banget bayinya! Sehat-sehat ya nak, jadi anak sholehah!"},
+  {nama:"Om Andi",kehadiran:"Hadir",ucapan:"Selamat! Akhirnya jadi ayah juga. Semoga si kecil tumbuh sehat dan cerdas!"},
+  {nama:"Nenek",kehadiran:"Hadir",ucapan:"Alhamdulillah cucu nenek lahir dengan selamat. Panjang umur ya sayang!"},
 ];
 function renderWishes(){if(typeof wishes!=='undefined'&&wishes.length===0){wishes=wishesDefault.slice();}var b=document.getElementById('wlist');b.innerHTML='if(typeof wishes!=='undefined'&&wishes.length===0){wishes=wishesDefault.slice();}';
 wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';

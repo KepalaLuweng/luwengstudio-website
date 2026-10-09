@@ -261,12 +261,14 @@ var seed=[{n:'Keluarga Asano',h:'Hadir',u:'Selamat atas kelulusannya! Sukses sel
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_ws07')||'[]'));}catch(e){}
 var wishesDefault=[
-  {nama:"Ayah",kehadiran:"Hadir",ucapan:"Selamat atas kelulusannya! Ayah dan Ibu bangga sekali. Semoga ilmunya bermanfaat."},
-  {nama:"Kak Sarah",kehadiran:"Hadir",ucapan:"Congrats! Akhirnya toga juga! Sukses terus ke depannya!"},
+  {nama:"Mama",kehadiran:"Hadir",ucapan:"Bangga banget sama kamu nak! Akhirnya lulus juga. Love you!"},
+  {nama:"Sahabat",kehadiran:"Hadir",ucapan:"Congrats! Perjuangan 4 tahun terbayar lunas! Sukses di dunia kerja!"},
+  {nama:"Adik",kehadiran:"Insya Allah Hadir",ucapan:"Keren kak! Jadi motivasi buat aku. Selamat ya!"},
 ];
 var wishesDefault=[
-  {nama:"Ayah",kehadiran:"Hadir",ucapan:"Selamat atas kelulusannya! Ayah dan Ibu bangga sekali. Semoga ilmunya bermanfaat."},
-  {nama:"Kak Sarah",kehadiran:"Hadir",ucapan:"Congrats! Akhirnya toga juga! Sukses terus ke depannya!"},
+  {nama:"Mama",kehadiran:"Hadir",ucapan:"Bangga banget sama kamu nak! Akhirnya lulus juga. Love you!"},
+  {nama:"Sahabat",kehadiran:"Hadir",ucapan:"Congrats! Perjuangan 4 tahun terbayar lunas! Sukses di dunia kerja!"},
+  {nama:"Adik",kehadiran:"Insya Allah Hadir",ucapan:"Keren kak! Jadi motivasi buat aku. Selamat ya!"},
 ];
 function renderWishes(){if(typeof wishes!=='undefined'&&wishes.length===0){wishes=wishesDefault.slice();}var b=document.getElementById('wlist');b.innerHTML='if(typeof wishes!=='undefined'&&wishes.length===0){wishes=wishesDefault.slice();}';
 wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';
