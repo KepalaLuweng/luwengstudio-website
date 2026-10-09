@@ -194,7 +194,25 @@
       <div class="row"><span>Harga</span><span id="sum-price">Rp0</span></div>
       <div class="row total"><span>Total Bayar</span><span id="sum-total">Rp0</span></div>
     </div>
-    <button class="btn-submit" id="btn-submit" onclick="submitOrder()">Kirim Order via WhatsApp</button>
+          <div class="form-section">
+        <h2><span class="step-n">6</span> Musik Latar</h2>
+        <p class="sec-desc">Pilih apakah undangan ingin disertai musik.</p>
+        <div class="field">
+          <label style="display:flex;align-items:center;gap:.6rem;cursor:pointer">
+            <input type="checkbox" id="pakai-musik" style="width:18px;height:18px">
+            <span>Ya, saya ingin menggunakan musik latar</span>
+          </label>
+        </div>
+        <div class="field" id="field-judul-lagu" style="display:none">
+          <label>Judul Lagu</label>
+          <input type="text" id="judul-lagu" placeholder="Contoh: Perfect - Ed Sheeran">
+          <small style="color:var(--muted)">Tulis judul dan penyanyi lagu yang diinginkan</small>
+        </div>
+        <div class="warn-box" id="warn-musik" style="display:none">
+          <strong>Perhatian:</strong> Segala risiko terkait hak cipta musik (termasuk pemblokiran atau teguran dari platform) sepenuhnya menjadi tanggung jawab pembeli. LuwengStudio tidak bertanggung jawab atas pelanggaran hak cipta dari lagu pilihan Anda.
+        </div>
+      </div>
+      <button class="btn-submit" id="btn-submit" onclick="submitOrder()">Kirim Order via WhatsApp</button>
     <p class="form-note" id="upload-note">Foto diupload otomatis saat order dikirim.<br>Order tersimpan, lalu WhatsApp terbuka dengan pesan terisi.</p>
   </div>
 </div>
