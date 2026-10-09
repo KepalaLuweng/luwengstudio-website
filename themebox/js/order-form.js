@@ -49,6 +49,25 @@ function setupPhotoBox(boxId, inputId, onPick) {
   });
 }
 
+
+function validateGallery(){
+  var n = galleryFiles.length;
+  var errEl = document.querySelector('#box-foto-gallery + .err-msg, #gallery-thumbs + .err-msg');
+  if(n < 6){
+    alert('Foto galeri minimal 6 foto (saat ini '+n+').');
+    return false;
+  }
+  if(n > 10){
+    alert('Foto galeri maksimal 10 foto (saat ini '+n+').');
+    return false;
+  }
+  if(n % 2 !== 0){
+    alert('Jumlah foto galeri harus genap agar layout rapi (saat ini '+n+'). Tambah atau kurangi 1 foto.');
+    return false;
+  }
+  return true;
+}
+
 function setupGallery() {
   const box = document.getElementById("box-foto-gallery");
   const input = document.getElementById("foto-gallery");
@@ -57,7 +76,7 @@ function setupGallery() {
   box.addEventListener("click", () => input.click());
   input.addEventListener("change", () => {
     for (const file of input.files) {
-      if (galleryFiles.length >= 5) break;
+      if (galleryFiles.length >= 10) break;
       galleryFiles.push(file);
       const idx = galleryFiles.length - 1;
       const d = document.createElement("div");

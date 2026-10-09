@@ -109,6 +109,7 @@ function showSuccess(order, photosSent) {
 
 async function submitOrder() {
   if (!validateOrderForm()) return;
+  if (typeof validateGallery === 'function' && !validateGallery()) return;
   const btn = document.getElementById("btn-submit");
   btn.disabled = true;
   btn.textContent = "Mengirim order...";
