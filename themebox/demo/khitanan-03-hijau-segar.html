@@ -106,8 +106,9 @@ footer .tag{margin-top:1.4rem;font-size:.58rem;letter-spacing:1px;opacity:.55;pa
 <script src="../js/firebase-config.js"></script>
 <style>
 .cphotos{display:flex;gap:12px;justify-content:center;margin-bottom:1.2rem}
-.cphoto{width:90px;height:110px;border-radius:45px;background-size:cover;background-position:center;border:3px solid rgba(255,255,255,.9);box-shadow:0 4px 16px rgba(0,0,0,.2)}
-.cphoto.solo{width:110px;height:130px;border-radius:55px}
+.cphoto{clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);width:105px;height:115px;background-size:cover;background-position:center;border:3px solid rgba(255,255,255,.9);box-shadow:0 4px 16px rgba(0,0,0,.2);}
+.cphoto.solo{clip-path:polygon(50% 0%,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);width:105px;height:115px;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.cphoto{animation:bounce 2s ease-in-out infinite}
 </style>
 </head>
 <body>

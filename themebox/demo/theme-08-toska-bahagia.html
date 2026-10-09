@@ -124,8 +124,9 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:.22em;opacity:.6;p
 <script src="../js/firebase-config.js"></script>
 <style>
 .cphotos{display:flex;gap:12px;justify-content:center;margin-bottom:1.2rem}
-.cphoto{width:90px;height:110px;border-radius:45px;background-size:cover;background-position:center;border:3px solid rgba(255,255,255,.9);box-shadow:0 4px 16px rgba(0,0,0,.2)}
-.cphoto.solo{width:110px;height:130px;border-radius:55px}
+.cphoto{transform:rotate(45deg);width:90px;height:90px;border-radius:12px;background-size:cover;background-position:center;border:3px solid #40e0d0;box-shadow:0 4px 16px rgba(64,224,208,.3);}
+.cphoto.solo{transform:rotate(45deg);width:90px;height:90px;border-radius:12px;}
+@keyframes rotateSlow{from{transform:rotate(0)}to{transform:rotate(360deg)}}.cphotos{animation:rotateSlow 20s linear infinite}.cphoto{transform:rotate(-45deg)}
 </style>
 </head>
 <body>
