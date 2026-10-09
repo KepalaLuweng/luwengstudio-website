@@ -124,7 +124,17 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;opacity:.7;pad
 .gfeat .ph{aspect-ratio:1;border-radius:12px;background-size:cover;background-position:center;cursor:pointer;transition:transform .3s ease}
 .gfeat .ph.big{grid-column:1/-1;aspect-ratio:16/9}
 .gfeat .ph:hover{transform:scale(1.03)}
-.starframe img{width:100%;height:100%;object-fit:cover}</style>
+.starframe img{width:100%;height:100%;object-fit:cover}
+/* Animasi galeri: muncul berurutan */
+.gal .ph,.gal2 .ph,.gal3 .ph,.gal4 .ph,.gal5 .ph,.gfeat .ph,.hscroll .ph{opacity:0;animation:galMasuk .7s ease forwards}
+.gal .ph:nth-child(1),.gal2 .ph:nth-child(1),.gal3 .ph:nth-child(1),.gal4 .ph:nth-child(1),.gal5 .ph:nth-child(1),.gfeat .ph:nth-child(1){animation-delay:.1s}
+.gal .ph:nth-child(2),.gal2 .ph:nth-child(2),.gal3 .ph:nth-child(2),.gal4 .ph:nth-child(2),.gal5 .ph:nth-child(2),.gfeat .ph:nth-child(2){animation-delay:.2s}
+.gal .ph:nth-child(3),.gal2 .ph:nth-child(3),.gal3 .ph:nth-child(3),.gal4 .ph:nth-child(3),.gal5 .ph:nth-child(3),.gfeat .ph:nth-child(3){animation-delay:.3s}
+.gal .ph:nth-child(4),.gal2 .ph:nth-child(4),.gal3 .ph:nth-child(4),.gal4 .ph:nth-child(4),.gal5 .ph:nth-child(4),.gfeat .ph:nth-child(4){animation-delay:.4s}
+.gal .ph:nth-child(5),.gal2 .ph:nth-child(5),.gal3 .ph:nth-child(5),.gal4 .ph:nth-child(5),.gal5 .ph:nth-child(5),.gfeat .ph:nth-child(5){animation-delay:.5s}
+.gal .ph:nth-child(6),.gal2 .ph:nth-child(6),.gal3 .ph:nth-child(6),.gal4 .ph:nth-child(6),.gal5 .ph:nth-child(6),.gfeat .ph:nth-child(6){animation-delay:.6s}
+@keyframes galMasuk{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+</style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script src="../js/firebase-config.js"></script>
@@ -364,5 +374,21 @@ document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 
 
 
+
+<script>
+// Auto-scroll carousel galeri
+document.querySelectorAll('.gal').forEach(function(g){
+  if(getComputedStyle(g).display==='flex' && g.scrollWidth>g.clientWidth){
+    var dir=1;
+    setInterval(function(){
+      if(g.scrollLeft+g.clientWidth>=g.scrollWidth-10)dir=-1;
+      else if(g.scrollLeft<=10)dir=1;
+      g.scrollBy({left:dir*2,behavior:'auto'});
+    },50);
+    // hentikan saat disentuh
+    g.addEventListener('touchstart',function(){dir=0;},{passive:true});
+  }
+});
+</script>
 </body>
 </html>

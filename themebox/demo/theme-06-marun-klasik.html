@@ -135,6 +135,16 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:.22em;opacity:.55}
 #lightbox{position:fixed;inset:0;z-index:200;background:rgba(40,12,17,.93);display:none;align-items:center;justify-content:center;padding:1.5rem}
 #lbphoto{width:100%;max-width:420px;aspect-ratio:3/3.8;background-size:cover;background-position:center;border:5px solid #fff;outline:1px solid var(--gold);display:flex;align-items:center;justify-content:center}
 #lbnum{font-family:'Playfair Display',serif;color:#fff;font-size:3rem}
+
+/* Animasi galeri: muncul berurutan */
+.gal .ph,.gal2 .ph,.gal3 .ph,.gal4 .ph,.gal5 .ph,.gfeat .ph,.hscroll .ph{opacity:0;animation:galMasuk .7s ease forwards}
+.gal .ph:nth-child(1),.gal2 .ph:nth-child(1),.gal3 .ph:nth-child(1),.gal4 .ph:nth-child(1),.gal5 .ph:nth-child(1),.gfeat .ph:nth-child(1){animation-delay:.1s}
+.gal .ph:nth-child(2),.gal2 .ph:nth-child(2),.gal3 .ph:nth-child(2),.gal4 .ph:nth-child(2),.gal5 .ph:nth-child(2),.gfeat .ph:nth-child(2){animation-delay:.2s}
+.gal .ph:nth-child(3),.gal2 .ph:nth-child(3),.gal3 .ph:nth-child(3),.gal4 .ph:nth-child(3),.gal5 .ph:nth-child(3),.gfeat .ph:nth-child(3){animation-delay:.3s}
+.gal .ph:nth-child(4),.gal2 .ph:nth-child(4),.gal3 .ph:nth-child(4),.gal4 .ph:nth-child(4),.gal5 .ph:nth-child(4),.gfeat .ph:nth-child(4){animation-delay:.4s}
+.gal .ph:nth-child(5),.gal2 .ph:nth-child(5),.gal3 .ph:nth-child(5),.gal4 .ph:nth-child(5),.gal5 .ph:nth-child(5),.gfeat .ph:nth-child(5){animation-delay:.5s}
+.gal .ph:nth-child(6),.gal2 .ph:nth-child(6),.gal3 .ph:nth-child(6),.gal4 .ph:nth-child(6),.gal5 .ph:nth-child(6),.gfeat .ph:nth-child(6){animation-delay:.6s}
+@keyframes galMasuk{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
