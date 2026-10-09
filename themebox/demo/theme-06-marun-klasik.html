@@ -125,9 +125,18 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:.22em;opacity:.55;
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script src="../js/firebase-config.js"></script>
+<style>
+.cphotos{display:flex;gap:12px;justify-content:center;margin-bottom:1.2rem}
+.cphoto{width:90px;height:110px;border-radius:45px;background-size:cover;background-position:center;border:3px solid rgba(255,255,255,.9);box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.cphoto.solo{width:110px;height:130px;border-radius:55px}
+</style>
 </head>
 <body>
 <div id="cover">
+    <div class="cphotos">
+      <div class="cphoto" style="background-image:url('gal-wed-06-1.jpg')"></div>
+      <div class="cphoto" style="background-image:url('gal-wed-06-2.jpg')"></div>
+    </div>
   <div class="arch">
     <div class="lbl">Undangan Pernikahan</div>
     <h1>Yuma <em>&amp;</em> Rin</h1>
