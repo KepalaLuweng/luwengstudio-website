@@ -170,7 +170,7 @@ document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
         <div style="font-size:.8rem;color:#666;margin-bottom:.5rem">Transfer Bank</div>
         <div style="font-size:1.2rem;font-weight:700;letter-spacing:2px">1234 5678 9012</div>
         <div style="font-size:.85rem;color:#666">Bank Syariah Indonesia - Panitia</div>
-        <button onclick="navigator.clipboard.writeText('123456789012');alert('Nomor rekening tersalin!')" style="margin-top:.8rem;padding:.5rem 1.5rem;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer">Salin Nomor</button>
+        <button onclick="navigator.clipboard.writeText('123456789012');showModal('Nomor rekening tersalin!')" style="margin-top:.8rem;padding:.5rem 1.5rem;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer">Salin Nomor</button>
       </div>
     </div>
   </div>
@@ -201,8 +201,8 @@ var wishesDefault=[
   {nama:"Tetangga",kehadiran:"Insya Allah Hadir",ucapan:"Mau ikut, semoga bisa hadir tepat waktu."},
 ];
 var wishes=[];
-function renderWishes(){if(wishes.length===0){wishes=wishesDefault.slice();}var box=document.getElementById('wlist');box.innerHTML='';wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';d.innerHTML='<b>'+w.namaama+'</b> <span class="wh">'+w.kehadiran+'</span><p>'+w.ucapancapan+'</p>';box.appendChild(d);});}
-function kirimUcapan(){var n=document.getElementById('wn').value;var h=document.getElementById('wh').value;var u=document.getElementById('wu').value;if(!n||!u){alert('Isi nama dan ucapan dulu ya');return;}wishes.unshift({nama:n,kehadiran:h,ucapan:u});renderWishes();document.getElementById('wn').value='';document.getElementById('wu').value='';}
+function renderWishes(){if(wishes.length===0){wishes=wishesDefault.slice();}var box=document.getElementById('wlist');box.innerHTML='';wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';d.innerHTML='<b>'+w.nama+'</b> <span class="wh">'+w.kehadiran+'</span><p>'+w.ucapan+'</p>';box.appendChild(d);});}
+function kirimUcapan(){var n=document.getElementById('wn').value;var h=document.getElementById('wh').value;var u=document.getElementById('wu').value;if(!n||!u){showModal('Isi nama dan ucapan dulu ya');return;}wishes.unshift({nama:n,kehadiran:h,ucapan:u});renderWishes();document.getElementById('wn').value='';document.getElementById('wu').value='';}
 document.addEventListener('DOMContentLoaded',renderWishes);
 </script>
 <style>
@@ -212,5 +212,7 @@ document.addEventListener('DOMContentLoaded',renderWishes);
 <audio id="bgmusic" loop preload="none"><source src="audio/agama.mp3" type="audio/mpeg"></audio>
 <!-- Musik: Desert City - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
 <script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
+<div id="modal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.55);align-items:center;justify-content:center" onclick="this.style.display='none'"><div id="mmsg" style="background:#fff;color:#333;padding:1.6rem 2rem;border-radius:16px;max-width:82%;text-align:center;font-size:.95rem" onclick="event.stopPropagation()"></div></div>
+<script>function showModal(m){document.getElementById("mmsg").textContent=m;document.getElementById("modal").style.display="flex";}</script>
 </body>
 </html>
