@@ -117,6 +117,43 @@ var bgio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInt
 document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 
+
+<section id="count" class="reveal">
+  <div class="wrap">
+    <div class="eyebrow">Save The Date</div>
+    <h2 class="title">Menghitung Hari</h2>
+    <div class="cd">
+      <div><b id="d">0</b><span>Hari</span></div>
+      <div><b id="h">0</b><span>Jam</span></div>
+      <div><b id="m">0</b><span>Menit</span></div>
+      <div><b id="s">0</b><span>Detik</span></div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){var target=new Date('2026-12-20T08:00:00').getTime();function upd(){var now=Date.now();var diff=target-now;if(diff<0)diff=0;var d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);document.getElementById('d').textContent=d;document.getElementById('h').textContent=h;document.getElementById('m').textContent=m;document.getElementById('s').textContent=s;}upd();setInterval(upd,1000);})();
+</script>
+<style>
+.cd{display:flex;gap:1rem;justify-content:center;margin-top:1.5rem}.cd>div{background:rgba(255,255,255,.1);border-radius:12px;padding:1rem;min-width:70px;text-align:center}.cd b{font-size:1.8rem;display:block}.cd span{font-size:.75rem;opacity:.7}
+</style>
+
+
+<section id="gift" class="reveal">
+  <div class="wrap">
+    <div class="eyebrow">Infaq & Shadaqah</div>
+    <h2 class="title">Kirim Infaq</h2>
+    <p class="lead">Partisipasi Anda sangat berarti untuk kelancaran acara.</p>
+    <div style="max-width:400px;margin:1.5rem auto;text-align:center">
+      <div style="background:#f9f9f9;border-radius:12px;padding:1.5rem;margin-bottom:1rem">
+        <div style="font-size:.8rem;color:#666;margin-bottom:.5rem">Transfer Bank</div>
+        <div style="font-size:1.2rem;font-weight:700;letter-spacing:2px">1234 5678 9012</div>
+        <div style="font-size:.85rem;color:#666">Bank Syariah Indonesia - Panitia</div>
+        <button onclick="navigator.clipboard.writeText('123456789012');alert('Nomor rekening tersalin!')" style="margin-top:.8rem;padding:.5rem 1.5rem;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer">Salin Nomor</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="wishes" class="reveal">
   <div class="wrap">
     <div class="eyebrow">RSVP & Ucapan</div>
