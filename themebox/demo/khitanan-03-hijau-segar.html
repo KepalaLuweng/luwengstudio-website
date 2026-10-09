@@ -286,7 +286,12 @@ var seed=[
 {n:'Emi Sato',h:'Hadir',u:'Barakallah ananda Yuto. Doa terbaik untuk keluarga, semoga acaranya berkah dan lancar.'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_khit03')||'[]'));}catch(e){}
-function renderWishes(){var box=document.getElementById('wlist');box.innerHTML='';
+var wishesDefault=[
+  {nama:"H. Abdullah",kehadiran:"Hadir",ucapan:"Selamat khitanan! Semoga menjadi anak yang sholeh dan berbakti kepada orang tua."},
+  {nama:"Bunda Ratna",kehadiran:"Hadir",ucapan:"Barakallah, semoga lekas sembuh dan menjadi kebanggaan keluarga."},
+  {nama:"Pak Dedi",kehadiran:"Insya Allah Hadir",ucapan:"Selamat ya! Semoga acaranya lancar dan berkah."},
+];
+function renderWishes(){var box=document.getElementById('wlist');if(wishes.length===0){wishes=wishesDefault.slice();}box.innerHTML='';
 wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';
 var wn=document.createElement('div');wn.className='wn';wn.textContent=w.n;
 var wh=document.createElement('div');wh.className='wh';wh.textContent=w.h;

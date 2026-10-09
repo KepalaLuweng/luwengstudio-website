@@ -349,7 +349,12 @@ var seed=[
 {n:'Rudi Saputra',h:'Masih Ragu',u:'Selamat Riku & Suzu! Semoga acaranya lancar, doa terbaik dari jauh.'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_nikah07')||'[]'));}catch(e){}
-function renderWishes(){var box=document.getElementById('wlist');box.innerHTML='';
+var wishesDefault=[
+  {nama:"Ahmad Hidayat",kehadiran:"Hadir",ucapan:"Barakallahu laka wa baraka alaika wa jamaa bainakuma fii khair. Selamat menempuh hidup baru Daiki & Akari!"},
+  {nama:"Siti Rahayu",kehadiran:"Hadir",ucapan:"Selamat untuk kedua mempelai! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah."},
+  {nama:"Budi Santoso",kehadiran:"Insya Allah Hadir",ucapan:"Wah akhirnya! Selamat ya, semoga lancar sampai hari H!"},
+];
+function renderWishes(){var box=document.getElementById('wlist');if(wishes.length===0){wishes=wishesDefault.slice();}box.innerHTML='';
 wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';
 var wn=document.createElement('div');wn.className='wn';wn.textContent=w.n;
 var wh=document.createElement('div');wh.className='wh';wh.textContent=w.h;

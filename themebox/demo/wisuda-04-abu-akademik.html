@@ -240,7 +240,15 @@ function toggleMusic(){playing=!playing;document.getElementById('music').classLi
 var seed=[{n:'Keluarga Asano',h:'Hadir',u:'Selamat atas kelulusannya! Sukses selalu ke depannya.'},{n:'Dosen Pembimbing',h:'Hadir',u:'Bangga atas pencapaianmu. Terus berkarya!'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_ws04')||'[]'));}catch(e){}
-function renderWishes(){var b=document.getElementById('wlist');b.innerHTML='';
+var wishesDefault=[
+  {nama:"Ayah",kehadiran:"Hadir",ucapan:"Selamat atas kelulusannya! Ayah dan Ibu bangga sekali. Semoga ilmunya bermanfaat."},
+  {nama:"Kak Sarah",kehadiran:"Hadir",ucapan:"Congrats! Akhirnya toga juga! Sukses terus ke depannya!"},
+];
+var wishesDefault=[
+  {nama:"Ayah",kehadiran:"Hadir",ucapan:"Selamat atas kelulusannya! Ayah dan Ibu bangga sekali. Semoga ilmunya bermanfaat."},
+  {nama:"Kak Sarah",kehadiran:"Hadir",ucapan:"Congrats! Akhirnya toga juga! Sukses terus ke depannya!"},
+];
+function renderWishes(){if(typeof wishes!=='undefined'&&wishes.length===0){wishes=wishesDefault.slice();}var b=document.getElementById('wlist');b.innerHTML='if(typeof wishes!=='undefined'&&wishes.length===0){wishes=wishesDefault.slice();}';
 wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';
 var a=document.createElement('div');a.className='wn';a.textContent=w.n;
 var c=document.createElement('div');c.className='wh';c.textContent=w.h;
