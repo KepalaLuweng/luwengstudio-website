@@ -68,6 +68,23 @@ function validateGallery(){
   return true;
 }
 
+
+function setupMusik(){
+  var cb = document.getElementById('pakai-musik');
+  var field = document.getElementById('field-judul-lagu');
+  var warn = document.getElementById('warn-musik');
+  if(!cb) return;
+  cb.addEventListener('change', function(){
+    if(cb.checked){
+      field.style.display = 'block';
+      warn.style.display = 'block';
+    } else {
+      field.style.display = 'none';
+      warn.style.display = 'none';
+    }
+  });
+}
+
 function setupGallery() {
   const box = document.getElementById("box-foto-gallery");
   const input = document.getElementById("foto-gallery");
@@ -190,4 +207,5 @@ function initOrderPage() {
   setupPhotoBox("box-foto-utama", "foto-utama");
   setupPhotoBox("box-foto-qris", "foto-qris");
   setupGallery();
+  setupMusik();
 }
