@@ -112,6 +112,28 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;opacity:.7;pad
 .cphoto.solo{border-radius:50px;width:90px;height:115px;}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}.cphoto{animation:float 3s ease-in-out infinite}
 </style>
+
+<style>
+/* Gallery animasi halus - universal */
+.gal,.gal2,.gal3,.gal4,.gal5{display:grid;gap:.6rem}
+.gal{grid-template-columns:repeat(3,1fr)}
+.gal2{grid-template-columns:repeat(2,1fr)}
+.gal3{grid-template-columns:repeat(3,1fr)}
+.gal4{grid-template-columns:repeat(2,1fr)}
+.gal5{grid-template-columns:repeat(3,1fr)}
+.gal .ph,.gal2 .ph,.gal3 .ph,.gal4 .ph,.gal5 .ph{position:relative;overflow:hidden;border-radius:10px;aspect-ratio:1;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease;animation:galFade .6s ease backwards}
+.gal .ph:hover,.gal2 .ph:hover,.gal3 .ph:hover,.gal4 .ph:hover,.gal5 .ph:hover{transform:scale(1.04);box-shadow:0 8px 20px rgba(0,0,0,.18);z-index:2}
+.gal .ph::after,.gal2 .ph::after,.gal3 .ph::after,.gal4 .ph::after,.gal5 .ph::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.25),transparent 50%);opacity:0;transition:opacity .3s;pointer-events:none}
+.gal .ph:hover::after,.gal2 .ph:hover::after,.gal3 .ph:hover::after,.gal4 .ph:hover::after,.gal5 .ph:hover::after{opacity:1}
+@keyframes galFade{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.gal .ph:nth-child(2),.gal2 .ph:nth-child(2),.gal3 .ph:nth-child(2),.gal4 .ph:nth-child(2),.gal5 .ph:nth-child(2){animation-delay:.08s}
+.gal .ph:nth-child(3),.gal2 .ph:nth-child(3),.gal3 .ph:nth-child(3),.gal4 .ph:nth-child(3),.gal5 .ph:nth-child(3){animation-delay:.16s}
+.gal .ph:nth-child(4),.gal2 .ph:nth-child(4),.gal3 .ph:nth-child(4),.gal4 .ph:nth-child(4),.gal5 .ph:nth-child(4){animation-delay:.24s}
+.gal .ph:nth-child(5),.gal2 .ph:nth-child(5),.gal3 .ph:nth-child(5),.gal4 .ph:nth-child(5),.gal5 .ph:nth-child(5){animation-delay:.32s}
+.gal .ph:nth-child(6),.gal2 .ph:nth-child(6),.gal3 .ph:nth-child(6),.gal4 .ph:nth-child(6),.gal5 .ph:nth-child(6){animation-delay:.4s}
+@media(max-width:480px){.gal,.gal3,.gal5{grid-template-columns:repeat(2,1fr);gap:.5rem}}
+</style>
+
 </head>
 <body>
 <div id="cover">
@@ -329,5 +351,48 @@ document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 <audio id="bgmusic" loop preload="none"><source src="audio/ultah.mp3" type="audio/mpeg"></audio>
 <!-- Musik: Merry Go - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
 <script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
+
+<section class="wishes-section" id="wishes">
+  <h2>Ucapan & Doa</h2>
+  <p class="sec-desc">Kirimkan doa terbaik untuk kami</p>
+  <div class="wishes-list" id="wishesList"></div>
+  <form class="wish-form" onsubmit="kirimUcapan(event)">
+    <input type="text" id="wish-nama" placeholder="Nama Anda" required>
+    <textarea id="wish-pesan" placeholder="Tulis ucapan..." required></textarea>
+    <button type="submit">Kirim Ucapan</button>
+  </form>
+</section>
+<style>
+.wishes-section{padding:2rem 1rem;text-align:center}
+.wishes-list{display:flex;flex-direction:column;gap:.8rem;max-width:500px;margin:1rem auto}
+.wish-card{background:#fff;border-radius:10px;padding:1rem;box-shadow:0 2px 8px rgba(0,0,0,.08);text-align:left}
+.wish-card .w-nama{font-weight:bold;margin-bottom:.3rem}
+.wish-form{max-width:500px;margin:1rem auto;display:flex;flex-direction:column;gap:.6rem}
+.wish-form input,.wish-form textarea{padding:.7rem;border:1px solid #ddd;border-radius:8px}
+.wish-form button{padding:.7rem;background:#2d5a3d;color:#fff;border:none;border-radius:8px;cursor:pointer}
+</style>
+<script>
+function renderWishes(){
+  var list = document.getElementById('wishesList');
+  if(!list || typeof wishesDefault === 'undefined') return;
+  list.innerHTML = wishesDefault.map(function(w){
+    return '<div class="wish-card"><div class="w-nama">'+w.nama+'</div><div>'+w.pesan+'</div></div>';
+  }).join('');
+}
+function kirimUcapan(e){
+  e.preventDefault();
+  var nama = document.getElementById('wish-nama').value;
+  var pesan = document.getElementById('wish-pesan').value;
+  var list = document.getElementById('wishesList');
+  var div = document.createElement('div');
+  div.className = 'wish-card';
+  div.innerHTML = '<div class="w-nama">'+nama+'</div><div>'+pesan+'</div>';
+  list.prepend(div);
+  document.getElementById('wish-nama').value = '';
+  document.getElementById('wish-pesan').value = '';
+}
+document.addEventListener('DOMContentLoaded', renderWishes);
+</script>
+
 </body>
 </html>

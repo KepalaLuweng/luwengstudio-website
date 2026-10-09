@@ -153,6 +153,28 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;opacity:.6;pad
 .cphoto.solo{border-radius:50px 50px 8px 8px;width:95px;height:120px;}
 @keyframes shimmer{0%{filter:brightness(1)}50%{filter:brightness(1.15)}100%{filter:brightness(1)}}.cphoto{animation:shimmer 3s ease-in-out infinite}
 </style>
+
+<style>
+/* Gallery animasi halus - universal */
+.gal,.gal2,.gal3,.gal4,.gal5{display:grid;gap:.6rem}
+.gal{grid-template-columns:repeat(3,1fr)}
+.gal2{grid-template-columns:repeat(2,1fr)}
+.gal3{grid-template-columns:repeat(3,1fr)}
+.gal4{grid-template-columns:repeat(2,1fr)}
+.gal5{grid-template-columns:repeat(3,1fr)}
+.gal .ph,.gal2 .ph,.gal3 .ph,.gal4 .ph,.gal5 .ph{position:relative;overflow:hidden;border-radius:10px;aspect-ratio:1;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease;animation:galFade .6s ease backwards}
+.gal .ph:hover,.gal2 .ph:hover,.gal3 .ph:hover,.gal4 .ph:hover,.gal5 .ph:hover{transform:scale(1.04);box-shadow:0 8px 20px rgba(0,0,0,.18);z-index:2}
+.gal .ph::after,.gal2 .ph::after,.gal3 .ph::after,.gal4 .ph::after,.gal5 .ph::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.25),transparent 50%);opacity:0;transition:opacity .3s;pointer-events:none}
+.gal .ph:hover::after,.gal2 .ph:hover::after,.gal3 .ph:hover::after,.gal4 .ph:hover::after,.gal5 .ph:hover::after{opacity:1}
+@keyframes galFade{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.gal .ph:nth-child(2),.gal2 .ph:nth-child(2),.gal3 .ph:nth-child(2),.gal4 .ph:nth-child(2),.gal5 .ph:nth-child(2){animation-delay:.08s}
+.gal .ph:nth-child(3),.gal2 .ph:nth-child(3),.gal3 .ph:nth-child(3),.gal4 .ph:nth-child(3),.gal5 .ph:nth-child(3){animation-delay:.16s}
+.gal .ph:nth-child(4),.gal2 .ph:nth-child(4),.gal3 .ph:nth-child(4),.gal4 .ph:nth-child(4),.gal5 .ph:nth-child(4){animation-delay:.24s}
+.gal .ph:nth-child(5),.gal2 .ph:nth-child(5),.gal3 .ph:nth-child(5),.gal4 .ph:nth-child(5),.gal5 .ph:nth-child(5){animation-delay:.32s}
+.gal .ph:nth-child(6),.gal2 .ph:nth-child(6),.gal3 .ph:nth-child(6),.gal4 .ph:nth-child(6),.gal5 .ph:nth-child(6){animation-delay:.4s}
+@media(max-width:480px){.gal,.gal3,.gal5{grid-template-columns:repeat(2,1fr);gap:.5rem}}
+</style>
+
 </head>
 <body>
 <div class="lux" aria-hidden="true"><i style="left:6%;width:7px;height:7px;animation-duration:11s;animation-delay:0s"></i><i style="left:14%;width:5px;height:5px;animation-duration:14s;animation-delay:2s"></i><i style="left:23%;width:8px;height:8px;animation-duration:10s;animation-delay:4s"></i><i style="left:31%;width:4px;height:4px;animation-duration:16s;animation-delay:1s"></i><i style="left:40%;width:6px;height:6px;animation-duration:12s;animation-delay:3s"></i><i style="left:48%;width:5px;height:5px;animation-duration:15s;animation-delay:5s"></i><i style="left:57%;width:7px;height:7px;animation-duration:11s;animation-delay:2.5s"></i><i style="left:65%;width:4px;height:4px;animation-duration:17s;animation-delay:0.5s"></i><i style="left:74%;width:6px;height:6px;animation-duration:13s;animation-delay:4.5s"></i><i style="left:82%;width:5px;height:5px;animation-duration:14s;animation-delay:1.5s"></i><i style="left:90%;width:7px;height:7px;animation-duration:12s;animation-delay:3.5s"></i><i style="left:96%;width:4px;height:4px;animation-duration:16s;animation-delay:6s"></i></div><div id="cover">
