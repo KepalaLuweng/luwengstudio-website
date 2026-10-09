@@ -201,7 +201,7 @@ var wishesDefault=[
   {nama:"Tetangga",kehadiran:"Insya Allah Hadir",ucapan:"Mau ikut, semoga bisa hadir tepat waktu."},
 ];
 var wishes=[];
-function renderWishes(){if(wishes.length===0){wishes=wishesDefault.slice();}var box=document.getElementById('wlist');box.innerHTML='';wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';d.innerHTML='<b>'+w.nama+'</b> <span class="wh">'+w.kehadiran+'</span><p>'+w.ucapan+'</p>';box.appendChild(d);});}
+function renderWishes(){if(wishes.length===0){wishes=wishesDefault.slice();}var box=document.getElementById('wlist');box.innerHTML='';wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';d.innerHTML='<b>'+w.namaama+'</b> <span class="wh">'+w.kehadiran+'</span><p>'+w.ucapancapan+'</p>';box.appendChild(d);});}
 function kirimUcapan(){var n=document.getElementById('wn').value;var h=document.getElementById('wh').value;var u=document.getElementById('wu').value;if(!n||!u){alert('Isi nama dan ucapan dulu ya');return;}wishes.unshift({nama:n,kehadiran:h,ucapan:u});renderWishes();document.getElementById('wn').value='';document.getElementById('wu').value='';}
 document.addEventListener('DOMContentLoaded',renderWishes);
 </script>

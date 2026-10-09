@@ -302,9 +302,9 @@ var wishesDefault=[
 ];
 function renderWishes(){var box=document.getElementById('wlist');if(wishes.length===0){wishes=wishesDefault.slice();}box.innerHTML='';
 wishes.forEach(function(w){var d=document.createElement('div');d.className='wish';
-var wn=document.createElement('div');wn.className='wn';wn.textContent=w.n;
-var wh=document.createElement('div');wh.className='wh';wh.textContent=w.h;
-var wu=document.createElement('div');wu.className='wu';wu.textContent=w.u;
+var wn=document.createElement('div');wn.className='wn';wn.textContent=w.nama;
+var wh=document.createElement('div');wh.className='wh';wh.textContent=w.kehadiran;
+var wu=document.createElement('div');wu.className='wu';wu.textContent=w.ucapan;
 d.appendChild(wn);d.appendChild(wh);d.appendChild(wu);box.appendChild(d);});}
 function kirimUcapan(){
   var n=document.getElementById('wn').value.trim(),
@@ -320,7 +320,7 @@ function kirimUcapan(){
 function renderWishesFB(list){
   var el=document.getElementById('wlist');if(!el)return;
   el.innerHTML=list.map(function(w){
-    return '<div class="witem"><b>'+escHtml(w.nama)+'</b>'+(w.kehadiran?' <span class="whad">'+escHtml(w.kehadiran)+'</span>':'')+'<p>'+escHtml(w.ucapan)+'</p></div>';
+    return '<div class="witem"><b>'+escHtml(w.namaama)+'</b>'+(w.kehadiran?' <span class="whad">'+escHtml(w.kehadiran)+'</span>':'')+'<p>'+escHtml(w.ucapancapan)+'</p></div>';
   }).join('')||'<p style="text-align:center;opacity:.6">Jadilah yang pertama memberi ucapan ♥</p>';
 }
 function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
@@ -352,47 +352,7 @@ document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 <!-- Musik: Merry Go - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
 <script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
 
-<section class="wishes-section" id="wishes">
-  <h2>Ucapan & Doa</h2>
-  <p class="sec-desc">Kirimkan doa terbaik untuk kami</p>
-  <div class="wishes-list" id="wishesList"></div>
-  <form class="wish-form" onsubmit="kirimUcapan(event)">
-    <input type="text" id="wish-nama" placeholder="Nama Anda" required>
-    <textarea id="wish-pesan" placeholder="Tulis ucapan..." required></textarea>
-    <button type="submit">Kirim Ucapan</button>
-  </form>
-</section>
-<style>
-.wishes-section{padding:2rem 1rem;text-align:center}
-.wishes-list{display:flex;flex-direction:column;gap:.8rem;max-width:500px;margin:1rem auto}
-.wish-card{background:#fff;border-radius:10px;padding:1rem;box-shadow:0 2px 8px rgba(0,0,0,.08);text-align:left}
-.wish-card .w-nama{font-weight:bold;margin-bottom:.3rem}
-.wish-form{max-width:500px;margin:1rem auto;display:flex;flex-direction:column;gap:.6rem}
-.wish-form input,.wish-form textarea{padding:.7rem;border:1px solid #ddd;border-radius:8px}
-.wish-form button{padding:.7rem;background:#2d5a3d;color:#fff;border:none;border-radius:8px;cursor:pointer}
-</style>
-<script>
-function renderWishes(){
-  var list = document.getElementById('wishesList');
-  if(!list || typeof wishesDefault === 'undefined') return;
-  list.innerHTML = wishesDefault.map(function(w){
-    return '<div class="wish-card"><div class="w-nama">'+w.nama+'</div><div>'+w.pesan+'</div></div>';
-  }).join('');
-}
-function kirimUcapan(e){
-  e.preventDefault();
-  var nama = document.getElementById('wish-nama').value;
-  var pesan = document.getElementById('wish-pesan').value;
-  var list = document.getElementById('wishesList');
-  var div = document.createElement('div');
-  div.className = 'wish-card';
-  div.innerHTML = '<div class="w-nama">'+nama+'</div><div>'+pesan+'</div>';
-  list.prepend(div);
-  document.getElementById('wish-nama').value = '';
-  document.getElementById('wish-pesan').value = '';
-}
-document.addEventListener('DOMContentLoaded', renderWishes);
-</script>
+
 
 </body>
 </html>
