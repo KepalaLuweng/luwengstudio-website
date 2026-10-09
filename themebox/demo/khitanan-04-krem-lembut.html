@@ -100,6 +100,13 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;opacity:.55;pa
 #lightbox.show{display:flex}
 #lightbox .frame{width:100%;max-width:400px;aspect-ratio:1/1.1;border-radius:18px;background:linear-gradient(135deg,#dcc9a0,#a98d5d);display:flex;align-items:center;justify-content:center}
 #lightbox .frame span{font-family:'EB Garamond',serif;color:rgba(255,255,255,.95);font-size:3rem}
+
+/* Galeri cantik: Polaroid ceria */
+.gal,.gal2,.gal4{display:grid!important;grid-template-columns:1fr 1fr!important;gap:1rem!important}
+.gal .ph,.gal2 .ph,.gal4 .ph{aspect-ratio:1!important;border:8px solid #fff!important;border-bottom-width:28px!important;border-radius:6px!important;box-shadow:0 6px 18px rgba(0,0,0,.12)!important;transition:transform .3s ease!important;background-clip:padding-box!important}
+.gal .ph:nth-child(odd),.gal2 .ph:nth-child(odd),.gal4 .ph:nth-child(odd){transform:rotate(-2deg)}
+.gal .ph:nth-child(even),.gal2 .ph:nth-child(even),.gal4 .ph:nth-child(even){transform:rotate(2deg)}
+.gal .ph:hover,.gal2 .ph:hover,.gal4 .ph:hover{transform:rotate(0) scale(1.05)!important;z-index:2;box-shadow:0 12px 28px rgba(0,0,0,.2)!important}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -164,7 +171,7 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;opacity:.55;pa
   <div class="eyebrow">Ananda Yang Dikhitan</div>
   <h2 class="t">Putra Kebanggaan Kami</h2>
   <div class="pcard">
-    <div class="photo" style="background-image:url(\'gal-khit-04-1.jpg\');background-size:cover;background-position:center 20%"></div>
+    <div class="photo" style="background-image:url('gal-khit-04-1.jpg');background-size:cover;background-position:center 20%"></div>
     <h3>Yuto Hoshizora</h3>
     <div class="par">Putra pertama dari<br>Bapak Kenta Hoshizora &amp; Ibu Mai Hoshizora</div>
   </div>
@@ -183,7 +190,7 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;opacity:.55;pa
     <div class="ph" onclick="lb(this,3)" data-img="gal-khit-04-3.jpg" data-bg="gal-khit-04-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
     <div class="ph" onclick="lb(this,4)" data-img="gal-khit-04-4.jpg" data-bg="gal-khit-04-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
       <div class="ph" onclick="lb(this,5)" data-img="gal-khit-04-5.jpg" data-bg="gal-khit-04-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,5)" data-img="gal-khit-04-6.jpg" data-bg="gal-khit-04-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,6)" data-img="gal-khit-04-6.jpg" data-bg="gal-khit-04-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
   </div>
   <div class="dots"><i></i><i></i><i></i></div>
 </section>
@@ -373,7 +380,7 @@ document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 <audio id="bgmusic" loop preload="none"><source src="audio/khitanan.mp3" type="audio/mpeg"></audio>
 <!-- Musik: Monkeys Spinning Monkeys - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
+<script>else{a.pause();if(b)b.textContent="\u266a";}}</script>
 
 
 

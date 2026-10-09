@@ -137,6 +137,12 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:.22em;opacity:.6;p
 
 #cover .frame,#cover .panel,#cover .box,#cover .inner,#cover .cbox,#cover .cinner{box-shadow:0 24px 70px rgba(0,0,0,.4),0 0 34px rgba(255,215,130,.28);border-color:rgba(255,215,130,.65)!important}
 .btn{box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 22px rgba(255,215,130,.45)!important}
+.med .ring{overflow:hidden}.med .ring img{width:100%;height:100%;object-fit:cover;object-position:center top}
+/* Galeri cantik: Featured Hero */
+.gal,.gal2,.gal3{display:grid!important;grid-template-columns:1fr 1fr!important;gap:.7rem!important}
+.gal .ph:first-child,.gal2 .ph:first-child,.gal3 .ph:first-child{grid-column:1/-1;aspect-ratio:16/10!important}
+.gal .ph,.gal2 .ph,.gal3 .ph{aspect-ratio:1!important;border-radius:14px!important;transition:transform .3s ease,box-shadow .3s ease!important}
+.gal .ph:hover,.gal2 .ph:hover,.gal3 .ph:hover{transform:scale(1.03);box-shadow:0 12px 28px rgba(0,0,0,.16);z-index:2}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -196,14 +202,14 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:.22em;opacity:.6;p
   <h2 class="title">Pinanganten</h2>
   <div class="gdivider"><span>❖</span></div>
   <div class="med">
-    <div class="ring">A</div>
+    <div class="ring"><img src="gal-wed-09-1.jpg" alt="Shun Makihara"></div>
     <h3>Shun Makihara</h3>
     <div class="role">Mempelai Kakung</div>
     <div class="par">Putra pertama dari<br>Bapak Taro Makihara &amp; Ibu Yoko Makihara</div>
   </div>
   <div class="medheart"><span class="heart">♥</span></div>
   <div class="med">
-    <div class="ring">S</div>
+    <div class="ring"><img src="gal-wed-09-2.jpg" alt="Mio Katagiri"></div>
     <h3>Mio Katagiri</h3>
     <div class="role">Mempelai Putri</div>
     <div class="par">Putri kedua dari<br>Bapak Shin Katagiri &amp; Ibu Yuki Katagiri</div>
@@ -272,7 +278,7 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:.22em;opacity:.6;p
     <div class="ph" onclick="lb(this,3)" data-img="gal-wed-09-3.jpg" data-bg="gal-wed-09-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
     <div class="ph" onclick="lb(this,4)" data-img="gal-wed-09-4.jpg" data-bg="gal-wed-09-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
       <div class="ph" onclick="lb(this,5)" data-img="gal-wed-09-5.jpg" data-bg="gal-wed-09-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,5)" data-img="gal-wed-09-6.jpg" data-bg="gal-wed-09-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,6)" data-img="gal-wed-09-6.jpg" data-bg="gal-wed-09-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
   </div>
 </section>
 <section class="reveal batik" style="max-width:none">
@@ -448,6 +454,6 @@ document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 <audio id="bgmusic" loop preload="none"><source src="audio/wedding.mp3" type="audio/mpeg"></audio>
 <!-- Musik: Meditation Impromptu 01 - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
+<script>else{a.pause();if(b)b.textContent="\u266a";}}</script>
 </body>
 </html>

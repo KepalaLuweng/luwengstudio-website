@@ -132,6 +132,12 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;opacity:.65;pa
 
 #cover .frame,#cover .panel,#cover .box,#cover .inner,#cover .cbox,#cover .cinner{box-shadow:0 24px 70px rgba(0,0,0,.4),0 0 34px rgba(255,215,130,.28);border-color:rgba(255,215,130,.65)!important}
 .btn{box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 22px rgba(255,215,130,.45)!important}
+
+/* Galeri cantik: Featured formal */
+.gal,.gal5{display:grid!important;grid-template-columns:1fr 1fr 1fr!important;gap:.7rem!important}
+.gal .ph:first-child,.gal5 .ph:first-child{grid-column:1/-1;aspect-ratio:21/9!important}
+.gal .ph,.gal5 .ph{aspect-ratio:4/3!important;border-radius:10px!important;transition:transform .3s ease,box-shadow .3s ease!important}
+.gal .ph:hover,.gal5 .ph:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,.15);z-index:2}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -192,13 +198,13 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;opacity:.65;pa
 <h2 class="title">Sang Wisudawan</h2>
 <div class="laurel"></div>
 <div class="lmed">
-<div class="ring"><div class="in">AF</div></div>
+<div class="ring"><div class="in">DA</div></div>
 <span class="lrl">🌿</span><span class="lrr">🌿</span>
 <h3>Darmawan Aditya</h3>
 <div class="deg2">Sarjana Komputer (S.Ars.)</div>
 <div class="uni">Fakultas Ilmu Komputer<br>Universitas Indonesia</div>
 <div class="gpa">IPK 3.87 · Cumlaude</div>
-<div class="par">Putra dari Bapak Drs. H. Budi Santoso<br>&amp; Ibu Dra. Hj. Rina Marlina</div>
+<div class="par">Putra dari Bapak Drs. H. Budi Santoso<br>&amp; Ibu Yuki Tanaka</div>
 </div>
 </section>
 <section id="count" class="reveal" style="max-width:none">
@@ -236,7 +242,7 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;opacity:.65;pa
 <div class="row" style="margin-top:1.2rem"><b>Sabtu, 30 Januari 2027</b><br>08.00 — 12.00 WIB</div>
 <div class="row" style="margin-top:.8rem">Balairung Universitas Indonesia, Depok<br><span style="font-size:.8rem;color:var(--mut)">Dilanjutkan syukuran keluarga</span></div>
 <div class="evbtns">
-<a class="sbtn solid" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wisuda+Ahmad+Fauzi+S.Ars.&dates=20270130T010000Z/20270130T050000Z&details=Wisuda+Ahmad+Fauzi+Sarjana+Komputer+UI&location=Balairung+UI+Depok" target="_blank">Simpan Tanggal</a>
+<a class="sbtn solid" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wisuda+Darmawan+Aditya+S.Ars.&dates=20270130T010000Z/20270130T050000Z&details=Wisuda+Darmawan+Aditya+Sarjana+Komputer+UI&location=Balairung+UI+Depok" target="_blank">Simpan Tanggal</a>
 <a class="sbtn line" href="https://maps.google.com/?q=Balairung+UI+Depok" target="_blank">Lihat Lokasi</a>
 </div>
 </div>
@@ -253,7 +259,7 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;opacity:.65;pa
 <div class="ph" onclick="lb(this,3)" data-img="gal-wisuda-09-3.jpg" data-bg="gal-wisuda-09-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
 <div class="ph" onclick="lb(this,4)" data-img="gal-wisuda-09-4.jpg" data-bg="gal-wisuda-09-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
       <div class="ph" onclick="lb(this,5)" data-img="gal-wisuda-09-5.jpg" data-bg="gal-wisuda-09-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,5)" data-img="gal-wisuda-09-6.jpg" data-bg="gal-wisuda-09-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,6)" data-img="gal-wisuda-09-6.jpg" data-bg="gal-wisuda-09-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
 </div>
 </div>
 </section>
@@ -378,6 +384,6 @@ document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 <audio id="bgmusic" loop preload="none"><source src="audio/wisuda.mp3" type="audio/mpeg"></audio>
 <!-- Musik: Majestic Hills - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
+<script>else{a.pause();if(b)b.textContent="\u266a";}}</script>
 </body>
 </html>

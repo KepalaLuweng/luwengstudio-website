@@ -30,6 +30,12 @@ h2.title{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--utama
 footer{background:var(--teks);color:#fff;text-align:center;padding:3rem 1.5rem}
 #music{position:fixed;bottom:1.3rem;right:1.3rem;z-index:90;width:50px;height:50px;border-radius:50%;background:var(--utama);color:#fff;border:none;font-size:1.2rem;cursor:pointer;display:none}
 #music.show{display:block}
+
+/* Galeri cantik: Elegan tenang */
+.gal{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:.8rem!important}
+.gal .ph{aspect-ratio:1!important;border-radius:20px!important;transition:transform .3s ease,box-shadow .3s ease!important}
+.gal .ph:hover{transform:scale(1.05);box-shadow:0 10px 24px rgba(0,0,0,.15);z-index:2}
+@media(max-width:480px){.gal{grid-template-columns:repeat(2,1fr)!important}}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -140,18 +146,7 @@ document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 
 
-<section id="count" class="reveal">
-  <div class="wrap">
-    <div class="eyebrow">Save The Date</div>
-    <h2 class="title">Menghitung Hari</h2>
-    <div class="cd">
-      <div><b id="d">0</b><span>Hari</span></div>
-      <div><b id="h">0</b><span>Jam</span></div>
-      <div><b id="m">0</b><span>Menit</span></div>
-      <div><b id="s">0</b><span>Detik</span></div>
-    </div>
-  </div>
-</section>
+
 <script>
 (function(){var target=new Date('2026-12-20T08:00:00').getTime();function upd(){var now=Date.now();var diff=target-now;if(diff<0)diff=0;var d=Math.floor(diff/864e5),h=Math.floor(diff%864e5/36e5),m=Math.floor(diff%36e5/6e4),s=Math.floor(diff%6e4/1e3);document.getElementById('d').textContent=d;document.getElementById('h').textContent=h;document.getElementById('m').textContent=m;document.getElementById('s').textContent=s;}upd();setInterval(upd,1000);})();
 </script>

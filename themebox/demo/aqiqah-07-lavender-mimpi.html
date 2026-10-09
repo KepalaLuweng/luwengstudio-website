@@ -108,6 +108,12 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;opacity:.65;pa
 #music{position:fixed;bottom:1.2rem;right:1.2rem;z-index:90;width:50px;height:50px;border-radius:50%;background:#2c2340;border:1px solid var(--lav);font-size:1.15rem;cursor:pointer;display:none;color:var(--lav-lt)}
 #music.show{display:block}
 #music.off{opacity:.4}
+
+/* Galeri cantik: Bunga lembut */
+.gal,.gal3{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:.8rem!important}
+.gal .ph,.gal3 .ph{aspect-ratio:1!important;border-radius:50%!important;transition:transform .3s ease!important}
+.gal .ph:nth-child(3n+2),.gal3 .ph:nth-child(3n+2){transform:translateY(12px)}
+.gal .ph:hover,.gal3 .ph:hover{transform:scale(1.08)!important;z-index:2}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -225,7 +231,7 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;opacity:.65;pa
 <div class="ph" onclick="lb(this,1)" data-img="gal-aqiq-07-m1.jpg" data-bg="gal-aqiq-07-m1.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
       <div class="ph" onclick="lb(this,2)" data-img="gal-aqiq-07-m2.jpg" data-bg="gal-aqiq-07-m2.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div><div class="ph" onclick="lb(this,3)" data-img="gal-aqiq-07-3.jpg" data-bg="gal-aqiq-07-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
 <div class="ph" onclick="lb(this,4)" data-img="gal-aqiq-07-4.jpg" data-bg="gal-aqiq-07-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div><div class="ph" onclick="lb(this,5)" data-img="gal-aqiq-07-5.jpg" data-bg="gal-aqiq-07-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,5)" data-img="gal-aqiq-07-6.jpg" data-bg="gal-aqiq-07-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,6)" data-img="gal-aqiq-07-6.jpg" data-bg="gal-aqiq-07-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
 </div>
 </section>
 <section class="reveal" style="padding-top:1.5rem">
@@ -359,7 +365,7 @@ document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 <audio id="bgmusic" loop preload="none"><source src="audio/aqiqah.mp3" type="audio/mpeg"></audio>
 <!-- Musik: Meditation Impromptu 02 - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
+<script>else{a.pause();if(b)b.textContent="\u266a";}}</script>
 
 
 

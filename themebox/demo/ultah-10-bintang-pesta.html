@@ -119,7 +119,12 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;opacity:.7;pad
 
 #cover .frame,#cover .panel,#cover .box,#cover .inner,#cover .cbox,#cover .cinner{box-shadow:0 24px 70px rgba(0,0,0,.4),0 0 34px rgba(255,215,130,.28);border-color:rgba(255,215,130,.65)!important}
 .btn{box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 22px rgba(255,215,130,.45)!important}
-</style>
+
+.gfeat{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:1.2rem}
+.gfeat .ph{aspect-ratio:1;border-radius:12px;background-size:cover;background-position:center;cursor:pointer;transition:transform .3s ease}
+.gfeat .ph.big{grid-column:1/-1;aspect-ratio:16/9}
+.gfeat .ph:hover{transform:scale(1.03)}
+.starframe img{width:100%;height:100%;object-fit:cover}</style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script src="../js/firebase-config.js"></script>
@@ -159,7 +164,7 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;opacity:.7;pad
 <section class="reveal stars" style="padding-top:2rem">
   <div class="eyebrow">Bintang Utama</div>
   <div class="pcard">
-    <div class="starframe"><span>17</span></div>
+    <div class="starframe"><img src="gal-ultah-10-1.jpg" alt="Airi Mizutani"></div>
     <h3>Airi Mizutani</h3>
     <div class="age">★ Sweet Seventeen ★</div>
     <div class="par">Putri dari<br>Bapak Tetsuya Mizutani &amp; Ibu Yuki Mizutani</div>
@@ -178,7 +183,7 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;opacity:.7;pad
   </div>
 
     <div style="text-align:center;margin-top:1.5rem">
-      <button onclick="saveToCal(this)" data-title="Airi — Ulang Tahun ke-17" data-date="20261220" data-desc="Acara Spesial - Airi — Ulang Tahun ke-17"
+      <button onclick="saveToCal(this)" data-title="Airi — Ulang Tahun ke-17" data-date="20270116" data-desc="Acara Spesial - Airi — Ulang Tahun ke-17"
         style="background:transparent;border:1px solid currentColor;color:inherit;
         padding:.7rem 1.8rem;border-radius:999px;font-size:.85rem;cursor:pointer;
         opacity:.9;transition:all .25s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.9'">
@@ -207,12 +212,12 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;opacity:.7;pad
   <div class="eyebrow">Walk of Fame</div>
   <h2 class="title">Galeri Bintang</h2>
   <div class="gfeat">
-      <div class="ph big" onclick="lb(this,1)" data-bg="gal-ultah-10-m1.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,2)" data-bg="gal-ultah-10-m2.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,3)" data-bg="gal-ultah-10-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,4)" data-bg="gal-ultah-10-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,5)" data-bg="gal-ultah-10-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,5)" data-bg="gal-ultah-10-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph big" onclick="lb(this,1)" data-img="gal-ultah-10-m1.jpg" data-bg="gal-ultah-10-m1.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,2)" data-img="gal-ultah-10-m2.jpg" data-bg="gal-ultah-10-m2.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,3)" data-img="gal-ultah-10-3.jpg" data-bg="gal-ultah-10-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,4)" data-img="gal-ultah-10-4.jpg" data-bg="gal-ultah-10-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,5)" data-img="gal-ultah-10-5.jpg" data-bg="gal-ultah-10-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,6)" data-img="gal-ultah-10-6.jpg" data-bg="gal-ultah-10-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
       
   </div>
 </section>
@@ -284,7 +289,7 @@ document.getElementById('h').textContent=Math.floor(diff/36e5)%24;
 document.getElementById('m').textContent=Math.floor(diff/6e4)%60;
 document.getElementById('s').textContent=Math.floor(diff/1e3)%60;}
 setInterval(tick,1000);tick();
-function lb(n){document.getElementById('lbnum').textContent=n;var l=document.getElementById('lightbox');l.classList.add('show');l.style.display='flex';}
+function lb(el,n){var p=document.getElementById('lbphoto');if(p&&el&&el.dataset.img){p.style.backgroundImage="url('"+el.dataset.img+"')";}document.getElementById('lbnum').textContent=n;var l=document.getElementById('lightbox');l.classList.add('show');l.style.display='flex';}
 document.getElementById('lightbox').addEventListener('click',function(){this.classList.remove('show');this.style.display='none';});
 function showModal(msg){document.getElementById('mmsg').textContent=msg;document.getElementById('modal').classList.add('show');}
 function tutupModal(){document.getElementById('modal').classList.remove('show');}
@@ -355,7 +360,7 @@ document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 <audio id="bgmusic" loop preload="none"><source src="audio/ultah.mp3" type="audio/mpeg"></audio>
 <!-- Musik: Merry Go - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
+<script>else{a.pause();if(b)b.textContent="\u266a";}}</script>
 
 
 

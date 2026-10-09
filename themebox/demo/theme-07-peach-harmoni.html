@@ -121,6 +121,12 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:.22em;opacity:.7;p
 #music{position:fixed;bottom:1.3rem;right:1.3rem;z-index:90;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--peach),var(--peach-dk));color:#fff;border:none;font-size:1.15rem;cursor:pointer;display:none;box-shadow:0 8px 20px rgba(209,138,72,.4)}
 #music.show{display:block}
 #music.off{opacity:.45}
+
+/* Galeri cantik: Featured Hero */
+.gal,.gal2,.gal3{display:grid!important;grid-template-columns:1fr 1fr!important;gap:.7rem!important}
+.gal .ph:first-child,.gal2 .ph:first-child,.gal3 .ph:first-child{grid-column:1/-1;aspect-ratio:16/10!important}
+.gal .ph,.gal2 .ph,.gal3 .ph{aspect-ratio:1!important;border-radius:14px!important;transition:transform .3s ease,box-shadow .3s ease!important}
+.gal .ph:hover,.gal2 .ph:hover,.gal3 .ph:hover{transform:scale(1.03);box-shadow:0 12px 28px rgba(0,0,0,.16);z-index:2}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -228,7 +234,7 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:.22em;opacity:.7;p
     <div class="ph" onclick="lb(this,3)" data-img="gal-wed-07-3.jpg" data-bg="gal-wed-07-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
     <div class="ph" onclick="lb(this,4)" data-img="gal-wed-07-4.jpg" data-bg="gal-wed-07-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
       <div class="ph" onclick="lb(this,5)" data-img="gal-wed-07-5.jpg" data-bg="gal-wed-07-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,5)" data-img="gal-wed-07-6.jpg" data-bg="gal-wed-07-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,6)" data-img="gal-wed-07-6.jpg" data-bg="gal-wed-07-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
   </div>
 </section>
 <section class="reveal" style="background:#fff;max-width:none">
@@ -428,6 +434,6 @@ document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 <audio id="bgmusic" loop preload="none"><source src="audio/wedding.mp3" type="audio/mpeg"></audio>
 <!-- Musik: Meditation Impromptu 01 - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
+<script>else{a.pause();if(b)b.textContent="\u266a";}}</script>
 </body>
 </html>

@@ -151,6 +151,13 @@ footer .tag{margin-top:1.2rem;font-size:.6rem;letter-spacing:1px;opacity:.6;padd
 
 #cover .frame,#cover .panel,#cover .box,#cover .inner,#cover .cbox,#cover .cinner{box-shadow:0 24px 70px rgba(0,0,0,.4),0 0 34px rgba(255,215,130,.28);border-color:rgba(255,215,130,.65)!important}
 .btn{box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 22px rgba(255,215,130,.45)!important}
+
+/* Galeri cantik: Polaroid ceria */
+.gal,.gal2,.gal4{display:grid!important;grid-template-columns:1fr 1fr!important;gap:1rem!important}
+.gal .ph,.gal2 .ph,.gal4 .ph{aspect-ratio:1!important;border:8px solid #fff!important;border-bottom-width:28px!important;border-radius:6px!important;box-shadow:0 6px 18px rgba(0,0,0,.12)!important;transition:transform .3s ease!important;background-clip:padding-box!important}
+.gal .ph:nth-child(odd),.gal2 .ph:nth-child(odd),.gal4 .ph:nth-child(odd){transform:rotate(-2deg)}
+.gal .ph:nth-child(even),.gal2 .ph:nth-child(even),.gal4 .ph:nth-child(even){transform:rotate(2deg)}
+.gal .ph:hover,.gal2 .ph:hover,.gal4 .ph:hover{transform:rotate(0) scale(1.05)!important;z-index:2;box-shadow:0 12px 28px rgba(0,0,0,.2)!important}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -220,7 +227,7 @@ footer .tag{margin-top:1.2rem;font-size:.6rem;letter-spacing:1px;opacity:.6;padd
     <h2 class="title">Mutiara Keluarga</h2>
     <div class="wavediv"><i>≋</i></div>
     <div class="glasscard">
-      <div class="photo" style="background-image:url(\'gal-khit-10-1.jpg\');background-size:cover;background-position:center 20%"></div>
+      <div class="photo" style="background-image:url('gal-khit-10-1.jpg');background-size:cover;background-position:center 20%"></div>
       <div class="lbl2">Putra Pertama Dari</div>
       <h3>Yuto Hoshizora</h3>
       <div class="par">Bapak Kenta Hoshizora<br>&amp; Ibu Mai Hoshizora</div>
@@ -291,7 +298,7 @@ footer .tag{margin-top:1.2rem;font-size:.6rem;letter-spacing:1px;opacity:.6;padd
       <div class="gitem"><div class="ph" onclick="lb(this,3)" data-img="gal-khit-10-3.jpg" data-bg="gal-khit-10-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div><svg class="capwave" viewBox="0 0 400 22" preserveAspectRatio="none"><path fill="#155263" d="M0,0 H400 V8 C320,20 240,4 160,12 C100,18 40,10 0,14 Z"/></svg><div class="cap">Momen 3</div></div>
       <div class="gitem"><div class="ph" onclick="lb(this,4)" data-img="gal-khit-10-4.jpg" data-bg="gal-khit-10-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
       <div class="ph" onclick="lb(this,5)" data-img="gal-khit-10-5.jpg" data-bg="gal-khit-10-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,5)" data-img="gal-khit-10-6.jpg" data-bg="gal-khit-10-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div><svg class="capwave" viewBox="0 0 400 22" preserveAspectRatio="none"><path fill="#155263" d="M0,0 H400 V8 C320,20 240,4 160,12 C100,18 40,10 0,14 Z"/></svg><div class="cap">Momen 4</div></div>
+      <div class="ph" onclick="lb(this,6)" data-img="gal-khit-10-6.jpg" data-bg="gal-khit-10-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div><svg class="capwave" viewBox="0 0 400 22" preserveAspectRatio="none"><path fill="#155263" d="M0,0 H400 V8 C320,20 240,4 160,12 C100,18 40,10 0,14 Z"/></svg><div class="cap">Momen 4</div></div>
     </div>
   </div>
 </section>
@@ -443,7 +450,7 @@ document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 <audio id="bgmusic" loop preload="none"><source src="audio/khitanan.mp3" type="audio/mpeg"></audio>
 <!-- Musik: Monkeys Spinning Monkeys - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
+<script>else{a.pause();if(b)b.textContent="\u266a";}}</script>
 
 
 

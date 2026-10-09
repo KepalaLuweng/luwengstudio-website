@@ -1,0 +1,171 @@
+/* ============================================================
+   POLA GALERI CANTIK - ThemeBox by LuwengStudio
+   6 pola galeri artistik untuk 60 tema undangan
+   Dirancang dengan cinta oleh Friday (9 Okt 2026)
+   ============================================================ */
+
+/* ---------- POLA A: FEATURED HERO ----------
+   1 foto besar di atas, 4 kecil 2x2 di bawah.
+   Kesan: elegan, fokus, mewah. */
+.gal-a .gfeat {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+.gal-a .gfeat .ph:first-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 16/10;
+}
+.gal-a .gfeat .ph {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gal-a .gfeat .ph:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+  z-index: 2;
+}
+
+/* ---------- POLA B: MASONRY ARTISTIK ----------
+   Susunan majalah: 1 portrait tinggi + 2 kecil bertumpuk.
+   Kesan: editorial, seni, dinamis. */
+.gal-b .gfeat {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.6rem;
+}
+.gal-b .gfeat .ph:first-child {
+  grid-row: 1 / -1;
+}
+.gal-b .gfeat .ph {
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  min-height: 140px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.gal-b .gfeat .ph:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.08);
+}
+
+/* ---------- POLA C: CAROUSEL CANTIK ----------
+   Slider fullscreen dengan navigasi elegan.
+   Kesan: modern, interaktif, fokus satu per satu. */
+.gal-c .gfeat {
+  display: flex;
+  gap: 0.8rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0.5rem 0.2rem 1rem;
+  scrollbar-width: none;
+}
+.gal-c .gfeat::-webkit-scrollbar { display: none; }
+.gal-c .gfeat .ph {
+  flex: 0 0 82%;
+  aspect-ratio: 4/5;
+  scroll-snap-align: center;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.14);
+  transition: transform 0.3s ease;
+}
+.gal-c .gfeat .ph:hover { transform: scale(1.02); }
+
+/* ---------- POLA D: POLAROID PLAYFUL ----------
+   Foto seperti polaroid dengan sedikit kemiringan.
+   Kesan: hangat, personal, nostalgic. */
+.gal-d .gfeat {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+.gal-d .gfeat .ph {
+  aspect-ratio: 1;
+  background: #fff;
+  padding: 8px 8px 28px 8px;
+  border-radius: 4px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gal-d .gfeat .ph:nth-child(odd) { transform: rotate(-2deg); }
+.gal-d .gfeat .ph:nth-child(even) { transform: rotate(2deg); }
+.gal-d .gfeat .ph:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+.gal-d .gfeat .ph .inner {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 2px;
+}
+
+/* ---------- POLA E: BUNGA BLOOM ----------
+   1 foto besar di tengah dikelilingi 4 kecil.
+   Kesan: simetris, cantik, seperti bunga mekar. */
+.gal-e .gfeat {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+.gal-e .gfeat .ph:first-child {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  aspect-ratio: 3/4;
+}
+.gal-e .gfeat .ph {
+  border-radius: 50px;
+  overflow: hidden;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  min-height: 110px;
+  transition: transform 0.3s ease;
+}
+.gal-e .gfeat .ph:first-child { border-radius: 24px; }
+.gal-e .gfeat .ph:hover { transform: scale(1.04); }
+
+/* ---------- POLA F: STRIP FILM ----------
+   Deretan horizontal seperti strip film dengan bingkai.
+   Kesan: sinematik, nostalgic, unik. */
+.gal-f .gfeat {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 1rem 0.3rem;
+  background: rgba(0,0,0,0.06);
+  border-radius: 12px;
+  scrollbar-width: thin;
+}
+.gal-f .gfeat .ph {
+  flex: 0 0 45%;
+  aspect-ratio: 3/4;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.gal-f .gfeat .ph:hover { transform: translateY(-6px); }

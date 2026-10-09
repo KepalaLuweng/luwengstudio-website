@@ -111,6 +111,12 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;color:#4a4a52;
 #music{position:fixed;bottom:1.3rem;right:1.3rem;z-index:90;width:48px;height:48px;border-radius:50%;background:#141416;color:var(--gold);border:1px solid var(--gold);font-size:1.15rem;cursor:pointer;display:none}
 #music.show{display:block}
 #music.off{opacity:.4}
+
+/* Galeri cantik: Featured formal */
+.gal,.gal5{display:grid!important;grid-template-columns:1fr 1fr 1fr!important;gap:.7rem!important}
+.gal .ph:first-child,.gal5 .ph:first-child{grid-column:1/-1;aspect-ratio:21/9!important}
+.gal .ph,.gal5 .ph{aspect-ratio:4/3!important;border-radius:10px!important;transition:transform .3s ease,box-shadow .3s ease!important}
+.gal .ph:hover,.gal5 .ph:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(0,0,0,.15);z-index:2}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -172,9 +178,9 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;color:#4a4a52;
 <div class="lbl2">Telah Menyelesaikan Studi</div>
 <h3>Darmawan Aditya</h3>
 <div class="deg2">Sarjana Komputer (S.Si.)</div>
-<div class="meta">Fakultas Ilmu Komputer<br>Universitas Indonesia<br><br>Putra Bpk Drs. H. Budi Santoso<br>&amp; Ibu Dra. Hj. Rina Marlina</div>
+<div class="meta">Fakultas Ilmu Komputer<br>Universitas Indonesia<br><br>Putra Bapak Hiroshi Tanaka<br>&amp; Ibu Yuki Tanaka</div>
 </div>
-<div class="photo">AF</div>
+<div class="photo">DA</div>
 </div>
 <div class="gpaband">IPK 3.87 · CUMLAUDE</div>
 </section>
@@ -205,7 +211,7 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;color:#4a4a52;
 <div class="evrow"><div class="k">Lokasi</div><div class="v">Balairung UI</div><div class="v2">Universitas Indonesia, Depok</div></div>
 <div class="evrow"><div class="k">Syukuran</div><div class="v">Ramah Tamah</div><div class="v2">Bersama keluarga hingga 12.00 WIB</div></div>
 <div class="evbtns">
-<a class="btn solid" style="flex:1;min-width:140px;text-align:center" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wisuda+Ahmad+Fauzi+S.Si.&dates=20270130T010000Z/20270130T050000Z&details=Wisuda+Ahmad+Fauzi+Sarjana+Komputer+UI&location=Balairung+UI+Depok" target="_blank">Simpan Tanggal</a>
+<a class="btn solid" style="flex:1;min-width:140px;text-align:center" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wisuda+Darmawan+Aditya+S.Si.&dates=20270130T010000Z/20270130T050000Z&details=Wisuda+Darmawan+Aditya+Sarjana+Komputer+UI&location=Balairung+UI+Depok" target="_blank">Simpan Tanggal</a>
 <a class="btn" style="flex:1;min-width:140px;text-align:center" href="https://maps.google.com/?q=Balairung+UI+Depok" target="_blank">Lihat Lokasi</a>
 </div>
 </section>
@@ -219,7 +225,7 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;color:#4a4a52;
 <div class="ph" onclick="lb(this,3)" data-img="gal-wisuda-07-3.jpg" data-bg="gal-wisuda-07-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
 <div class="ph" onclick="lb(this,4)" data-img="gal-wisuda-07-4.jpg" data-bg="gal-wisuda-07-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
       <div class="ph" onclick="lb(this,5)" data-img="gal-wisuda-07-5.jpg" data-bg="gal-wisuda-07-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,5)" data-img="gal-wisuda-07-6.jpg" data-bg="gal-wisuda-07-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,6)" data-img="gal-wisuda-07-6.jpg" data-bg="gal-wisuda-07-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
 </div>
 </section>
 <section class="reveal">
@@ -340,7 +346,7 @@ document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 <audio id="bgmusic" loop preload="none"><source src="audio/wisuda.mp3" type="audio/mpeg"></audio>
 <!-- Musik: Majestic Hills - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
+<script>else{a.pause();if(b)b.textContent="\u266a";}}</script>
 
 
 
