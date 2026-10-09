@@ -314,8 +314,8 @@ else{showModal('Nomor: '+t+' ♥');}}
 var playing=false;
 function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
 var seed=[
-{n:'Taro Yamada',h:'Hadir',u:'Selamat khitanan Yuto! Semoga lekas pulih dan menjadi anak yang sholeh, membanggakan keluarga.'},
-{n:'Keluarga Sano',h:'Hadir',u:'Barakallah untuk Yuto dan keluarga. Semoga acara tasyakurannya lancar dan penuh berkah.'}];
+{nama:'Taro Yamada',kehadiran:'Hadir',ucapan:'Selamat khitanan Yuto! Semoga lekas pulih dan menjadi anak yang sholeh, membanggakan keluarga.'},
+{nama:'Keluarga Sano',kehadiran:'Hadir',ucapan:'Barakallah untuk Yuto dan keluarga. Semoga acara tasyakurannya lancar dan penuh berkah.'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_khit02')||'[]'));}catch(e){}
 var wishesDefault=[

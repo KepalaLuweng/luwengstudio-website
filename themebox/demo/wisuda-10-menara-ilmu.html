@@ -301,7 +301,7 @@ function salin(id){var t=document.getElementById(id).textContent;
 if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){showModal('Nomor berhasil disalin 🎓');}).catch(function(){showModal(t);});}else{showModal(t);}}
 var playing=false;
 function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
-var seed=[{n:'Keluarga Asano',h:'Hadir',u:'Selamat atas kelulusannya! Sukses selalu ke depannya.'},{n:'Dosen Pembimbing',h:'Hadir',u:'Bangga atas pencapaianmu. Terus berkarya!'}];
+var seed=[{nama:'Keluarga Asano',kehadiran:'Hadir',ucapan:'Selamat atas kelulusannya! Sukses selalu ke depannya.'},{nama:'Dosen Pembimbing',kehadiran:'Hadir',ucapan:'Bangga atas pencapaianmu. Terus berkarya!'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_ws10')||'[]'));}catch(e){}
 

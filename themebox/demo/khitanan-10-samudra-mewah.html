@@ -382,8 +382,8 @@ else{showModal(t);}}
 var playing=false;
 function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
 var seed=[
-{n:'Keluarga Nagata',h:'Hadir',u:'Barakallah Yuto! Semoga seluas samudra ilmu dan kebaikanmu kelak.'},
-{n:'Kana Kobayashi',h:'Hadir',u:'Selamat ya Yuto sudah dikhitan! Semoga lekas sembuh dan makin sehat selalu.'}];
+{nama:'Keluarga Nagata',kehadiran:'Hadir',ucapan:'Barakallah Yuto! Semoga seluas samudra ilmu dan kebaikanmu kelak.'},
+{nama:'Kana Kobayashi',kehadiran:'Hadir',ucapan:'Selamat ya Yuto sudah dikhitan! Semoga lekas sembuh dan makin sehat selalu.'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_khit10')||'[]'));}catch(e){}
 var wishesDefault=[

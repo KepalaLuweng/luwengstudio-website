@@ -305,8 +305,8 @@ else{showModal(t);}}
 var playing=false;
 function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
 var seed=[
-{n:'Takeshi Aoki',h:'Masih Ragu',u:'Barakallah untuk Yuto. Semoga Allah memberkahi dan menjadikannya anak yang sholeh.'},
-{n:'Aiko Tanaka',h:'Hadir',u:'Selamat atas khitanannya Yuto. Semoga lancar, cepat sembuh, dan sehat selalu.'}];
+{nama:'Takeshi Aoki',kehadiran:'Masih Ragu',ucapan:'Barakallah untuk Yuto. Semoga Allah memberkahi dan menjadikannya anak yang sholeh.'},
+{nama:'Aiko Tanaka',kehadiran:'Hadir',ucapan:'Selamat atas khitanannya Yuto. Semoga lancar, cepat sembuh, dan sehat selalu.'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_khit07')||'[]'));}catch(e){}
 var wishesDefault=[

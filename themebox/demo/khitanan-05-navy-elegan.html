@@ -362,8 +362,8 @@ else{showModal(t);}}
 var playing=false;
 function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
 var seed=[
-{n:'Keluarga Takeda',h:'Hadir',u:'Barakallah Yuto! Semoga menjadi anak yang sholeh dan membanggakan kedua orang tua.'},
-{n:'Mika Hayashi',h:'Hadir',u:'Selamat dikhitan Yuto! Semoga lekas sembuh dan sehat selalu.'}];
+{nama:'Keluarga Takeda',kehadiran:'Hadir',ucapan:'Barakallah Yuto! Semoga menjadi anak yang sholeh dan membanggakan kedua orang tua.'},
+{nama:'Mika Hayashi',kehadiran:'Hadir',ucapan:'Selamat dikhitan Yuto! Semoga lekas sembuh dan sehat selalu.'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_khit05')||'[]'));}catch(e){}
 var wishesDefault=[

@@ -165,11 +165,6 @@ body.tb-warm h1,body.tb-warm h2,body.tb-warm h3{
   box-shadow:0 8px 24px rgba(201,162,39,.3);transition:all .25s;
 }
 .tb-cta-big:hover{background:#b08d1f;transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,162,39,.4)}
-/* footer */
-.tb-footer{
-  text-align:center;padding:1.5rem;color:var(--tb-muted);font-size:.82rem;
-  border-top:1px solid var(--tb-line);background:var(--tb-ivory);
-}
 /* wa float */
 .tb-wa{
   position:fixed;bottom:1.2rem;right:1.2rem;z-index:60;

@@ -101,10 +101,6 @@ body.tb-wedding h1,body.tb-wedding h2,body.tb-wedding h3{
   box-shadow:0 4px 14px rgba(212,86,126,.3)}
 .wd-btn-order:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(212,86,126,.4)}
 /* footer */
-.wd-footer{
-  text-align:center;padding:1.5rem;color:var(--wd-muted);font-size:.82rem;
-  border-top:1px solid var(--wd-line);background:var(--wd-ivory);
-}
 /* wa float */
 .wd-wa{
   position:fixed;bottom:1.2rem;right:1.2rem;z-index:60;

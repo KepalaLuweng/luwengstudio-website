@@ -330,8 +330,8 @@ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.write
 var playing=false;
 function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
 var seed=[
-{n:'Keluarga Shindo',h:'Hadir',u:'Barakallah! Selamat atas kelahiran putrinya. Semoga menjadi anak yang sholehah.'},
-{n:'Yoshie-san',h:'Hadir',u:'Cucu nenek cantik sekali! Sehat selalu ya sayang.'}];
+{nama:'Keluarga Shindo',kehadiran:'Hadir',ucapan:'Barakallah! Selamat atas kelahiran putrinya. Semoga menjadi anak yang sholehah.'},
+{nama:'Yoshie-san',kehadiran:'Hadir',ucapan:'Cucu nenek cantik sekali! Sehat selalu ya sayang.'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_aq08')||'[]'));}catch(e){}
 

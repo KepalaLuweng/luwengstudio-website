@@ -282,8 +282,8 @@ else{showModal('Nomor: '+t+' ♥');}}
 var playing=false;
 function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
 var seed=[
-{n:'Ryo Tanaka',h:'Hadir',u:'Selamat Yuto sudah berani dikhitan! Semoga cepat sembuh dan tambah sholeh.'},
-{n:'Emi Sato',h:'Hadir',u:'Barakallah ananda Yuto. Doa terbaik untuk keluarga, semoga acaranya berkah dan lancar.'}];
+{nama:'Ryo Tanaka',kehadiran:'Hadir',ucapan:'Selamat Yuto sudah berani dikhitan! Semoga cepat sembuh dan tambah sholeh.'},
+{nama:'Emi Sato',kehadiran:'Hadir',ucapan:'Barakallah ananda Yuto. Doa terbaik untuk keluarga, semoga acaranya berkah dan lancar.'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_khit03')||'[]'));}catch(e){}
 var wishesDefault=[

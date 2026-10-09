@@ -297,8 +297,8 @@ else{showModal(t);}}
 var playing=false;
 function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
 var seed=[
-{n:'Kurumi',h:'Hadir',u:'Happy sweet 17 Airi! Makin cantik, makin sukses ya! 🎂'},
-{n:'Daichi',h:'Hadir',u:'Wih 17 tahun! Traktirannya jangan lupa ya 🍰'}];
+{nama:'Kurumi',kehadiran:'Hadir',ucapan:'Happy sweet 17 Airi! Makin cantik, makin sukses ya! 🎂'},
+{nama:'Daichi',kehadiran:'Hadir',ucapan:'Wih 17 tahun! Traktirannya jangan lupa ya 🍰'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_ul03')||'[]'));}catch(e){}
 var wishesDefault=[

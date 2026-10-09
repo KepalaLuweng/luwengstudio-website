@@ -313,8 +313,8 @@ else{showModal('Nomor: '+t+' ♥');}}
 var playing=false;
 function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
 var seed=[
-{n:'Yuka Shimizu',h:'Hadir',u:'Selamat untuk Yuto! Semoga menjadi anak yang sholeh, cerdas, dan selalu dalam lindungan Allah.'},
-{n:'Keluarga Kudo',h:'Masih Ragu',u:'MasyaAllah, Yuto sudah besar. Semoga acara tasyakurannya berjalan lancar dan penuh berkah.'}];
+{nama:'Yuka Shimizu',kehadiran:'Hadir',ucapan:'Selamat untuk Yuto! Semoga menjadi anak yang sholeh, cerdas, dan selalu dalam lindungan Allah.'},
+{nama:'Keluarga Kudo',kehadiran:'Masih Ragu',ucapan:'MasyaAllah, Yuto sudah besar. Semoga acara tasyakurannya berjalan lancar dan penuh berkah.'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_khit04')||'[]'));}catch(e){}
 var wishesDefault=[

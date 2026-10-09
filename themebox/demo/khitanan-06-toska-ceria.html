@@ -334,8 +334,8 @@ else{showModal(t);}}
 var playing=false;
 function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
 var seed=[
-{n:'Keluarga Sano',h:'Hadir',u:'Yeay Yuto sudah dikhitan! Semoga jadi anak hebat, sehat, dan ceria selalu.'},
-{n:'Kenji Sato',h:'Hadir',u:'Selamat ya jagoan cilik! Cepat sembuh, nanti kita main bola lagi.'}];
+{nama:'Keluarga Sano',kehadiran:'Hadir',ucapan:'Yeay Yuto sudah dikhitan! Semoga jadi anak hebat, sehat, dan ceria selalu.'},
+{nama:'Kenji Sato',kehadiran:'Hadir',ucapan:'Selamat ya jagoan cilik! Cepat sembuh, nanti kita main bola lagi.'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_khit06')||'[]'));}catch(e){}
 var wishesDefault=[

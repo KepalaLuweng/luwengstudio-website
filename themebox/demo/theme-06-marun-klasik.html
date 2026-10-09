@@ -366,9 +366,9 @@ else{showModal(t);}}
 var playing=false;
 function toggleMusic(){playing=!playing;document.getElementById('music').classList.toggle('off',!playing);}
 var seed=[
-{n:'Keluarga Tanaka',h:'Hadir',u:'Barakallahu laka wa baraka alaika wa jamaa bainakuma fii khair. Selamat menempuh hidup baru!'},
-{n:'Hanamura Lestari',h:'Hadir',u:'Akhirnya! Ikut bahagia banget. Samawa ya kalian berdua.'},
-{n:'Rudi Saputra',h:'Masih Ragu',u:'Selamat Yuma & Rin! Semoga acaranya lancar, doa terbaik dari jauh.'}];
+{nama:'Keluarga Tanaka',kehadiran:'Hadir',ucapan:'Barakallahu laka wa baraka alaika wa jamaa bainakuma fii khair. Selamat menempuh hidup baru!'},
+{nama:'Hanamura Lestari',kehadiran:'Hadir',ucapan:'Akhirnya! Ikut bahagia banget. Samawa ya kalian berdua.'},
+{nama:'Rudi Saputra',kehadiran:'Masih Ragu',ucapan:'Selamat Yuma & Rin! Semoga acaranya lancar, doa terbaik dari jauh.'}];
 var wishes=seed.slice();
 try{wishes=wishes.concat(JSON.parse(localStorage.getItem('w_nikah06')||'[]'));}catch(e){}
 var wishesDefault=[

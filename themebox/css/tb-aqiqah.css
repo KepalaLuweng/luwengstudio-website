@@ -98,10 +98,6 @@ body.tb-aqiqah h1,body.tb-aqiqah h2,body.tb-aqiqah h3{
   box-shadow:0 4px 14px rgba(120,110,100,.3)}
 .td-btn-order:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(120,110,100,.4)}
 /* footer */
-.td-footer{
-  text-align:center;padding:1.5rem;color:var(--td-muted);font-size:.82rem;
-  border-top:1px solid var(--td-line);background:var(--td-ivory);
-}
 /* wa float */
 .td-wa{
   position:fixed;bottom:1.2rem;right:1.2rem;z-index:60;
