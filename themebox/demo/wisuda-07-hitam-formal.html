@@ -319,5 +319,8 @@ function saveToCal(btn){
 var bgio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;var bg=el.getAttribute('data-bg');if(bg){el.style.backgroundImage="url('"+bg+"')";}bgio.unobserve(el);}})},{rootMargin:'50px'});
 document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
+<audio id="bgmusic" loop preload="none"><source src="audio/wisuda.mp3" type="audio/mpeg"></audio>
+<!-- Musik: Majestic Hills - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
+<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
 </body>
 </html>

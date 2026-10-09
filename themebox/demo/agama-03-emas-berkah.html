@@ -187,5 +187,8 @@ document.addEventListener('DOMContentLoaded',renderWishes);
 .wform{max-width:400px;margin:0 auto;text-align:left}.wform label{display:block;margin:.8rem 0 .3rem;font-weight:600;font-size:.85rem}.wform input,.wform textarea{width:100%;padding:.7rem;border:1px solid #ddd;border-radius:8px;font-size:.9rem}.wform textarea{min-height:80px}.whbtn{padding:.5rem 1rem;margin:.2rem;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer}.whbtn.on{background:#2d5a3d;color:#fff}.wlist{max-width:500px;margin:2rem auto 0}.wish{background:#f9f9f9;border-radius:12px;padding:1rem;margin-bottom:.8rem;text-align:left}.wish b{font-size:.95rem}.wish .wh{font-size:.75rem;color:#666;margin-left:.5rem}.wish p{margin:.5rem 0 0;font-size:.9rem;color:#444}
 </style>
 
+<audio id="bgmusic" loop preload="none"><source src="audio/agama.mp3" type="audio/mpeg"></audio>
+<!-- Musik: Desert City - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
+<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
 </body>
 </html>
