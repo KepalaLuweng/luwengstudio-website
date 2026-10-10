@@ -137,6 +137,18 @@ async function updateOrderStatus(code, status) {
 async function deleteOrder(code) {
   if (!db) initFirebase();
   if (!db) throw new Error("Database belum siap");
+  try {
+    const doc = await db.collection("orders").doc(code).get();
+    if (doc.exists) {
+      const data = doc.data();
+      if (data.slug) {
+        await db.collection("slugs").doc(data.slug).delete().catch(() => {});
+        if (data.catSlug) {
+          await db.collection("slugs").doc(data.catSlug + "_" + data.slug).delete().catch(() => {});
+        }
+      }
+    }
+  } catch (e) {}
   await db.collection("orders").doc(code).delete();
 }
 

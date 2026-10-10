@@ -59,6 +59,8 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 .link-input{flex:1;background:#060a12;border:1px solid var(--border);border-radius:8px;padding:.5rem .7rem;color:#fff;font-size:.82rem;font-family:'JetBrains Mono',monospace}
 .btn-sm{background:var(--surface-light);color:#fff;border:1px solid var(--border);border-radius:8px;padding:.5rem .8rem;font-size:.8rem;font-weight:600;cursor:pointer}
 .btn-wa-send{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;width:100%;background:#25d366;color:#fff;border:none;border-radius:12px;padding:.85rem;font-weight:700;font-size:.92rem;margin-top:1rem;cursor:pointer;text-decoration:none}
+.btn-delete{background:transparent;color:var(--danger);border:1px solid rgba(239,68,68,0.4);border-radius:10px;padding:.6rem 1.2rem;font-size:.82rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;transition:all .2s}
+.btn-delete:hover{background:rgba(239,68,68,0.15);border-color:var(--danger)}
 </style>
 </head>
 <body>
@@ -284,11 +286,41 @@ async function openOrderModal(code) {
         </a>
       </div>
     </div>
+
+    <div style="margin-top:1.5rem;padding-top:1.2rem;border-top:1px dashed var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem">
+      <div style="font-size:.78rem;color:var(--muted)">Hapus pesanan ini &amp; matikan link secara permanen dari database</div>
+      <button class="btn-delete" id="btn-delete-action" onclick="deleteActiveOrder()">
+        🗑️ Hapus Pesanan &amp; Matikan Link
+      </button>
+    </div>
   `;
 }
 
 function closeOrderModal() {
   document.getElementById("modal-order").style.display = "none";
+}
+
+async function deleteActiveOrder() {
+  if (!activeModalOrder) return;
+  const c = confirm(`Apakah Anda yakin ingin menghapus pesanan "${activeModalOrder.code}" (${activeModalOrder.namaPemesan || activeModalOrder.slug})?\n\nLink undangan dan data pantauan akan dinonaktifkan secara permanen.`);
+  if (!c) return;
+  const btn = document.getElementById("btn-delete-action");
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = "Menghapus...";
+  }
+  try {
+    await deleteOrder(activeModalOrder.code);
+    closeOrderModal();
+    await loadAllOrders();
+    alert("Pesanan dan link berhasil dihapus permanen!");
+  } catch (err) {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = "🗑️ Hapus Pesanan & Matikan Link";
+    }
+    alert("Gagal menghapus: " + err.message);
+  }
 }
 
 async function processActiveOrder() {
