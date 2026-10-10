@@ -117,6 +117,7 @@ async function submitOrder() {
   const order = collectOrder();
   let photosSent = false;
   try {
+    await ensureAuth();
     if (storageReady()) {
       btn.textContent = "Mengupload foto...";
       await uploadOrderPhotos(order);
@@ -124,7 +125,10 @@ async function submitOrder() {
     }
     await saveOrder(order);
   } catch (e) {
-    console.warn("Firestore save skipped:", e.message);
+    btn.disabled = false;
+    btn.textContent = "Kirim Order via WhatsApp";
+    alert("Gagal menyimpan order: " + e.message + "\n\nSilakan coba lagi.");
+    return;
   }
   openWA(order);
   showSuccess(order, photosSent);

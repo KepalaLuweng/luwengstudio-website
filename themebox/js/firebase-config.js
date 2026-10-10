@@ -28,6 +28,12 @@ function storageReady() {
   return !!storage;
 }
 
+async function ensureAuth() {
+  const auth = firebase.auth();
+  if (auth.currentUser) return;
+  await auth.signInAnonymously();
+}
+
 async function uploadPhoto(code, field, file, idx) {
   if (!storage) throw new Error("Storage tidak aktif");
   const name = idx != null ? `${field}_${idx}.jpg` : `${field}.jpg`;
