@@ -48,11 +48,18 @@ async function saveOrder(order) {
   if (!db) initFirebase();
   if (!db) throw new Error("Database belum siap");
   await db.collection("orders").doc(order.code).set(order);
-  if (order.slug && order.catSlug) {
-    const slugId = order.catSlug + "_" + order.slug;
-    await db.collection("slugs").doc(slugId).set({
+  if (order.slug) {
+    if (order.catSlug) {
+      const slugId = order.catSlug + "_" + order.slug;
+      await db.collection("slugs").doc(slugId).set({
+        code: order.code,
+        cat: order.catSlug,
+        slug: order.slug
+      });
+    }
+    await db.collection("slugs").doc(order.slug).set({
       code: order.code,
-      cat: order.catSlug,
+      cat: order.catSlug || "",
       slug: order.slug
     });
   }
@@ -84,12 +91,19 @@ async function fetchOrder(code) {
 async function fetchOrderBySlug(catSlug, slug) {
   if (!db) initFirebase();
   if (!db) throw new Error("Database belum siap");
-  const slugId = catSlug + "_" + slug;
-  const sDoc = await db.collection("slugs").doc(slugId).get();
-  if (sDoc.exists) {
-    return fetchOrder(sDoc.data().code);
+  const targetSlug = slug || catSlug;
+  if (catSlug && slug) {
+    const slugId = catSlug + "_" + slug;
+    const sDoc = await db.collection("slugs").doc(slugId).get();
+    if (sDoc.exists) {
+      return fetchOrder(sDoc.data().code);
+    }
   }
-  const snap = await db.collection("orders").where("slug", "==", slug).limit(1).get();
+  const directDoc = await db.collection("slugs").doc(targetSlug).get();
+  if (directDoc.exists) {
+    return fetchOrder(directDoc.data().code);
+  }
+  const snap = await db.collection("orders").where("slug", "==", targetSlug).limit(1).get();
   if (!snap.empty) {
     return snap.docs[0].data();
   }

@@ -136,9 +136,10 @@ function slugKategori(cat) {
 }
 
 function updateLinkPreview() {
-  const name = (document.getElementById("link-name").value || "").trim() || "(nama)";
+  const raw = (document.getElementById("link-name").value || "").trim();
+  const name = raw ? (typeof cleanSlug === "function" ? cleanSlug(raw) : raw) : "(nama)";
   const el = document.getElementById("link-preview-url");
-  if (el) el.textContent = "luwengstudio.my.id/" + slugKategori(ORDER_CAT) + "/" + name;
+  if (el) el.textContent = "luwengstudio.my.id/" + name;
 }
 
 function setupLinkName() {

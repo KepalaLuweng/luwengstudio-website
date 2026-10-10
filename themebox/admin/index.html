@@ -203,10 +203,10 @@ async function openOrderModal(code) {
   } catch (e) {}
 
   const baseOrigin = window.location.origin;
-  const linkDirect = `${baseOrigin}/themebox/undangan/?code=${order.code}`;
-  const linkSlug = order.slug && order.catSlug ? `${baseOrigin}/${order.catSlug}/${order.slug}` : "";
-  const link1 = linkDirect;
-  const link2 = `${baseOrigin}/themebox/pantau/?code=${order.code}`;
+  const linkNameDirect = order.slug ? `${baseOrigin}/${order.slug}` : `${baseOrigin}/themebox/undangan/?code=${order.code}`;
+  const linkCat = (order.slug && order.catSlug) ? `${baseOrigin}/${order.catSlug}/${order.slug}` : "";
+  const linkPantau = order.slug ? `${baseOrigin}/pantau/${order.slug}` : `${baseOrigin}/themebox/pantau/?code=${order.code}`;
+  const linkDirectTech = `${baseOrigin}/themebox/undangan/?code=${order.code}`;
 
   const photoEntries = Object.keys(photos);
   let photosHtml = `<p style="font-size:.82rem;color:var(--muted)">Tidak ada foto diunggah.</p>`;
@@ -246,34 +246,41 @@ async function openOrderModal(code) {
 
       <div class="links-generated" id="box-links-generated" style="${order.status === 'aktif' ? 'display:block' : 'display:none'}">
         <div class="link-row">
-          <label>Link 1: Undangan Tamu (Link Langsung &bull; Paling Stabil)</label>
+          <label>💌 Link 1: Undangan Tamu (Link Resmi Nama Mempelai / Pemesan)</label>
           <div class="link-input-grp">
-            <input type="text" class="link-input" id="inp-link1" value="${linkDirect}" readonly>
+            <input type="text" class="link-input" id="inp-link1" value="${linkNameDirect}" readonly>
             <button class="btn-sm" onclick="copyVal('inp-link1')">Salin</button>
-            <button class="btn-sm" onclick="window.open('${linkDirect}', '_blank')">Buka</button>
+            <button class="btn-sm" onclick="window.open('${linkNameDirect}', '_blank')">Buka</button>
           </div>
         </div>
-        ${linkSlug ? `
+        ${linkCat ? `
         <div class="link-row">
-          <label>Link 1 Alternatif: Custom URL Cantik (/kategori/slug)</label>
+          <label>🌐 Link 1 Alternatif: Kategori &amp; Nama (/kategori/nama)</label>
           <div class="link-input-grp">
-            <input type="text" class="link-input" id="inp-link-slug" value="${linkSlug}" readonly>
-            <button class="btn-sm" onclick="copyVal('inp-link-slug')">Salin</button>
-            <button class="btn-sm" onclick="window.open('${linkSlug}', '_blank')">Buka</button>
+            <input type="text" class="link-input" id="inp-link-cat" value="${linkCat}" readonly>
+            <button class="btn-sm" onclick="copyVal('inp-link-cat')">Salin</button>
+            <button class="btn-sm" onclick="window.open('${linkCat}', '_blank')">Buka</button>
           </div>
         </div>
         ` : ''}
         <div class="link-row">
-          <label>Link 2: Dashboard Pantauan Tamu (Untuk Pemesan)</label>
+          <label>📊 Link 2: Dashboard Pantauan Tamu &amp; Doa (Khusus Pemesan)</label>
           <div class="link-input-grp">
-            <input type="text" class="link-input" id="inp-link2" value="${link2}" readonly>
+            <input type="text" class="link-input" id="inp-link2" value="${linkPantau}" readonly>
             <button class="btn-sm" onclick="copyVal('inp-link2')">Salin</button>
-            <button class="btn-sm" onclick="window.open('${link2}', '_blank')">Buka</button>
+            <button class="btn-sm" onclick="window.open('${linkPantau}', '_blank')">Buka</button>
+          </div>
+        </div>
+        <div class="link-row" style="margin-top:1rem;opacity:.7">
+          <label style="font-size:.72rem;color:var(--muted)">Cadangan Teknis (Direct Code ID):</label>
+          <div class="link-input-grp">
+            <input type="text" class="link-input" id="inp-link-tech" value="${linkDirectTech}" readonly style="font-size:.75rem">
+            <button class="btn-sm" onclick="copyVal('inp-link-tech')">Salin</button>
           </div>
         </div>
 
-        <a class="btn-wa-send" target="_blank" rel="noopener" href="https://wa.me/${cleanPhone(order.waPemesan)}?text=${encodeURIComponent(generateWaMessage(order, link1, link2))}">
-          💬 Kirim 2 Link Ini ke WhatsApp Pemesan
+        <a class="btn-wa-send" target="_blank" rel="noopener" href="https://wa.me/${cleanPhone(order.waPemesan)}?text=${encodeURIComponent(generateWaMessage(order, linkNameDirect, linkPantau))}">
+          💬 Kirim 2 Link Resmi ke WhatsApp Pemesan
         </a>
       </div>
     </div>
@@ -291,6 +298,20 @@ async function processActiveOrder() {
   btn.textContent = "Memproses...";
   try {
     await updateOrderStatus(activeModalOrder.code, "aktif");
+    if (activeModalOrder.slug) {
+      if (activeModalOrder.catSlug) {
+        await db.collection("slugs").doc(activeModalOrder.catSlug + "_" + activeModalOrder.slug).set({
+          code: activeModalOrder.code,
+          cat: activeModalOrder.catSlug,
+          slug: activeModalOrder.slug
+        });
+      }
+      await db.collection("slugs").doc(activeModalOrder.slug).set({
+        code: activeModalOrder.code,
+        cat: activeModalOrder.catSlug || "",
+        slug: activeModalOrder.slug
+      });
+    }
     activeModalOrder.status = "aktif";
     btn.textContent = "✓ Orderan Berhasil Diaktifkan!";
     document.getElementById("box-links-generated").style.display = "block";
@@ -317,17 +338,21 @@ function cleanPhone(num) {
 
 function generateWaMessage(order, link1, link2) {
   return [
-    `Halo kak ${order.namaPemesan || ""}! Undangan digital Anda di LuwengStudio sudah siap.`,
+    `Halo kak ${order.namaPemesan || ""}! Undangan digital Anda di LuwengStudio sudah aktif & siap disebarkan ✨`,
     "",
     "Berikut 2 link resmi undangan Anda:",
     "",
-    `1. Link Undangan (Untuk Disebar ke Tamu):`,
+    "💌 1. Link Undangan Tamu (Sebar ke Teman & Keluarga):",
     `${link1}`,
     "",
-    `2. Link Pantauan Tamu & Ucapan Doa (Khusus Anda):`,
+    "💡 Tips Nama Tamu Eksklusif:",
+    `Tambahkan ?to=Nama+Tamu di akhir link agar nama tamu muncul spesial di layar pembuka, contoh:`,
+    `${link1}?to=Bapak+Budi`,
+    "",
+    "📊 2. Link Pantauan Tamu & Doa Restu (Khusus Anda):",
     `${link2}`,
     "",
-    "Tamu Anda bisa langsung mengirim ucapan doa restu dan konfirmasi kehadiran yang akan terpantau secara langsung di Link 2.",
+    "Semua ucapan doa dan konfirmasi kehadiran dari tamu otomatis masuk ke link pantauan Anda secara real-time.",
     "",
     "Terima kasih telah mempercayakan momen spesial Anda kepada LuwengStudio!"
   ].join("\n");

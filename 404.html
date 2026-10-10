@@ -197,6 +197,11 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
   </div>
 </div>
 
+<button class="audio-fab" id="audio-fab" aria-label="Audio" style="display:none" onclick="toggleAudio()">
+  <span>🎵</span>
+</button>
+<audio id="bg-audio" loop></audio>
+
 <div class="lightbox-backdrop" id="lightbox-modal" onclick="closeLightbox()" style="display:none">
   <button type="button" class="lightbox-close" onclick="closeLightbox()">&times;</button>
   <img id="lightbox-img" src="" alt="Perbesar Foto">
@@ -293,6 +298,20 @@ function renderInvitation(order, photos) {
     document.documentElement.style.setProperty("--primary", "#2d5a3d");
     document.documentElement.style.setProperty("--primary-light", "#66a079");
     document.documentElement.style.setProperty("--gold-grad", "linear-gradient(135deg,#2d5a3d,#66a079)");
+  } else if (kat.includes("ultah")) {
+    document.documentElement.style.setProperty("--primary", "#d946ef");
+    document.documentElement.style.setProperty("--primary-light", "#f472b6");
+    document.documentElement.style.setProperty("--gold-grad", "linear-gradient(135deg,#d946ef,#f472b6)");
+  }
+
+  const audio = document.getElementById("bg-audio");
+  if (audio) {
+    if (kat.includes("wisuda")) audio.src = "/themebox/demo/audio/wisuda.mp3";
+    else if (kat.includes("ultah")) audio.src = "/themebox/demo/audio/ultah.mp3";
+    else if (kat.includes("khitan")) audio.src = "/themebox/demo/audio/khitanan.mp3";
+    else if (kat.includes("aqiqah")) audio.src = "/themebox/demo/audio/aqiqah.mp3";
+    else if (kat.includes("agama")) audio.src = "/themebox/demo/audio/agama.mp3";
+    else audio.src = "/themebox/demo/audio/wedding.mp3";
   }
   document.title = (order.namaAcara || "Undangan Digital") + " — ThemeBox";
 
@@ -409,8 +428,30 @@ function escapeHtml(str) {
   return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
+function toggleAudio() {
+  const audio = document.getElementById("bg-audio");
+  const fab = document.getElementById("audio-fab");
+  if (!audio) return;
+  if (audio.paused) {
+    audio.play().catch(() => {});
+    if (fab) fab.classList.add("playing");
+  } else {
+    audio.pause();
+    if (fab) fab.classList.remove("playing");
+  }
+}
+
 document.getElementById("btn-open-invite").addEventListener("click", () => {
   document.getElementById("cover-screen").classList.add("hide");
+  const audio = document.getElementById("bg-audio");
+  const fab = document.getElementById("audio-fab");
+  if (audio && audio.src) {
+    audio.play().catch(() => {});
+    if (fab) {
+      fab.style.display = "flex";
+      fab.classList.add("playing");
+    }
+  }
 });
 
 document.getElementById("wish-form").addEventListener("submit", async (e) => {
@@ -438,12 +479,37 @@ document.getElementById("wish-form").addEventListener("submit", async (e) => {
 
 async function routeAndLoad() {
   const path = window.location.pathname.replace(/^\/|\/$/g, "");
-  const parts = path.split("/");
+  const parts = path.split("/").filter(Boolean);
+  const reserved = ["assets", "css", "js", "portfolio", "privacy", "themebox", "admin", "order", "undangan", "pantau"];
 
-  if (parts.length === 2 && VALID_CATS.includes(parts[0].toLowerCase())) {
-    const cat = parts[0].toLowerCase();
+  if (parts.length === 0) {
+    window.location.href = "/";
+    return;
+  }
+
+  if (parts.length === 2 && parts[0].toLowerCase() === "pantau") {
     const slug = cleanSlug(parts[1]);
+    try {
+      const order = await fetchOrderBySlug("", slug);
+      if (order && order.code) {
+        window.location.href = `/themebox/pantau/?code=${order.code}`;
+        return;
+      }
+    } catch (e) {}
+  }
 
+  let cat = "";
+  let slug = "";
+  if (parts.length === 2 && VALID_CATS.includes(parts[0].toLowerCase())) {
+    cat = parts[0].toLowerCase();
+    slug = cleanSlug(parts[1]);
+  } else if (parts.length === 1 && !reserved.includes(parts[0].toLowerCase())) {
+    slug = cleanSlug(parts[0]);
+  } else if (parts.length === 2 && !reserved.includes(parts[0].toLowerCase())) {
+    slug = cleanSlug(parts[1]);
+  }
+
+  if (slug) {
     document.getElementById("view-spa").style.display = "block";
     initGuestName();
 
@@ -451,8 +517,8 @@ async function routeAndLoad() {
       const order = await fetchOrderBySlug(cat, slug);
       if (!order) {
         document.getElementById("loading-box").innerHTML = `
-          <p style="color:#c82333">Undangan untuk <b>${escapeHtml(slug)}</b> tidak ditemukan atau belum aktif.</p>
-          <a href="/themebox/" style="display:inline-block;margin-top:1rem;color:var(--primary);font-weight:600">Ke Katalog ThemeBox</a>`;
+          <p style="color:#c82333;font-size:1.05rem;font-weight:600">Undangan untuk <b>${escapeHtml(slug)}</b> tidak ditemukan atau belum aktif.</p>
+          <a href="/themebox/" style="display:inline-block;margin-top:1.2rem;background:var(--primary);color:#fff;padding:.6rem 1.4rem;border-radius:50px;text-decoration:none;font-weight:600">Ke Katalog ThemeBox</a>`;
         return;
       }
       currentCode = order.code;
