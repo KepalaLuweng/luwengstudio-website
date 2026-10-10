@@ -129,36 +129,34 @@
         <div class="field" data-field="foto-pria" style="margin:0">
           <div class="photo-box" id="box-foto-pria">
             <input type="file" id="foto-pria" accept="image/*">
-            <div class="ph-label">Foto Mempelai Pria <span class="req">*</span></div>
-            <div class="ph-hint">Tap untuk pilih</div>
+            <div class="ph-label">Foto Mempelai Pria</div>
+            <div class="ph-hint">Tap untuk pilih foto</div>
           </div>
-          <small class="err-msg">Foto mempelai pria wajib dipilih</small>
         </div>
         <div class="field" data-field="foto-wanita" style="margin:0">
           <div class="photo-box" id="box-foto-wanita">
             <input type="file" id="foto-wanita" accept="image/*">
-            <div class="ph-label">Foto Mempelai Wanita <span class="req">*</span></div>
-            <div class="ph-hint">Tap untuk pilih</div>
+            <div class="ph-label">Foto Mempelai Wanita</div>
+            <div class="ph-hint">Tap untuk pilih foto</div>
           </div>
-          <small class="err-msg">Foto mempelai wanita wajib dipilih</small>
         </div>
       </div>
       <div class="field" id="wrap-foto-utama" data-field="foto-utama" hidden>
-        <label><span id="label-foto-utama">Foto utama</span> <span class="req">*</span></label>
+        <label><span id="label-foto-utama">Foto utama</span> <span style="color:var(--muted);font-weight:400">(opsional)</span></label>
         <div class="photo-box" id="box-foto-utama">
           <input type="file" id="foto-utama" accept="image/*">
           <div class="ph-label">Pilih foto</div>
           <div class="ph-hint">Tap untuk pilih dari galeri</div>
         </div>
-        <small class="err-msg">Foto utama wajib dipilih</small>
       </div>
       <div class="field" style="margin-top:1.15rem">
-        <label>Foto galeri <span style="color:var(--muted);font-weight:400">(6-10 foto, harus genap)</span></label>
+        <label>Foto galeri <span style="color:var(--muted);font-weight:400">(opsional, 1-10 foto &bull; susunan pintar)</span></label>
         <div class="photo-box" id="box-foto-gallery">
           <input type="file" id="foto-gallery" accept="image/*" multiple>
           <div class="ph-label">Tambah foto galeri</div>
-          <div class="ph-hint">Bisa pilih beberapa sekaligus</div>
+          <div class="ph-hint">Bisa pilih beberapa sekaligus (bebas jumlah ganjil atau genap)</div>
         </div>
+        <small class="hint">Bebas pilih berapapun (1-10 foto). Layout Smart Bento otomatis menyusun foto ganjil menjadi layout majalah sinematik.</small>
         <div class="photo-thumbs" id="gallery-thumbs"></div>
       </div>
     </div>

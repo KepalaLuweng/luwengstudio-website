@@ -35,19 +35,32 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 .sec-sub{font-size:.88rem;color:var(--muted);max-width:400px;margin:0 auto 2rem}
 .couple-grid{display:flex;flex-direction:column;gap:2rem;margin-top:1.5rem}
 .person-card{display:flex;flex-direction:column;align-items:center}
-.person-photo{width:160px;height:160px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 8px 25px rgba(0,0,0,0.12);margin-bottom:1rem}
+.person-photo{width:165px;height:215px;border-radius:90px 90px 16px 16px;object-fit:cover;border:3px solid var(--primary);padding:3px;background:#fff;box-shadow:0 10px 25px rgba(0,0,0,0.12);margin-bottom:1rem;cursor:pointer;transition:transform .25s}
+.person-photo:hover{transform:scale(1.03)}
 .person-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#241d17}
 .person-info{font-size:.84rem;color:var(--muted);max-width:280px;margin-top:.3rem}
-.single-photo{width:220px;height:220px;border-radius:24px;object-fit:cover;box-shadow:var(--shadow);margin-bottom:1.2rem}
+.single-photo{width:220px;height:280px;border-radius:110px 110px 20px 20px;object-fit:cover;border:3px solid var(--primary);padding:4px;background:#fff;box-shadow:0 12px 30px rgba(0,0,0,0.14);margin-bottom:1.2rem;cursor:pointer;transition:transform .25s}
+.single-photo:hover{transform:scale(1.03)}
 .event-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:2rem 1.5rem;box-shadow:var(--shadow);margin-top:1rem}
 .event-time-badge{font-size:.9rem;font-weight:600;color:var(--primary);margin-bottom:.6rem}
 .event-venue-name{font-size:1.2rem;font-weight:700;color:#241d17;margin-bottom:.4rem}
 .event-address{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem}
 .btn-maps{display:inline-flex;align-items:center;gap:.5rem;background:#241d17;color:#fff;padding:.75rem 1.6rem;border-radius:50px;text-decoration:none;font-size:.85rem;font-weight:600}
-.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;margin-top:1rem}
-.gallery-item{border-radius:12px;overflow:hidden;height:170px;background:#eee}
-.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-.gallery-item img:hover{transform:scale(1.05)}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem;margin-top:1.2rem}
+.gallery-item{position:relative;border-radius:14px;overflow:hidden;height:190px;background:#eee;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.06);transition:transform .25s ease,box-shadow .25s ease}
+.gallery-item:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.12)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;display:block}
+.gallery-item:hover img{transform:scale(1.06)}
+.gallery-grid[data-count="1"]{grid-template-columns:1fr;max-width:360px;margin:1.2rem auto 0}
+.gallery-grid[data-count="1"] .gallery-item{height:440px;border-radius:20px}
+.gallery-grid[data-count="3"] .gallery-item:first-child{grid-column:1 / -1;height:240px;border-radius:18px}
+.gallery-grid[data-odd="true"] .gallery-item:last-child{grid-column:1 / -1;height:230px;border-radius:18px}
+.lightbox-backdrop{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:99999;padding:1rem;animation:fadeIn .2s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.lightbox-backdrop img{max-width:94vw;max-height:88vh;object-fit:contain;border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.6);animation:zoomIn .25s ease}
+@keyframes zoomIn{from{transform:scale(.9)}to{transform:scale(1)}}
+.lightbox-close{position:absolute;top:1.2rem;right:1.5rem;background:rgba(255,255,255,.2);color:#fff;border:none;width:42px;height:42px;border-radius:50%;font-size:1.8rem;display:flex;align-items:center;justify-content:center;cursor:pointer;line-height:1;transition:background .2s}
+.lightbox-close:hover{background:rgba(255,255,255,.35)}
 .amplop-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:2rem 1.5rem;box-shadow:var(--shadow);margin-top:1rem}
 .rek-box{background:#f9f6f0;border-radius:12px;padding:1.2rem;margin:1rem 0;position:relative}
 .rek-num{font-family:monospace;font-size:1.25rem;font-weight:700;color:#241d17;letter-spacing:1.5px}
@@ -179,6 +192,11 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 </button>
 <audio id="bg-audio" loop></audio>
 
+<div class="lightbox-backdrop" id="lightbox-modal" onclick="closeLightbox()" style="display:none">
+  <button type="button" class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightbox-img" src="" alt="Perbesar Foto">
+</div>
+
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
@@ -186,6 +204,20 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 <script>
 let currentOrder = null;
 let currentCode = "";
+
+function openLightbox(src) {
+  const lb = document.getElementById("lightbox-modal");
+  const img = document.getElementById("lightbox-img");
+  if (lb && img && src) {
+    img.src = src;
+    lb.style.display = "flex";
+  }
+}
+
+function closeLightbox() {
+  const lb = document.getElementById("lightbox-modal");
+  if (lb) lb.style.display = "none";
+}
 
 function getQuery(param) {
   return new URLSearchParams(window.location.search).get(param) || "";
@@ -251,11 +283,11 @@ function renderInvitation(order, photos) {
     peopleContainer.innerHTML = `
       <div class="couple-grid">
         <div class="person-card">
-          <img class="person-photo" src="${priaImg}" alt="Mempelai Pria">
+          <img class="person-photo" src="${priaImg}" alt="Mempelai Pria" onclick="openLightbox('${priaImg}')">
           <div class="person-name">${order.namaAcara.split("&")[0] || "Mempelai Pria"}</div>
         </div>
         <div class="person-card">
-          <img class="person-photo" src="${wanitaImg}" alt="Mempelai Wanita">
+          <img class="person-photo" src="${wanitaImg}" alt="Mempelai Wanita" onclick="openLightbox('${wanitaImg}')">
           <div class="person-name">${order.namaAcara.split("&")[1] || "Mempelai Wanita"}</div>
         </div>
       </div>`;
@@ -264,7 +296,7 @@ function renderInvitation(order, photos) {
     const utamaImg = photos.fotoUtama || "../../assets/img/avatar-anime.jpg";
     peopleContainer.innerHTML = `
       <div class="person-card">
-        <img class="single-photo" src="${utamaImg}" alt="${order.namaAcara}">
+        <img class="single-photo" src="${utamaImg}" alt="${order.namaAcara}" onclick="openLightbox('${utamaImg}')">
         <div class="person-name">${order.namaAcara}</div>
       </div>`;
   }
@@ -272,12 +304,19 @@ function renderInvitation(order, photos) {
   const galKeys = Object.keys(photos).filter(k => k.startsWith("gal_"));
   if (galKeys.length > 0) {
     document.getElementById("sec-gallery").style.display = "block";
+    const galContainer = document.getElementById("gallery-container");
+    galContainer.setAttribute("data-count", galKeys.length);
+    if (galKeys.length % 2 !== 0 && galKeys.length > 1) {
+      galContainer.setAttribute("data-odd", "true");
+    } else {
+      galContainer.removeAttribute("data-odd");
+    }
     const galHtml = galKeys.map(k => `
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="openLightbox('${photos[k]}')">
         <img src="${photos[k]}" alt="Momen">
       </div>
     `).join("");
-    document.getElementById("gallery-container").innerHTML = galHtml;
+    galContainer.innerHTML = galHtml;
   }
 
   const amplopBox = document.getElementById("amplop-content");
