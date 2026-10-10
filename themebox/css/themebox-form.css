@@ -139,3 +139,63 @@
   .order-theme-card{padding:.9rem}
   .order-theme-card img{width:64px;height:84px}
 }
+
+.pay-modal-backdrop{
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,.68);
+  backdrop-filter:blur(5px);
+  display:flex;align-items:center;justify-content:center;
+  z-index:9999;padding:1rem;
+}
+.pay-modal-box{
+  background:#fff;border-radius:20px;max-width:440px;width:100%;
+  padding:2.2rem 1.8rem;text-align:center;box-shadow:0 24px 50px rgba(0,0,0,.3);
+  animation:popIn .25s ease-out;
+}
+@keyframes popIn{
+  from{transform:scale(.92);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+.pay-modal-icon{
+  width:64px;height:64px;background:#f0fbf4;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2rem;margin:0 auto 1.2rem;
+}
+.pay-modal-box h3{font-size:1.3rem;margin-bottom:.6rem;color:#1c2530}
+.pay-modal-box p{color:#64748b;font-size:.92rem;line-height:1.6;margin-bottom:1.5rem}
+.pay-modal-btns{display:flex;gap:.8rem;justify-content:center}
+.pay-modal-btns button{
+  flex:1;padding:.85rem 1.2rem;border-radius:10px;font-weight:600;
+  font-size:.95rem;cursor:pointer;border:none;transition:all .2s;
+}
+.pay-modal-btns .btn-cancel{background:#f1f5f9;color:#475569}
+.pay-modal-btns .btn-cancel:hover{background:#e2e8f0;color:#1e293b}
+.pay-modal-btns .btn-confirm{background:#27ae60;color:#fff;box-shadow:0 4px 12px rgba(39,174,96,.3)}
+.pay-modal-btns .btn-confirm:hover{background:#219653}
+.spinner-ring{
+  width:52px;height:52px;border:4px solid #edf2f7;border-top-color:#27ae60;
+  border-radius:50%;margin:1.2rem auto;animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.success-icon-badge{
+  width:64px;height:64px;border-radius:50%;background:#eafaf1;color:#27ae60;
+  display:flex;align-items:center;justify-content:center;font-size:2rem;
+  margin:0 auto 1rem;border:2px solid #27ae60;
+}
+.order-code-badge{
+  display:inline-block;padding:.6rem 1.4rem;background:#f8fafc;
+  border:1.5px dashed #cbd5e1;border-radius:8px;font-weight:700;
+  letter-spacing:1.5px;color:#0f172a;font-size:1.15rem;margin-bottom:1.5rem;
+}
+.btn-wa-modal{
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+  background:#25d366;color:#fff;text-decoration:none;padding:.9rem 1.4rem;
+  border-radius:12px;font-weight:700;font-size:1.02rem;
+  box-shadow:0 4px 15px rgba(37,211,102,.35);transition:transform .15s,background .2s;
+}
+.btn-wa-modal:hover{background:#20bd5a;transform:translateY(-1px)}
+.btn-back-katalog{
+  display:inline-block;margin-top:1rem;color:#64748b;font-size:.85rem;
+  text-decoration:none;
+}
+.btn-back-katalog:hover{color:#1e293b;text-decoration:underline}

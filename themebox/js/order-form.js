@@ -218,6 +218,84 @@ function validateOrderForm() {
   return true;
 }
 
+const DRAFT_KEY = "luweng_order_draft";
+
+function saveDraft() {
+  const gVal = id => {
+    const el = document.getElementById(id);
+    return el ? el.value : "";
+  };
+  const data = {
+    buyerName: gVal("buyer-name"),
+    buyerWa: gVal("buyer-wa"),
+    eventName: gVal("event-name"),
+    linkName: gVal("link-name"),
+    eventDate: gVal("event-date"),
+    eventTime: gVal("event-time"),
+    eventVenue: gVal("event-venue"),
+    eventAddress: gVal("event-address"),
+    eventMaps: gVal("event-maps"),
+    amplopMethod: gVal("amplop-method"),
+    amplopInfo: gVal("amplop-info"),
+    giftAddress: gVal("gift-address"),
+    dressCode: gVal("dress-code"),
+    liveStream: gVal("live-stream"),
+    pakaiMusik: document.getElementById("pakai-musik") ? document.getElementById("pakai-musik").checked : false,
+    judulLagu: gVal("judul-lagu")
+  };
+  try {
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+  } catch (e) {}
+}
+
+function restoreDraft() {
+  let data = null;
+  try {
+    const raw = localStorage.getItem(DRAFT_KEY);
+    if (raw) data = JSON.parse(raw);
+  } catch (e) {}
+  if (!data) return;
+  const setV = (id, v) => {
+    const el = document.getElementById(id);
+    if (el && v !== undefined && v !== null && v !== "") el.value = v;
+  };
+  setV("buyer-name", data.buyerName);
+  setV("buyer-wa", data.buyerWa);
+  setV("event-name", data.eventName);
+  setV("link-name", data.linkName);
+  setV("event-date", data.eventDate);
+  setV("event-time", data.eventTime);
+  setV("event-venue", data.eventVenue);
+  setV("event-address", data.eventAddress);
+  setV("event-maps", data.eventMaps);
+  if (data.amplopMethod) {
+    const el = document.getElementById("amplop-method");
+    if (el) { el.value = data.amplopMethod; onAmplopMethodChange(); }
+  }
+  setV("amplop-info", data.amplopInfo);
+  setV("gift-address", data.giftAddress);
+  setV("dress-code", data.dressCode);
+  setV("live-stream", data.liveStream);
+  if (data.pakaiMusik) {
+    const cb = document.getElementById("pakai-musik");
+    if (cb) {
+      cb.checked = true;
+      const field = document.getElementById("field-judul-lagu");
+      const warn = document.getElementById("warn-musik");
+      if (field) field.style.display = "block";
+      if (warn) warn.style.display = "block";
+    }
+  }
+  setV("judul-lagu", data.judulLagu);
+  updateLinkPreview();
+}
+
+function clearDraft() {
+  try {
+    localStorage.removeItem(DRAFT_KEY);
+  } catch (e) {}
+}
+
 function initOrderPage() {
   const params = new URLSearchParams(location.search);
   const f = params.get("theme");
@@ -234,4 +312,10 @@ function initOrderPage() {
   setupMusik();
   setupLinkName();
   updateLinkPreview();
+  restoreDraft();
+  const formWrap = document.getElementById("form-order");
+  if (formWrap) {
+    formWrap.addEventListener("input", saveDraft);
+    formWrap.addEventListener("change", saveDraft);
+  }
 }

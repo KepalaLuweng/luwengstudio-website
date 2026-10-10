@@ -114,17 +114,20 @@ async function processOrderPhotos(order) {
 
 function getWAMessage(order) {
   const lines = [
-    "Halo LuwengStudio! Saya order undangan digital.",
+    "Halo LuwengStudio! 👋",
+    "Saya sudah menyelesaikan order undangan digital dan melakukan pembayaran.",
     "",
-    `Kode: ${order.code}`,
-    `Theme: ${order.temaNama} (${order.kategori})`,
-    `Harga: ${formatRp(order.harga)}`,
-    `Nama: ${order.namaPemesan}`,
-    `Acara: ${order.namaAcara}`,
-    `Tanggal: ${order.tanggalAcara} ${order.waktuAcara}`,
-    `Tempat: ${order.tempat}`,
+    "📋 *Detail Pesanan:*",
+    `• Kode: ${order.code}`,
+    `• Tema: ${order.temaNama} (${order.kategori})`,
+    `• Total Bayar: ${formatRp(order.harga)}`,
+    `• Nama Pemesan: ${order.namaPemesan}`,
+    `• Acara: ${order.namaAcara}`,
+    `• Tanggal: ${order.tanggalAcara} ${order.waktuAcara}`,
+    `• Tempat: ${order.tempat}`,
     "",
-    "Bukti pembayaran & detail terlampir di sistem."
+    "Bukti pembayaran dan data telah tersimpan di sistem.",
+    "Mohon dicek dan diverifikasi pembayarannya untuk proses selanjutnya ya. Terima kasih! 🙏"
   ];
   return lines.join("\n");
 }
@@ -133,57 +136,53 @@ function getWAUrl(order) {
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(getWAMessage(order))}`;
 }
 
-function openWA(order) {
-  const url = getWAUrl(order);
-  try {
-    const w = window.open(url, "_blank");
-    if (!w || w.closed || typeof w.closed === "undefined") {
-      setTimeout(() => {
-        try { window.location.href = url; } catch (e) {}
-      }, 600);
-    }
-  } catch (e) {
-    try { window.location.href = url; } catch (err) {}
-  }
-}
-
-function showSuccess(order) {
-  const waUrl = getWAUrl(order);
-  document.getElementById("form-order").innerHTML = `
-    <div class="success-card">
-      <div class="ok-ring">✓</div>
-      <h2>Order Berhasil Dikirim!</h2>
-      <div class="code">${order.code}</div>
-      <p style="margin:1rem 0 1.5rem;line-height:1.6;color:var(--muted)">Data pesanan Anda telah tersimpan di sistem.<br>Silakan lanjutkan konfirmasi pembayaran via WhatsApp.</p>
-      <div style="display:flex;flex-direction:column;gap:1rem;align-items:center">
-        <a href="${waUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:.6rem;background:#25d366;color:#fff;font-weight:700;padding:.9rem 1.8rem;border-radius:10px;text-decoration:none;font-size:1.05rem;box-shadow:0 4px 14px rgba(37,211,102,.35)">
-          💬 Buka WhatsApp Sekarang
-        </a>
-        <a class="btn btn-dark" href="../" style="margin-top:.3rem">Kembali ke Katalog</a>
-      </div>
-    </div>`;
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-async function submitOrder() {
+function startOrderProcess() {
   if (!validateOrderForm()) return;
   if (typeof validateGallery === "function" && !validateGallery()) return;
-  const btn = document.getElementById("btn-submit");
-  btn.disabled = true;
-  btn.textContent = "Mengompres foto...";
+  const modal = document.getElementById("modal-pay");
+  if (!modal) return;
+  document.getElementById("pay-modal-step-ask").style.display = "block";
+  document.getElementById("pay-modal-step-loading").style.display = "none";
+  document.getElementById("pay-modal-step-success").style.display = "none";
+  modal.style.display = "flex";
+}
+
+function closePayModal() {
+  const modal = document.getElementById("modal-pay");
+  if (modal) modal.style.display = "none";
+}
+
+async function confirmAndSubmitOrder() {
+  document.getElementById("pay-modal-step-ask").style.display = "none";
+  document.getElementById("pay-modal-step-loading").style.display = "block";
+  const statusTxt = document.getElementById("loading-status-text");
+  if (statusTxt) statusTxt.textContent = "Sedang menyiapkan pesanan...";
+
   const order = collectOrder();
   try {
     await ensureAuth();
-    btn.textContent = "Menyimpan data pesanan...";
+    if (statusTxt) statusTxt.textContent = "Menyimpan data pesanan ke sistem...";
     await saveOrder(order);
-    btn.textContent = "Menyimpan foto...";
+    if (statusTxt) statusTxt.textContent = "Mengompres foto dan menyimpan...";
     await processOrderPhotos(order);
   } catch (e) {
-    btn.disabled = false;
-    btn.textContent = "Kirim Order via WhatsApp";
-    alert("Gagal menyimpan data: " + e.message + "\n\nPastikan koneksi internet aktif lalu coba lagi.");
+    closePayModal();
+    alert("Gagal memproses pesanan: " + e.message + "\n\nPastikan koneksi internet aktif lalu coba lagi.");
     return;
   }
-  openWA(order);
-  showSuccess(order);
+
+  if (typeof clearDraft === "function") clearDraft();
+
+  document.getElementById("pay-modal-step-loading").style.display = "none";
+  document.getElementById("pay-modal-step-success").style.display = "block";
+  const codeEl = document.getElementById("modal-order-code");
+  if (codeEl) codeEl.textContent = order.code;
+
+  const waUrl = getWAUrl(order);
+  const waLink = document.getElementById("modal-wa-link");
+  if (waLink) waLink.href = waUrl;
+}
+
+function submitOrder() {
+  startOrderProcess();
 }
