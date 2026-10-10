@@ -200,14 +200,14 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:.22em;opacity:.7;p
   <h2 class="title">Dua Hati Menyatu</h2>
   <div class="cwrap">
     <div class="cperson left">
-      <div class="photo" data-bg="gal-wed-07-1.jpg" style="background-size:cover;background-position:center 20%"></div>
+      <div class="photo" data-bg="gal-wed-07-1.jpg" style="background-image:url('gal-wed-07-1.jpg');background-size:cover;background-position:center 20%"></div>
       <h3>Riku Hayakawa</h3>
       <div class="role">Mempelai Pria</div>
       <div class="par">Putra pertama dari<br>Bapak Shinji Hayakawa<br>&amp; Ibu Aya Hayakawa</div>
     </div>
     <div class="camp">&amp;</div>
     <div class="cperson right">
-      <div class="photo" data-bg="gal-wed-07-2.jpg" style="background-size:cover;background-position:center 20%"></div>
+      <div class="photo" data-bg="gal-wed-07-2.jpg" style="background-image:url('gal-wed-07-2.jpg');background-size:cover;background-position:center 20%"></div>
       <h3>Suzu Amamiya</h3>
       <div class="role">Mempelai Wanita</div>
       <div class="par">Putri kedua dari<br>Bapak Ryo Amamiya<br>&amp; Ibu Yuki Amamiya</div>
@@ -240,13 +240,13 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:.22em;opacity:.7;p
   <h2 class="title">Momen Bahagia</h2>
   <div class="sub">Ketuk foto untuk memperbesar</div>
   <div class="gal">
-    <div class="ph" onclick="lb(this,1)" data-img="gal-wed-07-m1.jpg" data-bg="gal-wed-07-m1.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+    <div class="ph" onclick="lb(this,1)" data-img="gal-wed-07-m1.jpg" data-bg="gal-wed-07-m1.jpg" style="background-image:url('gal-wed-07-m1.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
       
-    <div class="ph" onclick="lb(this,2)" data-img="gal-wed-07-m2.jpg" data-bg="gal-wed-07-m2.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-    <div class="ph" onclick="lb(this,3)" data-img="gal-wed-07-3.jpg" data-bg="gal-wed-07-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-    <div class="ph" onclick="lb(this,4)" data-img="gal-wed-07-4.jpg" data-bg="gal-wed-07-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,5)" data-img="gal-wed-07-5.jpg" data-bg="gal-wed-07-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,6)" data-img="gal-wed-07-6.jpg" data-bg="gal-wed-07-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+    <div class="ph" onclick="lb(this,2)" data-img="gal-wed-07-m2.jpg" data-bg="gal-wed-07-m2.jpg" style="background-image:url('gal-wed-07-m2.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+    <div class="ph" onclick="lb(this,3)" data-img="gal-wed-07-3.jpg" data-bg="gal-wed-07-3.jpg" style="background-image:url('gal-wed-07-3.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+    <div class="ph" onclick="lb(this,4)" data-img="gal-wed-07-4.jpg" data-bg="gal-wed-07-4.jpg" style="background-image:url('gal-wed-07-4.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,5)" data-img="gal-wed-07-5.jpg" data-bg="gal-wed-07-5.jpg" style="background-image:url('gal-wed-07-5.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,6)" data-img="gal-wed-07-6.jpg" data-bg="gal-wed-07-6.jpg" style="background-image:url('gal-wed-07-6.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
   </div>
 </section>
 <section class="reveal" style="background:#fff;max-width:none">
@@ -445,7 +445,7 @@ var bgio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInt
 document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 <audio id="bgmusic" loop preload="none"><source src="audio/wedding.mp3" type="audio/mpeg"></audio>
-<!-- Musik: Meditation Impromptu 01 - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<script>else{a.pause();if(b)b.textContent="\u266a";}}</script>
+
+<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(!a)return;if(a.paused){a.play().catch(function(){});if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
 </body>
 </html>

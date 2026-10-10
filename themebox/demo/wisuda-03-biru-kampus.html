@@ -144,7 +144,7 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;color:#7d94c4;
 <div class="eyebrow">Wisudawan</div>
 <h2 class="title">Profil Wisudawan</h2>
 <div class="hcard">
-<div class="photo">DA</div>
+<div class="photo" onclick="lb(this,1)" data-img="gal-wisuda-03-1.jpg" data-bg="gal-wisuda-03-1.jpg" style="background-image:url('gal-wisuda-03-1.jpg');background-size:cover;background-position:center 20%"></div>
 <div><h3>Darmawan Aditya</h3><div class="deg2">S.E. · Fakultas Ilmu Komputer UI</div><div class="meta">Putra Bapak Hiroshi Tanaka<br>&amp; Ibu Yuki Tanaka</div></div>
 </div>
 </section>
@@ -182,13 +182,13 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;color:#7d94c4;
 <div class="eyebrow">Galeri</div>
 <h2 class="title">Perjalanan Studi</h2>
 <div class="hscroll">
-<div class="ph" onclick="lb(this,1)" data-img="gal-wisuda-03-m1.jpg" data-bg="gal-wisuda-03-m1.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+<div class="ph" onclick="lb(this,1)" data-img="gal-wisuda-03-m1.jpg" data-bg="gal-wisuda-03-m1.jpg" style="background-image:url('gal-wisuda-03-m1.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
       
-<div class="ph" onclick="lb(this,2)" data-img="gal-wisuda-03-m2.jpg" data-bg="gal-wisuda-03-m2.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-<div class="ph" onclick="lb(this,3)" data-img="gal-wisuda-03-3.jpg" data-bg="gal-wisuda-03-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-<div class="ph" onclick="lb(this,4)" data-img="gal-wisuda-03-4.jpg" data-bg="gal-wisuda-03-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,5)" data-img="gal-wisuda-03-5.jpg" data-bg="gal-wisuda-03-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,6)" data-img="gal-wisuda-03-6.jpg" data-bg="gal-wisuda-03-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+<div class="ph" onclick="lb(this,2)" data-img="gal-wisuda-03-m2.jpg" data-bg="gal-wisuda-03-m2.jpg" style="background-image:url('gal-wisuda-03-m2.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+<div class="ph" onclick="lb(this,3)" data-img="gal-wisuda-03-3.jpg" data-bg="gal-wisuda-03-3.jpg" style="background-image:url('gal-wisuda-03-3.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+<div class="ph" onclick="lb(this,4)" data-img="gal-wisuda-03-4.jpg" data-bg="gal-wisuda-03-4.jpg" style="background-image:url('gal-wisuda-03-4.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,5)" data-img="gal-wisuda-03-5.jpg" data-bg="gal-wisuda-03-5.jpg" style="background-image:url('gal-wisuda-03-5.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,6)" data-img="gal-wisuda-03-6.jpg" data-bg="gal-wisuda-03-6.jpg" style="background-image:url('gal-wisuda-03-6.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
 </div>
 <div class="hint">Geser · ketuk untuk memperbesar</div>
 </section>
@@ -307,8 +307,8 @@ var bgio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInt
 document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 <audio id="bgmusic" loop preload="none"><source src="audio/wisuda.mp3" type="audio/mpeg"></audio>
-<!-- Musik: Majestic Hills - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<script>else{a.pause();if(b)b.textContent="\u266a";}}</script>
+
+<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(!a)return;if(a.paused){a.play().catch(function(){});if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
 
 
 

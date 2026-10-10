@@ -209,7 +209,7 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;opacity:.65;pa
 <section class="reveal">
 <div class="archhead"><div class="eyebrow">Wisudawan</div><h2 class="title">Menara Ilmu</h2><div class="sub">Profil Wisudawan</div></div>
 <div class="tcard">
-<div class="photo">DA</div>
+<div class="photo" onclick="lb(this,1)" data-img="gal-wisuda-10-1.jpg" data-bg="gal-wisuda-10-1.jpg" style="background-image:url('gal-wisuda-10-1.jpg');background-size:cover;background-position:center 20%"></div>
 <div class="lbl2">Telah Menyelesaikan Studi</div>
 <h3>Darmawan Aditya</h3>
 <div class="deg2">Sarjana Komputer (M.Si.)</div>
@@ -253,13 +253,13 @@ footer .tag{margin-top:1.2rem;font-size:.58rem;letter-spacing:1px;opacity:.65;pa
 <section id="gallery" class="reveal">
 <div class="archhead"><div class="eyebrow">Galeri</div><h2 class="title">Anak Tangga Ilmu</h2><div class="sub">Ketuk foto untuk memperbesar</div></div>
 <div class="gal">
-<div class="ph" onclick="lb(this,1)" data-img="gal-wisuda-10-m1.jpg" data-bg="gal-wisuda-10-m1.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+<div class="ph" onclick="lb(this,1)" data-img="gal-wisuda-10-m1.jpg" data-bg="gal-wisuda-10-m1.jpg" style="background-image:url('gal-wisuda-10-m1.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
       
-<div class="ph" onclick="lb(this,2)" data-img="gal-wisuda-10-m2.jpg" data-bg="gal-wisuda-10-m2.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-<div class="ph" onclick="lb(this,3)" data-img="gal-wisuda-10-3.jpg" data-bg="gal-wisuda-10-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-<div class="ph" onclick="lb(this,4)" data-img="gal-wisuda-10-4.jpg" data-bg="gal-wisuda-10-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-<div class="ph" onclick="lb(this,5)" data-img="gal-wisuda-10-5.jpg" data-bg="gal-wisuda-10-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,6)" data-img="gal-wisuda-10-6.jpg" data-bg="gal-wisuda-10-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+<div class="ph" onclick="lb(this,2)" data-img="gal-wisuda-10-m2.jpg" data-bg="gal-wisuda-10-m2.jpg" style="background-image:url('gal-wisuda-10-m2.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+<div class="ph" onclick="lb(this,3)" data-img="gal-wisuda-10-3.jpg" data-bg="gal-wisuda-10-3.jpg" style="background-image:url('gal-wisuda-10-3.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+<div class="ph" onclick="lb(this,4)" data-img="gal-wisuda-10-4.jpg" data-bg="gal-wisuda-10-4.jpg" style="background-image:url('gal-wisuda-10-4.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+<div class="ph" onclick="lb(this,5)" data-img="gal-wisuda-10-5.jpg" data-bg="gal-wisuda-10-5.jpg" style="background-image:url('gal-wisuda-10-5.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,6)" data-img="gal-wisuda-10-6.jpg" data-bg="gal-wisuda-10-6.jpg" style="background-image:url('gal-wisuda-10-6.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
 </div>
 </section>
 <section id="wishes" class="reveal" style="max-width:none;padding-left:0;padding-right:0">
@@ -378,7 +378,7 @@ var bgio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInt
 document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 <audio id="bgmusic" loop preload="none"><source src="audio/wisuda.mp3" type="audio/mpeg"></audio>
-<!-- Musik: Majestic Hills - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<script>else{a.pause();if(b)b.textContent="\u266a";}}</script>
+
+<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(!a)return;if(a.paused){a.play().catch(function(){});if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
 </body>
 </html>

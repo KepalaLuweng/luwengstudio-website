@@ -21,7 +21,9 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 .cover-to-name{font-size:1.15rem;font-weight:600;color:#fff;margin-top:.2rem}
 .btn-open{background:var(--gold-grad);color:#1a140b;border:none;padding:.9rem 2.2rem;border-radius:50px;font-size:.95rem;font-weight:700;cursor:pointer;box-shadow:0 8px 24px rgba(184,134,11,.35);transition:transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:.6rem}
 .btn-open:hover{transform:scale(1.04);box-shadow:0 10px 30px rgba(184,134,11,.45)}
-.wrapper{max-width:540px;margin:0 auto;background:var(--surface);min-height:100vh;box-shadow:0 0 40px rgba(0,0,0,0.08);position:relative}
+.wrapper{max-width:480px;margin:0 auto;background:var(--surface);min-height:100vh;box-shadow:0 0 40px rgba(0,0,0,0.08);position:relative}
+@media(min-width:641px){html{background:#0b0d14;min-height:100vh;display:flex;justify-content:center}body{background:transparent}.wrapper{margin:30px auto;border-radius:28px;box-shadow:0 30px 90px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.09);overflow:hidden;min-height:calc(100vh - 60px);position:relative}.cover-screen{position:fixed;top:30px;bottom:30px;left:50%;transform:translateX(-50%);width:480px;max-width:480px;border-radius:28px;z-index:9999;overflow-y:auto}.audio-fab{position:fixed;bottom:2rem;right:max(1.5rem,calc(50vw - 240px + 1.2rem));z-index:99999}}
+@media(max-width:640px){.wrapper{max-width:100%;margin:0;border-radius:0;box-shadow:none}.section{padding-left:1.1rem;padding-right:1.1rem}.cover-screen{position:fixed;inset:0;border-radius:0;width:100%;height:100%}.audio-fab{position:fixed;bottom:1.2rem;right:1.2rem;z-index:99999}}
 .hero-sec{text-align:center;padding:4.5rem 1.5rem 3rem;background:linear-gradient(180deg,#fcf9f2,#fff);position:relative}
 .sub-tag{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--primary);font-weight:600}
 .main-names{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;margin:.8rem 0 .5rem;color:#241d17}
@@ -257,6 +259,37 @@ function renderInvitation(order, photos) {
   document.getElementById("content-box").style.display = "block";
 
   const isWedding = order.kategori === "Pernikahan";
+  const tf = (order.temaFile || order.temaNama || "").toLowerCase();
+  const kat = (order.kategori || "").toLowerCase();
+  if (tf.includes("sage")) {
+    document.documentElement.style.setProperty("--primary", "#4a6741");
+    document.documentElement.style.setProperty("--primary-light", "#8fae85");
+    document.documentElement.style.setProperty("--gold-grad", "linear-gradient(135deg,#4a6741,#8fae85)");
+  } else if (tf.includes("marun")) {
+    document.documentElement.style.setProperty("--primary", "#8b1e2a");
+    document.documentElement.style.setProperty("--primary-light", "#c95d6a");
+    document.documentElement.style.setProperty("--gold-grad", "linear-gradient(135deg,#8b1e2a,#c95d6a)");
+  } else if (tf.includes("biru") || kat.includes("khitan")) {
+    document.documentElement.style.setProperty("--primary", "#1f487e");
+    document.documentElement.style.setProperty("--primary-light", "#5d8bbd");
+    document.documentElement.style.setProperty("--gold-grad", "linear-gradient(135deg,#1f487e,#5d8bbd)");
+  } else if (tf.includes("putih")) {
+    document.documentElement.style.setProperty("--primary", "#7a7065");
+    document.documentElement.style.setProperty("--primary-light", "#b8afa3");
+    document.documentElement.style.setProperty("--gold-grad", "linear-gradient(135deg,#7a7065,#b8afa3)");
+  } else if (kat.includes("aqiqah") || tf.includes("peach")) {
+    document.documentElement.style.setProperty("--primary", "#c47a5d");
+    document.documentElement.style.setProperty("--primary-light", "#e5aa92");
+    document.documentElement.style.setProperty("--gold-grad", "linear-gradient(135deg,#c47a5d,#e5aa92)");
+  } else if (kat.includes("wisuda")) {
+    document.documentElement.style.setProperty("--primary", "#1a2538");
+    document.documentElement.style.setProperty("--primary-light", "#c9a24b");
+    document.documentElement.style.setProperty("--gold-grad", "linear-gradient(135deg,#c9a24b,#e8d5a3)");
+  } else if (kat.includes("agama")) {
+    document.documentElement.style.setProperty("--primary", "#2d5a3d");
+    document.documentElement.style.setProperty("--primary-light", "#66a079");
+    document.documentElement.style.setProperty("--gold-grad", "linear-gradient(135deg,#2d5a3d,#66a079)");
+  }
   document.title = (order.namaAcara || "Undangan Digital") + " — ThemeBox";
 
   document.getElementById("cover-names").textContent = order.namaAcara || "Undangan Spesial";

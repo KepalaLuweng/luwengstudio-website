@@ -235,11 +235,11 @@ footer .tag{margin-top:1.2rem;font-size:.56rem;letter-spacing:1px;opacity:.75;pa
   <h2 class="title">Momen Karnaval</h2>
   <div class="gfeat">
       <div class="ph big" onclick="lb(this,1)" data-img="gal-ultah-09-m1.jpg" data-bg="gal-ultah-09-m1.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,2)" data-img="gal-ultah-09-m2.jpg" data-bg="gal-ultah-09-m2.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,3)" data-img="gal-ultah-09-3.jpg" data-bg="gal-ultah-09-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,4)" data-img="gal-ultah-09-4.jpg" data-bg="gal-ultah-09-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,5)" data-img="gal-ultah-09-5.jpg" data-bg="gal-ultah-09-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,6)" data-img="gal-ultah-09-6.jpg" data-bg="gal-ultah-09-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,2)" data-img="gal-ultah-09-m2.jpg" data-bg="gal-ultah-09-m2.jpg" style="background-image:url('gal-ultah-09-m2.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,3)" data-img="gal-ultah-09-3.jpg" data-bg="gal-ultah-09-3.jpg" style="background-image:url('gal-ultah-09-3.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,4)" data-img="gal-ultah-09-4.jpg" data-bg="gal-ultah-09-4.jpg" style="background-image:url('gal-ultah-09-4.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,5)" data-img="gal-ultah-09-5.jpg" data-bg="gal-ultah-09-5.jpg" style="background-image:url('gal-ultah-09-5.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,6)" data-img="gal-ultah-09-6.jpg" data-bg="gal-ultah-09-6.jpg" style="background-image:url('gal-ultah-09-6.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
       
   </div>
 </section>
@@ -382,8 +382,8 @@ var bgio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInt
 document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 <audio id="bgmusic" loop preload="none"><source src="audio/ultah.mp3" type="audio/mpeg"></audio>
-<!-- Musik: Merry Go - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<script>else{a.pause();if(b)b.textContent="\u266a";}}</script>
+
+<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(!a)return;if(a.paused){a.play().catch(function(){});if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
 
 
 

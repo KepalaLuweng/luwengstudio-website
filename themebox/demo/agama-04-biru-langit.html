@@ -123,12 +123,12 @@ footer{background:var(--teks);color:#fff;text-align:center;padding:3rem 1.5rem}
   <div class="eyebrow">Galeri</div>
   <h2 class="title">Dokumentasi</h2>
   <div class="gal">
-    <div class="ph" data-bg="gal-agama-04-1.jpg"></div>
-    <div class="ph" data-bg="gal-agama-04-2.jpg"></div>
-    <div class="ph" data-bg="gal-agama-04-3.jpg"></div>
-    <div class="ph" data-bg="gal-agama-04-4.jpg"></div>
-    <div class="ph" data-bg="gal-agama-04-5.jpg"></div>
-    <div class="ph" data-bg="gal-agama-04-6.jpg"></div>
+    <div class="ph" onclick="lb(this)" data-img="gal-agama-04-1.jpg" data-bg="gal-agama-04-1.jpg" style="background-image:url('gal-agama-04-1.jpg')"></div>
+    <div class="ph" onclick="lb(this)" data-img="gal-agama-04-2.jpg" data-bg="gal-agama-04-2.jpg" style="background-image:url('gal-agama-04-2.jpg')"></div>
+    <div class="ph" onclick="lb(this)" data-img="gal-agama-04-3.jpg" data-bg="gal-agama-04-3.jpg" style="background-image:url('gal-agama-04-3.jpg')"></div>
+    <div class="ph" onclick="lb(this)" data-img="gal-agama-04-4.jpg" data-bg="gal-agama-04-4.jpg" style="background-image:url('gal-agama-04-4.jpg')"></div>
+    <div class="ph" onclick="lb(this)" data-img="gal-agama-04-5.jpg" data-bg="gal-agama-04-5.jpg" style="background-image:url('gal-agama-04-5.jpg')"></div>
+    <div class="ph" onclick="lb(this)" data-img="gal-agama-04-6.jpg" data-bg="gal-agama-04-6.jpg" style="background-image:url('gal-agama-04-6.jpg')"></div>
   </div>
 </section>
 <section>
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded',renderWishes);
 </style>
 
 <audio id="bgmusic" loop preload="none"><source src="audio/agama.mp3" type="audio/mpeg"></audio>
-<!-- Musik: Desert City - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
+
 <script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(a.paused){a.play();if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
 <div id="modal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.55);align-items:center;justify-content:center" onclick="this.style.display='none'"><div id="mmsg" style="background:#fff;color:#333;padding:1.6rem 2rem;border-radius:16px;max-width:82%;text-align:center;font-size:.95rem" onclick="event.stopPropagation()"></div></div>
 <script>function showModal(m){document.getElementById("mmsg").textContent=m;document.getElementById("modal").style.display="flex";}</script>

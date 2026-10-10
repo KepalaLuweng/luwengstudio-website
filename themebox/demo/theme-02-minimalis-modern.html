@@ -184,14 +184,14 @@ footer .tag{margin-top:1.4rem;font-size:.58rem;letter-spacing:.25em;color:#c4c4c
   <div class="rule"></div>
   <div class="profiles">
     <div class="pro">
-      <div class="init" data-bg="gal-wed-02-1.jpg" style="background-size:cover;background-position:center 20%;color:transparent">A</div>
+      <div class="init" data-bg="gal-wed-02-1.jpg" style="background-image:url('gal-wed-02-1.jpg');background-size:cover;background-position:center 20%"></div>
       <div class="who">Mempelai Pria</div>
       <h3>Haruto Kanagawa</h3>
       <div class="par">Putra pertama dari<br>Bapak Hiroshi Kanagawa &amp; Ibu Yoko Kanagawa</div>
     </div>
     <div class="div"><span>&amp;</span></div>
     <div class="pro">
-      <div class="init" data-bg="gal-wed-02-2.jpg" style="background-size:cover;background-position:center 20%;color:transparent">S</div>
+      <div class="init" data-bg="gal-wed-02-2.jpg" style="background-image:url('gal-wed-02-2.jpg');background-size:cover;background-position:center 20%"></div>
       <div class="who">Mempelai Wanita</div>
       <h3>Yuna Tachibana</h3>
       <div class="par">Putri kedua dari<br>Bapak Masato Tachibana &amp; Ibu Keiko Tachibana</div>
@@ -264,13 +264,13 @@ footer .tag{margin-top:1.4rem;font-size:.58rem;letter-spacing:.25em;color:#c4c4c
     <div class="rule"></div>
   </div>
   <div class="hscroll">
-    <div class="ph" onclick="lb(this,1)" data-img="gal-wed-02-m1.jpg" data-bg="gal-wed-02-m1.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+    <div class="ph" onclick="lb(this,1)" data-img="gal-wed-02-m1.jpg" data-bg="gal-wed-02-m1.jpg" style="background-image:url('gal-wed-02-m1.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
       
-    <div class="ph" onclick="lb(this,2)" data-img="gal-wed-02-m2.jpg" data-bg="gal-wed-02-m2.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-    <div class="ph" onclick="lb(this,3)" data-img="gal-wed-02-3.jpg" data-bg="gal-wed-02-3.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-    <div class="ph" onclick="lb(this,4)" data-img="gal-wed-02-4.jpg" data-bg="gal-wed-02-4.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-    <div class="ph" onclick="lb(this,5)" data-img="gal-wed-02-5.jpg" data-bg="gal-wed-02-5.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
-      <div class="ph" onclick="lb(this,6)" data-img="gal-wed-02-6.jpg" data-bg="gal-wed-02-6.jpg" style="background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+    <div class="ph" onclick="lb(this,2)" data-img="gal-wed-02-m2.jpg" data-bg="gal-wed-02-m2.jpg" style="background-image:url('gal-wed-02-m2.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+    <div class="ph" onclick="lb(this,3)" data-img="gal-wed-02-3.jpg" data-bg="gal-wed-02-3.jpg" style="background-image:url('gal-wed-02-3.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+    <div class="ph" onclick="lb(this,4)" data-img="gal-wed-02-4.jpg" data-bg="gal-wed-02-4.jpg" style="background-image:url('gal-wed-02-4.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+    <div class="ph" onclick="lb(this,5)" data-img="gal-wed-02-5.jpg" data-bg="gal-wed-02-5.jpg" style="background-image:url('gal-wed-02-5.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
+      <div class="ph" onclick="lb(this,6)" data-img="gal-wed-02-6.jpg" data-bg="gal-wed-02-6.jpg" style="background-image:url('gal-wed-02-6.jpg');background-size:cover;background-position:center;background-color:#f0e8e0"></div>
   </div>
   <div class="hint">Geser untuk melihat · ketuk untuk memperbesar</div>
 </section>
@@ -462,7 +462,7 @@ var bgio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isInt
 document.querySelectorAll('[data-bg]').forEach(function(el){bgio.observe(el);});
 </script>
 <audio id="bgmusic" loop preload="none"><source src="audio/wedding.mp3" type="audio/mpeg"></audio>
-<!-- Musik: Meditation Impromptu 01 - Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<script>else{a.pause();if(b)b.textContent="\u266a";}}</script>
+
+<script>function toggleMusic(){var a=document.getElementById("bgmusic");var b=document.getElementById("music");if(!a)return;if(a.paused){a.play().catch(function(){});if(b)b.textContent="\u266b";}else{a.pause();if(b)b.textContent="\u266a";}}</script>
 </body>
 </html>
