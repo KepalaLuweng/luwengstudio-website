@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pantauan Tamu &amp; Doa — ThemeBox | LuwengStudio</title>
+<link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#b8860b;--bg:#f8fafc;--surface:#ffffff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--success:#10b981;--danger:#ef4444}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{max-width:680px;margin:0 auto;padding:2rem 1rem}
+.header{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.8rem;box-shadow:0 4px 20px rgba(0,0,0,0.03);margin-bottom:1.5rem}
+.top-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.badge-code{background:#f1f5f9;color:#334155;font-weight:700;font-size:.82rem;padding:.3rem .8rem;border-radius:50px;letter-spacing:1px}
+.badge-live{display:inline-flex;align-items:center;gap:.4rem;background:#ecfdf5;color:var(--success);font-size:.78rem;font-weight:700;padding:.3rem .8rem;border-radius:50px}
+.badge-live i{width:7px;height:7px;background:var(--success);border-radius:50%;display:inline-block;animation:pulse 1.5s infinite}
+@keyframes pulse{0%{opacity:1}50%{opacity:.3}100%{opacity:1}}
+.title{font-size:1.6rem;font-weight:800;color:var(--text);margin-bottom:.3rem}
+.subtitle{font-size:.9rem;color:var(--muted)}
+.share-box{background:#f8fafc;border:1px dashed var(--border);border-radius:14px;padding:1.2rem;margin-top:1.4rem}
+.share-label{font-size:.8rem;font-weight:700;color:#475569;margin-bottom:.5rem;display:block}
+.share-input-row{display:flex;gap:.5rem}
+.share-input{flex:1;background:#fff;border:1px solid var(--border);border-radius:10px;padding:.6rem .8rem;font-size:.82rem;color:var(--muted);outline:none}
+.btn-copy{background:#0f172a;color:#fff;border:none;border-radius:10px;padding:.6rem 1.2rem;font-size:.82rem;font-weight:600;cursor:pointer}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.4rem 1rem;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.02)}
+.stat-num{font-size:2rem;font-weight:800;color:var(--text);margin-bottom:.2rem}
+.stat-card.c-hadir .stat-num{color:var(--success)}
+.stat-card.c-absen .stat-num{color:var(--danger)}
+.stat-label{font-size:.75rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
+.feed-sec{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:1.8rem;box-shadow:0 4px 20px rgba(0,0,0,0.03)}
+.feed-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;gap:.8rem}
+.feed-title{font-size:1.15rem;font-weight:800;color:var(--text)}
+.filter-tabs{display:flex;gap:.4rem}
+.tab-btn{background:#f1f5f9;border:none;border-radius:8px;padding:.35rem .8rem;font-size:.78rem;font-weight:600;color:var(--muted);cursor:pointer}
+.tab-btn.active{background:#0f172a;color:#fff}
+.wishes-list{display:flex;flex-direction:column;gap:.9rem}
+.wish-item{background:#f8fafc;border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.3rem}
+.wish-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem}
+.wish-name{font-weight:700;font-size:.95rem;color:var(--text)}
+.wish-status{font-size:.72rem;padding:.2rem .6rem;border-radius:50px;font-weight:700}
+.wish-status.hadir{background:#d1fae5;color:#065f46}
+.wish-status.absen{background:#fee2e2;color:#991b1b}
+.wish-content{font-size:.9rem;color:#334155;line-height:1.5}
+.loading-box{text-align:center;padding:4rem 1rem}
+.spinner{width:36px;height:36px;border:3px solid #e2e8f0;border-top-color:#0f172a;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1rem}
+@keyframes spin{100%{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div id="loading" class="loading-box">
+    <div class="spinner"></div>
+    <p style="color:var(--muted);font-size:.9rem">Memuat dashboard pantauan...</p>
+  </div>
+
+  <div id="dashboard" style="display:none">
+    <div class="header">
+      <div class="top-meta">
+        <span class="badge-code" id="order-code-badge">TB-XXXXX</span>
+        <span class="badge-live"><i></i> LIVE REALTIME</span>
+      </div>
+      <h1 class="title" id="event-title">Nama Acara</h1>
+      <p class="subtitle" id="event-sub">Pantau kehadiran tamu dan ucapan doa secara langsung.</p>
+
+      <div class="share-box">
+        <span class="share-label">Link Undangan Anda (Sebar ke Tamu):</span>
+        <div class="share-input-row">
+          <input type="text" class="share-input" id="invite-link-val" readonly>
+          <button class="btn-copy" onclick="copyInviteLink()">Salin Link</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-total">0</div>
+        <div class="stat-label">Total Doa</div>
+      </div>
+      <div class="stat-card c-hadir">
+        <div class="stat-num" id="stat-hadir">0</div>
+        <div class="stat-label">Pasti Hadir</div>
+      </div>
+      <div class="stat-card c-absen">
+        <div class="stat-num" id="stat-absen">0</div>
+        <div class="stat-label">Berhalangan</div>
+      </div>
+    </div>
+
+    <div class="feed-sec">
+      <div class="feed-header">
+        <h2 class="feed-title">Daftar Tamu &amp; Doa Restu</h2>
+        <div class="filter-tabs">
+          <button class="tab-btn active" data-filter="all" onclick="filterWishes('all')">Semua</button>
+          <button class="tab-btn" data-filter="hadir" onclick="filterWishes('Hadir')">Hadir Saja</button>
+          <button class="tab-btn" data-filter="absen" onclick="filterWishes('Berhalangan')">Berhalangan</button>
+        </div>
+      </div>
+
+      <div class="wishes-list" id="wishes-container">
+        <p style="text-align:center;color:var(--muted);font-size:.85rem;padding:2rem 0">Belum ada tamu yang mengirimkan doa.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script>
+let currentOrderCode = "";
+let allWishes = [];
+let currentFilter = "all";
+
+function getQuery(param) {
+  return new URLSearchParams(window.location.search).get(param) || "";
+}
+
+function copyInviteLink() {
+  const el = document.getElementById("invite-link-val");
+  navigator.clipboard.writeText(el.value);
+  alert("Link undangan berhasil disalin! Silakan kirimkan ke tamu Anda.");
+}
+
+function filterWishes(type) {
+  currentFilter = type;
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.getAttribute("data-filter") === type || (type === "all" && btn.getAttribute("data-filter") === "all"));
+  });
+  renderWishes();
+}
+
+function renderWishes() {
+  const container = document.getElementById("wishes-container");
+  const filtered = currentFilter === "all" ? allWishes : allWishes.filter(w => (w.kehadiran || "Hadir") === currentFilter);
+  if (!filtered.length) {
+    container.innerHTML = `<p style="text-align:center;color:var(--muted);font-size:.85rem;padding:2rem 0">Tidak ada ucapan pada kategori ini.</p>`;
+    return;
+  }
+  container.innerHTML = filtered.map(w => {
+    const isHadir = (w.kehadiran || "Hadir") === "Hadir";
+    return `
+      <div class="wish-item">
+        <div class="wish-top">
+          <span class="wish-name">${escapeHtml(w.nama || "Tamu")}</span>
+          <span class="wish-status ${isHadir ? 'hadir' : 'absen'}">${escapeHtml(w.kehadiran || "Hadir")}</span>
+        </div>
+        <div class="wish-content">${escapeHtml(w.ucapan || "")}</div>
+      </div>`;
+  }).join("");
+}
+
+function updateStats() {
+  let hadir = 0;
+  let absen = 0;
+  allWishes.forEach(w => {
+    if ((w.kehadiran || "Hadir") === "Hadir") hadir++;
+    else absen++;
+  });
+  document.getElementById("stat-total").textContent = allWishes.length;
+  document.getElementById("stat-hadir").textContent = hadir;
+  document.getElementById("stat-absen").textContent = absen;
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  currentOrderCode = getQuery("code") || getQuery("id") || "";
+  if (!currentOrderCode) {
+    document.getElementById("loading").innerHTML = `<p style="color:var(--danger)">Kode pesanan tidak ditemukan di link.</p>`;
+    return;
+  }
+  try {
+    const order = await fetchOrder(currentOrderCode);
+    if (!order) {
+      document.getElementById("loading").innerHTML = `<p style="color:var(--danger)">Pesanan ${escapeHtml(currentOrderCode)} tidak ditemukan.</p>`;
+      return;
+    }
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+
+    document.getElementById("order-code-badge").textContent = order.code;
+    document.getElementById("event-title").textContent = order.namaAcara || "Acara Bahagia";
+
+    const baseOrigin = window.location.origin;
+    const inviteUrl = `${baseOrigin}/themebox/undangan/?code=${order.code}`;
+    document.getElementById("invite-link-val").value = inviteUrl;
+
+    listenWishes(currentOrderCode, (list) => {
+      allWishes = list || [];
+      updateStats();
+      renderWishes();
+    });
+  } catch (err) {
+    document.getElementById("loading").innerHTML = `<p style="color:var(--danger)">Gagal memuat: ${err.message}</p>`;
+  }
+});
+</script>
+</body>
+</html>

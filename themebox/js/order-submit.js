@@ -17,12 +17,54 @@ function fileOf(id) {
   return el && el.files.length ? el.files[0] : null;
 }
 
+function compressImage(file, maxDim = 900, quality = 0.75) {
+  return new Promise((resolve) => {
+    if (!file) return resolve("");
+    const reader = new FileReader();
+    reader.onerror = () => resolve("");
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onerror = () => resolve("");
+      img.onload = () => {
+        let w = img.width;
+        let h = img.height;
+        if (w > maxDim || h > maxDim) {
+          if (w > h) {
+            h = Math.round((h * maxDim) / w);
+            w = maxDim;
+          } else {
+            w = Math.round((w * maxDim) / h);
+            h = maxDim;
+          }
+        }
+        const canvas = document.createElement("canvas");
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, w, h);
+        let dataUrl = canvas.toDataURL("image/webp", quality);
+        if (!dataUrl || dataUrl.indexOf("data:image/webp") !== 0) {
+          dataUrl = canvas.toDataURL("image/jpeg", quality);
+        }
+        resolve(dataUrl);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
 function collectOrder() {
   const methodLabels = { bank: "Rekening Bank", ewallet: "E-Wallet", qris: "QRIS" };
   const method = val("amplop-method");
+  const rawLink = val("link-name");
+  const catSlug = (ORDER_CAT || "acara").toLowerCase().replace(/\s+/g, "");
+  const slug = typeof cleanSlug === "function" ? cleanSlug(rawLink) : rawLink.toLowerCase().replace(/[^a-z0-9]+/g, "-");
   return {
     code: genOrderCode(),
     kategori: ORDER_CAT,
+    catSlug: catSlug,
+    slug: slug,
     temaNama: ORDER_THEME ? ORDER_THEME.name : "",
     temaFile: ORDER_THEME ? ORDER_THEME.file : "",
     harga: ORDER_THEME ? ORDER_THEME.price : 0,
@@ -41,39 +83,33 @@ function collectOrder() {
     dressCode: val("dress-code"),
     liveStream: val("live-stream"),
     catatan: val("order-notes"),
-    fotoPria: "",
-    fotoWanita: "",
-    fotoUtama: "",
-    fotoGallery: "",
-    fotoQris: "",
+    galCount: galleryFiles.length,
     status: "baru",
     source: "web",
     createdAt: new Date().toISOString()
   };
 }
 
-async function uploadOrderPhotos(order) {
-  if (!storageReady()) return;
-  const code = order.code;
-  const put = async (field, file, idx) => {
-    if (!file) return "";
-    try { return await uploadPhoto(code, field, file, idx); }
-    catch (e) { console.warn("Upload gagal:", field, e.message); return ""; }
-  };
+async function processOrderPhotos(order) {
+  const photos = {};
   if (IS_WEDDING) {
-    order.fotoPria = await put("fotoPria", fileOf("foto-pria"));
-    order.fotoWanita = await put("fotoWanita", fileOf("foto-wanita"));
+    const pria = await compressImage(fileOf("foto-pria"));
+    if (pria) photos.fotoPria = pria;
+    const wanita = await compressImage(fileOf("foto-wanita"));
+    if (wanita) photos.fotoWanita = wanita;
   } else {
-    order.fotoUtama = await put("fotoUtama", fileOf("foto-utama"));
+    const utama = await compressImage(fileOf("foto-utama"));
+    if (utama) photos.fotoUtama = utama;
   }
   if (val("amplop-method") === "qris") {
-    order.fotoQris = await put("fotoQris", fileOf("foto-qris"));
+    const qris = await compressImage(fileOf("foto-qris"));
+    if (qris) photos.fotoQris = qris;
   }
-  const galUrls = [];
   for (let i = 0; i < galleryFiles.length; i++) {
-    galUrls.push(await put("fotoGallery", galleryFiles[i], i));
+    const gal = await compressImage(galleryFiles[i]);
+    if (gal) photos["gal_" + i] = gal;
   }
-  order.fotoGallery = galUrls.filter(Boolean).join(",");
+  await saveOrderPhotos(order.code, photos);
 }
 
 function openWA(order) {
@@ -88,21 +124,18 @@ function openWA(order) {
     `Tanggal: ${order.tanggalAcara} ${order.waktuAcara}`,
     `Tempat: ${order.tempat}`,
     "",
-    "Bukti pembayaran & foto terlampir."
+    "Bukti pembayaran & detail terlampir di sistem."
   ];
   window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank");
 }
 
-function showSuccess(order, photosSent) {
-  const note = photosSent
-    ? "Foto berhasil diupload. Silakan lanjutkan kirim bukti pembayaran via WhatsApp yang sudah terbuka."
-    : "Firebase belum dikonfigurasi — silakan kirim SEMUA foto via WhatsApp yang sudah terbuka.";
+function showSuccess(order) {
   document.getElementById("form-order").innerHTML = `
     <div class="success-card">
       <div class="ok-ring">✓</div>
       <h2>Order Diterima!</h2>
       <div class="code">${order.code}</div>
-      <p>Simpan kode order di atas.<br>${note}</p>
+      <p>Data dan foto pesanan Anda telah tersimpan rapi.<br>Silakan lanjutkan konfirmasi pembayaran via WhatsApp yang sudah terbuka.</p>
       <a class="btn btn-dark" href="../">Kembali ke Katalog</a>
     </div>`;
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -110,26 +143,24 @@ function showSuccess(order, photosSent) {
 
 async function submitOrder() {
   if (!validateOrderForm()) return;
-  if (typeof validateGallery === 'function' && !validateGallery()) return;
+  if (typeof validateGallery === "function" && !validateGallery()) return;
   const btn = document.getElementById("btn-submit");
   btn.disabled = true;
-  btn.textContent = "Mengirim order...";
+  btn.textContent = "Mengompres foto...";
   const order = collectOrder();
-  let photosSent = false;
   try {
     await ensureAuth();
-    if (storageReady()) {
-      btn.textContent = "Mengupload foto...";
-      await uploadOrderPhotos(order);
-      photosSent = true;
-    }
+    btn.textContent = "Menyimpan data pesanan...";
     await saveOrder(order);
+    btn.textContent = "Menyimpan foto...";
+    await processOrderPhotos(order);
   } catch (e) {
+    console.warn("Simpan error:", e);
     btn.disabled = false;
     btn.textContent = "Kirim Order via WhatsApp";
-    alert("Gagal menyimpan order: " + e.message + "\n\nSilakan coba lagi.");
+    alert("Gagal menyimpan data: " + e.message + "\n\nPastikan koneksi internet aktif lalu coba lagi.");
     return;
   }
   openWA(order);
-  showSuccess(order, photosSent);
+  showSuccess(order);
 }

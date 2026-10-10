@@ -8,14 +8,16 @@ const EVENT_NAME_LABEL = {
   Khitanan: ["Nama anak", "cth: Muhammad Rizky"],
   Aqiqah: ["Nama bayi", "cth: Aisyah Humaira"],
   Ultah: ["Nama yang berulang tahun", "cth: Budi Santoso"],
-  Wisuda: ["Nama wisudawan", "cth: Dewi Lestari, S.Kom"]
+  Wisuda: ["Nama wisudawan", "cth: Dewi Lestari, S.Kom"],
+  Keagamaan: ["Nama acara / majelis", "cth: Pengajian Akbar Maulid Nabi"]
 };
 
 const FOTO_UTAMA_LABEL = {
   Khitanan: "Foto anak",
   Aqiqah: "Foto bayi",
   Ultah: "Foto yang berulang tahun",
-  Wisuda: "Foto wisudawan"
+  Wisuda: "Foto wisudawan",
+  Keagamaan: "Foto pamflet / penceramah"
 };
 
 function setInvalid(inputId, invalid) {
@@ -50,19 +52,10 @@ function setupPhotoBox(boxId, inputId, onPick) {
 }
 
 
-function validateGallery(){
-  var n = galleryFiles.length;
-  var errEl = document.querySelector('#box-foto-gallery + .err-msg, #gallery-thumbs + .err-msg');
-  if(n < 6){
-    alert('Foto galeri minimal 6 foto (saat ini '+n+').');
-    return false;
-  }
-  if(n > 10){
-    alert('Foto galeri maksimal 10 foto (saat ini '+n+').');
-    return false;
-  }
-  if(n % 2 !== 0){
-    alert('Jumlah foto galeri harus genap agar layout rapi (saat ini '+n+'). Tambah atau kurangi 1 foto.');
+function validateGallery() {
+  const n = galleryFiles.length;
+  if (n > 10) {
+    alert("Foto galeri maksimal 10 foto.");
     return false;
   }
   return true;

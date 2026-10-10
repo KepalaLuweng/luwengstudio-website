@@ -8,66 +8,147 @@ const firebaseConfig = {
 };
 
 let db = null;
-let storage = null;
 
 function firebaseReady() {
-  return firebaseConfig.apiKey !== "PASTE_DARI_CONSOLE";
+  return typeof firebase !== "undefined" && firebase.apps.length > 0;
 }
 
 function initFirebase() {
-  if (!firebaseReady()) {
-    console.warn("Firebase belum dikonfigurasi.");
-    return;
+  if (typeof firebase === "undefined") return;
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
   }
-  firebase.initializeApp(firebaseConfig);
   db = firebase.firestore();
-  try { storage = firebase.storage(); } catch (e) { storage = null; }
 }
 
 initFirebase();
 
-function storageReady() {
-  return !!storage;
-}
-
 async function ensureAuth() {
+  if (typeof firebase === "undefined") return;
   const auth = firebase.auth();
-  if (auth.currentUser) return;
-  await auth.signInAnonymously();
+  if (auth.currentUser) return auth.currentUser;
+  const cred = await auth.signInAnonymously();
+  return cred.user;
 }
 
-async function uploadPhoto(code, field, file, idx) {
-  if (!storage) throw new Error("Storage tidak aktif");
-  const name = idx != null ? `${field}_${idx}.jpg` : `${field}.jpg`;
-  const ref = storage.ref().child(`orders/${code}/${name}`);
-  await ref.put(file, { contentType: file.type || "image/jpeg" });
-  return ref.getDownloadURL();
+function cleanSlug(str) {
+  return (str || "")
+    .toLowerCase()
+    .trim()
+    .replace(/&/g, "dan")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 async function saveOrder(order) {
-  if (!db) throw new Error("Firebase tidak aktif");
+  if (!db) initFirebase();
+  if (!db) throw new Error("Database belum siap");
   await db.collection("orders").doc(order.code).set(order);
+  if (order.slug && order.catSlug) {
+    const slugId = order.catSlug + "_" + order.slug;
+    await db.collection("slugs").doc(slugId).set({
+      code: order.code,
+      cat: order.catSlug,
+      slug: order.slug
+    });
+  }
+}
+
+async function saveOrderPhotos(code, photos) {
+  if (!db) initFirebase();
+  if (!db) throw new Error("Database belum siap");
+  const batch = db.batch();
+  const col = db.collection("orders").doc(code).collection("photos");
+  for (const key of Object.keys(photos)) {
+    if (photos[key]) {
+      const docRef = col.doc(key);
+      batch.set(docRef, { key: key, data: photos[key] });
+    }
+  }
+  await batch.commit();
+}
+
+async function fetchOrder(code) {
+  if (!db) initFirebase();
+  if (!db) throw new Error("Database belum siap");
+  const doc = await db.collection("orders").doc(code).get();
+  return doc.exists ? doc.data() : null;
+}
+
+async function fetchOrderBySlug(catSlug, slug) {
+  if (!db) initFirebase();
+  if (!db) throw new Error("Database belum siap");
+  const slugId = catSlug + "_" + slug;
+  const sDoc = await db.collection("slugs").doc(slugId).get();
+  if (sDoc.exists) {
+    return fetchOrder(sDoc.data().code);
+  }
+  const snap = await db.collection("orders").where("slug", "==", slug).limit(1).get();
+  if (!snap.empty) {
+    return snap.docs[0].data();
+  }
+  return null;
+}
+
+async function fetchOrderPhotos(code) {
+  if (!db) initFirebase();
+  if (!db) throw new Error("Database belum siap");
+  const snap = await db.collection("orders").doc(code).collection("photos").get();
+  const photos = {};
+  snap.forEach(doc => {
+    photos[doc.id] = doc.data().data;
+  });
+  return photos;
 }
 
 async function fetchOrders() {
-  if (!db) throw new Error("Firebase tidak aktif");
+  if (!db) initFirebase();
+  if (!db) throw new Error("Database belum siap");
   const snap = await db.collection("orders").orderBy("createdAt", "desc").get();
   return snap.docs.map(d => d.data());
 }
 
 async function updateOrderStatus(code, status) {
-  if (!db) throw new Error("Firebase tidak aktif");
-  await db.collection("orders").doc(code).update({ status });
+  if (!db) initFirebase();
+  if (!db) throw new Error("Database belum siap");
+  await db.collection("orders").doc(code).update({ status: status });
 }
 
 async function deleteOrder(code) {
-  if (!db) throw new Error("Firebase tidak aktif");
+  if (!db) initFirebase();
+  if (!db) throw new Error("Database belum siap");
   await db.collection("orders").doc(code).delete();
 }
 
-/* ============ GUESTBOOK REAL-TIME ============ */
+function wishesRef(orderCode) {
+  if (!db) initFirebase();
+  if (!db) throw new Error("Database belum siap");
+  return db.collection("orders").doc(orderCode).collection("wishes");
+}
+
+async function sendWish(orderCode, nama, ucapan, kehadiran) {
+  const ref = wishesRef(orderCode);
+  await ref.add({
+    nama: nama,
+    ucapan: ucapan,
+    kehadiran: kehadiran || "Hadir",
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  });
+}
+
+function listenWishes(orderCode, callback) {
+  const ref = wishesRef(orderCode);
+  return ref.orderBy("createdAt", "desc").limit(100).onSnapshot(snap => {
+    const list = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    callback(list);
+  }, err => {
+    console.warn("Snapshot error:", err);
+  });
+}
+
 function guestbookRef(themeFile) {
-  if (!db) throw new Error("Firebase tidak aktif");
+  if (!db) initFirebase();
+  if (!db) throw new Error("Database belum siap");
   return db.collection("guestbook").doc(themeFile).collection("messages");
 }
 
@@ -83,21 +164,10 @@ async function kirimUcapanFB(themeFile, nama, ucapan, kehadiran) {
 
 function listenUcapan(themeFile, callback) {
   const ref = guestbookRef(themeFile);
-  // Opsi B: hanya tampilkan ucapan 30 hari terakhir
-  const cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() - 30);
-  return ref.where("createdAt", ">", cutoff).orderBy("createdAt", "desc").limit(50).onSnapshot(snap => {
+  return ref.orderBy("createdAt", "desc").limit(50).onSnapshot(snap => {
     const list = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     callback(list);
   }, err => {
-    // Fallback jika index belum ada: ambil semua lalu filter di client
-    ref.orderBy("createdAt", "desc").limit(50).onSnapshot(snap2 => {
-      const list = snap2.docs.map(d => ({ id: d.id, ...d.data() })).filter(w => {
-        if (!w.createdAt) return true;
-        const t = w.createdAt.toDate ? w.createdAt.toDate() : new Date(w.createdAt);
-        return (Date.now() - t.getTime()) < 30 * 24 * 60 * 60 * 1000;
-      });
-      callback(list);
-    });
+    console.warn("Ucapan error:", err);
   });
 }

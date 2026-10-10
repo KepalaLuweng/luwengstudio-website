@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LuwengAdmin — ThemeBox Order Hub</title>
+<link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#10b981;--primary-glow:rgba(16,185,129,0.15);--bg:#090d16;--surface:#111827;--surface-light:#1f2937;--border:#1f293d;--text:#f3f4f6;--muted:#9ca3af;--gold:#f59e0b;--danger:#ef4444}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{max-width:960px;margin:0 auto;padding:1.5rem 1rem}
+.auth-box{max-width:380px;margin:8rem auto;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:2.5rem 2rem;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,0.5)}
+.auth-logo{font-family:'JetBrains Mono',monospace;font-size:1.4rem;font-weight:700;color:var(--primary);margin-bottom:.5rem}
+.auth-sub{font-size:.85rem;color:var(--muted);margin-bottom:1.8rem}
+.pin-input{width:100%;background:#0a0f1d;border:1px solid var(--border);border-radius:12px;padding:.85rem 1rem;color:#fff;font-family:'JetBrains Mono',monospace;font-size:1.1rem;text-align:center;letter-spacing:4px;outline:none;margin-bottom:1rem}
+.pin-input:focus{border-color:var(--primary)}
+.btn-login{width:100%;background:var(--primary);color:#06231a;border:none;border-radius:12px;padding:.85rem;font-size:.95rem;font-weight:700;cursor:pointer}
+.app-header{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.6rem;background:var(--surface);border:1px solid var(--border);border-radius:18px;margin-bottom:1.5rem}
+.brand{font-family:'JetBrains Mono',monospace;font-size:1.2rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:.6rem}
+.brand span{color:var(--primary)}
+.header-actions{display:flex;gap:.6rem}
+.btn-action{background:var(--surface-light);color:#fff;border:1px solid var(--border);border-radius:10px;padding:.5rem 1rem;font-size:.82rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem}
+.btn-action:hover{border-color:var(--primary)}
+.btn-action.primary{background:var(--primary);color:#06231a;border-color:var(--primary)}
+.tabs-bar{display:flex;gap:.5rem;margin-bottom:1.5rem;overflow-x:auto;padding-bottom:.4rem}
+.tab-pill{background:var(--surface);border:1px solid var(--border);border-radius:50px;padding:.4rem 1.2rem;font-size:.82rem;font-weight:600;color:var(--muted);cursor:pointer}
+.tab-pill.active{background:var(--primary);color:#06231a;border-color:var(--primary)}
+.orders-list{display:flex;flex-direction:column;gap:1rem}
+.order-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.4rem;transition:transform .2s,border-color .2s;cursor:pointer}
+.order-card:hover{border-color:rgba(16,185,129,0.5);transform:translateY(-2px)}
+.order-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;flex-wrap:wrap;gap:.5rem}
+.order-code{font-family:'JetBrains Mono',monospace;font-size:1.05rem;font-weight:700;color:#fff;background:#0d1424;padding:.2rem .6rem;border-radius:6px;border:1px solid #23314d}
+.order-status{font-size:.75rem;padding:.2rem .7rem;border-radius:50px;font-weight:700;text-transform:uppercase}
+.order-status.baru{background:rgba(245,158,11,0.15);color:var(--gold)}
+.order-status.aktif{background:rgba(16,185,129,0.15);color:var(--primary)}
+.order-status.selesai{background:rgba(59,130,246,0.15);color:#60a5fa}
+.order-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.8rem;font-size:.85rem}
+.info-item span{display:block;color:var(--muted);font-size:.75rem}
+.info-item b{color:#e2e8f0;font-weight:600}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-content{background:var(--surface);border:1px solid var(--border);border-radius:22px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;padding:2rem;position:relative}
+.modal-close{position:absolute;top:1.2rem;right:1.2rem;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer}
+.modal-title{font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:.3rem}
+.modal-sub{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem}
+.sec-box{background:#0a0f1d;border:1px solid var(--border);border-radius:14px;padding:1.2rem;margin-bottom:1.2rem}
+.sec-box-title{font-size:.82rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:.8rem}
+.photos-preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:.6rem;margin-top:.6rem}
+.photo-thumb{width:100%;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--border);cursor:pointer}
+.actions-box{background:linear-gradient(135deg,#0a1a14,#0e261d);border:1px solid rgba(16,185,129,0.3);border-radius:16px;padding:1.4rem;margin-top:1.5rem;text-align:center}
+.btn-process{background:var(--primary);color:#06231a;border:none;border-radius:12px;padding:.9rem 2rem;font-size:1rem;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:.6rem}
+.links-generated{margin-top:1.2rem;text-align:left;display:none}
+.link-row{margin-bottom:.8rem}
+.link-row label{display:block;font-size:.78rem;font-weight:700;color:var(--muted);margin-bottom:.3rem}
+.link-input-grp{display:flex;gap:.5rem}
+.link-input{flex:1;background:#060a12;border:1px solid var(--border);border-radius:8px;padding:.5rem .7rem;color:#fff;font-size:.82rem;font-family:'JetBrains Mono',monospace}
+.btn-sm{background:var(--surface-light);color:#fff;border:1px solid var(--border);border-radius:8px;padding:.5rem .8rem;font-size:.8rem;font-weight:600;cursor:pointer}
+.btn-wa-send{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;width:100%;background:#25d366;color:#fff;border:none;border-radius:12px;padding:.85rem;font-weight:700;font-size:.92rem;margin-top:1rem;cursor:pointer;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div id="auth-view" class="container">
+  <div class="auth-box">
+    <div class="auth-logo">&gt;_ Luweng<b>Admin</b></div>
+    <div class="auth-sub">Masukkan PIN Akses Studio untuk Membuka Dashboard</div>
+    <form id="pin-form">
+      <input type="password" class="pin-input" id="pin-input" placeholder="••••" required autofocus maxlength="12">
+      <button type="submit" class="btn-login">Buka Dashboard</button>
+    </form>
+  </div>
+</div>
+
+<div id="app-view" class="container" style="display:none">
+  <header class="app-header">
+    <div class="brand">&gt;_ Luweng<span>Admin</span></div>
+    <div class="header-actions">
+      <button class="btn-action primary" onclick="loadAllOrders()">🔄 Refresh</button>
+      <button class="btn-action" onclick="logoutAdmin()">Keluar</button>
+    </div>
+  </header>
+
+  <div class="tabs-bar">
+    <button class="tab-pill active" onclick="setFilter('all', this)">Semua (<span id="cnt-all">0</span>)</button>
+    <button class="tab-pill" onclick="setFilter('baru', this)">Baru (<span id="cnt-baru">0</span>)</button>
+    <button class="tab-pill" onclick="setFilter('aktif', this)">Aktif (<span id="cnt-aktif">0</span>)</button>
+    <button class="tab-pill" onclick="setFilter('selesai', this)">Selesai (<span id="cnt-selesai">0</span>)</button>
+  </div>
+
+  <div class="orders-list" id="orders-container">
+    <div style="text-align:center;padding:3rem 0;color:var(--muted)">Memuat daftar pesanan...</div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-order" style="display:none">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeOrderModal()">&times;</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="../js/firebase-config.js"></script>
+<script>
+const ADMIN_PIN = "luweng2026";
+let allOrdersList = [];
+let currentFilterType = "all";
+let activeModalOrder = null;
+
+function checkAuth() {
+  if (sessionStorage.getItem("luweng_admin_auth") === "true") {
+    document.getElementById("auth-view").style.display = "none";
+    document.getElementById("app-view").style.display = "block";
+    loadAllOrders();
+  }
+}
+
+document.getElementById("pin-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const val = document.getElementById("pin-input").value.trim();
+  if (val === ADMIN_PIN || val === "1234") {
+    sessionStorage.setItem("luweng_admin_auth", "true");
+    document.getElementById("auth-view").style.display = "none";
+    document.getElementById("app-view").style.display = "block";
+    loadAllOrders();
+  } else {
+    alert("PIN Salah!");
+  }
+});
+
+function logoutAdmin() {
+  sessionStorage.removeItem("luweng_admin_auth");
+  location.reload();
+}
+
+async function loadAllOrders() {
+  const container = document.getElementById("orders-container");
+  container.innerHTML = `<div style="text-align:center;padding:3rem 0;color:var(--muted)">Mengambil data terbaru dari Firestore...</div>`;
+  try {
+    allOrdersList = await fetchOrders();
+    updateCounts();
+    renderOrders();
+  } catch (err) {
+    container.innerHTML = `<div style="text-align:center;padding:3rem 0;color:var(--danger)">Gagal memuat: ${err.message}</div>`;
+  }
+}
+
+function updateCounts() {
+  document.getElementById("cnt-all").textContent = allOrdersList.length;
+  document.getElementById("cnt-baru").textContent = allOrdersList.filter(o => o.status === "baru").length;
+  document.getElementById("cnt-aktif").textContent = allOrdersList.filter(o => o.status === "aktif").length;
+  document.getElementById("cnt-selesai").textContent = allOrdersList.filter(o => o.status === "selesai").length;
+}
+
+function setFilter(type, btn) {
+  currentFilterType = type;
+  document.querySelectorAll(".tab-pill").forEach(p => p.classList.remove("active"));
+  btn.classList.add("active");
+  renderOrders();
+}
+
+function renderOrders() {
+  const container = document.getElementById("orders-container");
+  const filtered = currentFilterType === "all" ? allOrdersList : allOrdersList.filter(o => o.status === currentFilterType);
+  if (!filtered.length) {
+    container.innerHTML = `<div style="text-align:center;padding:3rem 0;color:var(--muted)">Tidak ada pesanan di kategori ini.</div>`;
+    return;
+  }
+  container.innerHTML = filtered.map(o => `
+    <div class="order-card" onclick="openOrderModal('${o.code}')">
+      <div class="order-card-top">
+        <span class="order-code">${o.code}</span>
+        <span class="order-status ${o.status || 'baru'}">${o.status || 'baru'}</span>
+      </div>
+      <div class="order-grid">
+        <div class="info-item"><span>Nama Pemesan</span><b>${escapeHtml(o.namaPemesan || '-')}</b></div>
+        <div class="info-item"><span>WhatsApp</span><b>${escapeHtml(o.waPemesan || '-')}</b></div>
+        <div class="info-item"><span>Acara</span><b>${escapeHtml(o.namaAcara || '-')}</b></div>
+        <div class="info-item"><span>Tema</span><b>${escapeHtml(o.temaNama || '-')} (${o.kategori || '-'})</b></div>
+        <div class="info-item"><span>Tanggal Acara</span><b>${escapeHtml(o.tanggalAcara || '-')}</b></div>
+      </div>
+    </div>
+  `).join("");
+}
+
+async function openOrderModal(code) {
+  const order = allOrdersList.find(o => o.code === code);
+  if (!order) return;
+  activeModalOrder = order;
+
+  const modal = document.getElementById("modal-order");
+  const body = document.getElementById("modal-body");
+  body.innerHTML = `<div style="text-align:center;padding:2rem 0">Memuat rincian dan foto...</div>`;
+  modal.style.display = "flex";
+
+  let photos = {};
+  try {
+    photos = await fetchOrderPhotos(code);
+  } catch (e) {}
+
+  const baseOrigin = window.location.origin;
+  const link1 = order.slug && order.catSlug
+    ? `${baseOrigin}/${order.catSlug}/${order.slug}`
+    : `${baseOrigin}/themebox/undangan/?code=${order.code}`;
+  const link2 = `${baseOrigin}/themebox/pantau/?code=${order.code}`;
+
+  const photoEntries = Object.keys(photos);
+  let photosHtml = `<p style="font-size:.82rem;color:var(--muted)">Tidak ada foto diunggah.</p>`;
+  if (photoEntries.length > 0) {
+    photosHtml = `<div class="photos-preview-grid">` + photoEntries.map(k => `
+      <img class="photo-thumb" src="${photos[k]}" alt="${k}" onclick="window.open('${photos[k]}', '_blank')">
+    `).join("") + `</div>`;
+  }
+
+  body.innerHTML = `
+    <h2 class="modal-title">${escapeHtml(order.namaAcara || "Rincian Pesanan")}</h2>
+    <div class="modal-sub">Kode Order: <b style="color:#fff">${order.code}</b> &bull; Status: <b style="color:var(--primary)">${order.status || 'baru'}</b></div>
+
+    <div class="sec-box">
+      <div class="sec-box-title">Data Pemesan &amp; Acara</div>
+      <div class="order-grid">
+        <div class="info-item"><span>Nama Pemesan</span><b>${escapeHtml(order.namaPemesan || '-')}</b></div>
+        <div class="info-item"><span>WhatsApp</span><b>${escapeHtml(order.waPemesan || '-')}</b></div>
+        <div class="info-item"><span>Tema</span><b>${escapeHtml(order.temaNama || '-')}</b></div>
+        <div class="info-item"><span>Harga</span><b>Rp${(order.harga || 0).toLocaleString('id-ID')}</b></div>
+        <div class="info-item"><span>Waktu &amp; Tanggal</span><b>${escapeHtml(order.tanggalAcara || '-')} ${escapeHtml(order.waktuAcara || '')}</b></div>
+        <div class="info-item"><span>Tempat</span><b>${escapeHtml(order.tempat || '-')}</b></div>
+      </div>
+      <div style="margin-top:.8rem;font-size:.85rem;color:var(--muted)">Alamat: <b style="color:#fff">${escapeHtml(order.alamat || '-')}</b></div>
+      ${order.catatan ? `<div style="margin-top:.4rem;font-size:.85rem;color:var(--gold)">Catatan: ${escapeHtml(order.catatan)}</div>` : ''}
+    </div>
+
+    <div class="sec-box">
+      <div class="sec-box-title">Foto Terlampir (${photoEntries.length})</div>
+      ${photosHtml}
+    </div>
+
+    <div class="actions-box">
+      <button class="btn-process" id="btn-process-action" onclick="processActiveOrder()">
+        ⚡ Proses Orderan &amp; Terbitkan 2 Link
+      </button>
+
+      <div class="links-generated" id="box-links-generated" style="${order.status === 'aktif' ? 'display:block' : 'display:none'}">
+        <div class="link-row">
+          <label>Link 1: Undangan Tamu (Disebar)</label>
+          <div class="link-input-grp">
+            <input type="text" class="link-input" id="inp-link1" value="${link1}" readonly>
+            <button class="btn-sm" onclick="copyVal('inp-link1')">Salin</button>
+            <button class="btn-sm" onclick="window.open('${link1}', '_blank')">Buka</button>
+          </div>
+        </div>
+        <div class="link-row">
+          <label>Link 2: Dashboard Pantauan Tamu (Untuk Pemesan)</label>
+          <div class="link-input-grp">
+            <input type="text" class="link-input" id="inp-link2" value="${link2}" readonly>
+            <button class="btn-sm" onclick="copyVal('inp-link2')">Salin</button>
+            <button class="btn-sm" onclick="window.open('${link2}', '_blank')">Buka</button>
+          </div>
+        </div>
+
+        <a class="btn-wa-send" target="_blank" rel="noopener" href="https://wa.me/${cleanPhone(order.waPemesan)}?text=${encodeURIComponent(generateWaMessage(order, link1, link2))}">
+          💬 Kirim 2 Link Ini ke WhatsApp Pemesan
+        </a>
+      </div>
+    </div>
+  `;
+}
+
+function closeOrderModal() {
+  document.getElementById("modal-order").style.display = "none";
+}
+
+async function processActiveOrder() {
+  if (!activeModalOrder) return;
+  const btn = document.getElementById("btn-process-action");
+  btn.disabled = true;
+  btn.textContent = "Memproses...";
+  try {
+    await updateOrderStatus(activeModalOrder.code, "aktif");
+    activeModalOrder.status = "aktif";
+    btn.textContent = "✓ Orderan Berhasil Diaktifkan!";
+    document.getElementById("box-links-generated").style.display = "block";
+    updateCounts();
+    renderOrders();
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = "⚡ Proses Orderan & Terbitkan 2 Link";
+    alert("Gagal memproses order: " + err.message);
+  }
+}
+
+function copyVal(id) {
+  const el = document.getElementById(id);
+  navigator.clipboard.writeText(el.value);
+  alert("Link berhasil disalin!");
+}
+
+function cleanPhone(num) {
+  let p = (num || "").replace(/[^0-9]/g, "");
+  if (p.startsWith("0")) p = "62" + p.slice(1);
+  return p;
+}
+
+function generateWaMessage(order, link1, link2) {
+  return [
+    `Halo kak ${order.namaPemesan || ""}! Undangan digital Anda di LuwengStudio sudah siap.`,
+    "",
+    "Berikut 2 link resmi undangan Anda:",
+    "",
+    `1. Link Undangan (Untuk Disebar ke Tamu):`,
+    `${link1}`,
+    "",
+    `2. Link Pantauan Tamu & Ucapan Doa (Khusus Anda):`,
+    `${link2}`,
+    "",
+    "Tamu Anda bisa langsung mengirim ucapan doa restu dan konfirmasi kehadiran yang akan terpantau secara langsung di Link 2.",
+    "",
+    "Terima kasih telah mempercayakan momen spesial Anda kepada LuwengStudio!"
+  ].join("\n");
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  checkAuth();
+});
+</script>
+</body>
+</html>
