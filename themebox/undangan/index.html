@@ -311,22 +311,23 @@ function renderInvitation(order, photos) {
   const peopleContainer = document.getElementById("people-container");
   if (isWedding) {
     document.getElementById("people-title").textContent = "Mempelai";
-    const priaImg = photos.fotoPria || "../../assets/img/avatar-anime.jpg";
-    const wanitaImg = photos.fotoWanita || "../../assets/img/avatar-anime.jpg";
+    const priaImg = photos.fotoPria || "/assets/img/avatar-anime.jpg";
+    const wanitaImg = photos.fotoWanita || "/assets/img/avatar-anime.jpg";
+    const names = (order.namaAcara || "").split("&");
     peopleContainer.innerHTML = `
       <div class="couple-grid">
         <div class="person-card">
           <img class="person-photo" src="${priaImg}" alt="Mempelai Pria" onclick="openLightbox('${priaImg}')">
-          <div class="person-name">${order.namaAcara.split("&")[0] || "Mempelai Pria"}</div>
+          <div class="person-name">${(names[0] || "").trim() || "Mempelai Pria"}</div>
         </div>
         <div class="person-card">
           <img class="person-photo" src="${wanitaImg}" alt="Mempelai Wanita" onclick="openLightbox('${wanitaImg}')">
-          <div class="person-name">${order.namaAcara.split("&")[1] || "Mempelai Wanita"}</div>
+          <div class="person-name">${(names[1] || "").trim() || "Mempelai Wanita"}</div>
         </div>
       </div>`;
   } else {
     document.getElementById("people-title").textContent = order.kategori || "Penyelenggara";
-    const utamaImg = photos.fotoUtama || "../../assets/img/avatar-anime.jpg";
+    const utamaImg = photos.fotoUtama || "/assets/img/avatar-anime.jpg";
     peopleContainer.innerHTML = `
       <div class="person-card">
         <img class="single-photo" src="${utamaImg}" alt="${order.namaAcara}" onclick="openLightbox('${utamaImg}')">

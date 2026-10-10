@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LuwengStudio — Memuat...</title>
-<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -205,7 +205,7 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(-
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="themebox/js/firebase-config.js"></script>
+<script src="/themebox/js/firebase-config.js"></script>
 <script>
 let currentOrder = null;
 let currentCode = "";
@@ -315,22 +315,23 @@ function renderInvitation(order, photos) {
   const peopleContainer = document.getElementById("people-container");
   if (isWedding) {
     document.getElementById("people-title").textContent = "Mempelai";
-    const priaImg = photos.fotoPria || "assets/img/avatar-anime.jpg";
-    const wanitaImg = photos.fotoWanita || "assets/img/avatar-anime.jpg";
+    const priaImg = photos.fotoPria || "/assets/img/avatar-anime.jpg";
+    const wanitaImg = photos.fotoWanita || "/assets/img/avatar-anime.jpg";
+    const names = (order.namaAcara || "").split("&");
     peopleContainer.innerHTML = `
       <div class="couple-grid">
         <div class="person-card">
           <img class="person-photo" src="${priaImg}" alt="Mempelai Pria" onclick="openLightbox('${priaImg}')">
-          <div class="person-name">${order.namaAcara.split("&")[0] || "Mempelai Pria"}</div>
+          <div class="person-name">${(names[0] || "").trim() || "Mempelai Pria"}</div>
         </div>
         <div class="person-card">
           <img class="person-photo" src="${wanitaImg}" alt="Mempelai Wanita" onclick="openLightbox('${wanitaImg}')">
-          <div class="person-name">${order.namaAcara.split("&")[1] || "Mempelai Wanita"}</div>
+          <div class="person-name">${(names[1] || "").trim() || "Mempelai Wanita"}</div>
         </div>
       </div>`;
   } else {
     document.getElementById("people-title").textContent = order.kategori || "Penyelenggara";
-    const utamaImg = photos.fotoUtama || "assets/img/avatar-anime.jpg";
+    const utamaImg = photos.fotoUtama || "/assets/img/avatar-anime.jpg";
     peopleContainer.innerHTML = `
       <div class="person-card">
         <img class="single-photo" src="${utamaImg}" alt="${order.namaAcara}" onclick="openLightbox('${utamaImg}')">
