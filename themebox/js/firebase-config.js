@@ -24,6 +24,8 @@ function initFirebase() {
   try { storage = firebase.storage(); } catch (e) { storage = null; }
 }
 
+initFirebase();
+
 function storageReady() {
   return !!storage;
 }
