@@ -112,7 +112,7 @@ async function processOrderPhotos(order) {
   await saveOrderPhotos(order.code, photos);
 }
 
-function openWA(order) {
+function getWAMessage(order) {
   const lines = [
     "Halo LuwengStudio! Saya order undangan digital.",
     "",
@@ -126,17 +126,41 @@ function openWA(order) {
     "",
     "Bukti pembayaran & detail terlampir di sistem."
   ];
-  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank");
+  return lines.join("\n");
+}
+
+function getWAUrl(order) {
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(getWAMessage(order))}`;
+}
+
+function openWA(order) {
+  const url = getWAUrl(order);
+  try {
+    const w = window.open(url, "_blank");
+    if (!w || w.closed || typeof w.closed === "undefined") {
+      setTimeout(() => {
+        try { window.location.href = url; } catch (e) {}
+      }, 600);
+    }
+  } catch (e) {
+    try { window.location.href = url; } catch (err) {}
+  }
 }
 
 function showSuccess(order) {
+  const waUrl = getWAUrl(order);
   document.getElementById("form-order").innerHTML = `
     <div class="success-card">
       <div class="ok-ring">✓</div>
-      <h2>Order Diterima!</h2>
+      <h2>Order Berhasil Dikirim!</h2>
       <div class="code">${order.code}</div>
-      <p>Data dan foto pesanan Anda telah tersimpan rapi.<br>Silakan lanjutkan konfirmasi pembayaran via WhatsApp yang sudah terbuka.</p>
-      <a class="btn btn-dark" href="../">Kembali ke Katalog</a>
+      <p style="margin:1rem 0 1.5rem;line-height:1.6;color:var(--muted)">Data pesanan Anda telah tersimpan di sistem.<br>Silakan lanjutkan konfirmasi pembayaran via WhatsApp.</p>
+      <div style="display:flex;flex-direction:column;gap:1rem;align-items:center">
+        <a href="${waUrl}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:.6rem;background:#25d366;color:#fff;font-weight:700;padding:.9rem 1.8rem;border-radius:10px;text-decoration:none;font-size:1.05rem;box-shadow:0 4px 14px rgba(37,211,102,.35)">
+          💬 Buka WhatsApp Sekarang
+        </a>
+        <a class="btn btn-dark" href="../" style="margin-top:.3rem">Kembali ke Katalog</a>
+      </div>
     </div>`;
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -155,7 +179,6 @@ async function submitOrder() {
     btn.textContent = "Menyimpan foto...";
     await processOrderPhotos(order);
   } catch (e) {
-    console.warn("Simpan error:", e);
     btn.disabled = false;
     btn.textContent = "Kirim Order via WhatsApp";
     alert("Gagal menyimpan data: " + e.message + "\n\nPastikan koneksi internet aktif lalu coba lagi.");

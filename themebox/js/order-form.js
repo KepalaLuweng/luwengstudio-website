@@ -179,33 +179,43 @@ function renderOrderThemeCard() {
 
 function validateOrderForm() {
   let ok = true;
-  let first = null;
-  const need = (id, cond) => {
+  let firstEl = null;
+  let firstInput = null;
+  const missing = [];
+  const need = (id, cond, label) => {
     const bad = cond();
     setInvalid(id, bad);
-    if (bad) { ok = false; first = first || document.getElementById(id); }
+    if (bad) {
+      ok = false;
+      missing.push(label);
+      if (!firstEl) {
+        const inp = document.getElementById(id);
+        firstInput = inp;
+        firstEl = inp ? (inp.closest("[data-field]") || inp) : null;
+      }
+    }
   };
   const val = id => (document.getElementById(id).value || "").trim();
-  need("buyer-name", () => !val("buyer-name"));
-  need("buyer-wa", () => !val("buyer-wa"));
-  need("event-name", () => !val("event-name"));
-  need("link-name", () => !val("link-name"));
-  need("event-date", () => !val("event-date"));
-  need("event-time", () => !val("event-time"));
-  need("event-venue", () => !val("event-venue"));
-  need("event-address", () => !val("event-address"));
-  need("amplop-info", () => !val("amplop-info"));
-  if (IS_WEDDING) {
-    need("foto-pria", () => !document.getElementById("foto-pria").files.length);
-    need("foto-wanita", () => !document.getElementById("foto-wanita").files.length);
-  } else {
-    need("foto-utama", () => !document.getElementById("foto-utama").files.length);
+  need("buyer-name", () => !val("buyer-name"), "Nama pemesan");
+  need("buyer-wa", () => !val("buyer-wa"), "No. WhatsApp aktif");
+  need("event-name", () => !val("event-name"), IS_WEDDING ? "Nama kedua mempelai" : "Nama acara");
+  need("link-name", () => !val("link-name"), "Nama untuk link undangan");
+  need("event-date", () => !val("event-date"), "Tanggal acara");
+  need("event-time", () => !val("event-time"), "Waktu acara");
+  need("event-venue", () => !val("event-venue"), "Tempat / gedung");
+  need("event-address", () => !val("event-address"), "Alamat lengkap");
+  need("amplop-info", () => !val("amplop-info"), "Nomor rekening / e-wallet");
+  if (!ok) {
+    if (firstEl && typeof firstEl.scrollIntoView === "function") {
+      firstEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    if (firstInput && typeof firstInput.focus === "function") {
+      try { firstInput.focus(); } catch (e) {}
+    }
+    alert("Mohon lengkapi formulir wajib berikut sebelum mengirim:\n\n• " + missing.join("\n• "));
+    return false;
   }
-  if (document.getElementById("amplop-method").value === "qris") {
-    need("foto-qris", () => !document.getElementById("foto-qris").files.length);
-  }
-  if (first) first.scrollIntoView({ behavior: "smooth", block: "center" });
-  return ok;
+  return true;
 }
 
 function initOrderPage() {

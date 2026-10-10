@@ -24,11 +24,15 @@ function initFirebase() {
 initFirebase();
 
 async function ensureAuth() {
-  if (typeof firebase === "undefined") return;
+  if (typeof firebase === "undefined") return null;
   const auth = firebase.auth();
   if (auth.currentUser) return auth.currentUser;
-  const cred = await auth.signInAnonymously();
-  return cred.user;
+  try {
+    const cred = await auth.signInAnonymously();
+    return cred.user;
+  } catch (e) {
+    return null;
+  }
 }
 
 function cleanSlug(str) {
@@ -57,9 +61,11 @@ async function saveOrder(order) {
 async function saveOrderPhotos(code, photos) {
   if (!db) initFirebase();
   if (!db) throw new Error("Database belum siap");
+  const keys = Object.keys(photos || {});
+  if (keys.length === 0) return;
   const batch = db.batch();
   const col = db.collection("orders").doc(code).collection("photos");
-  for (const key of Object.keys(photos)) {
+  for (const key of keys) {
     if (photos[key]) {
       const docRef = col.doc(key);
       batch.set(docRef, { key: key, data: photos[key] });

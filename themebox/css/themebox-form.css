@@ -49,9 +49,11 @@
   box-shadow:0 0 0 3px rgba(0,0,0,.06);
 }
 .field input.err,.field select.err,.field textarea.err{border-color:#c0392b;box-shadow:0 0 0 3px rgba(192,57,43,.08)}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:#c0392b;background:#fff8f8;box-shadow:0 0 0 3px rgba(192,57,43,.12)}
+.field.invalid .photo-box{border-color:#c0392b;background:#fff8f8}
 .field .hint{font-size:var(--fs-tiny);color:var(--faint);margin-top:.35rem;line-height:1.6}
 .field .err-msg{display:none;font-size:var(--fs-tiny);color:#c0392b;margin-top:.35rem}
-.field.invalid .err-msg{display:block}
+.field.invalid .err-msg{display:block;font-weight:600}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .photo-box{
