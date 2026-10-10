@@ -31,6 +31,7 @@ function collectOrder() {
     tanggalAcara: val("event-date"),
     waktuAcara: val("event-time"),
     namaAcara: val("event-name"),
+    linkName: val("link-name"),
     tempat: val("event-venue"),
     alamat: val("event-address"),
     mapsLink: val("event-maps"),

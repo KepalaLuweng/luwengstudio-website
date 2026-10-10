@@ -43,7 +43,6 @@
       <div class="field" data-field="buyer-name">
         <label>Nama pemesan <span class="req">*</span></label>
         <input type="text" id="buyer-name" placeholder="Nama lengkap" autocomplete="name">
-        <small class="hint">Link undangan: luwengstudio.my.id/nama-pemesan</small>
         <small class="err-msg">Nama pemesan wajib diisi</small>
       </div>
       <div class="field" data-field="buyer-wa">
@@ -60,6 +59,12 @@
         <label><span id="label-event-name">Nama acara</span> <span class="req">*</span></label>
         <input type="text" id="event-name" placeholder="">
         <small class="err-msg">Wajib diisi</small>
+      </div>
+      <div class="field" data-field="link-name">
+        <label>Nama untuk link undangan <span class="req">*</span></label>
+        <input type="text" id="link-name" placeholder="cth: Ani&Budi" maxlength="50">
+        <small class="err-msg">Wajib diisi</small>
+        <small class="link-preview">Link undangan kamu: <span id="link-preview-url" style="color:var(--accent);font-weight:600">luwengstudio.my.id/(kategori)/(nama)</span></small>
       </div>
       <div class="field-row">
         <div class="field" data-field="event-date">

@@ -135,6 +135,26 @@ function applyCategory(cat) {
     document.getElementById("label-foto-utama").textContent = FOTO_UTAMA_LABEL[ORDER_CAT] || "Foto utama";
   }
   document.getElementById("wrap-dresscode").classList.toggle("hidden", ORDER_CAT !== "Ultah");
+  updateLinkPreview();
+}
+
+function slugKategori(cat) {
+  return (cat || "acara").toLowerCase().replace(/\s+/g, "");
+}
+
+function updateLinkPreview() {
+  const name = (document.getElementById("link-name").value || "").trim() || "(nama)";
+  const el = document.getElementById("link-preview-url");
+  if (el) el.textContent = "luwengstudio.my.id/" + slugKategori(ORDER_CAT) + "/" + name;
+}
+
+function setupLinkName() {
+  const input = document.getElementById("link-name");
+  if (!input) return;
+  input.addEventListener("input", () => {
+    updateLinkPreview();
+    setInvalid("link-name", false);
+  });
 }
 
 function renderOrderThemeCard() {
@@ -176,6 +196,7 @@ function validateOrderForm() {
   need("buyer-name", () => !val("buyer-name"));
   need("buyer-wa", () => !val("buyer-wa"));
   need("event-name", () => !val("event-name"));
+  need("link-name", () => !val("link-name"));
   need("event-date", () => !val("event-date"));
   need("event-time", () => !val("event-time"));
   need("event-venue", () => !val("event-venue"));
@@ -208,4 +229,6 @@ function initOrderPage() {
   setupPhotoBox("box-foto-qris", "foto-qris");
   setupGallery();
   setupMusik();
+  setupLinkName();
+  updateLinkPreview();
 }
